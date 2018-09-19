@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 4548979488335798}
   - component: {fileID: 33419620652677970}
   - component: {fileID: 23474702198951436}
+  - component: {fileID: 114959093400585522}
   m_Layer: 0
   m_Name: Tracks_L_Geom
   m_TagString: Untagged
@@ -627,6 +628,7 @@ GameObject:
   - component: {fileID: 4157417475414474}
   - component: {fileID: 33262034140503946}
   - component: {fileID: 23349268320409042}
+  - component: {fileID: 114598889239603430}
   m_Layer: 0
   m_Name: Tracks_R_Geom
   m_TagString: Untagged
@@ -1736,6 +1738,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114598889239603430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903436089491680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33201c1065082514e81fe9efef3e3b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
+--- !u!114 &114959093400585522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534909860103764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33201c1065082514e81fe9efef3e3b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
 --- !u!137 &137874574160875768
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
