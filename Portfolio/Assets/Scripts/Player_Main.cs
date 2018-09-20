@@ -22,33 +22,48 @@ namespace Player
 
 
         // temporary
-        // 여기
         public int listIndex;
 
         public void PrintCharacterInformation()
         {
+            if (characters.Count <= 0) return;
 
+            if ((listIndex < 0) || (listIndex >= characters.Count)) return;
+
+            Debug.Log("Name : " + characters[listIndex].characterName);
+            Debug.Log("Type : " + characters[listIndex].type);
+            Debug.Log("Strength : " + characters[listIndex].strength);
+            Debug.Log("Agility : " + characters[listIndex].agility);
+            Debug.Log("Intelligence : " + characters[listIndex].intelligence);
         }
 
         public void IncreaseStrength()
         {
+            if (characters.Count <= 0) return;
 
+            if ((listIndex < 0) || (listIndex >= characters.Count)) return;
+
+            characters[listIndex].strength++;
         }
 
         public void AddCharacters()
         {
             Character_Base newSoldier = ScriptableObject.CreateInstance<Character_Base>();
-            newSoldier = soldierBase;
+            newSoldier.CopyData(soldierBase);
 
             Character_Base newTank = ScriptableObject.CreateInstance<Character_Base>();
-            newTank = tankBase;
+            newTank.CopyData(tankBase);
 
             characters.Add(newSoldier);
             characters.Add(newTank);
+
+            Debug.Log(characters.Count);
         }
         
         public void ClearCharacters()
         {
+            if (characters.Count <= 0) return;
+
             for (int i = characters.Count - 1; i >= 0; i--)
             {
                 characters.RemoveAt(i);

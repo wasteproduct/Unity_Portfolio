@@ -14,5 +14,15 @@ namespace Character
         //public List<Skill_Base> skills;
         public Character_Type type;
         public string characterName;
+
+        public void CopyData(Character_Base copiedBase)
+        {
+            this.model = copiedBase.model;
+            this.strength = copiedBase.strength;
+            this.agility = copiedBase.agility;
+            this.intelligence = copiedBase.intelligence;
+            this.type = copiedBase.type;
+            this.characterName = copiedBase.characterName;
+        }
     }
 }
