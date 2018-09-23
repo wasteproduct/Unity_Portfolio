@@ -11,6 +11,7 @@ namespace Player
         public Character_Base soldierBase;
         public Character_Base tankBase;
 
+        [SerializeField]
         private List<Character_Base> characters = new List<Character_Base>();
 
         public List<Character_Base> Characters { get { return characters; } }
