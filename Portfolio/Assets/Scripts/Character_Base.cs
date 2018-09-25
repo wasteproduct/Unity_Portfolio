@@ -9,6 +9,7 @@ namespace Character
     {
         public string characterName;
         public Character_Type type;
+        public Texture2D portrait;
         public GameObject model;
         public int strength;
         public int agility;

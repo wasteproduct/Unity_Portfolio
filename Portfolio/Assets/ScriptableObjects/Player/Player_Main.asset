@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2b636528d9c3d48a83597af7cc663d, type: 3}
   m_Name: Player_Main
   m_EditorClassIdentifier: 
-  soldierBase: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
-  tankBase: {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
+  characters: []
   listIndex: 0
+  addedCharacterBase: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}

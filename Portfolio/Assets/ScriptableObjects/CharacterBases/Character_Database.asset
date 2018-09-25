@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed3d38b6a32b614697c9a7659d46521, type: 3}
+  m_Name: Character_Database
+  m_EditorClassIdentifier: 
+  baseSoldier: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
+  baseTank: {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}

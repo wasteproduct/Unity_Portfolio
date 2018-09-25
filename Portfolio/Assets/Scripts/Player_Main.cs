@@ -8,8 +8,7 @@ namespace Player
     [CreateAssetMenu(fileName = "", menuName = "Player/Main", order = 1)]
     public class Player_Main : ScriptableObject
     {
-        public Character_Base soldierBase;
-        public Character_Base tankBase;
+        public Character_Database characterDatabase;
 
         [SerializeField]
         private List<Character_Base> characters = new List<Character_Base>();
@@ -24,6 +23,7 @@ namespace Player
 
         // temporary
         public int listIndex;
+        public Character_Base addedCharacterBase;
 
         public void PrintCharacterInformation()
         {
@@ -49,16 +49,10 @@ namespace Player
 
         public void AddCharacters()
         {
-            Character_Base newSoldier = ScriptableObject.CreateInstance<Character_Base>();
-            newSoldier.CopyData(soldierBase);
-
-            Character_Base newTank = ScriptableObject.CreateInstance<Character_Base>();
-            newTank.CopyData(tankBase);
-
-            characters.Add(newSoldier);
-            characters.Add(newTank);
-
-            Debug.Log(characters.Count);
+            Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
+            newCharacter.CopyData(addedCharacterBase);
+            
+            characters.Add(newCharacter);
         }
         
         public void ClearCharacters()

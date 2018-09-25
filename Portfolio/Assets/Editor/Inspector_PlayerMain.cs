@@ -10,13 +10,13 @@ public class Inspector_PlayerMain : Editor
         //base.OnInspectorGUI();
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Add Characters"))
+        if (GUILayout.Button("Add Character"))
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.AddCharacters();
         }
 
-        if (GUILayout.Button("Clear Characters"))
+        if (GUILayout.Button("Clear List"))
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.ClearCharacters();
