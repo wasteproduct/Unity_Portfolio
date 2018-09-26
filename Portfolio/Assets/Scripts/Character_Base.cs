@@ -9,7 +9,7 @@ namespace Character
     {
         public string characterName;
         public Character_Type type;
-        public Texture2D portrait;
+        public Sprite portrait;
         public GameObject model;
         public int strength;
         public int agility;
@@ -18,12 +18,13 @@ namespace Character
 
         public void CopyData(Character_Base copiedBase)
         {
+            this.characterName = copiedBase.characterName;
+            this.type = copiedBase.type;
+            this.portrait = copiedBase.portrait;
             this.model = copiedBase.model;
             this.strength = copiedBase.strength;
             this.agility = copiedBase.agility;
             this.intelligence = copiedBase.intelligence;
-            this.type = copiedBase.type;
-            this.characterName = copiedBase.characterName;
         }
     }
 }

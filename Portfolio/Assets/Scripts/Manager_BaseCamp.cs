@@ -5,8 +5,6 @@ using Player;
 
 public class Manager_BaseCamp : MonoBehaviour
 {
-    public Player_Main playerMain;
-
     // Use this for initialization
     void Start()
     {
