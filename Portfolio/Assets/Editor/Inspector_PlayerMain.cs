@@ -2,6 +2,8 @@
 using UnityEditor;
 using Player;
 
+//using UnityEditor.SceneManagement;
+
 [CustomEditor(typeof(Player_Main))]
 public class Inspector_PlayerMain : Editor
 {
@@ -14,6 +16,9 @@ public class Inspector_PlayerMain : Editor
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.AddCharacters();
+            EditorUtility.SetDirty(playerMain);
+
+            //EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
 
         if (GUILayout.Button("Clear List"))

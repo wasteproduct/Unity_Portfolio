@@ -23,7 +23,7 @@ public class Inspector_BaseCamp : Editor
             Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
 
             Player_Characters playerCharacters = baseCamp.GetComponent<Player_Characters>();
-            playerCharacters.CloseCharacters();
+            playerCharacters.CloseCharacters(true);
         }
 
         if (GUILayout.Button("Open Organize Team"))

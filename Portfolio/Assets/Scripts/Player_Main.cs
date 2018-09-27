@@ -25,6 +25,14 @@ namespace Player
         public int listIndex;
         public Character_Base addedCharacterBase;
 
+        public void AddCharacters()
+        {
+            Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
+            newCharacter.CopyData(addedCharacterBase);
+
+            characters.Add(newCharacter);
+        }
+
         public void PrintCharacterInformation()
         {
             if (characters.Count <= 0) return;
@@ -45,14 +53,6 @@ namespace Player
             if ((listIndex < 0) || (listIndex >= characters.Count)) return;
 
             characters[listIndex].strength++;
-        }
-
-        public void AddCharacters()
-        {
-            Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
-            newCharacter.CopyData(addedCharacterBase);
-            
-            characters.Add(newCharacter);
         }
         
         public void ClearCharacters()

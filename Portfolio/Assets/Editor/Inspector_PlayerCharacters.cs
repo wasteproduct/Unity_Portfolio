@@ -14,6 +14,8 @@ public class Inspector_PlayerCharacters : Editor
         {
             Player_Characters playerCharacters = (Player_Characters)target;
             playerCharacters.SelectCharacter();
+
+            EditorUtility.SetDirty(playerCharacters);
         }
     }
 }
