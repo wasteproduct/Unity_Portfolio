@@ -15,7 +15,7 @@ public class Inspector_PlayerMain : Editor
         if (GUILayout.Button("Add Character"))
         {
             Player_Main playerMain = (Player_Main)target;
-            playerMain.AddCharacters();
+            playerMain.AddCharacter();
             EditorUtility.SetDirty(playerMain);
 
             //EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
@@ -25,18 +25,28 @@ public class Inspector_PlayerMain : Editor
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.ClearCharacters();
+            EditorUtility.SetDirty(playerMain);
+        }
+
+        if (GUILayout.Button("Refresh List"))
+        {
+            Player_Main playerMain = (Player_Main)target;
+            playerMain.Refresh();
+            EditorUtility.SetDirty(playerMain);
         }
 
         if (GUILayout.Button("Print Character Information"))
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.PrintCharacterInformation();
+            EditorUtility.SetDirty(playerMain);
         }
 
         if (GUILayout.Button("Increase Strength"))
         {
             Player_Main playerMain = (Player_Main)target;
             playerMain.IncreaseStrength();
+            EditorUtility.SetDirty(playerMain);
         }
     }
 }

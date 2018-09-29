@@ -6,6 +6,12 @@ namespace Tutorial
 {
     public class Tutorial_Manager : MonoBehaviour
     {
+        private Tutorial_StreamingAsset jsonStreamer;
 
+        public void WriteJSON()
+        {
+            jsonStreamer = this.gameObject.GetComponent<Tutorial_StreamingAsset>();
+            jsonStreamer.WriteJSON();
+        }
     }
 }

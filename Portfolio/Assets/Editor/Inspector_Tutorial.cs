@@ -11,5 +11,11 @@ public class Inspector_Tutorial : Editor
     {
         //base.OnInspectorGUI();
         DrawDefaultInspector();
+
+        if (GUILayout.Button("Write json"))
+        {
+            Tutorial_Manager tutorialManager = (Tutorial_Manager)target;
+            tutorialManager.WriteJSON();
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace Character
     public class Character_Base : ScriptableObject
     {
         public string characterName;
-        public Character_Type type;
         public Sprite portrait;
         public GameObject model;
+        public int typeID;
         public int strength;
         public int agility;
         public int intelligence;
@@ -19,9 +19,9 @@ namespace Character
         public void CopyData(Character_Base copiedBase)
         {
             this.characterName = copiedBase.characterName;
-            this.type = copiedBase.type;
             this.portrait = copiedBase.portrait;
             this.model = copiedBase.model;
+            this.typeID = copiedBase.typeID;
             this.strength = copiedBase.strength;
             this.agility = copiedBase.agility;
             this.intelligence = copiedBase.intelligence;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Character;
+using System.IO;
 
 namespace Player
 {
@@ -21,16 +22,23 @@ namespace Player
         }
 
 
-        // temporary
+        // Editor
         public int listIndex;
         public Character_Base addedCharacterBase;
 
-        public void AddCharacters()
+        public void AddCharacter()
         {
             Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
             newCharacter.CopyData(addedCharacterBase);
 
             characters.Add(newCharacter);
+        }
+
+        public void Refresh()
+        {
+            ClearCharacters();
+
+
         }
 
         public void PrintCharacterInformation()
@@ -40,7 +48,6 @@ namespace Player
             if ((listIndex < 0) || (listIndex >= characters.Count)) return;
 
             Debug.Log("Name : " + characters[listIndex].characterName);
-            Debug.Log("Type : " + characters[listIndex].type);
             Debug.Log("Strength : " + characters[listIndex].strength);
             Debug.Log("Agility : " + characters[listIndex].agility);
             Debug.Log("Intelligence : " + characters[listIndex].intelligence);
