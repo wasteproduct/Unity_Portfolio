@@ -24,21 +24,14 @@ public class Inspector_PlayerMain : Editor
         if (GUILayout.Button("Clear List"))
         {
             Player_Main playerMain = (Player_Main)target;
-            playerMain.ClearCharacters();
+            playerMain.ClearList();
             EditorUtility.SetDirty(playerMain);
         }
 
         if (GUILayout.Button("Refresh List"))
         {
             Player_Main playerMain = (Player_Main)target;
-            playerMain.Refresh();
-            EditorUtility.SetDirty(playerMain);
-        }
-
-        if (GUILayout.Button("Print Character Information"))
-        {
-            Player_Main playerMain = (Player_Main)target;
-            playerMain.PrintCharacterInformation();
+            playerMain.LoadData();
             EditorUtility.SetDirty(playerMain);
         }
 

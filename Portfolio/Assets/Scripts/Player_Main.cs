@@ -28,29 +28,63 @@ namespace Player
 
         public void AddCharacter()
         {
+            LoadData();
+
             Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
-            newCharacter.CopyData(addedCharacterBase);
+            newCharacter.Name = addedCharacterBase.Name;
+            newCharacter.TypeID = addedCharacterBase.TypeID;
+            newCharacter.Strength = addedCharacterBase.Strength;
+            newCharacter.Agility = addedCharacterBase.Agility;
+            newCharacter.Intelligence = addedCharacterBase.Intelligence;
 
             characters.Add(newCharacter);
+
+            SaveData();
         }
 
-        public void Refresh()
+        public void ClearList()
         {
             ClearCharacters();
 
-
+            SaveData();
         }
 
-        public void PrintCharacterInformation()
+        public void LoadData()
         {
-            if (characters.Count <= 0) return;
+            string playerDataJSON = File.ReadAllText(Application.streamingAssetsPath + "/Editor_PlayerData.json");
 
-            if ((listIndex < 0) || (listIndex >= characters.Count)) return;
+            Editor_PlayerData playerData = JsonUtility.FromJson<Editor_PlayerData>(playerDataJSON);
 
-            Debug.Log("Name : " + characters[listIndex].characterName);
-            Debug.Log("Strength : " + characters[listIndex].strength);
-            Debug.Log("Agility : " + characters[listIndex].agility);
-            Debug.Log("Intelligence : " + characters[listIndex].intelligence);
+            ClearCharacters();
+
+            for (int i = 0; i < playerData.Characters.Length; i++)
+            {
+                Character_Base newCharacter = CreateInstance<Character_Base>();
+                newCharacter.CopyData(playerData.Characters[i]);
+
+                characters.Add(newCharacter);
+            }
+        }
+
+        public void SaveData()
+        {
+            string playerDataJSON = File.ReadAllText(Application.streamingAssetsPath + "/Editor_PlayerData.json");
+
+            Editor_PlayerData playerData = JsonUtility.FromJson<Editor_PlayerData>(playerDataJSON);
+
+            List<Editor_CharacterData> newCharacters = new List<Editor_CharacterData>();
+            for (int i = 0; i < characters.Count; i++)
+            {
+                Editor_CharacterData newCharacter = new Editor_CharacterData(characters[i]);
+
+                newCharacters.Add(newCharacter);
+            }
+
+            playerData.Characters = newCharacters.ToArray();
+
+            playerDataJSON = JsonUtility.ToJson(playerData);
+
+            File.WriteAllText(Application.streamingAssetsPath + "/Editor_PlayerData.json", playerDataJSON);
         }
 
         public void IncreaseStrength()
@@ -59,9 +93,11 @@ namespace Player
 
             if ((listIndex < 0) || (listIndex >= characters.Count)) return;
 
-            characters[listIndex].strength++;
+            characters[listIndex].Strength++;
+
+            SaveData();
         }
-        
+
         public void ClearCharacters()
         {
             if (characters.Count <= 0) return;
@@ -72,6 +108,31 @@ namespace Player
             }
 
             characters.Clear();
+        }
+    }
+
+    [System.Serializable]
+    public class Editor_PlayerData
+    {
+        public Editor_CharacterData[] Characters;
+    }
+
+    [System.Serializable]
+    public class Editor_CharacterData
+    {
+        public string Name;
+        public int TypeID;
+        public int Strength;
+        public int Agility;
+        public int Intelligence;
+
+        public Editor_CharacterData(Character_Base character)
+        {
+            this.Name = character.Name;
+            this.TypeID = character.TypeID;
+            this.Strength = character.Strength;
+            this.Agility = character.Agility;
+            this.Intelligence = character.Intelligence;
         }
     }
 }

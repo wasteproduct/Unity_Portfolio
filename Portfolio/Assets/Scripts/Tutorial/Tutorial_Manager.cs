@@ -13,5 +13,11 @@ namespace Tutorial
             jsonStreamer = this.gameObject.GetComponent<Tutorial_StreamingAsset>();
             jsonStreamer.WriteJSON();
         }
+
+        public void AddCharacter()
+        {
+            jsonStreamer = this.gameObject.GetComponent<Tutorial_StreamingAsset>();
+            jsonStreamer.AddCharacter();
+        }
     }
 }

@@ -9,5 +9,11 @@ namespace Character
     {
         public Character_Base baseSoldier;
         public Character_Base baseTank;
+
+        public GameObject modelSoldier;
+        public GameObject modelTank;
+
+        public Sprite portraitSoldier;
+        public Sprite portraitTank;
     }
 }

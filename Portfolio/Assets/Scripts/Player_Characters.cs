@@ -38,9 +38,9 @@ namespace Player
 
             Character_Base selectedCharacter = playerMain.Characters[selectedCharacterIndex];
 
-            strength.GetComponent<Text>().text = stringStrength + selectedCharacter.strength.ToString();
-            agility.GetComponent<Text>().text = stringAgility + selectedCharacter.agility.ToString();
-            intelligence.GetComponent<Text>().text = stringIntelligence + selectedCharacter.intelligence.ToString();
+            strength.GetComponent<Text>().text = stringStrength + selectedCharacter.Strength.ToString();
+            agility.GetComponent<Text>().text = stringAgility + selectedCharacter.Agility.ToString();
+            intelligence.GetComponent<Text>().text = stringIntelligence + selectedCharacter.Intelligence.ToString();
         }
 
         public void OpenCharacters()
@@ -50,7 +50,7 @@ namespace Player
             for (int i = 0; i < playerMain.Characters.Count; i++)
             {
                 GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-                addedSlot.GetComponent<Image>().sprite = playerMain.Characters[i].portrait;
+                //addedSlot.GetComponent<Image>().sprite = playerMain.Characters[i].portrait;
 
                 characters.Add(addedSlot);
             }

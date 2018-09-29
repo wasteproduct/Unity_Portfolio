@@ -16,6 +16,14 @@ public class Inspector_Tutorial : Editor
         {
             Tutorial_Manager tutorialManager = (Tutorial_Manager)target;
             tutorialManager.WriteJSON();
+            EditorUtility.SetDirty(tutorialManager);
+        }
+
+        if (GUILayout.Button("Add Character"))
+        {
+            Tutorial_Manager tutorialManager = (Tutorial_Manager)target;
+            tutorialManager.AddCharacter();
+            EditorUtility.SetDirty(tutorialManager);
         }
     }
 }

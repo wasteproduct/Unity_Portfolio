@@ -13,3 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSoldier: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
   baseTank: {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  modelSoldier: {fileID: 1552323826897812, guid: 5efdd39f181b83b4091faa44c2aa317f,
+    type: 2}
+  modelTank: {fileID: 1533071126506800, guid: 3bddcf583dcb47049bc214d270997daa, type: 2}
+  portraitSoldier: {fileID: 21300000, guid: 85f69e840323e6c48bed409119c9fedf, type: 3}
+  portraitTank: {fileID: 21300000, guid: efeb74943accbdd4783410a0378acd05, type: 3}
