@@ -8,6 +8,7 @@ namespace Player
     public class Player_Characters : MonoBehaviour
     {
         public Player_Main playerMain;
+        public Character_Database characterDatabase;
 
         public GameObject charactersPanel;
         public GameObject slotField;
@@ -15,7 +16,6 @@ namespace Player
         public GameObject agility;
         public GameObject intelligence;
         public GameObject slotPrefab;
-        public int selectedCharacterIndex;
 
         public GameObject charactersButton;
 
@@ -24,19 +24,19 @@ namespace Player
         private readonly string stringAgility = "Agility : ";
         private readonly string stringIntelligence = "Intelligence : ";
 
-        public void SelectCharacter()
+        public void SelectCharacter(Character_Base selectedCharacter)
         {
             if (charactersPanel.activeSelf == false) return;
 
-            if (IndexOutOfRange(selectedCharacterIndex, characters) == true)
-            {
-                DisableStrings();
-                return;
-            }
+            //if (IndexOutOfRange(characterIndex, characters) == true)
+            //{
+            //    DisableStrings();
+            //    return;
+            //}
 
             EnableStrings();
 
-            Character_Base selectedCharacter = playerMain.Characters[selectedCharacterIndex];
+            //Character_Base selectedCharacter = playerMain.Characters[characterIndex];
 
             strength.GetComponent<Text>().text = stringStrength + selectedCharacter.Strength.ToString();
             agility.GetComponent<Text>().text = stringAgility + selectedCharacter.Agility.ToString();
@@ -50,7 +50,7 @@ namespace Player
             for (int i = 0; i < playerMain.Characters.Count; i++)
             {
                 GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-                //addedSlot.GetComponent<Image>().sprite = playerMain.Characters[i].portrait;
+                addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
                 characters.Add(addedSlot);
             }
@@ -62,8 +62,6 @@ namespace Player
         {
             ResetStrings();
             DisableStrings();
-
-            charactersPanel.SetActive(false);
 
             if (editor == true)
             {
@@ -81,6 +79,8 @@ namespace Player
             }
 
             characters.Clear();
+
+            charactersPanel.SetActive(false);
 
             charactersButton.SetActive(true);
         }
@@ -112,6 +112,28 @@ namespace Player
             if (index >= list.Count) return true;
 
             return false;
+        }
+
+        // editor
+        public int selectedCharacterIndex;
+
+        public void SelectCharacter()
+        {
+            if (charactersPanel.activeSelf == false) return;
+
+            if (IndexOutOfRange(selectedCharacterIndex, characters) == true)
+            {
+                DisableStrings();
+                return;
+            }
+
+            EnableStrings();
+
+            Character_Base selectedCharacter = playerMain.Characters[selectedCharacterIndex];
+
+            strength.GetComponent<Text>().text = stringStrength + selectedCharacter.Strength.ToString();
+            agility.GetComponent<Text>().text = stringAgility + selectedCharacter.Agility.ToString();
+            intelligence.GetComponent<Text>().text = stringIntelligence + selectedCharacter.Intelligence.ToString();
         }
     }
 }

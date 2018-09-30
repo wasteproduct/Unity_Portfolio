@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d8715be27f95a41b2a7f86341cebe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
 --- !u!114 &114852056915415624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,7 +107,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114763465778795348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114822129014531032}
+        m_MethodName: SelectCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &222794607736165160

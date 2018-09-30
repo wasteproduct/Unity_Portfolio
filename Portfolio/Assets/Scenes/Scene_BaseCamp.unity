@@ -1162,14 +1162,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 11400000, guid: 71267b3c1879ad6468f0b840f25cd1d8, type: 2}
+  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
   charactersPanel: {fileID: 1320544963}
   slotField: {fileID: 36363719}
   strength: {fileID: 840525965}
   agility: {fileID: 1527216767}
   intelligence: {fileID: 1815407046}
   slotPrefab: {fileID: 1907771726311702, guid: bd4fc01ab134a79458d1eece12b3940c, type: 2}
-  selectedCharacterIndex: 1
   charactersButton: {fileID: 794059026}
+  selectedCharacterIndex: 0
 --- !u!114 &955680557
 MonoBehaviour:
   m_ObjectHideFlags: 0

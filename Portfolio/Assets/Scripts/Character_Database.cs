@@ -10,10 +10,13 @@ namespace Character
         public Character_Base baseSoldier;
         public Character_Base baseTank;
 
-        public GameObject modelSoldier;
-        public GameObject modelTank;
+        [SerializeField]
+        List<Character_Portraits> portraits = new List<Character_Portraits>();
 
-        public Sprite portraitSoldier;
-        public Sprite portraitTank;
+        [SerializeField]
+        List<Character_Models> models = new List<Character_Models>();
+
+        public List<Character_Portraits> Portraits { get { return portraits; } }
+        public List<Character_Models> Models { get { return models; } }
     }
 }
