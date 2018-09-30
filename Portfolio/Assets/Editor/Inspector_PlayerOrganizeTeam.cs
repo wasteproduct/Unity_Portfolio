@@ -12,7 +12,10 @@ public class Inspector_PlayerOrganizeTeam : Editor
 
         if (GUILayout.Button("Select Character"))
         {
+            Player_OrganizeTeam organizeTeam = (Player_OrganizeTeam)target;
+            organizeTeam.SelectCharacter();
 
+            EditorUtility.SetDirty(organizeTeam);
         }
     }
 }

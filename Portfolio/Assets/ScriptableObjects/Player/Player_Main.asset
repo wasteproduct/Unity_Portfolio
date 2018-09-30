@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Player_Main
   m_EditorClassIdentifier: 
   characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
+  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
   characters:
   - {fileID: 0}
   - {fileID: 0}

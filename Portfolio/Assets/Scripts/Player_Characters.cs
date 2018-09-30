@@ -17,8 +17,6 @@ namespace Player
         public GameObject intelligence;
         public GameObject slotPrefab;
 
-        public GameObject charactersButton;
-
         private List<GameObject> characters = new List<GameObject>();
         private readonly string stringStrength = "Strength : ";
         private readonly string stringAgility = "Agility : ";
@@ -28,15 +26,7 @@ namespace Player
         {
             if (charactersPanel.activeSelf == false) return;
 
-            //if (IndexOutOfRange(characterIndex, characters) == true)
-            //{
-            //    DisableStrings();
-            //    return;
-            //}
-
             EnableStrings();
-
-            //Character_Base selectedCharacter = playerMain.Characters[characterIndex];
 
             strength.GetComponent<Text>().text = stringStrength + selectedCharacter.Strength.ToString();
             agility.GetComponent<Text>().text = stringAgility + selectedCharacter.Agility.ToString();
@@ -47,18 +37,20 @@ namespace Player
         {
             charactersPanel.SetActive(true);
 
+            playerMain.LoadData();
+
             for (int i = 0; i < playerMain.Characters.Count; i++)
             {
+                if (playerMain.Characters[i] == null) continue;
+
                 GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
                 addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
                 characters.Add(addedSlot);
             }
-
-            charactersButton.SetActive(false);
         }
 
-        public void CloseCharacters(bool editor = false)
+        public void CloseCharacters(bool editor)
         {
             ResetStrings();
             DisableStrings();
@@ -81,8 +73,6 @@ namespace Player
             characters.Clear();
 
             charactersPanel.SetActive(false);
-
-            charactersButton.SetActive(true);
         }
 
         private void EnableStrings()

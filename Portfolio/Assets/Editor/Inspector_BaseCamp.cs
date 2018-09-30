@@ -13,27 +13,33 @@ public class Inspector_BaseCamp : Editor
         if (GUILayout.Button("Open Characters"))
         {
             Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+            baseCamp.OpenCharacters();
 
-            Player_Characters playerCharacters = baseCamp.GetComponent<Player_Characters>();
-            playerCharacters.OpenCharacters();
+            EditorUtility.SetDirty(baseCamp);
         }
 
         if (GUILayout.Button("Close Characters"))
         {
             Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+            baseCamp.CloseCharacters(true);
 
-            Player_Characters playerCharacters = baseCamp.GetComponent<Player_Characters>();
-            playerCharacters.CloseCharacters(true);
+            EditorUtility.SetDirty(baseCamp);
         }
 
         if (GUILayout.Button("Open Organize Team"))
         {
+            Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+            baseCamp.OpenOrganizeTeam();
 
+            EditorUtility.SetDirty(baseCamp);
         }
 
         if (GUILayout.Button("Close Organize Team"))
         {
+            Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+            baseCamp.CloseOrganizeTeam(true);
 
+            EditorUtility.SetDirty(baseCamp);
         }
     }
 }

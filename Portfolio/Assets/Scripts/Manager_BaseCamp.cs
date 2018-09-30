@@ -5,15 +5,75 @@ using Player;
 
 public class Manager_BaseCamp : MonoBehaviour
 {
-    // Use this for initialization
-    void Start()
-    {
+    public GameObject buttonCharacters;
+    public GameObject buttonOrganizeTeam;
 
+    private bool windowOpened = false;
+
+    public void OpenCharacters()
+    {
+        if (windowOpened == true) return;
+
+        this.GetComponent<Player_Characters>().OpenCharacters();
+
+        windowOpened = true;
+
+        DisableButtons();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseCharacters(bool editor = false)
     {
+        if (windowOpened == false) return;
 
+        this.GetComponent<Player_Characters>().CloseCharacters(editor);
+
+        windowOpened = false;
+
+        EnableButtons();
     }
+
+    public void OpenOrganizeTeam()
+    {
+        if (windowOpened == true) return;
+
+        this.GetComponent<Player_OrganizeTeam>().OpenOrganizeTeam();
+
+        windowOpened = true;
+
+        DisableButtons();
+    }
+
+    public void CloseOrganizeTeam(bool editor = false)
+    {
+        if (windowOpened == false) return;
+
+        this.GetComponent<Player_OrganizeTeam>().CloseOrganizeTeam(editor);
+
+        windowOpened = false;
+
+        EnableButtons();
+    }
+
+    private void EnableButtons()
+    {
+        buttonCharacters.gameObject.SetActive(true);
+        buttonOrganizeTeam.gameObject.SetActive(true);
+    }
+
+    private void DisableButtons()
+    {
+        buttonCharacters.gameObject.SetActive(false);
+        buttonOrganizeTeam.gameObject.SetActive(false);
+    }
+    //// Use this for initialization
+    //void Start()
+    //{
+
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+
+    //}
 }

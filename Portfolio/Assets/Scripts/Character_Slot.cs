@@ -9,6 +9,8 @@ namespace Player
     public class Character_Slot : MonoBehaviour
     {
         public Character_Database characterDatabase;
+        public GameObject checkImage;
+        public GameObject highlightedFrame;
 
         public delegate void Delegate_SelectCharacter(Character_Base selectedCharacter);
         public Delegate_SelectCharacter selectCharacterCallback;
@@ -18,15 +20,23 @@ namespace Player
         public void SelectCharacter()
         {
             selectCharacterCallback(this.character);
+
+            highlightedFrame.gameObject.SetActive(true);
         }
 
-        public void Initialize(Character_Base correspondingCharacter, Delegate_SelectCharacter selectCharacter)
+        public void Initialize(Character_Base correspondingCharacter, Delegate_SelectCharacter selectCharacter, bool teamFellow = false)
         {
             this.character = correspondingCharacter;
 
             SetPortrait();
 
             selectCharacterCallback = selectCharacter;
+
+            if (teamFellow == true)
+            {
+                this.GetComponent<Image>().color = this.GetComponent<Button>().colors.disabledColor;
+                this.checkImage.gameObject.SetActive(true);
+            }
         }
 
         private void SetPortrait()

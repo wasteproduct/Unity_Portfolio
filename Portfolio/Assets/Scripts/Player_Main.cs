@@ -10,6 +10,7 @@ namespace Player
     public class Player_Main : ScriptableObject
     {
         public Character_Database characterDatabase;
+        public Player_Team playerTeam;
 
         [SerializeField]
         private List<Character_Base> characters = new List<Character_Base>();
@@ -21,6 +22,10 @@ namespace Player
             if (characters.Contains(newCharacter) == false) characters.Add(newCharacter);
         }
 
+        private void OnEnable()
+        {
+            LoadData();
+        }
 
         // Editor
         public int listIndex;

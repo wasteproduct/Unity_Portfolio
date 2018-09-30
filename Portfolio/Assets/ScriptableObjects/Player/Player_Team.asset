@@ -8,6 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b280578c923c0984fb4d835f6ec5e297, type: 3}
+  m_Script: {fileID: 11500000, guid: 3429968348fbdab43befb03ea41f9285, type: 3}
   m_Name: Player_Team
   m_EditorClassIdentifier: 
+  teamFellow:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
