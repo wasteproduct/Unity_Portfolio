@@ -31,6 +31,19 @@ namespace Player
             SetPortrait();
 
             SelectCharacterCallback = selectCharacter;
+
+            bool teamFellow = TeamFellow();
+            if (teamFellow == true) print("Hey");
+        }
+
+        private bool TeamFellow()
+        {
+            for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
+            {
+                if (this.character == playerMain.playerTeam.teamFellow[i]) return true;
+            }
+
+            return false;
         }
 
         private void SetPortrait()

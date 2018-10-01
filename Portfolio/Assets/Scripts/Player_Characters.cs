@@ -24,6 +24,11 @@ namespace Player
 
         public void SelectCharacter(Character_Base selectedCharacter)
         {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(false);
+            }
+
             if (charactersPanel.activeSelf == false) return;
 
             EnableStrings();
@@ -109,6 +114,11 @@ namespace Player
 
         public void SelectCharacter()
         {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(false);
+            }
+
             if (charactersPanel.activeSelf == false) return;
 
             if (IndexOutOfRange(selectedCharacterIndex, characters) == true)
@@ -116,6 +126,8 @@ namespace Player
                 DisableStrings();
                 return;
             }
+
+            characters[selectedCharacterIndex].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(true);
 
             EnableStrings();
 

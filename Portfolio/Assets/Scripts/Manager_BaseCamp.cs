@@ -6,7 +6,7 @@ using Player;
 public class Manager_BaseCamp : MonoBehaviour
 {
     public GameObject buttonCharacters;
-    public GameObject buttonOrganizeTeam;
+    //public GameObject buttonOrganizeTeam;
 
     private bool windowOpened = false;
 
@@ -57,23 +57,12 @@ public class Manager_BaseCamp : MonoBehaviour
     private void EnableButtons()
     {
         buttonCharacters.gameObject.SetActive(true);
-        buttonOrganizeTeam.gameObject.SetActive(true);
+        //buttonOrganizeTeam.gameObject.SetActive(true);
     }
 
     private void DisableButtons()
     {
         buttonCharacters.gameObject.SetActive(false);
-        buttonOrganizeTeam.gameObject.SetActive(false);
+        //buttonOrganizeTeam.gameObject.SetActive(false);
     }
-    //// Use this for initialization
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
 }
