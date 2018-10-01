@@ -17,5 +17,13 @@ public class Inspector_PlayerOrganizeTeam : Editor
 
             EditorUtility.SetDirty(organizeTeam);
         }
+
+        if (GUILayout.Button("Add Team Fellow"))
+        {
+            Player_OrganizeTeam organizeTeam = (Player_OrganizeTeam)target;
+            organizeTeam.AddTeamFellow();
+
+            EditorUtility.SetDirty(organizeTeam);
+        }
     }
 }

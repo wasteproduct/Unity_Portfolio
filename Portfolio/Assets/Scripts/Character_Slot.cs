@@ -8,44 +8,38 @@ namespace Player
 {
     public class Character_Slot : MonoBehaviour
     {
-        public Character_Database characterDatabase;
+        public Player_Main playerMain;
         public GameObject checkImage;
         public GameObject highlightedFrame;
 
         public delegate void Delegate_SelectCharacter(Character_Base selectedCharacter);
-        public Delegate_SelectCharacter selectCharacterCallback;
+        public Delegate_SelectCharacter SelectCharacterCallback;
 
-        private Character_Base character;
+        private Character_Base character = null;
 
         public void SelectCharacter()
         {
-            selectCharacterCallback(this.character);
+            SelectCharacterCallback(this.character);
 
             highlightedFrame.gameObject.SetActive(true);
         }
 
-        public void Initialize(Character_Base correspondingCharacter, Delegate_SelectCharacter selectCharacter, bool teamFellow = false)
+        public void Initialize(Character_Base correspondingCharacter, Delegate_SelectCharacter selectCharacter)
         {
             this.character = correspondingCharacter;
 
             SetPortrait();
 
-            selectCharacterCallback = selectCharacter;
-
-            if (teamFellow == true)
-            {
-                this.GetComponent<Image>().color = this.GetComponent<Button>().colors.disabledColor;
-                this.checkImage.gameObject.SetActive(true);
-            }
+            SelectCharacterCallback = selectCharacter;
         }
 
         private void SetPortrait()
         {
-            for (int i = 0; i < characterDatabase.Portraits.Count; i++)
+            for (int i = 0; i < playerMain.characterDatabase.Portraits.Count; i++)
             {
-                if (character.TypeID == characterDatabase.Portraits[i].typeID)
+                if (character.TypeID == playerMain.characterDatabase.Portraits[i].typeID)
                 {
-                    this.GetComponent<Image>().sprite = characterDatabase.Portraits[i].image;
+                    this.GetComponent<Image>().sprite = playerMain.characterDatabase.Portraits[i].image;
                     break;
                 }
             }

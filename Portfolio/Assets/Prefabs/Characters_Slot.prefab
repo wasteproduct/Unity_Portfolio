@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d8715be27f95a41b2a7f86341cebe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
+  playerMain: {fileID: 11400000, guid: 71267b3c1879ad6468f0b840f25cd1d8, type: 2}
   checkImage: {fileID: 1707084250276718}
   highlightedFrame: {fileID: 1373056906497876}
 --- !u!114 &114852056915415624

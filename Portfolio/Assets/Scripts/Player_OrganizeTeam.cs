@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Character;
+using UnityEngine.UI;
 
 namespace Player
 {
     public class Player_OrganizeTeam : MonoBehaviour
     {
         public Player_Main playerMain;
-        
+
         public Character_Database characterDatabase;
 
         public GameObject organizeTeamPanel;
@@ -32,6 +33,12 @@ namespace Player
 
             characterSelected = true;
             pickedCharacter = selectedCharacter;
+
+            for (int i = 0; i < slotFellow.Length; i++)
+            {
+                slotFellow[i].GetComponent<Button>().interactable = true;
+                slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
+            }
         }
 
         public void OpenOrganizeTeam()
@@ -78,11 +85,17 @@ namespace Player
             organizeTeamPanel.SetActive(false);
         }
 
+        public void AddTeamFellow(Character_Base selectedCharacter, int slotIndex)
+        {
+            playerMain.playerTeam.teamFellow[slotIndex] = selectedCharacter;
+            CancelSelection();
+        }
+
         private void SetFellows()
         {
             for (int i = 0; i < slotFellow.Length; i++)
             {
-                slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.teamFellow[1]);
+                slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.teamFellow[i], AddTeamFellow);
             }
         }
 
@@ -96,9 +109,9 @@ namespace Player
 
         private void SetCaptain()
         {
-            playerMain.playerTeam.teamFellow[0] = playerMain.Characters[0];
+            playerMain.playerTeam.captain = playerMain.Characters[0];
 
-            slotCaptain.GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.teamFellow[0]);
+            slotCaptain.GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.captain, AddTeamFellow);
         }
 
         private void CancelSelection()
@@ -111,6 +124,7 @@ namespace Player
             for (int i = 0; i < slotFellow.Length; i++)
             {
                 slotFellow[i].GetComponent<Player_TeamSlot>().highlightedFrame.gameObject.SetActive(false);
+                slotFellow[i].GetComponent<Button>().interactable = false;
             }
 
             characterSelected = false;
@@ -119,6 +133,27 @@ namespace Player
 
         // editor
         public int selectedCharacterIndex;
+        public int selectedSlotIndex;
+
+        public void AddTeamFellow()
+        {
+            if (organizeTeamPanel.activeSelf == false) return;
+
+            if (IndexOutOfRange(selectedSlotIndex, 3) == true) return;
+
+            playerMain.playerTeam.teamFellow[selectedSlotIndex] = pickedCharacter;
+
+            for (int i = 0; i < characterDatabase.Portraits.Count; i++)
+            {
+                if (pickedCharacter.TypeID == characterDatabase.Portraits[i].typeID)
+                {
+                    slotFellow[selectedSlotIndex].GetComponent<Image>().sprite = characterDatabase.Portraits[i].image;
+                    break;
+                }
+            }
+
+            CancelSelection();
+        }
 
         public void SelectCharacter()
         {
@@ -126,7 +161,7 @@ namespace Player
 
             if (organizeTeamPanel.activeSelf == false) return;
 
-            if (IndexOutOfRange(selectedCharacterIndex, characters) == true) return;
+            if (IndexOutOfRange(selectedCharacterIndex, characters.Count) == true) return;
 
             HighlightSlots();
 
@@ -134,10 +169,10 @@ namespace Player
             selectedSlot.SelectCharacter();
         }
 
-        private bool IndexOutOfRange(int index, List<GameObject> list)
+        private bool IndexOutOfRange(int index, int listCount)
         {
             if (index < 0) return true;
-            if (index >= list.Count) return true;
+            if (index >= listCount) return true;
 
             return false;
         }
