@@ -214,7 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce60af14de54914893b700d9faf3390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 596837746}
+  focus: {fileID: 596837746}
+  offset: {x: -16, y: 16, z: -16}
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -411,7 +412,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 596837746}
-  - component: {fileID: 596837745}
   - component: {fileID: 596837748}
   - component: {fileID: 596837747}
   m_Layer: 0
@@ -421,19 +421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &596837745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 596837744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd5f08fc60a4d548802eca642345202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldier: {fileID: 1552323826897812, guid: 5efdd39f181b83b4091faa44c2aa317f, type: 2}
-  team: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
 --- !u!4 &596837746
 Transform:
   m_ObjectHideFlags: 0
