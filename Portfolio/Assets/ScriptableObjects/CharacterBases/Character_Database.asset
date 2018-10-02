@@ -11,11 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed3d38b6a32b614697c9a7659d46521, type: 3}
   m_Name: Character_Database
   m_EditorClassIdentifier: 
-  baseSoldier: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
-  baseTank: {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  bases:
+  - {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
+  - {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  - {fileID: 11400000, guid: baaa148d90f261449bdd58591fe36473, type: 2}
   portraits:
   - {fileID: 11400000, guid: d8f18a774181428429c901f16a4ce612, type: 2}
   - {fileID: 11400000, guid: 8fd5e9462880c9847a544a7f9450379c, type: 2}
+  - {fileID: 11400000, guid: 17c7dfb7ea2cf254c9c2daef1a9b9a06, type: 2}
   models:
   - {fileID: 11400000, guid: 183ddc81ff50b29459d11dd6520f1730, type: 2}
   - {fileID: 11400000, guid: 0df59184d970898409d5d4622605b5cf, type: 2}
+  - {fileID: 11400000, guid: a52ce1098d8e6e54a8b797a509aede77, type: 2}

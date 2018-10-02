@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tank
   TypeID: 1
-  Strength: 40
+  Strength: 50
   Agility: 10
   Intelligence: 0

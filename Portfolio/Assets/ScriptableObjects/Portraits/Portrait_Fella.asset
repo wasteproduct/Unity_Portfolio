@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6e0abe8a67e47458379718aaa4c33f, type: 3}
   m_Name: Portrait_Fella
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  typeID: 0
+  image: {fileID: 21300000, guid: c141e0f5d4e9dcc4ea8e0d1d91a8bf67, type: 3}
+  typeID: 2

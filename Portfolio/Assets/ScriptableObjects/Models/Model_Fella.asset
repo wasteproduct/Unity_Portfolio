@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92e4c72064bbdc42a194d7f718a6d25, type: 3}
   m_Name: Model_Fella
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 0}
-  typeID: 0
+  modelPrefab: {fileID: 1125473257450764, guid: 5ed6ad5eae6c31840b64305e61cfa8ea,
+    type: 2}
+  typeID: 2

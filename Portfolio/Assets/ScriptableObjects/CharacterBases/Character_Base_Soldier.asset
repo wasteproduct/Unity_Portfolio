@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Soldier
   TypeID: 0
-  Strength: 30
-  Agility: 10
-  Intelligence: 10
+  Strength: 20
+  Agility: 20
+  Intelligence: 20

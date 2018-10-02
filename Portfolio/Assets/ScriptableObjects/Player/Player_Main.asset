@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  listIndex: 1
-  addedCharacterBase: {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  listIndex: 2
+  addedCharacterBase: {fileID: 11400000, guid: baaa148d90f261449bdd58591fe36473, type: 2}

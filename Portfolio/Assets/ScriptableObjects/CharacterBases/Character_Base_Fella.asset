@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d373b2585d92a54b811b363065a3157, type: 3}
   m_Name: Character_Base_Fella
   m_EditorClassIdentifier: 
-  Name: 
-  TypeID: 0
-  Strength: 0
-  Agility: 0
-  Intelligence: 0
+  Name: Fella
+  TypeID: 2
+  Strength: 20
+  Agility: 30
+  Intelligence: 10
