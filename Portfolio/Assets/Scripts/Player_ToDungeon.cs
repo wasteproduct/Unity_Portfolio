@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Character;
+using UnityEngine.UI;
 
 public class Player_ToDungeon : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class Player_ToDungeon : MonoBehaviour
         {
             slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
         }
+
+        ActivateTeamSlots(true);
     }
 
     public void OpenSelectTeamFellows()
@@ -74,13 +77,30 @@ public class Player_ToDungeon : MonoBehaviour
         selectTeamFellowsPanel.SetActive(false);
     }
 
-    // 여기
+    private void AddTeamFellow()
+    {
+        HighlightTeamSlots(false);
+
+        ActivateTeamSlots(false);
+    }
+
     private void InitializeTeamSlots()
     {
-        slotCaptain.GetComponent<Player_TeamSlot>().Initialize();
+        slotCaptain.GetComponent<Player_TeamSlot>().Initialize(AddTeamFellow);
         for (int i = 0; i < slotFellow.Length; i++)
         {
-            slotFellow[i].GetComponent<Player_TeamSlot>().Initialize();
+            slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(AddTeamFellow);
+        }
+
+        ActivateTeamSlots(false);
+    }
+
+    private void ActivateTeamSlots(bool flag)
+    {
+        slotCaptain.GetComponent<Button>().interactable = flag;
+        for (int i = 0; i < slotFellow.Length; i++)
+        {
+            slotFellow[i].GetComponent<Button>().interactable = flag;
         }
     }
 

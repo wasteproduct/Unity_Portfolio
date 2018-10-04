@@ -10,15 +10,21 @@ namespace Player
         public GameObject highlightedFrame;
         public Sprite slotSprite;
 
+        public delegate void Delegate_InactivateTeamSlots();
+
         private Character_Base selectedCharacter = null;
         private Character_Base addedTeamFellow = null;
 
-        public void Initialize()
+        private Delegate_InactivateTeamSlots ActivateTeamSlots;
+
+        public void Initialize(Delegate_InactivateTeamSlots activateTeamSlots)
         {
             this.GetComponent<Button>().interactable = false;
             this.GetComponent<Image>().sprite = slotSprite;
             selectedCharacter = null;
             addedTeamFellow = null;
+
+            ActivateTeamSlots = activateTeamSlots;
         }
 
         public void SetSelectedCharacter(Character_Base pickedCharacter)
@@ -39,6 +45,10 @@ namespace Player
                     return;
                 }
             }
+
+            print("Added");
+
+            ActivateTeamSlots();
         }
     }
 }
