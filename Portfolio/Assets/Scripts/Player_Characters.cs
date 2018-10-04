@@ -22,7 +22,7 @@ namespace Player
         private readonly string stringAgility = "Agility : ";
         private readonly string stringIntelligence = "Intelligence : ";
 
-        public void SelectCharacter(Character_Base selectedCharacter)
+        public void SelectCharacter(Character_Slot selectedSlot)
         {
             for (int i = 0; i < characters.Count; i++)
             {
@@ -31,11 +31,13 @@ namespace Player
 
             if (charactersPanel.activeSelf == false) return;
 
+            selectedSlot.highlightedFrame.gameObject.SetActive(true);
+
             EnableStrings();
 
-            strength.GetComponent<Text>().text = stringStrength + selectedCharacter.Strength.ToString();
-            agility.GetComponent<Text>().text = stringAgility + selectedCharacter.Agility.ToString();
-            intelligence.GetComponent<Text>().text = stringIntelligence + selectedCharacter.Intelligence.ToString();
+            strength.GetComponent<Text>().text = stringStrength + selectedSlot.CorrespondingCharacter.Strength.ToString();
+            agility.GetComponent<Text>().text = stringAgility + selectedSlot.CorrespondingCharacter.Agility.ToString();
+            intelligence.GetComponent<Text>().text = stringIntelligence + selectedSlot.CorrespondingCharacter.Intelligence.ToString();
         }
 
         public void OpenCharacters()

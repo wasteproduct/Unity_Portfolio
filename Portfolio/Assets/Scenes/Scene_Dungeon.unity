@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 596837746}
   - component: {fileID: 596837748}
   - component: {fileID: 596837747}
+  - component: {fileID: 596837745}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -421,6 +422,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &596837745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596837744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf95f31fe1028f54b8aa2af1caba4983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
+  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
+  currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
+  currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
 --- !u!4 &596837746
 Transform:
   m_ObjectHideFlags: 0
@@ -475,17 +491,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 596837744}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

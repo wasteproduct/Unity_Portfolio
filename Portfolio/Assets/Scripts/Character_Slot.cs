@@ -12,16 +12,37 @@ namespace Player
         public GameObject checkImage;
         public GameObject highlightedFrame;
 
-        public delegate void Delegate_SelectCharacter(Character_Base selectedCharacter);
+        public delegate void Delegate_SelectCharacter(Character_Slot selectedSlot);
         public Delegate_SelectCharacter SelectCharacterCallback;
 
         private Character_Base character = null;
 
+        public Character_Base CorrespondingCharacter { get { return character; } }
+        public bool TeamFellow { get; private set; }
+
+        public void SetCharacterAddedAsTeam(bool flag)
+        {
+            if (flag == true)
+            {
+                highlightedFrame.gameObject.SetActive(false);
+                this.gameObject.GetComponent<Image>().color = Color.gray;
+                checkImage.gameObject.SetActive(true);
+                TeamFellow = true;
+            }
+            else
+            {
+                highlightedFrame.gameObject.SetActive(false);
+                this.gameObject.GetComponent<Image>().color = Color.white;
+                checkImage.gameObject.SetActive(false);
+                TeamFellow = false;
+            }
+        }
+
         public void SelectCharacter()
         {
-            SelectCharacterCallback(this.character);
+            SelectCharacterCallback(this);
 
-            highlightedFrame.gameObject.SetActive(true);
+            //highlightedFrame.gameObject.SetActive(true);
         }
 
         public void Initialize(Character_Base correspondingCharacter, Delegate_SelectCharacter selectCharacter)
@@ -32,19 +53,18 @@ namespace Player
 
             SelectCharacterCallback = selectCharacter;
 
-            bool teamFellow = TeamFellow();
-            if (teamFellow == true) print("Hey");
+            TeamFellow = false;
         }
 
-        private bool TeamFellow()
-        {
-            for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
-            {
-                if (this.character == playerMain.playerTeam.teamFellow[i]) return true;
-            }
+        //private bool TeamFellow()
+        //{
+        //    for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
+        //    {
+        //        if (this.character == playerMain.playerTeam.teamFellow[i]) return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         private void SetPortrait()
         {

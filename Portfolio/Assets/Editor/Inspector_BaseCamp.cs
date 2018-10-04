@@ -29,7 +29,7 @@ public class Inspector_BaseCamp : Editor
         if (GUILayout.Button("To Dungeon"))
         {
             Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
-            baseCamp.ToDungeon();
+            baseCamp.SelectTeamFellows();
 
             EditorUtility.SetDirty(baseCamp);
         }
@@ -37,7 +37,7 @@ public class Inspector_BaseCamp : Editor
         if (GUILayout.Button("Cancel"))
         {
             Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
-            baseCamp.Cancel(true);
+            baseCamp.CancelSelectTeamFellows(true);
 
             EditorUtility.SetDirty(baseCamp);
         }

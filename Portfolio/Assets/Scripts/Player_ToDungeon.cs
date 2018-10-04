@@ -20,29 +20,57 @@ public class Player_ToDungeon : MonoBehaviour
     private List<GameObject> characters = new List<GameObject>();
 
     private bool characterSelected = false;
-    private Character_Base pickedCharacter = null;
+    private Character_Slot pickedSlot = null;
 
-    public void SelectCharacter(Character_Base selectedCharacter)
+    public void SelectCharacter(Character_Slot selectedSlot)
     {
         CancelSelection();
 
-        pickedCharacter = selectedCharacter;
-        characterSelected = true;
-
-        for (int i = 0; i < characters.Count; i++)
+        if (selectedSlot.TeamFellow == true)
         {
-            characters[i].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(false);
+            selectedSlot.SetCharacterAddedAsTeam(false);
+
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(false);
+            }
+
+            if (selectedSlot == slotCaptain.GetComponent<Player_TeamSlot>().AddedTeamFellowSlot)
+            {
+                slotCaptain.GetComponent<Player_TeamSlot>().Initialize();
+                return;
+            }
+            for (int i = 0; i < slotFellow.Length; i++)
+            {
+                if (selectedSlot == slotFellow[i].GetComponent<Player_TeamSlot>().AddedTeamFellowSlot)
+                {
+                    slotFellow[i].GetComponent<Player_TeamSlot>().Initialize();
+                    return;
+                }
+            }
         }
-
-        HighlightTeamSlots(true);
-
-        slotCaptain.GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
-        for (int i = 0; i < slotFellow.Length; i++)
+        else
         {
-            slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
-        }
+            pickedSlot = selectedSlot;
+            characterSelected = true;
 
-        ActivateTeamSlots(true);
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_Slot>().highlightedFrame.gameObject.SetActive(false);
+            }
+
+            HighlightTeamSlots(true);
+
+            slotCaptain.GetComponent<Player_TeamSlot>().SetSelectedSlot(pickedSlot);
+            for (int i = 0; i < slotFellow.Length; i++)
+            {
+                slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedSlot(pickedSlot);
+            }
+
+            ActivateTeamSlots(true);
+
+            pickedSlot.highlightedFrame.gameObject.SetActive(true);
+        }
     }
 
     public void OpenSelectTeamFellows()
@@ -52,6 +80,8 @@ public class Player_ToDungeon : MonoBehaviour
         playerMain.LoadData();
 
         CancelSelection();
+
+        ClearPlayerTeam();
 
         for (int i = 0; i < playerMain.Characters.Count; i++)
         {
@@ -77,8 +107,21 @@ public class Player_ToDungeon : MonoBehaviour
         selectTeamFellowsPanel.SetActive(false);
     }
 
+    private void ClearPlayerTeam()
+    {
+        playerMain.playerTeam.captain = null;
+        for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
+        {
+            playerMain.playerTeam.teamFellow[i] = null;
+        }
+    }
+
     private void AddTeamFellow()
     {
+        pickedSlot.SetCharacterAddedAsTeam(true);
+
+        CancelSelection();
+
         HighlightTeamSlots(false);
 
         ActivateTeamSlots(false);
@@ -107,7 +150,7 @@ public class Player_ToDungeon : MonoBehaviour
     private void CancelSelection()
     {
         characterSelected = false;
-        pickedCharacter = null;
+        pickedSlot = null;
     }
 
     private void ClearCharacterSlotsList(bool editor)

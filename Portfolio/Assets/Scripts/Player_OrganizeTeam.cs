@@ -55,7 +55,7 @@ namespace Player
                 if (playerMain.Characters[i] == null) continue;
 
                 GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-                addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
+                //addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
                 characters.Add(addedSlot);
             }

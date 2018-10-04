@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Scene_BaseCamp.unity
+    guid: f94777e7c273d2b45b1bbdb9de1919f2
+  - enabled: 1
+    path: Assets/Scenes/Scene_Dungeon.unity
+    guid: e21943bc6c121ae4e82f40dd00e35f52
   m_configObjects: {}

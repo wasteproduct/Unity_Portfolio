@@ -2694,7 +2694,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 955680554}
-        m_MethodName: ToDungeon
+        m_MethodName: SelectTeamFellows
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2910,6 +2910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fedebf8d869c7c4091029643834f2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
   buttonCharacters: {fileID: 794059026}
   buttonToDungeon: {fileID: 871602487}
 --- !u!4 &955680555
@@ -3041,7 +3042,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959787937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955680554}
+        m_MethodName: EnterDungeon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &959787937
@@ -5098,7 +5110,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 955680554}
-        m_MethodName: Cancel
+        m_MethodName: CancelSelectTeamFellows
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
