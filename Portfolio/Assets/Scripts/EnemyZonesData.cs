@@ -15,7 +15,7 @@ public class EnemyZonesData : ScriptableObject
     }
 
     public const int zoneLength = 11;
-
+    
     private List<EnemyZone> zones = new List<EnemyZone>();
     public List<EnemyZone> Zones { get { return zones; } }
 

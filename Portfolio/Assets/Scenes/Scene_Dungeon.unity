@@ -391,6 +391,8 @@ MonoBehaviour:
   zonesData: {fileID: 11400000, guid: 30a710838e6e03849812c0af513f70ea, type: 2}
   enemyObject: {fileID: 1172814101561026, guid: aa2fd9e534d60bf4cb8bbb25b958541a,
     type: 2}
+  enemyZonePrefab: {fileID: 1583945069809868, guid: d7d3fbff0c597124fa3554e6eccc44c5,
+    type: 2}
 --- !u!4 &434266805
 Transform:
   m_ObjectHideFlags: 0

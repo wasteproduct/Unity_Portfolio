@@ -24,6 +24,7 @@ namespace Player
                 }
             }
 
+            int startingZ = currentTileZ.value;
             for (int i = 0; i < playerTeam.teamFellow.Length; i++)
             {
                 for (int j = 0; j < characterDatabase.Models.Count; j++)
@@ -32,7 +33,8 @@ namespace Player
 
                     if (playerTeam.teamFellow[i].TypeID == characterDatabase.Models[j].typeID)
                     {
-                        Instantiate<GameObject>(characterDatabase.Models[j].modelPrefab, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - (i + 1) * 2)), this.gameObject.transform.rotation, this.gameObject.transform);
+                        startingZ -= 2;
+                        Instantiate<GameObject>(characterDatabase.Models[j].modelPrefab, new Vector3((float)currentTileX.value, 0.0f, (float)startingZ), this.gameObject.transform.rotation, this.gameObject.transform);
                     }
                 }
             }
