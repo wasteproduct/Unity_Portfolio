@@ -34,6 +34,14 @@ public class Inspector_BaseCamp : Editor
             EditorUtility.SetDirty(baseCamp);
         }
 
+        if (GUILayout.Button("Cancel"))
+        {
+            Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+            baseCamp.Cancel(true);
+
+            EditorUtility.SetDirty(baseCamp);
+        }
+
         //if (GUILayout.Button("Open Organize Team"))
         //{
         //    Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;

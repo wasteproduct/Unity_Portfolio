@@ -37,7 +37,7 @@ namespace Player
             for (int i = 0; i < slotFellow.Length; i++)
             {
                 slotFellow[i].GetComponent<Button>().interactable = true;
-                slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
+                //slotFellow[i].GetComponent<Player_TeamSlot>().SetSelectedCharacter(pickedCharacter);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Player
         {
             for (int i = 0; i < slotFellow.Length; i++)
             {
-                slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.teamFellow[i], AddTeamFellow);
+                //slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.teamFellow[i], AddTeamFellow);
             }
         }
 
@@ -103,7 +103,7 @@ namespace Player
         {
             for (int i = 0; i < slotFellow.Length; i++)
             {
-                slotFellow[i].GetComponent<Player_TeamSlot>().highlightedFrame.gameObject.SetActive(true);
+                //slotFellow[i].GetComponent<Player_TeamSlot>().highlightedFrame.gameObject.SetActive(true);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Player
         {
             playerMain.playerTeam.captain = playerMain.Characters[0];
 
-            slotCaptain.GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.captain, AddTeamFellow);
+            //slotCaptain.GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.captain, AddTeamFellow);
         }
 
         private void CancelSelection()
@@ -123,7 +123,7 @@ namespace Player
 
             for (int i = 0; i < slotFellow.Length; i++)
             {
-                slotFellow[i].GetComponent<Player_TeamSlot>().highlightedFrame.gameObject.SetActive(false);
+                //slotFellow[i].GetComponent<Player_TeamSlot>().highlightedFrame.gameObject.SetActive(false);
                 slotFellow[i].GetComponent<Button>().interactable = false;
             }
 

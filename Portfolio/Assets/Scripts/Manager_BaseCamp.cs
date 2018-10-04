@@ -13,6 +13,12 @@ public class Manager_BaseCamp : MonoBehaviour
     {
         if (windowOpened == true) return;
 
+        this.GetComponent<Player_ToDungeon>().OpenSelectTeamFellows();
+
+        windowOpened = true;
+
+        DisableButtons();
+
         // 팀 편성 창과 비슷한 창 팀원 선택 창 만들고 띄워서
 
         // 닫기와 진행 버튼 2개
@@ -24,6 +30,17 @@ public class Manager_BaseCamp : MonoBehaviour
         // 팀원 리스트에 담을 형식은 Editor_CharacterData
 
         // 신 넘어가면 json에 담긴 리스트 읽어서 인 던전 플레이어 캐릭터 팀에 로드
+    }
+
+    public void Cancel(bool editor = false)
+    {
+        if (windowOpened == false) return;
+
+        this.GetComponent<Player_ToDungeon>().CancelSelectTeamFellows(editor);
+
+        windowOpened = false;
+
+        EnableButtons();
     }
 
     public void OpenCharacters()

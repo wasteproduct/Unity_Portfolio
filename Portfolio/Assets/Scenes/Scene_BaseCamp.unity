@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 241160597}
   - component: {fileID: 241160596}
   - component: {fileID: 241160595}
+  - component: {fileID: 241160598}
   m_Layer: 5
   m_Name: Fellow3
   m_TagString: Untagged
@@ -614,18 +615,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 241160596}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AddTeamFellow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &241160596
@@ -661,6 +651,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 241160593}
+--- !u!114 &241160598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241160593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 819214229}
+  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
 --- !u!1 &299396963
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +883,7 @@ GameObject:
   - component: {fileID: 397923275}
   - component: {fileID: 397923274}
   - component: {fileID: 397923273}
+  - component: {fileID: 397923276}
   m_Layer: 5
   m_Name: Fellow1
   m_TagString: Untagged
@@ -944,18 +949,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397923274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AddTeamFellow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &397923274
@@ -991,6 +985,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397923271}
+--- !u!114 &397923276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397923271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 1227608618}
+  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
 --- !u!1 &468612651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,12 +1274,12 @@ GameObject:
   - component: {fileID: 501684736}
   - component: {fileID: 501684735}
   m_Layer: 5
-  m_Name: Panel_ToDungeon
+  m_Name: Panel_SelectTeamFellows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &501684734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1280,7 +1288,7 @@ RectTransform:
   m_GameObject: {fileID: 501684733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9996646, y: 0.9996646, z: 0.9996646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1486727266}
   - {fileID: 1251843089}
@@ -1292,7 +1300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000022649765}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501684735
@@ -1981,10 +1989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
-  highlightedFrame: {fileID: 1421193622}
-  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
-  slotIndex: 2
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 0}
+  slotSprite: {fileID: 0}
 --- !u!1 &722683141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,12 +2671,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 955680553}
-        m_MethodName: 
+      - m_Target: {fileID: 955680554}
+        m_MethodName: ToDungeon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2924,21 +2931,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 955680553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abcad35475024f4c983fef8ae222ad7, type: 3}
+  m_Script: {fileID: 11500000, guid: bba0914748ef7c9479e617388a7762f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 11400000, guid: 71267b3c1879ad6468f0b840f25cd1d8, type: 2}
   characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
-  organizeTeamPanel: {fileID: 1902038041}
-  slotField: {fileID: 19190355}
+  selectTeamFellowsPanel: {fileID: 501684733}
+  slotField: {fileID: 1761393230}
   slotPrefab: {fileID: 1907771726311702, guid: bd4fc01ab134a79458d1eece12b3940c, type: 2}
-  slotCaptain: {fileID: 1204626748}
+  slotCaptain: {fileID: 2073548042}
   slotFellow:
-  - {fileID: 1996810578}
-  - {fileID: 1682822643}
-  - {fileID: 678063591}
-  selectedCharacterIndex: 0
-  selectedSlotIndex: 1
+  - {fileID: 397923271}
+  - {fileID: 965234643}
+  - {fileID: 241160593}
 --- !u!1 &959787934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,6 +3066,7 @@ GameObject:
   - component: {fileID: 965234647}
   - component: {fileID: 965234646}
   - component: {fileID: 965234645}
+  - component: {fileID: 965234648}
   m_Layer: 5
   m_Name: Fellow2
   m_TagString: Untagged
@@ -3126,18 +3132,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 965234646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AddTeamFellow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &965234646
@@ -3173,6 +3168,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 965234643}
+--- !u!114 &965234648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 965234643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 58467550}
+  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
 --- !u!1 &991967099
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,10 +3558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
+  characterDatabase: {fileID: 0}
   highlightedFrame: {fileID: 0}
   slotSprite: {fileID: 0}
-  slotIndex: 0
 --- !u!1 &1227608618
 GameObject:
   m_ObjectHideFlags: 0
@@ -4498,10 +4506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
-  highlightedFrame: {fileID: 1166471022}
-  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
-  slotIndex: 1
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 0}
+  slotSprite: {fileID: 0}
 --- !u!1001 &1724421137
 Prefab:
   m_ObjectHideFlags: 0
@@ -4577,8 +4584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 79.975006, y: -12.024994}
-  m_SizeDelta: {x: -160, y: -152.05}
+  m_AnchoredPosition: {x: 80, y: -12}
+  m_SizeDelta: {x: -160, y: -152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1761393232
 MonoBehaviour:
@@ -4664,6 +4671,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 240, z: 0}
+--- !u!1 &1800409161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1800409164}
+  - component: {fileID: 1800409163}
+  - component: {fileID: 1800409162}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1800409162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800409161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 38052dea933f9ea45ad7d995ef8c50bf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1800409163
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800409161}
+--- !u!224 &1800409164
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800409161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2073548043}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 144, y: 144}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1815407046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,7 +5063,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928675495}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955680554}
+        m_MethodName: Cancel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1928675495
@@ -5233,10 +5319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
-  highlightedFrame: {fileID: 479061972}
-  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
-  slotIndex: 0
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 0}
+  slotSprite: {fileID: 0}
 --- !u!1 &2045261972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,6 +5361,7 @@ GameObject:
   - component: {fileID: 2073548046}
   - component: {fileID: 2073548045}
   - component: {fileID: 2073548044}
+  - component: {fileID: 2073548047}
   m_Layer: 5
   m_Name: Captain
   m_TagString: Untagged
@@ -5294,6 +5380,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1824186422}
+  - {fileID: 1800409164}
   m_Father: {fileID: 1251843089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5376,6 +5463,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073548042}
+--- !u!114 &2073548047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073548042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b711314320fa43c4c8c3817d9c8b00d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDatabase: {fileID: 0}
+  highlightedFrame: {fileID: 1800409161}
+  slotSprite: {fileID: 21300000, guid: fbacb27a038eb224a8e9046f504454de, type: 3}
 --- !u!1 &2110030536
 GameObject:
   m_ObjectHideFlags: 0
