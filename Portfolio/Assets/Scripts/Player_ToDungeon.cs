@@ -77,16 +77,11 @@ public class Player_ToDungeon : MonoBehaviour
     // 여기
     private void InitializeTeamSlots()
     {
-        //slotCaptain.GetComponent<Player_TeamSlot>().Initialize(AddTeamFellow);
+        slotCaptain.GetComponent<Player_TeamSlot>().Initialize();
         for (int i = 0; i < slotFellow.Length; i++)
         {
-            //slotFellow[i].GetComponent<Player_TeamSlot>().Initialize(AddTeamFellow);
+            slotFellow[i].GetComponent<Player_TeamSlot>().Initialize();
         }
-    }
-
-    private void AddTeamFellow(Character_Base selectedCharacter)
-    {
-
     }
 
     private void CancelSelection()
