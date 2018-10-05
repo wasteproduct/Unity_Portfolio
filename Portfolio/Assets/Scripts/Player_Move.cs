@@ -76,6 +76,8 @@ namespace Player
                         if (doorTile == true) mapData.TileData[doorX, doorZ].OpenDoor();
 
                         moving.flag = false;
+                        // 여기
+                        //if(clickEvent.intoEnemyZone==true)
                         break;
                     }
 
