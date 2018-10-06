@@ -7,13 +7,19 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Turn Controller", order = 1)]
     public class Battle_TurnController : ScriptableObject
     {
-        private int controllingNumber = 0;
+        public bool PlayerTurn { get; private set; }
+        public bool EnemyTurn { get; private set; }
 
         public void Initialize()
         {
-            controllingNumber = 0;
+            PlayerTurn = true;
+            EnemyTurn = false;
         }
 
-        //여기
+        public void TurnOver()
+        {
+            PlayerTurn = !PlayerTurn;
+            EnemyTurn = !EnemyTurn;
+        }
     }
 }

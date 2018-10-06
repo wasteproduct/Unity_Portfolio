@@ -91,7 +91,9 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if (leftClicked == false) return;
-
+            
+            // 여기
+            //if(dungeonPlay.GetComponent<Manager_DungeonPlay>().CurrentPhase==)
             this.GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
 
@@ -115,7 +117,11 @@ public class Cursor : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
         {
-            if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone) clickEvent.intoEnemyZone = true;
+            if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
+            {
+                clickEvent.intoEnemyZone = true;
+                clickEvent.destroyedObject = hitInfo.collider.gameObject;
+            }
         }
 
         if (clickEvent.pathFound == false)

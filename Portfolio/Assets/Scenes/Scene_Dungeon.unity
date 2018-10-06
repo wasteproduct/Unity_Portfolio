@@ -472,6 +472,7 @@ MonoBehaviour:
   moving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
   clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
+  dungeonPlayManager: {fileID: 1553519080}
 --- !u!114 &596837748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +528,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e79d59134ae8a4c895437b2f8efa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam: {fileID: 0}
+  tileMap: {fileID: 1982687470}
+  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
+    type: 2}
 --- !u!4 &1289549698
 Transform:
   m_ObjectHideFlags: 0
@@ -569,9 +574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 1982687470}
+  battleManager: {fileID: 1289549696}
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
   layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
+  phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
 --- !u!4 &1553519082
 Transform:
   m_ObjectHideFlags: 0

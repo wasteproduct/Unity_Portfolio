@@ -16,6 +16,7 @@ namespace Player
         public Variable_Bool moving;
         public Calculation_AStar aStar;
         public Event_Click clickEvent;
+        public GameObject dungeonPlayManager;
 
         private Map_Data mapData;
         private float elapsedTime;
@@ -76,8 +77,14 @@ namespace Player
                         if (doorTile == true) mapData.TileData[doorX, doorZ].OpenDoor();
 
                         moving.flag = false;
-                        // 여기
-                        //if(clickEvent.intoEnemyZone==true)
+
+                        if (clickEvent.intoEnemyZone == true)
+                        {
+                            dungeonPlayManager.GetComponent<Manager_DungeonPlay>().StartBattle();
+                            Destroy(clickEvent.destroyedObject.gameObject);
+                            clickEvent.intoEnemyZone = false;
+                        }
+
                         break;
                     }
 

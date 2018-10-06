@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39de128ea1c08246920bae1d55f14e3, type: 3}
+  m_Name: Manager_Dungeon Phase
+  m_EditorClassIdentifier: 
+  explore: {fileID: 11400000, guid: 75bfaa45bc80a10409a27d53e2b62f0c, type: 2}
+  battle: {fileID: 11400000, guid: d3eba3508c590d6468bf8d18cba2d64f, type: 2}
