@@ -11,11 +11,11 @@ namespace Battle
     {
         public GameObject tilePrefab;
 
-        private List<GameObject> movableTiles;
+        public List<GameObject> MovableTiles { get; private set; }
 
         public void Initialize()
         {
-            movableTiles = new List<GameObject>();
+            MovableTiles = new List<GameObject>();
         }
 
         public void SetTiles(Map_Data mapData, int standingX, int standingZ)
@@ -34,21 +34,21 @@ namespace Battle
                     GameObject newTile = Instantiate<GameObject>(tilePrefab, newTilePosition, Quaternion.identity);
                     newTile.GetComponent<Tile_MovableInBattle>().SetData(mapData.TileData[x, z]);
 
-                    movableTiles.Add(newTile);
+                    MovableTiles.Add(newTile);
                 }
             }
         }
 
         private void ClearTilesList()
         {
-            for (int i = movableTiles.Count - 1; i >= 0; i--)
+            for (int i = MovableTiles.Count - 1; i >= 0; i--)
             {
-                Destroy(movableTiles[i].gameObject);
+                Destroy(MovableTiles[i].gameObject);
 
-                movableTiles.RemoveAt(i);
+                MovableTiles.RemoveAt(i);
             }
 
-            movableTiles.Clear();
+            MovableTiles.Clear();
         }
     }
 }

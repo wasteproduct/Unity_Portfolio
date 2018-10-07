@@ -5,7 +5,7 @@ using AStar;
 
 namespace Player
 {
-    public class Player_Move : MonoBehaviour
+    public class Player_Move_Explore : MonoBehaviour
     {
         public Manager_CommonFeatures commonFeatures;
         public GameObject map;

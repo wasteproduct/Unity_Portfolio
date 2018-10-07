@@ -91,11 +91,11 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if (leftClicked == false) return;
-            
-            // 여기
-            //if(dungeonPlay.GetComponent<Manager_DungeonPlay>().CurrentPhase==)
+
             this.GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
+
+            clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
 
             clickEvent.Run();
         }

@@ -11,8 +11,6 @@ public class Manager_DungeonPlay : MonoBehaviour
     public Manager_CommonFeatures commonFeatures;
     public Manager_DungeonPhase phaseManager;
 
-    public Variable_DungeonPhase CurrentPhase { get { return phaseManager.CurrentPhase; } }
-
     // Use this for initialization
     void Start()
     {
