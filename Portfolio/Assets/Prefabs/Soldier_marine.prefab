@@ -438,7 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4975706942965868}
   - component: {fileID: 95581586807622720}
-  - component: {fileID: 114287442454686820}
+  - component: {fileID: 114318801770707132}
   m_Layer: 0
   m_Name: Soldier_marine
   m_TagString: Untagged
@@ -1475,7 +1475,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114287442454686820
+--- !u!114 &114318801770707132
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1483,9 +1483,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552323826897812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d8e648bd6446d43b8e1f5300f6db7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a85b1e1543b42b439e6185fb8787019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registeredEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!137 &137191454923452398
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

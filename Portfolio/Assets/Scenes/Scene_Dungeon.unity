@@ -463,6 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e952e6dc09147f4494a69b0a152320a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
   map: {fileID: 1982687470}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}

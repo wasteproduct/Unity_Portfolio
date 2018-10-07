@@ -7,6 +7,7 @@ namespace Player
 {
     public class Player_Move_Explore : MonoBehaviour
     {
+        public Manager_DungeonPhase phaseManager;
         public Manager_CommonFeatures commonFeatures;
         public GameObject map;
         public Variable_Int currentTileX;
@@ -43,6 +44,8 @@ namespace Player
 
         public void StartMoving()
         {
+            if (phaseManager.CurrentPhase != phaseManager.Phase_Explore) return;
+
             if (clickEvent.pathFound == false) return;
 
             if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTile == true))
