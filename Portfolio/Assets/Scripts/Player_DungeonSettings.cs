@@ -29,7 +29,15 @@ namespace Player
 
             Captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
             Captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-            
+
+            for (int i = 0; i < 2; i++)
+            {
+                int offset = i * 2 + 2;
+
+                GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
+                newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
+            }
+
             //for (int i = 0; i < characterDatabase.Models.Count; i++)
             //{
             //    if (characterDatabase.Models[i].typeID == playerTeam.captain.TypeID)
