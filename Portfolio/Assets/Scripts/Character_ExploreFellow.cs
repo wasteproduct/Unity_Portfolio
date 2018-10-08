@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character_InBattle : MonoBehaviour {
+public class Character_ExploreFellow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

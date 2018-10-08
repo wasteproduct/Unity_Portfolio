@@ -15,47 +15,47 @@ namespace Player
         public Character_Base captain;
         public Character_Base[] teamFellow;
 
-        public Character_InBattle characterInBattleBase;
+        //public Character_InBattle characterInBattleBase;
 
-        private List<Character_InBattle> inBattleCharacters = new List<Character_InBattle>();
+        //private List<Character_InBattle> inBattleCharacters = new List<Character_InBattle>();
 
-        public List<Character_InBattle> InBattleCharacters { get { return inBattleCharacters; } }
+        //public List<Character_InBattle> InBattleCharacters { get { return inBattleCharacters; } }
 
-        public void Initialize_Battle(Map_Data mapData)
-        {
-            ClearInBattleCharacters();
+        //public void Initialize_Battle(Map_Data mapData)
+        //{
+        //    ClearInBattleCharacters();
 
-            InitializeInBattleCharacters();
+        //    InitializeInBattleCharacters();
 
-            inBattleCharacters[0].StandingTile = mapData.TileData[currentTileX.value, currentTileZ.value];
-        }
+        //    inBattleCharacters[0].StandingTile = mapData.TileData[currentTileX.value, currentTileZ.value];
+        //}
 
-        private void InitializeInBattleCharacters()
-        {
-            Character_InBattle captainInBattle = CreateInstance<Character_InBattle>();
-            captainInBattle.Initialize(captain);
+        //private void InitializeInBattleCharacters()
+        //{
+        //    Character_InBattle captainInBattle = CreateInstance<Character_InBattle>();
+        //    captainInBattle.Initialize(captain);
 
-            inBattleCharacters.Add(captainInBattle);
+        //    inBattleCharacters.Add(captainInBattle);
 
-            for (int i = 0; i < teamFellow.Length; i++)
-            {
-                if (teamFellow[i] == null) continue;
+        //    for (int i = 0; i < teamFellow.Length; i++)
+        //    {
+        //        if (teamFellow[i] == null) continue;
 
-                Character_InBattle newCharacter = CreateInstance<Character_InBattle>();
-                newCharacter.Initialize(teamFellow[i]);
+        //        Character_InBattle newCharacter = CreateInstance<Character_InBattle>();
+        //        newCharacter.Initialize(teamFellow[i]);
 
-                inBattleCharacters.Add(newCharacter);
-            }
-        }
+        //        inBattleCharacters.Add(newCharacter);
+        //    }
+        //}
 
-        private void ClearInBattleCharacters()
-        {
-            for (int i = inBattleCharacters.Count - 1; i >= 0; i--)
-            {
-                inBattleCharacters.RemoveAt(i);
-            }
+        //private void ClearInBattleCharacters()
+        //{
+        //    for (int i = inBattleCharacters.Count - 1; i >= 0; i--)
+        //    {
+        //        inBattleCharacters.RemoveAt(i);
+        //    }
 
-            inBattleCharacters.Clear();
-        }
+        //    inBattleCharacters.Clear();
+        //}
     }
 }

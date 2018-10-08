@@ -20,7 +20,7 @@ namespace Battle
 
         private bool acting;
         private Map_Data mapData;
-        private Character_InBattle currentTurnCharacter;
+        //private Character_InBattle currentTurnCharacter;
 
         // temporary
 
@@ -32,12 +32,12 @@ namespace Battle
 
             movableTilesManager.Initialize();
 
-            playerTeam.Initialize_Battle(mapData);
+            //playerTeam.Initialize_Battle(mapData);
             //enemies.Initialize();
 
             turnController.Initialize();
 
-            currentTurnCharacter = playerTeam.InBattleCharacters[0];
+            //currentTurnCharacter = playerTeam.InBattleCharacters[0];
 
             ReadyForAction();
         }
@@ -59,7 +59,7 @@ namespace Battle
 
         private void SetMovableTiles()
         {
-            movableTilesManager.SetTiles(mapData, currentTurnCharacter.StandingTile.X, currentTurnCharacter.StandingTile.Z);
+            //movableTilesManager.SetTiles(mapData, currentTurnCharacter.StandingTile.X, currentTurnCharacter.StandingTile.Z);
         }
 
         //private IEnumerator CharacterAction()
