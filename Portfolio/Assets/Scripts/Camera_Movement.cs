@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using Player;
 
 public class Camera_Movement : MonoBehaviour
 {
-    public GameObject focus;
+    public GameObject player;
     public Vector3 offset;
 
     // Use this for initialization
@@ -14,7 +15,6 @@ public class Camera_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = focus.GetComponent<TestPlayerDungeonSettings>().CameraFocus.transform.position + offset;
-        //this.transform.position = focus.position + offset;
+        this.transform.position = player.GetComponent<Player_DungeonSettings>().Captain.transform.position + offset;
     }
 }
