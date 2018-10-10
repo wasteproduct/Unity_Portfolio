@@ -19,7 +19,7 @@ public class Character_ExploreFellow : Character_Explore
 
     }
 
-    public void StartMoving()
+    public override void StartMoving()
     {
         //StartCoroutine(Move());
     }

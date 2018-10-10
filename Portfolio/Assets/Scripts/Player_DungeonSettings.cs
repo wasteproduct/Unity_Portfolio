@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Character;
 using MapDataSet;
+using System.Collections.Generic;
 
 namespace Player
 {
@@ -17,13 +18,6 @@ namespace Player
 
         private Map_Data mapData;
 
-        public GameObject Captain { get; private set; }
-
-        public void StartMoving()
-        {
-
-        }
-
         // Use this for initialization
         void Start()
         {
@@ -32,10 +26,13 @@ namespace Player
             currentTileX.value = mapData.StartingTile.X;
             currentTileZ.value = mapData.StartingTile.Z;
 
-            Captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
-            Captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>(), null);
+            List<GameObject> characters = new List<GameObject>();
 
-            GameObject frontOne = Captain;
+            GameObject captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
+            captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>(), null);
+            characters.Add(captain);
+
+            GameObject frontOne = captain;
 
             for (int i = 0; i < 2; i++)
             {
@@ -43,9 +40,12 @@ namespace Player
 
                 GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
                 newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>(), frontOne);
+                characters.Add(newFellow);
 
                 frontOne = newFellow;
             }
+
+            this.gameObject.GetComponent<Player_Move>().Initialize(characters);
 
             //for (int i = 0; i < characterDatabase.Models.Count; i++)
             //{

@@ -17,9 +17,10 @@ public class Cursor : MonoBehaviour
     public Variable_Int mouseOnTileX;
     public Variable_Int mouseOnTileZ;
     public Calculation_AStar aStar;
-    public Variable_Bool playerMoving;
+    //public Variable_Bool playerMoving;
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
+    public Calculation_Move moveController;
 
     private Map_Data mapData;
     private Manager_Layers layers;
@@ -77,7 +78,8 @@ public class Cursor : MonoBehaviour
 
     private void LeftClick()
     {
-        if (playerMoving.flag == true) return;
+        //if (playerMoving.flag == true) return;
+        if (moveController.moving == true) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -95,7 +97,7 @@ public class Cursor : MonoBehaviour
             this.GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
 
-            clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
+            //clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
 
             clickEvent.Run();
         }

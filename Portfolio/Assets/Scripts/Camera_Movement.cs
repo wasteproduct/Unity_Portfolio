@@ -15,6 +15,6 @@ public class Camera_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = player.GetComponent<Player_DungeonSettings>().Captain.transform.position + offset;
+        this.transform.position = player.GetComponent<Player_Move>().Captain.transform.position + offset;
     }
 }
