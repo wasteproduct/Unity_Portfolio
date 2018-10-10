@@ -14,7 +14,6 @@ namespace Player
         public Character_Database characterDatabase;
         public Variable_Int currentTileX;
         public Variable_Int currentTileZ;
-        public Player_MoveController moveController;
 
         private Map_Data mapData;
 
@@ -22,7 +21,7 @@ namespace Player
 
         public void StartMoving()
         {
-            moveController.moving = true;
+
         }
 
         // Use this for initialization
@@ -47,8 +46,6 @@ namespace Player
 
                 frontOne = newFellow;
             }
-
-            moveController.Initialize();
 
             //for (int i = 0; i < characterDatabase.Models.Count; i++)
             //{
@@ -78,11 +75,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            if (moveController.moving == false) return;
 
-            moveController.elapsedTime += Time.deltaTime;
-
-            
         }
     }
 }

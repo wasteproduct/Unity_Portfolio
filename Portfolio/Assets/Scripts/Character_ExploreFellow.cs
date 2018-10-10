@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character_ExploreFellow : MonoBehaviour
+public class Character_ExploreFellow : Character_Explore
 {
     public GameObject FrontOne { get; private set; }
 

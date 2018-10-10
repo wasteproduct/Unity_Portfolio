@@ -4,7 +4,7 @@ using UnityEngine;
 using AStar;
 using MapDataSet;
 
-public class Character_ExploreCaptain : MonoBehaviour
+public class Character_ExploreCaptain : Character_Explore
 {
     public Event_Click clickEvent;
     public Calculation_AStar aStar;

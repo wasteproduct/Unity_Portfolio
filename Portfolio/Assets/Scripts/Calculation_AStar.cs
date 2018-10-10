@@ -100,10 +100,7 @@ namespace AStar
                 {
                     int whileBreaker = row * column;
 
-                    if (doorTile == true)
-                    {
-                        currentNode = currentNode.Parent;
-                    }
+                    if (doorTile == true) currentNode = currentNode.Parent;
 
                     while (true)
                     {
