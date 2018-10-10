@@ -41,6 +41,8 @@ namespace AStar
 
         public bool FindPath(Map_TileData[,] tileData, Map_TileData startingTile, Map_TileData destinationTile, bool doorTile = false)
         {
+            if (startingTile == destinationTile) return true;
+
             Refresh(tileData, destinationTile);
 
             currentNode = node[startingTile.X, startingTile.Z];

@@ -443,6 +443,7 @@ MonoBehaviour:
   characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
+  moveController: {fileID: 11400000, guid: b3f2bb9e2f6b379499c8db4df547114e, type: 2}
 --- !u!4 &596837746
 Transform:
   m_ObjectHideFlags: 0
@@ -492,7 +493,18 @@ MonoBehaviour:
   registeredEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 596837744}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1289549696

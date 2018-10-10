@@ -14,10 +14,16 @@ namespace Player
         public Character_Database characterDatabase;
         public Variable_Int currentTileX;
         public Variable_Int currentTileZ;
+        public Player_MoveController moveController;
 
         private Map_Data mapData;
 
         public GameObject Captain { get; private set; }
+
+        public void StartMoving()
+        {
+            moveController.moving = true;
+        }
 
         // Use this for initialization
         void Start()
@@ -28,15 +34,21 @@ namespace Player
             currentTileZ.value = mapData.StartingTile.Z;
 
             Captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
-            Captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
+            Captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>(), null);
+
+            GameObject frontOne = Captain;
 
             for (int i = 0; i < 2; i++)
             {
-                int offset = i * 2 + 2;
+                int offset = i + 1;
 
                 GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
-                newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
+                newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>(), frontOne);
+
+                frontOne = newFellow;
             }
+
+            moveController.Initialize();
 
             //for (int i = 0; i < characterDatabase.Models.Count; i++)
             //{
@@ -66,7 +78,11 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (moveController.moving == false) return;
 
+            moveController.elapsedTime += Time.deltaTime;
+
+            
         }
     }
 }

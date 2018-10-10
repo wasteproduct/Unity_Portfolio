@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817987492967902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4784639667983388}
   m_RootOrder: 0
@@ -164,7 +164,6 @@ MonoBehaviour:
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
   mouseOnTileX: {fileID: 11400000, guid: 523bf20ffbb76e145bb4acb5d86f7973, type: 2}
   mouseOnTileZ: {fileID: 11400000, guid: 4c408042c478c3d45ae043067944bc93, type: 2}
-  moving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
 --- !u!114 &114755492412343674
 MonoBehaviour:
   m_ObjectHideFlags: 1
