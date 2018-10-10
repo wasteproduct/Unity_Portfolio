@@ -25,7 +25,7 @@ public class Character_InDungeon : MonoBehaviour
         if (captain == true)
         {
             this.gameObject.GetComponent<Character_ExploreCaptain>().enabled = true;
-            this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(MapData, dungeonPlayManager);
+            //this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(MapData, dungeonPlayManager);
         }
         else
         {

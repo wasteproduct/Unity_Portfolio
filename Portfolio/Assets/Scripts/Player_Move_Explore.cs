@@ -48,14 +48,14 @@ namespace Player
 
             if (clickEvent.pathFound == false) return;
 
-            if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTile == true))
-            {
-                mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].OpenDoor();
-                return;
-            }
+            //if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTile == true))
+            //{
+            //    mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].OpenDoor();
+            //    return;
+            //}
 
-            moving.flag = true;
-            StartCoroutine(Move(clickEvent.doorTile, mouseOnTileX.value, mouseOnTileZ.value));
+            //moving.flag = true;
+            //StartCoroutine(Move(clickEvent.doorTile, mouseOnTileX.value, mouseOnTileZ.value));
         }
 
         private IEnumerator Move(bool doorTile = false, int doorX = -1, int doorZ = -1)

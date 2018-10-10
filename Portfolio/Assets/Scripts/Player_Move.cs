@@ -17,8 +17,6 @@ namespace Player
         {
             if (clickEvent.pathFound == false) return;
 
-            moveController.moving = true;
-
             for (int i = 0; i < playerCharacters.Count; i++)
             {
                 playerCharacters[i].StartMoving();

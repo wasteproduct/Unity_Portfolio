@@ -110,10 +110,16 @@ public class Cursor : MonoBehaviour
         if ((mouseOnTileX.value == commonFeatures.invalidIndex) || (mouseOnTileZ.value == commonFeatures.invalidIndex)) return;
 
         clickEvent.pathFound = false;
-        clickEvent.doorTile = false;
-        if (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type == TileType.Door) clickEvent.doorTile = true;
+        clickEvent.doorTileClicked = false;
+        clickEvent.doorTile = null;
 
-        clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTile);
+        if (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type == TileType.Door)
+        {
+            clickEvent.doorTileClicked = true;
+            clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
+        }
+
+        clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;

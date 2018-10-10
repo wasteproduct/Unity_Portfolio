@@ -8,22 +8,10 @@ public class Character_ExploreCaptain : Character_Explore
 {
     public Event_Click clickEvent;
     public Calculation_AStar aStar;
-    public Manager_CommonFeatures commonFeatures;
     public Calculation_Move moveController;
 
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
-    public Variable_Int mouseOnTileX;
-    public Variable_Int mouseOnTileZ;
-    //public Variable_Bool moving;
-    
-    private Map_Data mapData;
-
-    public void Initialize(Map_Data MapData, Manager_DungeonPlay dungeonPlayManager)
-    {
-        mapData = MapData;
-        //dungeonPlay = dungeonPlayManager;
-    }
 
     // Update is called once per frame
     void Update()
@@ -35,23 +23,19 @@ public class Character_ExploreCaptain : Character_Explore
     public override void StartMoving()
     {
         if (clickEvent.pathFound == false) return;
-        //print(aStar.FinalTrack.Count);
 
-        //if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTile == true))
-        //{
-        //    mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].OpenDoor();
-        //    return;
-        //}
-        if (aStar.FinalTrack.Count <= 1)
+        if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTileClicked == true))
         {
-            print("FUCK");
+            clickEvent.doorTile.OpenDoor();
             return;
         }
 
-        StartCoroutine(Move(clickEvent.doorTile));
+        moveController.moving = true;
+
+        StartCoroutine(Move(clickEvent.doorTileClicked));
     }
 
-    private IEnumerator Move(bool doorTile)
+    private IEnumerator Move(bool doorTileClicked)
     {
         int targetIndex = 1;
         float elapsedTime = 0.0f;
@@ -63,8 +47,10 @@ public class Character_ExploreCaptain : Character_Explore
                 targetIndex++;
                 elapsedTime = 0.0f;
 
-                if (targetIndex == aStar.FinalTrack.Count)
+                if (targetIndex >= aStar.FinalTrack.Count)
                 {
+                    if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+
                     moveController.moving = false;
                     break;
                 }
@@ -80,7 +66,6 @@ public class Character_ExploreCaptain : Character_Explore
         //int endX = aStar.FinalTrack[trackIndex + 1].X;
         //int endZ = aStar.FinalTrack[trackIndex + 1].Z;
         //Quaternion startingRotation = this.gameObject.transform.rotation;
-        //float elapsedTime = 0.0f;
 
         //while (true)
         //{
