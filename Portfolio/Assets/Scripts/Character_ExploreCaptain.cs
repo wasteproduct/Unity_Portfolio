@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AStar;
-using MapDataSet;
 
 public class Character_ExploreCaptain : Character_Explore
 {
@@ -12,6 +11,13 @@ public class Character_ExploreCaptain : Character_Explore
 
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
+
+    public override void Initialize(GameObject frontOne)
+    {
+        this.PreviousPosition = this.gameObject.transform.position;
+
+        this.FrontOne = null;
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,6 +29,8 @@ public class Character_ExploreCaptain : Character_Explore
     public override void StartMoving()
     {
         if (clickEvent.pathFound == false) return;
+
+        this.PreviousPosition = this.gameObject.transform.position;
 
         if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTileClicked == true))
         {
@@ -46,6 +54,7 @@ public class Character_ExploreCaptain : Character_Explore
             {
                 targetIndex++;
                 elapsedTime = 0.0f;
+                this.PreviousPosition = this.gameObject.transform.position;
 
                 if (targetIndex >= aStar.FinalTrack.Count)
                 {

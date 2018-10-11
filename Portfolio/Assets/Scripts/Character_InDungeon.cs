@@ -6,10 +6,6 @@ public class Character_InDungeon : MonoBehaviour
 {
     private bool captain;
 
-    public Vector3 PreviousPosition { get; private set; }
-
-    public void SetPreviousPosition(Vector3 newPosition) { PreviousPosition = newPosition; }
-
     public void StartMoving()
     {
         if (captain == true) this.gameObject.GetComponent<Character_ExploreCaptain>().StartMoving();
@@ -25,15 +21,13 @@ public class Character_InDungeon : MonoBehaviour
         if (captain == true)
         {
             this.gameObject.GetComponent<Character_ExploreCaptain>().enabled = true;
-            //this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(MapData, dungeonPlayManager);
+            this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(frontOne);
         }
         else
         {
             this.gameObject.GetComponent<Character_ExploreFellow>().enabled = true;
             this.gameObject.GetComponent<Character_ExploreFellow>().Initialize(frontOne);
         }
-
-        PreviousPosition = this.gameObject.transform.position;
     }
 
     // Update is called once per frame

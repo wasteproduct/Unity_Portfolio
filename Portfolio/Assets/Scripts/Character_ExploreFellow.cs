@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Character_ExploreFellow : Character_Explore
 {
-    public GameObject FrontOne { get; private set; }
+    public Calculation_Move moveController;
 
-    public void Initialize(GameObject frontOne)
+    public override void Initialize(GameObject frontOne)
     {
-        FrontOne = frontOne;
+        this.FrontOne = frontOne;
 
-        //elapsedTime = 0.0f;
+        this.PreviousPosition = this.gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -21,33 +21,54 @@ public class Character_ExploreFellow : Character_Explore
 
     public override void StartMoving()
     {
-        //StartCoroutine(Move());
+        this.PreviousPosition = this.gameObject.transform.position;
+
+        StartCoroutine(Move());
     }
 
-    //private IEnumerator Move()
-    //{
-    //    Vector3 currentPosition = this.gameObject.transform.position;
-    //    Vector3 nextPosition = FrontOne.gameObject.GetComponent<Character_InDungeon>().PreviousPosition;
+    private IEnumerator Move()
+    {
+        float elapsedTime = 0.0f;
 
-    //    while (true)
-    //    {
-    //        if (elapsedTime >= elapsedTimeLimit)
-    //        {
-    //            elapsedTime = 0.0f;
+        while (true)
+        {
+            if (elapsedTime >= moveController.ElapsedTimeLimit)
+            {
+                if (moveController.moving == false) break;
 
-    //            currentPosition = this.gameObject.transform.position;
-    //            nextPosition = FrontOne.gameObject.GetComponent<Character_InDungeon>().PreviousPosition;
+                elapsedTime = 0.0f;
+                this.PreviousPosition = this.gameObject.transform.position;
+            }
 
-    //            this.gameObject.GetComponent<Character_InDungeon>().SetPreviousPosition(this.gameObject.transform.position);
+            elapsedTime += Time.deltaTime;
+            // 여기에 들어가는 position들이 너무 빈약하다
+            this.gameObject.transform.position = moveController.LerpPosition(this.PreviousPosition, this.FrontOne.GetComponent<Character_Explore>().PreviousPosition, elapsedTime);
 
-    //            if (moving.flag == false) break;
-    //        }
+            yield return null;
+        }
+        /*int targetIndex = 1;
+        float elapsedTime = 0.0f;
 
-    //        elapsedTime += Time.deltaTime;
-    //        float lerpTime = elapsedTime / elapsedTimeLimit;
-    //        this.gameObject.transform.position = Vector3.Lerp(currentPosition, nextPosition, lerpTime);
+        while (true)
+        {
+            if (elapsedTime >= moveController.ElapsedTimeLimit)
+            {
+                targetIndex++;
+                elapsedTime = 0.0f;
 
-    //        yield return null;
-    //    }
-    //}
+                if (targetIndex >= aStar.FinalTrack.Count)
+                {
+                    if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+
+                    moveController.moving = false;
+                    break;
+                }
+            }
+
+            elapsedTime += Time.deltaTime;
+            this.gameObject.transform.position = moveController.LerpPosition(aStar.FinalTrack[targetIndex - 1], aStar.FinalTrack[targetIndex], elapsedTime);
+
+            yield return null;
+        }*/
+    }
 }
