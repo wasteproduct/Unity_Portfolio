@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AStar;
 
 public class Character_ExploreFellow : Character_Explore
 {
@@ -37,12 +38,11 @@ public class Character_ExploreFellow : Character_Explore
                 if (moveController.moving == false) break;
 
                 elapsedTime = 0.0f;
-                this.PreviousPosition = this.gameObject.transform.position;
             }
-
+            
             elapsedTime += Time.deltaTime;
             // 여기에 들어가는 position들이 너무 빈약하다
-            this.gameObject.transform.position = moveController.LerpPosition(this.PreviousPosition, this.FrontOne.GetComponent<Character_Explore>().PreviousPosition, elapsedTime);
+            //this.gameObject.transform.position = moveController.LerpPosition(this.PreviousPosition, this.FrontOne.GetComponent<Character_Explore>().PreviousPosition, elapsedTime);
 
             yield return null;
         }

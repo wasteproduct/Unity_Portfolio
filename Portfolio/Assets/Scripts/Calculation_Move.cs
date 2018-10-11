@@ -20,11 +20,6 @@ public class Calculation_Move : ScriptableObject
         mapData = MapData;
     }
 
-    public Vector3 LerpPosition(Vector3 startPosition, Vector3 targetPosition, float elapsedTime)
-    {
-        return Vector3.Lerp(startPosition, targetPosition, elapsedTime / elapsedTimeLimit);
-    }
-
     public Vector3 LerpPosition(Node_AStar startNode, Node_AStar targetNode, float elapsedTime)
     {
         Vector3 startPosition = new Vector3(mapData.TileData[startNode.X, startNode.Z].X, 0.0f, mapData.TileData[startNode.X, startNode.Z].Z);

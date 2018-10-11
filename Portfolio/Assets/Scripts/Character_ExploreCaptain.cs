@@ -54,7 +54,6 @@ public class Character_ExploreCaptain : Character_Explore
             {
                 targetIndex++;
                 elapsedTime = 0.0f;
-                this.PreviousPosition = this.gameObject.transform.position;
 
                 if (targetIndex >= aStar.FinalTrack.Count)
                 {
