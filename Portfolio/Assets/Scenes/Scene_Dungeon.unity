@@ -518,8 +518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5fbf9e9e785b346841fda8b5651292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
+  clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
+  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
 --- !u!1 &1289549696
 GameObject:
   m_ObjectHideFlags: 0

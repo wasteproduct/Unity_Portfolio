@@ -26,7 +26,7 @@ public class Character_ExploreCaptain : Character_Explore
         currentTileZ.value = (int)(this.gameObject.transform.position.z + .5f);
     }
 
-    public override void StartMoving()
+    public override void StartMoving(List<Node_AStar> entireTrack)
     {
         if (clickEvent.pathFound == false) return;
 

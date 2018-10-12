@@ -17,10 +17,11 @@ public class Character_ExploreFellow : Character_Explore
     // Update is called once per frame
     void Update()
     {
-
+        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
+        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
     }
 
-    public override void StartMoving()
+    public override void StartMoving(List<Node_AStar> entireTrack)
     {
         this.PreviousPosition = this.gameObject.transform.position;
 

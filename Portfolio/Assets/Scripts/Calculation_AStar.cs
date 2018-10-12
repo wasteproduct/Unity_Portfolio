@@ -10,9 +10,11 @@ namespace AStar
     {
         private int row, column;
         private Node_AStar currentNode;
-        private Node_AStar[,] node;
         private List<Node_AStar> openList;
         private List<Node_AStar> closedList;
+
+        public Node_AStar[,] Node { get; private set; }
+        public List<Node_AStar> FinalTrack { get; private set; }
 
         public void Initialize(Map_Data mapData)
         {
@@ -21,13 +23,13 @@ namespace AStar
 
             currentNode = null;
 
-            node = new Node_AStar[row, column];
+            Node = new Node_AStar[row, column];
 
             for (int z = 0; z < column; z++)
             {
                 for (int x = 0; x < row; x++)
                 {
-                    node[x, z] = new Node_AStar(mapData.TileData[x, z]);
+                    Node[x, z] = new Node_AStar(mapData.TileData[x, z]);
                 }
             }
 
@@ -37,21 +39,19 @@ namespace AStar
             FinalTrack = new List<Node_AStar>();
         }
 
-        public List<Node_AStar> FinalTrack { get; private set; }
-
         public bool FindPath(Map_TileData[,] tileData, Map_TileData startingTile, Map_TileData destinationTile, bool doorTile = false)
         {
             if (startingTile == destinationTile) return false;
 
             Refresh(tileData, destinationTile);
 
-            currentNode = node[startingTile.X, startingTile.Z];
+            currentNode = Node[startingTile.X, startingTile.Z];
 
             closedList.Add(currentNode);
 
             int failureCount = row * column;
 
-            if (doorTile == true) node[destinationTile.X, destinationTile.Z].Passable = true;
+            if (doorTile == true) Node[destinationTile.X, destinationTile.Z].Passable = true;
 
             while (true)
             {
@@ -61,26 +61,26 @@ namespace AStar
                     {
                         if (NodeIndexAvailable(x, z) == false) continue;
 
-                        if (node[x, z].Passable == false) continue;
+                        if (Node[x, z].Passable == false) continue;
 
-                        if (NodeInClosedList(node[x, z]) == true) continue;
+                        if (NodeInClosedList(Node[x, z]) == true) continue;
 
-                        if (NodeInOpenList(node[x, z]) == false)
+                        if (NodeInOpenList(Node[x, z]) == false)
                         {
-                            node[x, z].Parent = currentNode;
-                            node[x, z].CalculateCostToDestination();
-                            openList.Add(node[x, z]);
+                            Node[x, z].Parent = currentNode;
+                            Node[x, z].CalculateCostToDestination();
+                            openList.Add(Node[x, z]);
                         }
                         else
                         {
-                            Node_AStar newData = new Node_AStar(node[x, z]);
+                            Node_AStar newData = new Node_AStar(Node[x, z]);
                             newData.Parent = currentNode;
                             newData.CalculateCostToDestination();
 
-                            if (newData.CostToDestination < node[x, z].CostToDestination)
+                            if (newData.CostToDestination < Node[x, z].CostToDestination)
                             {
-                                node[x, z].Parent = currentNode;
-                                node[x, z].CalculateCostToDestination();
+                                Node[x, z].Parent = currentNode;
+                                Node[x, z].CalculateCostToDestination();
                             }
                         }
                     }
@@ -96,7 +96,7 @@ namespace AStar
                     }
                 }
 
-                if (currentNode == node[destinationTile.X, destinationTile.Z])
+                if (currentNode == Node[destinationTile.X, destinationTile.Z])
                 {
                     int whileBreaker = row * column;
 
@@ -106,7 +106,7 @@ namespace AStar
                     {
                         FinalTrack.Add(currentNode);
 
-                        if (currentNode == node[startingTile.X, startingTile.Z])
+                        if (currentNode == Node[startingTile.X, startingTile.Z])
                         {
                             FinalTrack.Reverse();
                             return true;
@@ -148,7 +148,7 @@ namespace AStar
             {
                 for (int x = 0; x < row; x++)
                 {
-                    node[x, z].Initialize(tileData[x, z], destinationTile);
+                    Node[x, z].Initialize(tileData[x, z], destinationTile);
                 }
             }
         }

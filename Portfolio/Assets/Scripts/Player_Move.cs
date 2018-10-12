@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AStar;
 
 namespace Player
 {
@@ -8,6 +9,7 @@ namespace Player
     {
         public Calculation_Move moveController;
         public Event_Click clickEvent;
+        public Calculation_AStar aStar;
 
         private List<Character_Explore> playerCharacters;
 
@@ -17,9 +19,16 @@ namespace Player
         {
             if (clickEvent.pathFound == false) return;
 
+            List<Node_AStar> entireTrack = new List<Node_AStar>();
+
+            for (int i = 0; i < aStar.FinalTrack.Count; i++)
+            {
+                entireTrack.Add(aStar.FinalTrack[i]);
+            }
+
             for (int i = 0; i < playerCharacters.Count; i++)
             {
-                playerCharacters[i].StartMoving();
+                playerCharacters[i].StartMoving(entireTrack);
             }
         }
 
@@ -32,7 +41,7 @@ namespace Player
 
             for (int i = 0; i < characters.Count; i++)
             {
-                playerCharacters.Add(characters[i].GetComponent<Character_Explore>());
+                playerCharacters.Add(characters[i].GetComponent<Character_InDungeon>().MoveController);
             }
         }
 
