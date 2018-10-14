@@ -6,8 +6,6 @@ using MapDataSet;
 
 public class Character_ExploreFellow : Character_Explore
 {
-    public Calculation_Move moveController;
-
     private Map_Data mapData;
     private List<Node_AStar> privateTrack;
 

@@ -22,7 +22,7 @@ namespace Player
 
         private List<GameObject> characters = new List<GameObject>();
 
-        private bool characterSelected = false;
+        //private bool characterSelected = false;
         private Character_Base pickedCharacter = null;
 
         public void SelectCharacter(Character_Base selectedCharacter)
@@ -31,7 +31,7 @@ namespace Player
 
             HighlightSlots();
 
-            characterSelected = true;
+            //characterSelected = true;
             pickedCharacter = selectedCharacter;
 
             for (int i = 0; i < slotFellow.Length; i++)
@@ -127,7 +127,7 @@ namespace Player
                 slotFellow[i].GetComponent<Button>().interactable = false;
             }
 
-            characterSelected = false;
+            //characterSelected = false;
             pickedCharacter = null;
         }
 

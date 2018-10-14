@@ -6,9 +6,7 @@ using MapDataSet;
 
 public class Character_ExploreCaptain : Character_Explore
 {
-    public Event_Click clickEvent;
     public Calculation_AStar aStar;
-    public Calculation_Move moveController;
 
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;

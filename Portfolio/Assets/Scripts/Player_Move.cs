@@ -69,6 +69,8 @@ namespace Player
                         if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
 
                         moveController.moving = false;
+                        // 여기
+                        //if(clickEvent.intoEnemyZone==true)
 
                         break;
                     }

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab584298e761d84aaa5b85aee261ad2, type: 3}
   m_Name: Event_Click
   m_EditorClassIdentifier: 
-  doorTile: 0
-  pathFound: 1
+  doorTileClicked: 0
+  pathFound: 0
   intoEnemyZone: 0
   destroyedObject: {fileID: 0}

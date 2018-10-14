@@ -19,7 +19,7 @@ public class Player_ToDungeon : MonoBehaviour
 
     private List<GameObject> characters = new List<GameObject>();
 
-    private bool characterSelected = false;
+    //private bool characterSelected = false;
     private Character_Slot pickedSlot = null;
 
     public void SelectCharacter(Character_Slot selectedSlot)
@@ -52,7 +52,7 @@ public class Player_ToDungeon : MonoBehaviour
         else
         {
             pickedSlot = selectedSlot;
-            characterSelected = true;
+            //characterSelected = true;
 
             for (int i = 0; i < characters.Count; i++)
             {
@@ -149,7 +149,7 @@ public class Player_ToDungeon : MonoBehaviour
 
     private void CancelSelection()
     {
-        characterSelected = false;
+        //characterSelected = false;
         pickedSlot = null;
     }
 
