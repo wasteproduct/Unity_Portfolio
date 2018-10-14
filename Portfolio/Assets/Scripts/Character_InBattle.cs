@@ -19,6 +19,8 @@ public class Character_InBattle : MonoBehaviour
         return true;
     }
 
+    public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
     public void Initialize(Map_Data mapData)
     {
         MapData = mapData;
