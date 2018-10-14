@@ -18,8 +18,6 @@ public class Manager_DungeonPlay : MonoBehaviour
         aStar.Initialize(tileMap.GetComponent<Map_Main>().MapData);
 
         phaseManager.PhaseToExplore();
-
-        moveController.Initialize(tileMap.GetComponent<Map_Main>().MapData);
     }
 
     // Update is called once per frame

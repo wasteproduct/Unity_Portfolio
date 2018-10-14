@@ -19,17 +19,22 @@ namespace Player
         {
             if (clickEvent.pathFound == false) return;
 
-            List<Node_AStar> entireTrack = new List<Node_AStar>();
-
-            for (int i = 0; i < aStar.FinalTrack.Count; i++)
+            if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTileClicked == true))
             {
-                entireTrack.Add(aStar.FinalTrack[i]);
+                clickEvent.doorTile.OpenDoor();
+                return;
             }
 
-            for (int i = 0; i < playerCharacters.Count; i++)
+            moveController.moving = true;
+
+            List<Node_AStar> track = new List<Node_AStar>(aStar.FinalTrack);
+            for (int i = 1; i < playerCharacters.Count; i++)
             {
-                playerCharacters[i].StartMoving(entireTrack);
+                track.Insert(0, aStar.Node[playerCharacters[i].StandingTileX, playerCharacters[i].StandingTileZ]);
+                playerCharacters[i].SetTrack(track);
             }
+
+            StartCoroutine(Move());
         }
 
         public void Initialize(List<GameObject> characters)
@@ -42,6 +47,42 @@ namespace Player
             for (int i = 0; i < characters.Count; i++)
             {
                 playerCharacters.Add(characters[i].GetComponent<Character_InDungeon>().MoveController);
+            }
+        }
+
+        private IEnumerator Move()
+        {
+            int targetIndex = 1;
+            float elapsedTime = 0.0f;
+            float lerpTime = 0.0f;
+            bool doorTileClicked = clickEvent.doorTileClicked;
+
+            while (true)
+            {
+                if (elapsedTime >= moveController.ElapsedTimeLimit)
+                {
+                    targetIndex++;
+                    elapsedTime = 0.0f;
+
+                    if (targetIndex >= aStar.FinalTrack.Count)
+                    {
+                        if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+
+                        moveController.moving = false;
+
+                        break;
+                    }
+                }
+
+                elapsedTime += Time.deltaTime;
+                lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
+
+                for (int i = 0; i < playerCharacters.Count; i++)
+                {
+                    playerCharacters[i].Move(targetIndex, lerpTime);
+                }
+
+                yield return null;
             }
         }
 

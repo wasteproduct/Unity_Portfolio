@@ -4,11 +4,10 @@ using UnityEngine;
 
 public abstract class Character_Explore : MonoBehaviour
 {
-    public Vector3 PreviousPosition { get; protected set; }
-    public GameObject FrontOne { get; protected set; }
     public int StandingTileX { get; protected set; }
     public int StandingTileZ { get; protected set; }
 
-    public abstract void Initialize(GameObject frontOne);
-    public abstract void StartMoving(List<AStar.Node_AStar> entireTrack);
+    public abstract void Initialize(MapDataSet.Map_Data MapData);
+    public abstract void Move(int targetIndex, float lerpTime);
+    public abstract void SetTrack(List<AStar.Node_AStar> track);
 }

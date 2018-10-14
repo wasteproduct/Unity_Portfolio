@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AStar;
+using MapDataSet;
 
 public class Character_ExploreFellow : Character_Explore
 {
     public Calculation_Move moveController;
 
-    public override void Initialize(GameObject frontOne)
-    {
-        this.FrontOne = frontOne;
+    private Map_Data mapData;
+    private List<Node_AStar> privateTrack;
 
-        this.PreviousPosition = this.gameObject.transform.position;
+    public override void Initialize(Map_Data MapData)
+    {
+        mapData = MapData;
     }
 
     // Update is called once per frame
@@ -21,55 +23,25 @@ public class Character_ExploreFellow : Character_Explore
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
     }
 
-    public override void StartMoving(List<Node_AStar> entireTrack)
+    public override void SetTrack(List<Node_AStar> track)
     {
-        this.PreviousPosition = this.gameObject.transform.position;
-
-        StartCoroutine(Move());
+        privateTrack = new List<Node_AStar>(track);
     }
 
-    private IEnumerator Move()
+    public override void Move(int targetIndex, float lerpTime)
     {
-        float elapsedTime = 0.0f;
+        Node_AStar startNode = privateTrack[targetIndex - 1];
+        Node_AStar targetNode = privateTrack[targetIndex];
 
-        while (true)
-        {
-            if (elapsedTime >= moveController.ElapsedTimeLimit)
-            {
-                if (moveController.moving == false) break;
+        float startX = mapData.TileData[startNode.X, startNode.Z].X;
+        float startZ = mapData.TileData[startNode.X, startNode.Z].Z;
 
-                elapsedTime = 0.0f;
-            }
-            
-            elapsedTime += Time.deltaTime;
-            // 여기에 들어가는 position들이 너무 빈약하다
-            //this.gameObject.transform.position = moveController.LerpPosition(this.PreviousPosition, this.FrontOne.GetComponent<Character_Explore>().PreviousPosition, elapsedTime);
+        float targetX = mapData.TileData[targetNode.X, targetNode.Z].X;
+        float targetZ = mapData.TileData[targetNode.X, targetNode.Z].Z;
 
-            yield return null;
-        }
-        /*int targetIndex = 1;
-        float elapsedTime = 0.0f;
+        float x = Mathf.Lerp(startX, targetX, lerpTime);
+        float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
-        while (true)
-        {
-            if (elapsedTime >= moveController.ElapsedTimeLimit)
-            {
-                targetIndex++;
-                elapsedTime = 0.0f;
-
-                if (targetIndex >= aStar.FinalTrack.Count)
-                {
-                    if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
-
-                    moveController.moving = false;
-                    break;
-                }
-            }
-
-            elapsedTime += Time.deltaTime;
-            this.gameObject.transform.position = moveController.LerpPosition(aStar.FinalTrack[targetIndex - 1], aStar.FinalTrack[targetIndex], elapsedTime);
-
-            yield return null;
-        }*/
+        this.gameObject.transform.position = new Vector3(x, 0.0f, z);
     }
 }

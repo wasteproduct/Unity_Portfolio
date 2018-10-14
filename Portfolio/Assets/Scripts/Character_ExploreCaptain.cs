@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AStar;
+using MapDataSet;
 
 public class Character_ExploreCaptain : Character_Explore
 {
@@ -12,11 +13,13 @@ public class Character_ExploreCaptain : Character_Explore
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
 
-    public override void Initialize(GameObject frontOne)
-    {
-        this.PreviousPosition = this.gameObject.transform.position;
+    private Map_Data mapData;
 
-        this.FrontOne = null;
+    public override void SetTrack(List<Node_AStar> track) { }
+
+    public override void Initialize(Map_Data MapData)
+    {
+        mapData = MapData;
     }
 
     // Update is called once per frame
@@ -26,96 +29,20 @@ public class Character_ExploreCaptain : Character_Explore
         currentTileZ.value = (int)(this.gameObject.transform.position.z + .5f);
     }
 
-    public override void StartMoving(List<Node_AStar> entireTrack)
+    public override void Move(int targetIndex, float lerpTime)
     {
-        if (clickEvent.pathFound == false) return;
+        Node_AStar startNode = aStar.FinalTrack[targetIndex - 1];
+        Node_AStar targetNode = aStar.FinalTrack[targetIndex];
 
-        this.PreviousPosition = this.gameObject.transform.position;
+        float startX = mapData.TileData[startNode.X, startNode.Z].X;
+        float startZ = mapData.TileData[startNode.X, startNode.Z].Z;
 
-        if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTileClicked == true))
-        {
-            clickEvent.doorTile.OpenDoor();
-            return;
-        }
+        float targetX = mapData.TileData[targetNode.X, targetNode.Z].X;
+        float targetZ = mapData.TileData[targetNode.X, targetNode.Z].Z;
 
-        moveController.moving = true;
+        float x = Mathf.Lerp(startX, targetX, lerpTime);
+        float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
-        StartCoroutine(Move(clickEvent.doorTileClicked));
-    }
-
-    private IEnumerator Move(bool doorTileClicked)
-    {
-        int targetIndex = 1;
-        float elapsedTime = 0.0f;
-
-        while (true)
-        {
-            if (elapsedTime >= moveController.ElapsedTimeLimit)
-            {
-                targetIndex++;
-                elapsedTime = 0.0f;
-
-                if (targetIndex >= aStar.FinalTrack.Count)
-                {
-                    if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
-
-                    moveController.moving = false;
-                    break;
-                }
-            }
-
-            elapsedTime += Time.deltaTime;
-            this.gameObject.transform.position = moveController.LerpPosition(aStar.FinalTrack[targetIndex - 1], aStar.FinalTrack[targetIndex], elapsedTime);
-
-            yield return null;
-        }
-        //int startX = aStar.FinalTrack[trackIndex].X;
-        //int startZ = aStar.FinalTrack[trackIndex].Z;
-        //int endX = aStar.FinalTrack[trackIndex + 1].X;
-        //int endZ = aStar.FinalTrack[trackIndex + 1].Z;
-        //Quaternion startingRotation = this.gameObject.transform.rotation;
-
-        //while (true)
-        //{
-        //    if (elapsedTime >= elapsedTimeLimit)
-        //    {
-        //        elapsedTime = 0.0f;
-
-        //        if (trackIndex >= aStar.FinalTrack.Count - 2)
-        //        {
-        //            if (doorTile == true) mapData.TileData[doorX, doorZ].OpenDoor();
-
-        //            moving.flag = false;
-
-        //            if (clickEvent.intoEnemyZone == true)
-        //            {
-        //                dungeonPlay.StartBattle();
-        //                Destroy(clickEvent.destroyedObject.gameObject);
-        //                clickEvent.intoEnemyZone = false;
-        //            }
-
-        //            break;
-        //        }
-
-        //        trackIndex++;
-
-        //        startingPosition = new Vector3((float)aStar.FinalTrack[trackIndex].X, 0.0f, (float)aStar.FinalTrack[trackIndex].Z);
-        //        destination = new Vector3((float)aStar.FinalTrack[trackIndex + 1].X, 0.0f, (float)aStar.FinalTrack[trackIndex + 1].Z);
-        //        startX = aStar.FinalTrack[trackIndex].X;
-        //        startZ = aStar.FinalTrack[trackIndex].Z;
-        //        endX = aStar.FinalTrack[trackIndex + 1].X;
-        //        endZ = aStar.FinalTrack[trackIndex + 1].Z;
-        //        startingRotation = this.gameObject.transform.rotation;
-
-        //        this.gameObject.GetComponent<Character_InDungeon>().SetPreviousPosition(startingPosition);
-        //    }
-
-        //    elapsedTime += Time.deltaTime;
-        //    float lerpTime = elapsedTime / elapsedTimeLimit;
-        //    this.gameObject.transform.position = Vector3.Lerp(startingPosition, destination, lerpTime);
-        //    this.gameObject.transform.rotation = commonFeatures.rotationCalculator.LerpRotation(startX, startZ, endX, endZ, startingRotation, lerpTime);
-
-        //    yield return null;
-        //}
+        this.gameObject.transform.position = new Vector3(x, 0.0f, z);
     }
 }
