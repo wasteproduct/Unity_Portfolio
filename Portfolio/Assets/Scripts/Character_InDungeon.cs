@@ -8,20 +8,20 @@ public class Character_InDungeon : MonoBehaviour
 
     public Character_Explore MoveController { get; private set; }
 
-    public void Initialize(bool flagCaptain, MapDataSet.Map_Data MapData, Manager_DungeonPlay dungeonPlayManager)
+    public void Initialize(bool flagCaptain, MapDataSet.Map_Data mapData, Manager_DungeonPlay dungeonPlayManager)
     {
         captain = flagCaptain;
 
         if (captain == true)
         {
             this.gameObject.GetComponent<Character_ExploreCaptain>().enabled = true;
-            this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(MapData);
+            this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(mapData);
             this.MoveController = this.gameObject.GetComponent<Character_ExploreCaptain>();
         }
         else
         {
             this.gameObject.GetComponent<Character_ExploreFellow>().enabled = true;
-            this.gameObject.GetComponent<Character_ExploreFellow>().Initialize(MapData);
+            this.gameObject.GetComponent<Character_ExploreFellow>().Initialize(mapData);
             this.MoveController = this.gameObject.GetComponent<Character_ExploreFellow>();
         }
     }

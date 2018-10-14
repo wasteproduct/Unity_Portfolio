@@ -214,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce60af14de54914893b700d9faf3390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 596837744}
   offset: {x: -16, y: 16, z: -16}
 --- !u!20 &282840813
 Camera:
@@ -294,7 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b7dd8dc3a66f14fa6dee20b71dd884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonPlay: {fileID: 1553519080}
+  tileMap: {fileID: 1982687470}
+  battleManager: {fileID: 1289549696}
   defaultColor: {fileID: 2100000, guid: 8baa215a1953e514ea452eefa5d4d5c0, type: 2}
   green: {fileID: 2100000, guid: 94e7e0b68662e46479295daa2be75cbe, type: 2}
   red: {fileID: 2100000, guid: d0e85bb06b03c4548a3c4da7e7b61ff0, type: 2}
@@ -306,6 +306,9 @@ MonoBehaviour:
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
+  layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
+  commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
+  phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
 --- !u!23 &397755824
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -521,6 +524,9 @@ MonoBehaviour:
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  dungeonPlay: {fileID: 1553519080}
+  phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
+  battleManager: {fileID: 1289549696}
 --- !u!1 &1289549696
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,11 +554,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e79d59134ae8a4c895437b2f8efa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 596837744}
   tileMap: {fileID: 1982687470}
-  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
-  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
     type: 2}
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
 --- !u!4 &1289549698
 Transform:
   m_ObjectHideFlags: 0

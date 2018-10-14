@@ -6,12 +6,13 @@ using MapDataSet;
 
 public class Character_ExploreFellow : Character_Explore
 {
-    private Map_Data mapData;
     private List<Node_AStar> privateTrack;
 
-    public override void Initialize(Map_Data MapData)
+    public Map_Data MapData { get; private set; }
+
+    public override void Initialize(Map_Data mapData)
     {
-        mapData = MapData;
+        MapData = mapData;
     }
 
     // Update is called once per frame
@@ -31,11 +32,11 @@ public class Character_ExploreFellow : Character_Explore
         Node_AStar startNode = privateTrack[targetIndex - 1];
         Node_AStar targetNode = privateTrack[targetIndex];
 
-        float startX = mapData.TileData[startNode.X, startNode.Z].X;
-        float startZ = mapData.TileData[startNode.X, startNode.Z].Z;
+        float startX = MapData.TileData[startNode.X, startNode.Z].X;
+        float startZ = MapData.TileData[startNode.X, startNode.Z].Z;
 
-        float targetX = mapData.TileData[targetNode.X, targetNode.Z].X;
-        float targetZ = mapData.TileData[targetNode.X, targetNode.Z].Z;
+        float targetX = MapData.TileData[targetNode.X, targetNode.Z].X;
+        float targetZ = MapData.TileData[targetNode.X, targetNode.Z].Z;
 
         float x = Mathf.Lerp(startX, targetX, lerpTime);
         float z = Mathf.Lerp(startZ, targetZ, lerpTime);

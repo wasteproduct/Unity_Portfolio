@@ -10,63 +10,90 @@ namespace Battle
 {
     public class Manager_Battle : MonoBehaviour
     {
+        public GameObject player;
         public GameObject tileMap;
-
-        public Player_Team playerTeam;
-        //public ENEMY enemies
-
-        public Battle_TurnController turnController;
         public Battle_MovableTilesManager movableTilesManager;
+        public Battle_TurnController turnController;
+        
+        private Player_DungeonSettings playerManager;
+        private List<Character_InBattle> inBattleCharactersPlayer;
+        private List<Character_InBattle> inBattleEnemies;
+        
+        public Character_InBattle CurrentTurnCharacter { get; private set; }
+        public bool OutOfMovableRange(Map_TileData destinationTile)
+        {
+            return movableTilesManager.OutOfMovableRange(destinationTile);
+        }
 
-        private bool acting;
-        private Map_Data mapData;
-        //private Character_InBattle currentTurnCharacter;
-
-        // temporary
+        public void StartAction()
+        {
+            StartCoroutine(CurrentTurnCharacterAction());
+        }
 
         public void Initialize()
         {
-            mapData = tileMap.GetComponent<Map_Main>().MapData;
+            playerManager = player.GetComponent<Player_DungeonSettings>();
 
-            acting = false;
-
-            movableTilesManager.Initialize();
-
-            //playerTeam.Initialize_Battle(mapData);
-            //enemies.Initialize();
-
+            movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
             turnController.Initialize();
 
-            //currentTurnCharacter = playerTeam.InBattleCharacters[0];
+            SetPlayerCharacters();
 
-            ReadyForAction();
+            SetEnemies();
+
+            CurrentTurnCharacter = inBattleCharactersPlayer[0];
+            SetMovableTiles();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (acting == true) return;
 
-            
-
-            //StartCoroutine(CharacterAction());
-        }
-
-        public void ReadyForAction()
-        {
-            SetMovableTiles();
         }
 
         private void SetMovableTiles()
         {
-            //movableTilesManager.SetTiles(mapData, currentTurnCharacter.StandingTile.X, currentTurnCharacter.StandingTile.Z);
+            Character_Explore currentTurnCharacterMoveController = CurrentTurnCharacter.gameObject.GetComponent<Character_InDungeon>().MoveController;
+            movableTilesManager.SetTiles(currentTurnCharacterMoveController.StandingTileX, currentTurnCharacterMoveController.StandingTileZ);
         }
 
-        //private IEnumerator CharacterAction()
-        //{
-        //    acting = true;
+        private IEnumerator CurrentTurnCharacterAction()
+        {
+            while(true)
+            {
+                if (CurrentTurnCharacter.ActionFinished() == true) break;
 
-        //    yield return null;
-        //}
+                yield return null;
+            }
+
+            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies);
+            SetMovableTiles();
+        }
+
+        private void SetPlayerCharacters()
+        {
+            inBattleCharactersPlayer = new List<Character_InBattle>();
+
+            for (int i = 0; i < playerManager.PlayerCharacters.Count; i++)
+            {
+                if (playerManager.PlayerCharacters[i].GetComponent<Character_InBattle>().Dead == true)
+                {
+                    playerManager.PlayerCharacters[i].gameObject.SetActive(false);
+                    continue;
+                }
+
+                inBattleCharactersPlayer.Add(playerManager.PlayerCharacters[i].GetComponent<Character_InBattle>());
+            }
+        }
+
+        private void SetEnemies()
+        {
+            inBattleEnemies = new List<Character_InBattle>();
+        }
+
+        public void FinishBattle()
+        {
+
+        }
     }
 }

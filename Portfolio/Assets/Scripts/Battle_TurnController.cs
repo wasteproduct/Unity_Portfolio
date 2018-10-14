@@ -7,19 +7,37 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Turn Controller", order = 1)]
     public class Battle_TurnController : ScriptableObject
     {
-        public bool PlayerTurn { get; private set; }
-        public bool EnemyTurn { get; private set; }
+        private readonly int playerTurn = 0;
+        private readonly int enemyTurn = 1;
+
+        public int CurrentTurn { get; private set; }
 
         public void Initialize()
         {
-            PlayerTurn = true;
-            EnemyTurn = false;
+            CurrentTurn = playerTurn;
         }
 
-        public void TurnOver()
+        public Character_InBattle SetCurrentTurnCharacter(List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
         {
-            PlayerTurn = !PlayerTurn;
-            EnemyTurn = !EnemyTurn;
+            for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
+            {
+                if (inBattleCharactersPlayer[i].TurnFinished == true) continue;
+
+                Camera.main.GetComponent<Camera_Movement>().SetFocus(inBattleCharactersPlayer[i].gameObject);
+                return inBattleCharactersPlayer[i];
+            }
+
+            //CurrentTurn++;
+            //if (CurrentTurn % 2 == playerTurn)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+
+            return null;
         }
     }
 }

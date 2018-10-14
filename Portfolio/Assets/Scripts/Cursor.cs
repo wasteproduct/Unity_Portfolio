@@ -2,10 +2,12 @@
 using MapDataSet;
 using TileDataSet;
 using AStar;
+using Battle;
 
 public class Cursor : MonoBehaviour
 {
-    public GameObject dungeonPlay;
+    public GameObject tileMap;
+    public GameObject battleManager;
 
     public Material defaultColor;
     public Material green;
@@ -17,24 +19,23 @@ public class Cursor : MonoBehaviour
     public Variable_Int mouseOnTileX;
     public Variable_Int mouseOnTileZ;
     public Calculation_AStar aStar;
-    //public Variable_Bool playerMoving;
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
     public Calculation_Move moveController;
-
+    public Manager_Layers layers;
+    public Manager_CommonFeatures commonFeatures;
+    public Manager_DungeonPhase phaseManager;
+    
     private Map_Data mapData;
-    private Manager_Layers layers;
-    private Manager_CommonFeatures commonFeatures;
     private bool leftClicked;
 
     // Use this for initialization
     void Start()
     {
         this.GetComponent<Renderer>().material = defaultColor;
-        
-        mapData = dungeonPlay.GetComponent<Manager_DungeonPlay>().tileMap.GetComponent<Map_Main>().MapData;
-        layers = dungeonPlay.GetComponent<Manager_DungeonPlay>().layers;
-        commonFeatures = dungeonPlay.GetComponent<Manager_DungeonPlay>().commonFeatures;
+
+        mapData = tileMap.GetComponent<Map_Main>().MapData;
+
         leftClicked = false;
     }
 
@@ -78,7 +79,6 @@ public class Cursor : MonoBehaviour
 
     private void LeftClick()
     {
-        //if (playerMoving.flag == true) return;
         if (moveController.moving == true) return;
 
         if (Input.GetMouseButtonDown(0))
@@ -94,12 +94,30 @@ public class Cursor : MonoBehaviour
         {
             if (leftClicked == false) return;
 
+            clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
+
+            Explore_CheckIntoEnemyZone();
+
             this.GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
 
-            //clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
-
             clickEvent.Run();
+        }
+    }
+
+    private void Explore_CheckIntoEnemyZone()
+    {
+        if (phaseManager.CurrentPhase != phaseManager.Phase_Explore) return;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+        {
+            if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
+            {
+                clickEvent.intoEnemyZone = true;
+                clickEvent.destroyedObject = hitInfo.collider.gameObject;
+            }
         }
     }
 
@@ -119,17 +137,11 @@ public class Cursor : MonoBehaviour
             clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
         }
 
-        clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+        if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
+        else if (phaseManager.CurrentPhase == phaseManager.Phase_Battle)
         {
-            if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
-            {
-                clickEvent.intoEnemyZone = true;
-                clickEvent.destroyedObject = hitInfo.collider.gameObject;
-            }
+            Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter;
+            clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTurnCharacter.StandingTileX, currentTurnCharacter.StandingTileZ], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value]);
         }
 
         if (clickEvent.pathFound == false)

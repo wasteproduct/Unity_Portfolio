@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AStar;
+using Battle;
 
 namespace Player
 {
@@ -10,12 +11,77 @@ namespace Player
         public Calculation_Move moveController;
         public Event_Click clickEvent;
         public Calculation_AStar aStar;
+        public GameObject dungeonPlay;
+        public Manager_DungeonPhase phaseManager;
+        public GameObject battleManager;
 
-        private List<Character_Explore> playerCharacters;
+        private List<GameObject> characters;
 
         public GameObject Captain { get; private set; }
 
         public void StartMoving()
+        {
+            if (phaseManager.CurrentPhase == phaseManager.Phase_Battle) StartMove_Battle();
+            else StartMove_Explore();
+        }
+
+        public void Initialize(List<GameObject> playerCharacters)
+        {
+            moveController.moving = false;
+            clickEvent.intoEnemyZone = false;
+
+            Captain = playerCharacters[0];
+
+            characters = new List<GameObject>(playerCharacters);
+        }
+
+        private void StartMove_Battle()
+        {
+            if (clickEvent.pathFound == false) return;
+
+            if (battleManager.GetComponent<Manager_Battle>().OutOfMovableRange(clickEvent.destinationTile) == true)
+            {
+                print("Out of movable range.");
+                return;
+            }
+
+            moveController.moving = true;
+
+            StartCoroutine(Move_Battle());
+        }
+
+        private IEnumerator Move_Battle()
+        {
+            int targetIndex = 1;
+            float elapsedTime = 0.0f;
+            float lerpTime = 0.0f;
+
+            while (true)
+            {
+                if (elapsedTime >= moveController.ElapsedTimeLimit)
+                {
+                    targetIndex++;
+                    elapsedTime = 0.0f;
+
+                    if (targetIndex >= aStar.FinalTrack.Count)
+                    {
+                        moveController.moving = false;
+                        battleManager.GetComponent<Manager_Battle>().StartAction();
+
+                        break;
+                    }
+                }
+
+                elapsedTime += Time.deltaTime;
+                lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
+
+                battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter.Move(targetIndex, lerpTime);
+
+                yield return null;
+            }
+        }
+
+        private void StartMove_Explore()
         {
             if (clickEvent.pathFound == false) return;
 
@@ -28,29 +94,17 @@ namespace Player
             moveController.moving = true;
 
             List<Node_AStar> track = new List<Node_AStar>(aStar.FinalTrack);
-            for (int i = 1; i < playerCharacters.Count; i++)
+            for (int i = 1; i < characters.Count; i++)
             {
-                track.Insert(0, aStar.Node[playerCharacters[i].StandingTileX, playerCharacters[i].StandingTileZ]);
-                playerCharacters[i].SetTrack(track);
+                Character_Explore characterMoveController = characters[i].GetComponent<Character_InDungeon>().MoveController;
+                track.Insert(0, aStar.Node[characterMoveController.StandingTileX, characterMoveController.StandingTileZ]);
+                characters[i].GetComponent<Character_InDungeon>().MoveController.SetTrack(track);
             }
 
-            StartCoroutine(Move());
+            StartCoroutine(Move_Explore());
         }
 
-        public void Initialize(List<GameObject> characters)
-        {
-            moveController.moving = false;
-            Captain = characters[0];
-
-            playerCharacters = new List<Character_Explore>();
-
-            for (int i = 0; i < characters.Count; i++)
-            {
-                playerCharacters.Add(characters[i].GetComponent<Character_InDungeon>().MoveController);
-            }
-        }
-
-        private IEnumerator Move()
+        private IEnumerator Move_Explore()
         {
             int targetIndex = 1;
             float elapsedTime = 0.0f;
@@ -69,8 +123,12 @@ namespace Player
                         if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
 
                         moveController.moving = false;
-                        // 여기
-                        //if(clickEvent.intoEnemyZone==true)
+
+                        if (clickEvent.intoEnemyZone == true)
+                        {
+                            Destroy(clickEvent.destroyedObject.gameObject);
+                            dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
+                        }
 
                         break;
                     }
@@ -79,9 +137,9 @@ namespace Player
                 elapsedTime += Time.deltaTime;
                 lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
 
-                for (int i = 0; i < playerCharacters.Count; i++)
+                for (int i = 0; i < characters.Count; i++)
                 {
-                    playerCharacters[i].Move(targetIndex, lerpTime);
+                    characters[i].GetComponent<Character_InDungeon>().MoveController.Move(targetIndex, lerpTime);
                 }
 
                 yield return null;

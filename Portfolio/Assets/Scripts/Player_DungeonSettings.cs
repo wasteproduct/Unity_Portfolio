@@ -18,6 +18,8 @@ namespace Player
 
         private Map_Data mapData;
 
+        public List<GameObject> PlayerCharacters { get; private set; }
+
         // Use this for initialization
         void Start()
         {
@@ -26,11 +28,12 @@ namespace Player
             currentTileX.value = mapData.StartingTile.X;
             currentTileZ.value = mapData.StartingTile.Z;
 
-            List<GameObject> characters = new List<GameObject>();
+            PlayerCharacters = new List<GameObject>();
 
             GameObject captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
             captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-            characters.Add(captain);
+            captain.GetComponent<Character_InBattle>().Initialize(mapData);
+            PlayerCharacters.Add(captain);
 
             for (int i = 0; i < 2; i++)
             {
@@ -38,10 +41,13 @@ namespace Player
 
                 GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
                 newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-                characters.Add(newFellow);
+                newFellow.GetComponent<Character_InBattle>().Initialize(mapData);
+                PlayerCharacters.Add(newFellow);
             }
 
-            this.gameObject.GetComponent<Player_Move>().Initialize(characters);
+            this.gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
+
+            Camera.main.GetComponent<Camera_Movement>().SetFocus(captain.gameObject);
         }
 
         // Update is called once per frame

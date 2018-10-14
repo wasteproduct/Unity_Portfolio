@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Event_Click
   m_EditorClassIdentifier: 
   doorTileClicked: 0
-  pathFound: 0
-  intoEnemyZone: 0
+  pathFound: 1
+  intoEnemyZone: 1
   destroyedObject: {fileID: 0}

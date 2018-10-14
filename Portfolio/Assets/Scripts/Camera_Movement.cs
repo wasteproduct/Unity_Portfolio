@@ -3,8 +3,14 @@ using Player;
 
 public class Camera_Movement : MonoBehaviour
 {
-    public GameObject player;
     public Vector3 offset;
+
+    private GameObject focus;
+
+    public void SetFocus(GameObject focusCharacter)
+    {
+        focus = focusCharacter;
+    }
 
     // Use this for initialization
     void Start()
@@ -15,6 +21,6 @@ public class Camera_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = player.GetComponent<Player_Move>().Captain.transform.position + offset;
+        this.transform.position = focus.transform.position + offset;
     }
 }

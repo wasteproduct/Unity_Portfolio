@@ -11,14 +11,28 @@ namespace Battle
     {
         public GameObject tilePrefab;
 
+        private Map_Data mapData;
+
         public List<GameObject> MovableTiles { get; private set; }
 
-        public void Initialize()
+        public bool OutOfMovableRange(Map_TileData destinationTile)
         {
+            for (int i = 0; i < MovableTiles.Count; i++)
+            {
+                if (MovableTiles[i].GetComponent<Tile_MovableInBattle>().TileData == destinationTile) return false;
+            }
+
+            return true;
+        }
+
+        public void Initialize(Map_Data MapData)
+        {
+            mapData = MapData;
+
             MovableTiles = new List<GameObject>();
         }
 
-        public void SetTiles(Map_Data mapData, int standingX, int standingZ)
+        public void SetTiles(int standingX, int standingZ)
         {
             ClearTilesList();
 

@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114945784411884110}
   - component: {fileID: 114755492412343674}
   - component: {fileID: 114391998818878020}
-  - component: {fileID: 114015442239653470}
   m_Layer: 0
   m_Name: TestCharacter
   m_TagString: Untagged
@@ -118,34 +117,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817987492967902}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114015442239653470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300629457799162}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a85b1e1543b42b439e6185fb8787019, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  registeredEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114774852922888706}
-        m_MethodName: StartMoving
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114391998818878020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,9 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24d0059a72483c4092803bceefa0f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
-  moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
 --- !u!114 &114755492412343674
@@ -173,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5fcdb19418c1444ab03680815e5c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
 --- !u!114 &114774852922888706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c62385ae6bcc749a49ba3258ef5fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
 --- !u!136 &136946901734425030
 CapsuleCollider:
   m_ObjectHideFlags: 1
