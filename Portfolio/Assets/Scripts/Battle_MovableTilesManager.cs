@@ -45,8 +45,8 @@ namespace Battle
                     if (mapData.TileData[x, z].Type != TileType.Floor) continue;
 
                     Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
-                    GameObject newTile = Instantiate<GameObject>(tilePrefab, newTilePosition, Quaternion.identity);
-                    newTile.GetComponent<Tile_MovableInBattle>().SetData(mapData.TileData[x, z]);
+                    GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
+                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z]);
 
                     MovableTiles.Add(newTile);
                 }

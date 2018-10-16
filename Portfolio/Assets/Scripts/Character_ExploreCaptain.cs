@@ -7,27 +7,31 @@ using MapDataSet;
 public class Character_ExploreCaptain : Character_Explore
 {
     public Calculation_AStar aStar;
+    public Manager_Layers layers;
 
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
-    
+
+    private GameObject destroyedObject;
+
     public Map_Data MapData { get; private set; }
+    public bool IntoEnemyZone;
 
     public override void SetTrack(List<Node_AStar> track) { }
+
+    public void ResetIntoEnemyZone()
+    {
+        Destroy(destroyedObject.gameObject);
+        destroyedObject = null;
+        IntoEnemyZone = false;
+    }
 
     public override void Initialize(Map_Data mapData)
     {
         MapData = mapData;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentTileX.value = (int)(this.gameObject.transform.position.x + .5f);
-        currentTileZ.value = (int)(this.gameObject.transform.position.z + .5f);
-
-        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
-        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+        IntoEnemyZone = false;
+        destroyedObject = null;
     }
 
     public override void Move(int targetIndex, float lerpTime)
@@ -45,5 +49,33 @@ public class Character_ExploreCaptain : Character_Explore
         float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
         this.gameObject.transform.position = new Vector3(x, 0.0f, z);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        currentTileX.value = (int)(this.gameObject.transform.position.x + .5f);
+        currentTileZ.value = (int)(this.gameObject.transform.position.z + .5f);
+
+        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
+        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
+        {
+            IntoEnemyZone = false;
+            destroyedObject = null;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
+        {
+            IntoEnemyZone = true;
+            destroyedObject = collision.gameObject;
+        }
     }
 }

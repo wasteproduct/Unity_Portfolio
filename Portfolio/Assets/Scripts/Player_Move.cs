@@ -30,9 +30,9 @@ namespace Player
             moveController.moving = false;
             clickEvent.intoEnemyZone = false;
 
-            Captain = playerCharacters[0];
-
             characters = new List<GameObject>(playerCharacters);
+
+            Captain = characters[0];
         }
 
         private void StartMove_Battle()
@@ -115,6 +115,16 @@ namespace Player
             {
                 if (elapsedTime >= moveController.ElapsedTimeLimit)
                 {
+                    if (Captain.GetComponent<Character_ExploreCaptain>().IntoEnemyZone == true)
+                    {
+                        moveController.moving = false;
+
+                        Captain.GetComponent<Character_ExploreCaptain>().ResetIntoEnemyZone();
+                        dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
+
+                        break;
+                    }
+
                     targetIndex++;
                     elapsedTime = 0.0f;
 
