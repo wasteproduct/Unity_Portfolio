@@ -92,10 +92,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583945069809868}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
@@ -113,3 +113,5 @@ MonoBehaviour:
   zoneTilePrefab: {fileID: 1927754894111990, guid: e796f0e90872e9a41acf7fbcce78df53,
     type: 2}
   zoneTileMaterial: {fileID: 2100000, guid: 451cd76c2ac18b442985ac9e533d6e1a, type: 2}
+  enemyPrefab: {fileID: 1172814101561026, guid: aa2fd9e534d60bf4cb8bbb25b958541a,
+    type: 2}

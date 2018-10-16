@@ -119,7 +119,7 @@ namespace Player
                     {
                         moveController.moving = false;
 
-                        Captain.GetComponent<Character_ExploreCaptain>().ResetIntoEnemyZone();
+                        Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
                         dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
 
                         break;

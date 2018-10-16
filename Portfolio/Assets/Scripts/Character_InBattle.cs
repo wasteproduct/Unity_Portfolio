@@ -28,8 +28,8 @@ public class Character_InBattle : MonoBehaviour
         Dead = false;
         TurnFinished = false;
 
-        this.StandingTileX = this.gameObject.GetComponent<Character_InDungeon>().MoveController.StandingTileX;
-        this.StandingTileZ = this.gameObject.GetComponent<Character_InDungeon>().MoveController.StandingTileZ;
+        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
+        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
     }
 
     public void Move(int targetIndex, float lerpTime)
@@ -52,7 +52,7 @@ public class Character_InBattle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.StandingTileX = this.gameObject.GetComponent<Character_InDungeon>().MoveController.StandingTileX;
-        this.StandingTileZ = this.gameObject.GetComponent<Character_InDungeon>().MoveController.StandingTileZ;
+        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
+        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
     }
 }

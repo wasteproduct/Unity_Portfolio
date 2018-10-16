@@ -12,17 +12,17 @@ public class Character_ExploreCaptain : Character_Explore
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
 
-    private GameObject destroyedObject;
+    private GameObject steppedEnemyZone;
 
     public Map_Data MapData { get; private set; }
     public bool IntoEnemyZone { get; private set; }
 
     public override void SetTrack(List<Node_AStar> track) { }
 
-    public void ResetIntoEnemyZone()
+    public void DestroySteppedEnemyZone()
     {
-        Destroy(destroyedObject.gameObject);
-        destroyedObject = null;
+        Destroy(steppedEnemyZone.gameObject);
+        steppedEnemyZone = null;
         IntoEnemyZone = false;
     }
 
@@ -31,7 +31,7 @@ public class Character_ExploreCaptain : Character_Explore
         MapData = mapData;
 
         IntoEnemyZone = false;
-        destroyedObject = null;
+        steppedEnemyZone = null;
     }
 
     public override void Move(int targetIndex, float lerpTime)
@@ -66,7 +66,7 @@ public class Character_ExploreCaptain : Character_Explore
         if (1 << other.gameObject.layer == (int)layers.EnemyZone)
         {
             IntoEnemyZone = true;
-            destroyedObject = other.gameObject;
+            steppedEnemyZone = other.gameObject;
         }
     }
 
@@ -75,25 +75,7 @@ public class Character_ExploreCaptain : Character_Explore
         if (1 << other.gameObject.layer == (int)layers.EnemyZone)
         {
             IntoEnemyZone = false;
-            destroyedObject = null;
+            steppedEnemyZone = null;
         }
     }
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
-    //    {
-    //        IntoEnemyZone = false;
-    //        destroyedObject = null;
-    //    }
-    //}
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
-    //    {
-    //        IntoEnemyZone = true;
-    //        destroyedObject = collision.gameObject;
-    //    }
-    //}
 }

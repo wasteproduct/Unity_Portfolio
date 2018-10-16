@@ -11,7 +11,7 @@ public class Manager_Enemies : MonoBehaviour
     {
         CreateEnemyZones();
 
-        PlaceEnemies();
+        //PlaceEnemies();
     }
 
     // Update is called once per frame

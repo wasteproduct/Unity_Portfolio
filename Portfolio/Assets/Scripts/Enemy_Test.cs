@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy_Test : MonoBehaviour
 {
-    public Variable_Float testfloat;
-
     // Use this for initialization
     void Start()
     {
