@@ -15,7 +15,7 @@ public class Character_ExploreCaptain : Character_Explore
     private GameObject destroyedObject;
 
     public Map_Data MapData { get; private set; }
-    public bool IntoEnemyZone;
+    public bool IntoEnemyZone { get; private set; }
 
     public override void SetTrack(List<Node_AStar> track) { }
 
@@ -61,21 +61,39 @@ public class Character_ExploreCaptain : Character_Explore
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
+        if (1 << other.gameObject.layer == (int)layers.EnemyZone)
+        {
+            IntoEnemyZone = true;
+            destroyedObject = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (1 << other.gameObject.layer == (int)layers.EnemyZone)
         {
             IntoEnemyZone = false;
             destroyedObject = null;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
-        {
-            IntoEnemyZone = true;
-            destroyedObject = collision.gameObject;
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
+    //    {
+    //        IntoEnemyZone = false;
+    //        destroyedObject = null;
+    //    }
+    //}
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (1 << collision.gameObject.layer == (int)layers.EnemyZone)
+    //    {
+    //        IntoEnemyZone = true;
+    //        destroyedObject = collision.gameObject;
+    //    }
+    //}
 }
