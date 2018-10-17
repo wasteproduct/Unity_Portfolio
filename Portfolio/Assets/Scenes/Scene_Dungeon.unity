@@ -309,6 +309,7 @@ MonoBehaviour:
   layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
   phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
+  choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}
 --- !u!23 &397755824
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -561,6 +562,8 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   enemyTurn: {fileID: 11400000, guid: e47c44774fee2f24f9333de796f0408f, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}
+  layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
 --- !u!4 &1289549698
 Transform:
   m_ObjectHideFlags: 0

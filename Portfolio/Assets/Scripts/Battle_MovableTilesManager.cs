@@ -10,8 +10,7 @@ namespace Battle
     public class Battle_MovableTilesManager : ScriptableObject
     {
         public GameObject tilePrefab;
-        public Variable_Bool enemyTurn;
-        public Battle_TargetManager targetManager;
+        public Battle_TurnController turnController;
 
         private Map_Data mapData;
 
@@ -38,8 +37,6 @@ namespace Battle
         {
             ClearTilesList();
 
-            List<Character_InBattle> oppositeSide = (enemyTurn.flag == true) ? inBattleCharactersPlayer : inBattleEnemies;
-
             int standingX = currentTurnCharacter.StandingTileX;
             int standingZ = currentTurnCharacter.StandingTileZ;
 
@@ -55,13 +52,23 @@ namespace Battle
 
                     Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
                     GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-                    bool targetInRange = targetManager.CountTargetsInAttackRange(x, z, currentTurnCharacter, oppositeSide);
+                    bool targetInRange = TargetsInAttackRange(x, z, currentTurnCharacter.AttackRange);
 
                     newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
 
                     MovableTiles.Add(newTile);
                 }
             }
+        }
+
+        private bool TargetsInAttackRange(int x, int z, int attackRange)
+        {
+            for (int i = 0; i < turnController.OppositeSide.Count; i++)
+            {
+                if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - x) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - z)) <= attackRange) return true;
+            }
+
+            return false;
         }
 
         private bool TileOccupied(int x, int z, Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)

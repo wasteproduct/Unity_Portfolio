@@ -25,6 +25,7 @@ public class Cursor : MonoBehaviour
     public Manager_Layers layers;
     public Manager_CommonFeatures commonFeatures;
     public Manager_DungeonPhase phaseManager;
+    public Variable_Bool choosingTarget;
     
     private Map_Data mapData;
     private bool leftClicked;
@@ -43,6 +44,12 @@ public class Cursor : MonoBehaviour
     void Update()
     {
         ResetDoorColors();
+
+        if (choosingTarget.flag == true)
+        {
+            this.transform.position = Vector3.zero;
+            return;
+        }
 
         LeftClick();
 

@@ -10,8 +10,7 @@ public class Character_InBattle : MonoBehaviour
 
     // temporary
     public int AttackRange { get; private set; }
-    public Material defaultWhite;
-    public Material red;
+    public MeshRenderer meshRenderer;
 
     public Map_Data MapData { get; private set; }
     public bool Dead { get; private set; }
@@ -29,11 +28,10 @@ public class Character_InBattle : MonoBehaviour
     // temporary
     public void HighlightAsTarget(bool flag)
     {
-        Material newMaterial = (flag == true) ? red : defaultWhite;
-        this.GetComponent<MeshRenderer>().material = newMaterial;
+        meshRenderer.material.color = (flag == true) ? Color.red : Color.white;
     }
 
-    public void Initialize(Map_Data mapData)
+    public void Initialize(Map_Data mapData, bool enemyCharacter)
     {
         MapData = mapData;
 
@@ -42,6 +40,8 @@ public class Character_InBattle : MonoBehaviour
 
         this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+
+        if (enemyCharacter == true) this.gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         // temporary
         AttackRange = 3;

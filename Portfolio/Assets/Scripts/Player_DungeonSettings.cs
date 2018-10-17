@@ -32,7 +32,7 @@ namespace Player
 
             GameObject captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
             captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-            captain.GetComponent<Character_InBattle>().Initialize(mapData);
+            captain.GetComponent<Character_InBattle>().Initialize(mapData, false);
             PlayerCharacters.Add(captain);
 
             for (int i = 0; i < 2; i++)
@@ -41,7 +41,7 @@ namespace Player
 
                 GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
                 newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-                newFellow.GetComponent<Character_InBattle>().Initialize(mapData);
+                newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
                 PlayerCharacters.Add(newFellow);
             }
 

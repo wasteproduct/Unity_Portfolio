@@ -14,10 +14,13 @@ namespace Battle
         public Battle_TurnController turnController;
         public Variable_Bool enemyTurn;
         public Battle_TargetManager targetManager;
+        public Variable_Bool choosingTarget;
+        public Manager_Layers layers;
 
         private Player_DungeonSettings playerManager;
         private List<Character_InBattle> inBattleCharactersPlayer;
         private List<Character_InBattle> inBattleEnemies;
+        private GameObject target;
 
         public Character_InBattle CurrentTurnCharacter { get; private set; }
         public bool OutOfMovableRange(Map_TileData destinationTile)
@@ -27,7 +30,7 @@ namespace Battle
 
         public void StartAction()
         {
-            if (targetManager.Targets.Count > 1) StartCoroutine(PickTarget());
+            targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
             StartCoroutine(CurrentTurnCharacterAction());
         }
 
@@ -36,11 +39,14 @@ namespace Battle
             playerManager = player.GetComponent<Player_DungeonSettings>();
 
             movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
-            turnController.Initialize();
 
             SetPlayerCharacters();
 
             SetEnemies(enemiesInZone);
+
+            turnController.Initialize(inBattleEnemies);
+
+            target = null;
 
             CurrentTurnCharacter = inBattleCharactersPlayer[0];
             movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
@@ -54,14 +60,56 @@ namespace Battle
 
         private IEnumerator CurrentTurnCharacterAction()
         {
+            choosingTarget.flag = true;
+
             while (true)
             {
+                if (targetManager.Targets.Count <= 0) choosingTarget.flag = false;
+
+                if (targetManager.Targets.Count == 1)
+                {
+                    target = targetManager.Targets[0];
+                    choosingTarget.flag = false;
+                }
+
+                if (targetManager.Targets.Count > 1)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        RaycastHit hitInfo;
+                        if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+                        {
+                            if (1 << hitInfo.collider.gameObject.layer == (int)layers.Enemy)
+                            {
+                                target = hitInfo.collider.gameObject;
+                                choosingTarget.flag = false;
+                            }
+                        }
+                    }
+                }
+
+                if (choosingTarget.flag == false) break;
+
+                yield return null;
+            }
+
+            while (true)
+            {
+                if (target != null)
+                {
+                    DestroyTarget();
+                    target = null;
+                }
+
                 if (CurrentTurnCharacter.ActionFinished() == true) break;
 
                 yield return null;
             }
 
-            if (AllFinishedTurn() == true)
+            bool rewind = AllFinishedTurn();
+
+            if (rewind == true)
             {
                 if (BattleOver() == true)
                 {
@@ -73,36 +121,25 @@ namespace Battle
                 }
             }
 
-            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies);
+            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
             if (enemyTurn.flag == true) StartCoroutine(CurrentTurnCharacterAction());
         }
 
-        private IEnumerator PickTarget()
+        private void DestroyTarget()
         {
-            bool picked = false;
-
-            for (int i = 0; i < targetManager.Targets.Count; i++)
+            if (inBattleCharactersPlayer.Contains(target.GetComponent<Character_InBattle>()) == true)
             {
-                targetManager.Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);
+                inBattleCharactersPlayer.Remove(target.GetComponent<Character_InBattle>());
+                Destroy(target.gameObject);
+                return;
             }
 
-            while (true)
+            if (inBattleEnemies.Contains(target.GetComponent<Character_InBattle>()) == true)
             {
-                // must work with cursor??
-
-
-                if (picked == true)
-                {
-                    for (int i = 0; i < targetManager.Targets.Count; i++)
-                    {
-                        targetManager.Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(false);
-                    }
-
-                    break;
-                }
-
-                yield return null;
+                inBattleEnemies.Remove(target.GetComponent<Character_InBattle>());
+                Destroy(target.gameObject);
+                return;
             }
         }
 
@@ -161,7 +198,7 @@ namespace Battle
 
             for (int i = 0; i < enemiesInZone.Count; i++)
             {
-                enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData);
+                enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData, true);
                 inBattleEnemies.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
             }
         }
