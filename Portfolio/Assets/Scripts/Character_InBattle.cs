@@ -8,6 +8,11 @@ public class Character_InBattle : MonoBehaviour
 {
     public Calculation_AStar aStar;
 
+    // temporary
+    public int AttackRange { get; private set; }
+    public Material defaultWhite;
+    public Material red;
+
     public Map_Data MapData { get; private set; }
     public bool Dead { get; private set; }
     public bool TurnFinished { get; private set; }
@@ -21,6 +26,13 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
+    // temporary
+    public void HighlightAsTarget(bool flag)
+    {
+        Material newMaterial = (flag == true) ? red : defaultWhite;
+        this.GetComponent<MeshRenderer>().material = newMaterial;
+    }
+
     public void Initialize(Map_Data mapData)
     {
         MapData = mapData;
@@ -30,6 +42,9 @@ public class Character_InBattle : MonoBehaviour
 
         this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+
+        // temporary
+        AttackRange = 3;
     }
 
     public void Move(int targetIndex, float lerpTime)

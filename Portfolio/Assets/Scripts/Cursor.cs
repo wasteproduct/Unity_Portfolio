@@ -96,7 +96,7 @@ public class Cursor : MonoBehaviour
 
             clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
 
-            Explore_CheckIntoEnemyZone();
+            //Explore_CheckIntoEnemyZone();
 
             this.GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
@@ -105,21 +105,21 @@ public class Cursor : MonoBehaviour
         }
     }
 
-    private void Explore_CheckIntoEnemyZone()
-    {
-        if (phaseManager.CurrentPhase != phaseManager.Phase_Explore) return;
+    //private void Explore_CheckIntoEnemyZone()
+    //{
+    //    if (phaseManager.CurrentPhase != phaseManager.Phase_Explore) return;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
-        {
-            if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
-            {
-                clickEvent.intoEnemyZone = true;
-                clickEvent.destroyedObject = hitInfo.collider.gameObject;
-            }
-        }
-    }
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    RaycastHit hitInfo;
+    //    if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+    //    {
+    //        if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
+    //        {
+    //            clickEvent.intoEnemyZone = true;
+    //            clickEvent.destroyedObject = hitInfo.collider.gameObject;
+    //        }
+    //    }
+    //}
 
     private void TracePath()
     {

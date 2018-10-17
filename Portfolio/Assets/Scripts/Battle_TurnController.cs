@@ -7,35 +7,48 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Turn Controller", order = 1)]
     public class Battle_TurnController : ScriptableObject
     {
-        private readonly int playerTurn = 0;
-        private readonly int enemyTurn = 1;
+        public Variable_Bool enemyTurn;
+
+        private readonly int playerTurn = 1;
 
         public int CurrentTurn { get; private set; }
 
         public void Initialize()
         {
             CurrentTurn = playerTurn;
+            enemyTurn.flag = false;
         }
 
         public Character_InBattle SetCurrentTurnCharacter(List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
         {
-            for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
+            CurrentTurn++;
+
+            if (CurrentTurn % 2 == playerTurn)
             {
-                if (inBattleCharactersPlayer[i].TurnFinished == true) continue;
+                for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
+                {
+                    if (inBattleCharactersPlayer[i].TurnFinished == true) continue;
 
-                Camera.main.GetComponent<Camera_Movement>().SetFocus(inBattleCharactersPlayer[i].gameObject);
-                return inBattleCharactersPlayer[i];
+                    enemyTurn.flag = false;
+
+                    Camera.main.GetComponent<Camera_Movement>().SetFocus(inBattleCharactersPlayer[i].gameObject);
+
+                    return inBattleCharactersPlayer[i];
+                }
             }
+            else
+            {
+                for (int i = 0; i < inBattleEnemies.Count; i++)
+                {
+                    if (inBattleEnemies[i].TurnFinished == true) continue;
 
-            //CurrentTurn++;
-            //if (CurrentTurn % 2 == playerTurn)
-            //{
+                    enemyTurn.flag = true;
 
-            //}
-            //else
-            //{
+                    Camera.main.GetComponent<Camera_Movement>().SetFocus(inBattleEnemies[i].gameObject);
 
-            //}
+                    return inBattleEnemies[i];
+                }
+            }
 
             return null;
         }

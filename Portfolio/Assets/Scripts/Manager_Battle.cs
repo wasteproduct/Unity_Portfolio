@@ -12,6 +12,8 @@ namespace Battle
         public GameObject tileMap;
         public Battle_MovableTilesManager movableTilesManager;
         public Battle_TurnController turnController;
+        public Variable_Bool enemyTurn;
+        public Battle_TargetManager targetManager;
 
         private Player_DungeonSettings playerManager;
         private List<Character_InBattle> inBattleCharactersPlayer;
@@ -25,10 +27,11 @@ namespace Battle
 
         public void StartAction()
         {
+            if (targetManager.Targets.Count > 1) StartCoroutine(PickTarget());
             StartCoroutine(CurrentTurnCharacterAction());
         }
 
-        public void Initialize()
+        public void Initialize(List<GameObject> enemiesInZone)
         {
             playerManager = player.GetComponent<Player_DungeonSettings>();
 
@@ -37,22 +40,16 @@ namespace Battle
 
             SetPlayerCharacters();
 
-            SetEnemies();
+            SetEnemies(enemiesInZone);
 
             CurrentTurnCharacter = inBattleCharactersPlayer[0];
-            SetMovableTiles();
+            movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
         }
 
         // Update is called once per frame
         void Update()
         {
 
-        }
-
-        private void SetMovableTiles()
-        {
-            Character_Explore currentTurnCharacterMoveController = CurrentTurnCharacter.gameObject.GetComponent<Character_InDungeon>().MoveController;
-            movableTilesManager.SetTiles(currentTurnCharacterMoveController.StandingTileX, currentTurnCharacterMoveController.StandingTileZ);
         }
 
         private IEnumerator CurrentTurnCharacterAction()
@@ -77,7 +74,36 @@ namespace Battle
             }
 
             CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies);
-            SetMovableTiles();
+            movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
+            if (enemyTurn.flag == true) StartCoroutine(CurrentTurnCharacterAction());
+        }
+
+        private IEnumerator PickTarget()
+        {
+            bool picked = false;
+
+            for (int i = 0; i < targetManager.Targets.Count; i++)
+            {
+                targetManager.Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);
+            }
+
+            while (true)
+            {
+                // must work with cursor??
+
+
+                if (picked == true)
+                {
+                    for (int i = 0; i < targetManager.Targets.Count; i++)
+                    {
+                        targetManager.Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(false);
+                    }
+
+                    break;
+                }
+
+                yield return null;
+            }
         }
 
         private void RecoverTurns()
@@ -129,9 +155,15 @@ namespace Battle
             }
         }
 
-        private void SetEnemies()
+        private void SetEnemies(List<GameObject> enemiesInZone)
         {
             inBattleEnemies = new List<Character_InBattle>();
+
+            for (int i = 0; i < enemiesInZone.Count; i++)
+            {
+                enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData);
+                inBattleEnemies.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
+            }
         }
 
         public void FinishBattle()

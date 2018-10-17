@@ -11,10 +11,12 @@ namespace TileDataSet
 
         public Map_TileData TileData { get; private set; }
 
-        public void SetDetails(Map_TileData tileData)
+        public void SetDetails(Map_TileData tileData, bool targetInRange)
         {
             TileData = tileData;
             this.GetComponent<MeshRenderer>().material = normal;
+
+            if (targetInRange == true) this.GetComponent<MeshRenderer>().material = attack;
         }
     }
 }

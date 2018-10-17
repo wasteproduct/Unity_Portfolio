@@ -81,12 +81,12 @@ namespace Player
 
                         moving.flag = false;
 
-                        if (clickEvent.intoEnemyZone == true)
-                        {
-                            dungeonPlayManager.GetComponent<Manager_DungeonPlay>().StartBattle();
-                            Destroy(clickEvent.destroyedObject.gameObject);
-                            clickEvent.intoEnemyZone = false;
-                        }
+                        //if (clickEvent.intoEnemyZone == true)
+                        //{
+                        //    dungeonPlayManager.GetComponent<Manager_DungeonPlay>().StartBattle();
+                        //    Destroy(clickEvent.destroyedObject.gameObject);
+                        //    clickEvent.intoEnemyZone = false;
+                        //}
 
                         break;
                     }

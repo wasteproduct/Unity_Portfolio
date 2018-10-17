@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: Battle_Movable Tiles Manager
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1435477390988798, guid: 1185a98ec21617e43a7f3700faf28bb0, type: 2}
+  enemyTurn: {fileID: 11400000, guid: e47c44774fee2f24f9333de796f0408f, type: 2}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}

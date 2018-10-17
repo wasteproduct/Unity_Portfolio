@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  defaultWhite: {fileID: 2100000, guid: 6797f3d8801381b4e9217e38144580d2, type: 2}
+  red: {fileID: 2100000, guid: b39e683717c58ad49af024f7097d8d2e, type: 2}
 --- !u!135 &135469783721422726
 SphereCollider:
   m_ObjectHideFlags: 1

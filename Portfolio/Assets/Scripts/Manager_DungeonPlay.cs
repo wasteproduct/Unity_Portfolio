@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using AStar;
 using Battle;
+using System.Collections.Generic;
 
 public class Manager_DungeonPlay : MonoBehaviour
 {
@@ -26,12 +27,12 @@ public class Manager_DungeonPlay : MonoBehaviour
 
     }
 
-    public void StartBattle()
+    public void StartBattle(List<GameObject> enemiesInZone)
     {
         phaseManager.PhaseToBattle();
 
         battleManager.gameObject.SetActive(true);
 
-        battleManager.GetComponent<Manager_Battle>().Initialize();
+        battleManager.GetComponent<Manager_Battle>().Initialize(enemiesInZone);
     }
 }

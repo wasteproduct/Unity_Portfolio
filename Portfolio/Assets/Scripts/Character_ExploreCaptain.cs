@@ -12,8 +12,7 @@ public class Character_ExploreCaptain : Character_Explore
     public Variable_Int currentTileX;
     public Variable_Int currentTileZ;
 
-    private GameObject steppedEnemyZone;
-
+    public GameObject SteppedEnemyZone { get; private set; }
     public Map_Data MapData { get; private set; }
     public bool IntoEnemyZone { get; private set; }
 
@@ -21,8 +20,8 @@ public class Character_ExploreCaptain : Character_Explore
 
     public void DestroySteppedEnemyZone()
     {
-        Destroy(steppedEnemyZone.gameObject);
-        steppedEnemyZone = null;
+        Destroy(SteppedEnemyZone.gameObject);
+        SteppedEnemyZone = null;
         IntoEnemyZone = false;
     }
 
@@ -31,7 +30,7 @@ public class Character_ExploreCaptain : Character_Explore
         MapData = mapData;
 
         IntoEnemyZone = false;
-        steppedEnemyZone = null;
+        SteppedEnemyZone = null;
     }
 
     public override void Move(int targetIndex, float lerpTime)
@@ -66,7 +65,7 @@ public class Character_ExploreCaptain : Character_Explore
         if (1 << other.gameObject.layer == (int)layers.EnemyZone)
         {
             IntoEnemyZone = true;
-            steppedEnemyZone = other.gameObject;
+            SteppedEnemyZone = other.gameObject;
         }
     }
 
@@ -75,7 +74,7 @@ public class Character_ExploreCaptain : Character_Explore
         if (1 << other.gameObject.layer == (int)layers.EnemyZone)
         {
             IntoEnemyZone = false;
-            steppedEnemyZone = null;
+            SteppedEnemyZone = null;
         }
     }
 }

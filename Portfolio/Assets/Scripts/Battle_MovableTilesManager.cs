@@ -10,6 +10,8 @@ namespace Battle
     public class Battle_MovableTilesManager : ScriptableObject
     {
         public GameObject tilePrefab;
+        public Variable_Bool enemyTurn;
+        public Battle_TargetManager targetManager;
 
         private Map_Data mapData;
 
@@ -32,9 +34,14 @@ namespace Battle
             MovableTiles = new List<GameObject>();
         }
 
-        public void SetTiles(int standingX, int standingZ)
+        public void SetTiles(Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
         {
             ClearTilesList();
+
+            List<Character_InBattle> oppositeSide = (enemyTurn.flag == true) ? inBattleCharactersPlayer : inBattleEnemies;
+
+            int standingX = currentTurnCharacter.StandingTileX;
+            int standingZ = currentTurnCharacter.StandingTileZ;
 
             for (int z = standingZ - 3; z <= standingZ + 3; z++)
             {
@@ -44,13 +51,36 @@ namespace Battle
 
                     if (mapData.TileData[x, z].Type != TileType.Floor) continue;
 
+                    if (TileOccupied(x, z, currentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies) == true) continue;
+
                     Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
                     GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z]);
+                    bool targetInRange = targetManager.CountTargetsInAttackRange(x, z, currentTurnCharacter, oppositeSide);
+
+                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
 
                     MovableTiles.Add(newTile);
                 }
             }
+        }
+
+        private bool TileOccupied(int x, int z, Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
+        {
+            for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
+            {
+                if (currentTurnCharacter == inBattleCharactersPlayer[i]) continue;
+
+                if ((x == inBattleCharactersPlayer[i].StandingTileX) && (z == inBattleCharactersPlayer[i].StandingTileZ)) return true;
+            }
+
+            for (int i = 0; i < inBattleEnemies.Count; i++)
+            {
+                if (currentTurnCharacter == inBattleEnemies[i]) continue;
+
+                if ((x == inBattleEnemies[i].StandingTileX) && (z == inBattleEnemies[i].StandingTileZ)) return true;
+            }
+
+            return false;
         }
 
         private void ClearTilesList()

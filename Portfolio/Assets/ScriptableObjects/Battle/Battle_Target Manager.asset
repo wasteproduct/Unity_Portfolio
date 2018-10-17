@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 996e90a9899c1344499d7892a22f7a60, type: 3}
-  m_Name: Battle_Turn Controller
+  m_Script: {fileID: 11500000, guid: 16e8a46abfe6dc340b58ea745ef0a38c, type: 3}
+  m_Name: Battle_Target Manager
   m_EditorClassIdentifier: 
-  enemyTurn: {fileID: 11400000, guid: e47c44774fee2f24f9333de796f0408f, type: 2}

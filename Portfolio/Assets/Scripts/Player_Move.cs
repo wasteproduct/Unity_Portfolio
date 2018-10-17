@@ -28,7 +28,7 @@ namespace Player
         public void Initialize(List<GameObject> playerCharacters)
         {
             moveController.moving = false;
-            clickEvent.intoEnemyZone = false;
+            //clickEvent.intoEnemyZone = false;
 
             characters = new List<GameObject>(playerCharacters);
 
@@ -119,8 +119,9 @@ namespace Player
                     {
                         moveController.moving = false;
 
+                        List<GameObject> enemiesInZone = Captain.GetComponent<Character_ExploreCaptain>().SteppedEnemyZone.GetComponent<Map_EnemyZone>().StayingEnemies;
                         Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
-                        dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
+                        dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle(enemiesInZone);
 
                         break;
                     }
@@ -134,11 +135,11 @@ namespace Player
 
                         moveController.moving = false;
 
-                        if (clickEvent.intoEnemyZone == true)
-                        {
-                            Destroy(clickEvent.destroyedObject.gameObject);
-                            dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
-                        }
+                        //if (clickEvent.intoEnemyZone == true)
+                        //{
+                        //    Destroy(clickEvent.destroyedObject.gameObject);
+                        //    dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
+                        //}
 
                         break;
                     }
