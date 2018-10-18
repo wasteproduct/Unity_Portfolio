@@ -134,12 +134,6 @@ namespace Player
 
                         moveController.moving = false;
 
-                        //if (clickEvent.intoEnemyZone == true)
-                        //{
-                        //    Destroy(clickEvent.destroyedObject.gameObject);
-                        //    dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle();
-                        //}
-
                         break;
                     }
                 }

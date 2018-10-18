@@ -7,6 +7,7 @@ using MapDataSet;
 public class Enemy_Move : MonoBehaviour
 {
     public Calculation_AStar aStar;
+    public Calculation_Move moveController;
 
     private Character_InBattle inBattleScript;
 
@@ -28,16 +29,39 @@ public class Enemy_Move : MonoBehaviour
             print("Failed to find path.");
             return;
         }
+
+        StartCoroutine(Move());
     }
 
     private IEnumerator Move()
     {
-        int stop = 32;
+        float elapsedTime = 0.0f;
+        float lerpTime = 0.0f;
+
         while (true)
         {
-            if (stop <= 0) break;
+            if (elapsedTime >= moveController.ElapsedTimeLimit)
+            {
+                // 액션 시작해야 한다
+                break;
+            }
 
-            stop--;
+            elapsedTime += Time.deltaTime;
+            lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
+
+            Node_AStar startNode = aStar.FinalTrack[0];
+            Node_AStar targetNode = aStar.FinalTrack[1];
+
+            float startX = MapData.TileData[startNode.X, startNode.Z].X;
+            float startZ = MapData.TileData[startNode.X, startNode.Z].Z;
+
+            float targetX = MapData.TileData[targetNode.X, targetNode.Z].X;
+            float targetZ = MapData.TileData[targetNode.X, targetNode.Z].Z;
+
+            float x = Mathf.Lerp(startX, targetX, lerpTime);
+            float z = Mathf.Lerp(startZ, targetZ, lerpTime);
+
+            this.gameObject.transform.position = new Vector3(x, 0.0f, z);
 
             yield return null;
         }
