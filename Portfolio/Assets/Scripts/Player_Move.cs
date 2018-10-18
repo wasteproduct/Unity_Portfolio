@@ -28,7 +28,6 @@ namespace Player
         public void Initialize(List<GameObject> playerCharacters)
         {
             moveController.moving = false;
-            //clickEvent.intoEnemyZone = false;
 
             characters = new List<GameObject>(playerCharacters);
 

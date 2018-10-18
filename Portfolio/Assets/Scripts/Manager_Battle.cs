@@ -35,6 +35,13 @@ namespace Battle
             StartCoroutine(CurrentTurnCharacterAction());
         }
 
+        public void EnemyAction()
+        {
+            ResetMaterials();
+            target = targetManager.Enemy_ChooseTarget(CurrentTurnCharacter);
+            //CurrentTurnCharacter.Enemy_StartMove(target.GetComponent<Character_InBattle>());
+        }
+
         public void Initialize(List<GameObject> enemiesInZone)
         {
             playerManager = player.GetComponent<Player_DungeonSettings>();
@@ -124,7 +131,7 @@ namespace Battle
 
             CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
-            if (enemyTurn.flag == true) StartAction();//StartCoroutine(CurrentTurnCharacterAction());
+            if (enemyTurn.flag == true) StartAction();
         }
 
         private void ResetMaterials()
@@ -208,6 +215,8 @@ namespace Battle
             for (int i = 0; i < enemiesInZone.Count; i++)
             {
                 enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData, true);
+                enemiesInZone[i].GetComponent<Enemy_Move>().Initialize(tileMap.GetComponent<Map_Main>().MapData);
+
                 inBattleEnemies.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
             }
         }
