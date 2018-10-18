@@ -95,19 +95,6 @@ namespace Battle
             return result;
         }
 
-        private void ResetMaterials(List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
-        {
-            for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
-            {
-                inBattleCharactersPlayer[i].HighlightAsTarget(false);
-            }
-
-            for (int i = 0; i < inBattleEnemies.Count; i++)
-            {
-                inBattleEnemies[i].HighlightAsTarget(false);
-            }
-        }
-
         private Character_InBattle FindCurrentTurnCharacter(List<Character_InBattle> currentTurnSide)
         {
             for (int i = 0; i < currentTurnSide.Count; i++)

@@ -45,6 +45,7 @@ public class Character_InBattle : MonoBehaviour
 
         // temporary
         AttackRange = 3;
+        if (enemyCharacter == true) AttackRange = 1;
     }
 
     public void Move(int targetIndex, float lerpTime)

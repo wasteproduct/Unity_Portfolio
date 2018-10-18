@@ -20,6 +20,9 @@ namespace Battle
                 if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - currentTurnCharacter.StandingTileX) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ)) <= currentTurnCharacter.AttackRange) Targets.Add(turnController.OppositeSide[i].gameObject);
             }
 
+            // temporary
+            if (turnController.enemyTurn.flag == true) return;
+
             for (int i = 0; i < Targets.Count; i++)
             {
                 Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);

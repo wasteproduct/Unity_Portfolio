@@ -30,6 +30,7 @@ namespace Battle
 
         public void StartAction()
         {
+            ResetMaterials();
             targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
             StartCoroutine(CurrentTurnCharacterAction());
         }
@@ -123,7 +124,15 @@ namespace Battle
 
             CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
-            if (enemyTurn.flag == true) StartCoroutine(CurrentTurnCharacterAction());
+            if (enemyTurn.flag == true) StartAction();//StartCoroutine(CurrentTurnCharacterAction());
+        }
+
+        private void ResetMaterials()
+        {
+            for (int i = 0; i < inBattleEnemies.Count; i++)
+            {
+                inBattleEnemies[i].HighlightAsTarget(false);
+            }
         }
 
         private void DestroyTarget()
