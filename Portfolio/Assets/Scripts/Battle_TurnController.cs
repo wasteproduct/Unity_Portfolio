@@ -7,16 +7,78 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Turn Controller", order = 1)]
     public class Battle_TurnController : ScriptableObject
     {
+        public Character_InBattle CurrentTurnCharacter { get; private set; }
+        public List<Character_InBattle> PlayerCharacters { get; private set; }
+        public List<Character_InBattle> EnemyCharacters { get; private set; }
+
+        public void Initialize(List<GameObject> playerCharacters, List<GameObject> enemiesInZone)
+        {
+            SetPlayerCharacters(playerCharacters);
+            SetEnemyCharacters(enemiesInZone);
+
+            CurrentTurnCharacter = PlayerCharacters[0];
+        }
+
+        private void SetEnemyCharacters(List<GameObject> enemiesInZone)
+        {
+            EnemyCharacters = new List<Character_InBattle>();
+
+            for (int i = 0; i < enemiesInZone.Count; i++)
+            {
+                if (enemiesInZone[i].GetComponent<Character_InBattle>().Dead == true)
+                {
+                    enemiesInZone[i].gameObject.SetActive(false);
+                    continue;
+                }
+
+                EnemyCharacters.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
+            }
+        }
+
+        private void SetPlayerCharacters(List<GameObject> playerCharacters)
+        {
+            PlayerCharacters = new List<Character_InBattle>();
+
+            for (int i = 0; i < playerCharacters.Count; i++)
+            {
+                if (playerCharacters[i].GetComponent<Character_InBattle>().Dead == true)
+                {
+                    playerCharacters[i].gameObject.SetActive(false);
+                    continue;
+                }
+
+                PlayerCharacters.Add(playerCharacters[i].GetComponent<Character_InBattle>());
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// FAILURE
+        /// </summary>
         public Variable_Bool enemyTurn;
 
         private bool playerTurn;
 
-        public int CurrentTurn { get; private set; }
+        //public int CurrentTurn { get; private set; }
         public List<Character_InBattle> OppositeSide { get; private set; }
 
         public void Initialize(List<Character_InBattle> inBattleEnemies)
         {
-            CurrentTurn = 1;
+            //CurrentTurn = 1;
             OppositeSide = null;
             enemyTurn.flag = false;
             playerTurn = true;
@@ -26,7 +88,7 @@ namespace Battle
 
         public Character_InBattle SetCurrentTurnCharacter(List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies, bool rewind)
         {
-            CurrentTurn++;
+            //CurrentTurn++;
 
             playerTurn = !playerTurn;
 
