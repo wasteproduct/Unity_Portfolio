@@ -31,15 +31,17 @@ namespace Battle
         public void StartAction()
         {
             ResetMaterials();
-            targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
-            StartCoroutine(CurrentTurnCharacterAction());
-        }
 
-        public void EnemyAction()
-        {
-            ResetMaterials();
-            target = targetManager.Enemy_ChooseTarget(CurrentTurnCharacter);
-            //CurrentTurnCharacter.Enemy_StartMove(target.GetComponent<Character_InBattle>());
+            if (enemyTurn.flag == true)
+            {
+                target = targetManager.Enemy_ChooseTarget(CurrentTurnCharacter);
+                CurrentTurnCharacter.gameObject.GetComponent<Enemy_Move>().StartMoving(movableTilesManager.MovableTiles, target);
+            }
+            else
+            {
+                targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
+                StartCoroutine(CurrentTurnCharacterAction());
+            }
         }
 
         public void Initialize(List<GameObject> enemiesInZone)
@@ -131,7 +133,7 @@ namespace Battle
 
             CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
-            if (enemyTurn.flag == true) StartAction();
+            StartAction();
         }
 
         private void ResetMaterials()
@@ -215,10 +217,57 @@ namespace Battle
             for (int i = 0; i < enemiesInZone.Count; i++)
             {
                 enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData, true);
-                enemiesInZone[i].GetComponent<Enemy_Move>().Initialize(tileMap.GetComponent<Map_Main>().MapData);
+                enemiesInZone[i].GetComponent<Enemy_Move>().Initialize(tileMap.GetComponent<Map_Main>().MapData, StartEnemyAction);
 
                 inBattleEnemies.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
             }
+        }
+
+        private void StartEnemyAction()
+        {
+            StartCoroutine(EnemyAction());
+        }
+
+        private bool EnemyNextToTarget()
+        {
+            Character_InBattle targetScript = target.GetComponent<Character_InBattle>();
+
+            if ((Mathf.Abs(targetScript.StandingTileX - CurrentTurnCharacter.StandingTileX) + Mathf.Abs(targetScript.StandingTileZ - CurrentTurnCharacter.StandingTileZ)) == 1) return true;
+
+            return false;
+        }
+
+        private IEnumerator EnemyAction()
+        {
+            while (true)
+            {
+                if (EnemyNextToTarget() == true)
+                {
+                    print("player hp -47479651");
+                }
+
+                if (CurrentTurnCharacter.ActionFinished() == true) break;
+
+                yield return null;
+            }
+
+            bool rewind = AllFinishedTurn();
+
+            if (rewind == true)
+            {
+                if (BattleOver() == true)
+                {
+
+                }
+                else
+                {
+                    RecoverTurns();
+                }
+            }
+
+            target = null;
+            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
+            movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
         }
 
         public void FinishBattle()

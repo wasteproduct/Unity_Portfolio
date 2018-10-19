@@ -39,12 +39,13 @@ namespace Battle
 
             int standingX = currentTurnCharacter.StandingTileX;
             int standingZ = currentTurnCharacter.StandingTileZ;
+            int movableDistance = currentTurnCharacter.MovableDistance;
 
-            for (int z = standingZ - 3; z <= standingZ + 3; z++)
+            for (int z = standingZ - movableDistance; z <= standingZ + movableDistance; z++)
             {
-                for (int x = standingX - 3; x <= standingX + 3; x++)
+                for (int x = standingX - movableDistance; x <= standingX + movableDistance; x++)
                 {
-                    if ((Mathf.Abs(z - standingZ) + Mathf.Abs(x - standingX)) > 3) continue;
+                    if ((Mathf.Abs(z - standingZ) + Mathf.Abs(x - standingX)) > movableDistance) continue;
 
                     if (mapData.TileData[x, z].Type != TileType.Floor) continue;
 

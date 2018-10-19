@@ -3,60 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using AStar;
 using MapDataSet;
+using TileDataSet;
 
 public class Enemy_Move : MonoBehaviour
 {
+    public delegate void Delegate_Action();
+
     public Calculation_AStar aStar;
     public Calculation_Move moveController;
 
     private Character_InBattle inBattleScript;
+    private Delegate_Action StartAction;
 
     public Map_Data MapData { get; private set; }
 
-    public void Initialize(Map_Data mapData)
+    public void Initialize(Map_Data mapData, Delegate_Action startAction)
     {
         MapData = mapData;
 
         inBattleScript = this.gameObject.GetComponent<Character_InBattle>();
+
+        StartAction = startAction;
     }
 
-    public void StartMoving(Character_InBattle target)
+    public void StartMoving(List<GameObject> movableTiles, GameObject target)
     {
-        bool pathFound = aStar.FindPath(MapData.TileData, MapData.TileData[inBattleScript.StandingTileX, inBattleScript.StandingTileZ], MapData.TileData[target.StandingTileX, target.StandingTileZ]);
+        int closestDistance = 99999999;
+        GameObject destinationTile = null;
+        Character_InBattle targetScript = target.GetComponent<Character_InBattle>();
 
-        if (pathFound == false)
+        for (int i = 0; i < movableTiles.Count; i++)
         {
-            print("Failed to find path.");
-            return;
+            Map_TileData tileData = movableTiles[i].GetComponent<Tile_MovableInBattle>().TileData;
+            int distance = Mathf.Abs(targetScript.StandingTileX - tileData.X) + Mathf.Abs(targetScript.StandingTileZ - tileData.Z);
+
+            if (distance < closestDistance)
+            {
+                destinationTile = movableTiles[i];
+                closestDistance = distance;
+            }
         }
 
-        StartCoroutine(Move());
+        StartCoroutine(Move(destinationTile.GetComponent<Tile_MovableInBattle>().TileData));
     }
 
-    private IEnumerator Move()
+    private IEnumerator Move(Map_TileData destinationTileData)
     {
         float elapsedTime = 0.0f;
         float lerpTime = 0.0f;
+        float startX = MapData.TileData[inBattleScript.StandingTileX, inBattleScript.StandingTileZ].X;
+        float startZ = MapData.TileData[inBattleScript.StandingTileX, inBattleScript.StandingTileZ].Z;
+        float targetX = MapData.TileData[destinationTileData.X, destinationTileData.Z].X;
+        float targetZ = MapData.TileData[destinationTileData.X, destinationTileData.Z].Z;
 
         while (true)
         {
             if (elapsedTime >= moveController.ElapsedTimeLimit)
             {
-                // 액션 시작해야 한다
+                StartAction();
                 break;
             }
 
             elapsedTime += Time.deltaTime;
             lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
-
-            Node_AStar startNode = aStar.FinalTrack[0];
-            Node_AStar targetNode = aStar.FinalTrack[1];
-
-            float startX = MapData.TileData[startNode.X, startNode.Z].X;
-            float startZ = MapData.TileData[startNode.X, startNode.Z].Z;
-
-            float targetX = MapData.TileData[targetNode.X, targetNode.Z].X;
-            float targetZ = MapData.TileData[targetNode.X, targetNode.Z].Z;
 
             float x = Mathf.Lerp(startX, targetX, lerpTime);
             float z = Mathf.Lerp(startZ, targetZ, lerpTime);

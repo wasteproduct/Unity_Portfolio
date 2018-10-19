@@ -11,6 +11,7 @@ public class Character_InBattle : MonoBehaviour
     // temporary
     public int AttackRange { get; private set; }
     public MeshRenderer meshRenderer;
+    public int MovableDistance { get; private set; }
 
     public Map_Data MapData { get; private set; }
     public bool Dead { get; private set; }
@@ -45,7 +46,12 @@ public class Character_InBattle : MonoBehaviour
 
         // temporary
         AttackRange = 3;
-        if (enemyCharacter == true) AttackRange = 1;
+        MovableDistance = 3;
+        if (enemyCharacter == true)
+        {
+            AttackRange = 1;
+            MovableDistance = 1;
+        }
     }
 
     public void Move(int targetIndex, float lerpTime)

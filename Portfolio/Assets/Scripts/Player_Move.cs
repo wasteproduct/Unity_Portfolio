@@ -65,7 +65,6 @@ namespace Player
                     if (targetIndex >= aStar.FinalTrack.Count)
                     {
                         moveController.moving = false;
-                        battleManager.GetComponent<Manager_Battle>().StartAction();
 
                         break;
                     }
@@ -78,6 +77,8 @@ namespace Player
 
                 yield return null;
             }
+
+            battleManager.GetComponent<Manager_Battle>().StartAction();
         }
 
         private void StartMove_Explore()
