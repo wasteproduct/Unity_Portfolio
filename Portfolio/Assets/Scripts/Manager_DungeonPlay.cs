@@ -33,7 +33,6 @@ public class Manager_DungeonPlay : MonoBehaviour
 
         battleManager.gameObject.SetActive(true);
 
-        //battleManager.GetComponent<Manager_Battle>().Initialize(enemiesInZone);
-        battleManager.GetComponent<Manager_Battle2>().Initialize(enemiesInZone);
+        battleManager.GetComponent<Manager_Battle>().Initialize(enemiesInZone);
     }
 }

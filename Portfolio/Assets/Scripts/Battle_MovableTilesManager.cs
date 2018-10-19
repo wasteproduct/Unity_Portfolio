@@ -33,71 +33,6 @@ namespace Battle
             MovableTiles = new List<GameObject>();
         }
 
-        public void SetTiles()
-        {
-            ClearTilesList();
-
-            int standingX = turnController.CurrentTurnCharacter.StandingTileX;
-            int standingZ = turnController.CurrentTurnCharacter.StandingTileZ;
-            int movableDistance = turnController.CurrentTurnCharacter.MovableDistance;
-
-            for (int z = standingZ - movableDistance; z <= standingZ + movableDistance; z++)
-            {
-                for (int x = standingX - movableDistance; x <= standingX + movableDistance; x++)
-                {
-                    if ((Mathf.Abs(z - standingZ) + Mathf.Abs(x - standingX)) > movableDistance) continue;
-
-                    if (mapData.TileData[x, z].Type != TileType.Floor) continue;
-
-                    if (TileOccupied(x, z) == true) continue;
-
-                    Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
-                    GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-                    bool targetInRange = TargetsInAttackRange(x, z);
-
-                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
-
-                    MovableTiles.Add(newTile);
-                }
-            }
-        }
-
-        private bool TargetsInAttackRange(int x, int z)
-        {
-            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            int attackRange = turnController.CurrentTurnCharacter.AttackRange;
-
-            for (int i = 0; i < oppositeSide.Count; i++)
-            {
-                if ((Mathf.Abs(oppositeSide[i].StandingTileX - x) + Mathf.Abs(oppositeSide[i].StandingTileZ - z)) <= attackRange) return true;
-            }
-
-            return false;
-        }
-
-        private bool TileOccupied(int x, int z)
-        {
-            List<Character_InBattle> playerCharacters = turnController.PlayerCharacters;
-            List<Character_InBattle> enemyCharacters = turnController.EnemyCharacters;
-            Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
-
-            for (int i = 0; i < playerCharacters.Count; i++)
-            {
-                if (currentTurnCharacter == playerCharacters[i]) continue;
-
-                if ((x == playerCharacters[i].StandingTileX) && (z == playerCharacters[i].StandingTileZ)) return true;
-            }
-
-            for (int i = 0; i < enemyCharacters.Count; i++)
-            {
-                if (currentTurnCharacter == enemyCharacters[i]) continue;
-
-                if ((x == enemyCharacters[i].StandingTileX) && (z == enemyCharacters[i].StandingTileZ)) return true;
-            }
-
-            return false;
-        }
-
         public void SetTiles(Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
         {
             ClearTilesList();
@@ -114,17 +49,46 @@ namespace Battle
 
                     if (mapData.TileData[x, z].Type != TileType.Floor) continue;
 
-                    //if (TileOccupied(x, z, currentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies) == true) continue;
+                    if (TileOccupied(x, z, currentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies) == true) continue;
 
                     Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
                     GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-                    //bool targetInRange = TargetsInAttackRange(x, z, currentTurnCharacter.AttackRange);
+                    bool targetInRange = TargetsInAttackRange(x, z, currentTurnCharacter.AttackRange);
 
-                    //newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
+                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
 
                     MovableTiles.Add(newTile);
                 }
             }
+        }
+
+        private bool TargetsInAttackRange(int x, int z, int attackRange)
+        {
+            for (int i = 0; i < turnController.OppositeSide.Count; i++)
+            {
+                if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - x) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - z)) <= attackRange) return true;
+            }
+
+            return false;
+        }
+
+        private bool TileOccupied(int x, int z, Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
+        {
+            for (int i = 0; i < inBattleCharactersPlayer.Count; i++)
+            {
+                if (currentTurnCharacter == inBattleCharactersPlayer[i]) continue;
+
+                if ((x == inBattleCharactersPlayer[i].StandingTileX) && (z == inBattleCharactersPlayer[i].StandingTileZ)) return true;
+            }
+
+            for (int i = 0; i < inBattleEnemies.Count; i++)
+            {
+                if (currentTurnCharacter == inBattleEnemies[i]) continue;
+
+                if ((x == inBattleEnemies[i].StandingTileX) && (z == inBattleEnemies[i].StandingTileZ)) return true;
+            }
+
+            return false;
         }
 
         private void ClearTilesList()

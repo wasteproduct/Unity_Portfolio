@@ -537,8 +537,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1289549698}
   - component: {fileID: 1289549697}
-  - component: {fileID: 1289549700}
-  - component: {fileID: 1289549699}
   m_Layer: 0
   m_Name: GameManager_Battle
   m_TagString: Untagged
@@ -552,7 +550,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289549696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14e79d59134ae8a4c895437b2f8efa33, type: 3}
   m_Name: 
@@ -579,36 +577,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1289549699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289549696}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8badde0bfd57ede4288a327dd16b9cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
-    type: 2}
---- !u!114 &1289549700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289549696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7294190b76bed904b80a705f7306fe4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battlePhaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
-  player: {fileID: 596837744}
-  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
-  movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
-    type: 2}
-  tileMap: {fileID: 1982687470}
 --- !u!1 &1553519080
 GameObject:
   m_ObjectHideFlags: 0
