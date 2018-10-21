@@ -19,6 +19,12 @@ namespace Battle
             movableTilesManager.SetTiles();
         }
 
+        // switch phase
+        public void StartMoving()
+        {
+            
+        }
+
         // Use this for initialization
         void Start()
         {

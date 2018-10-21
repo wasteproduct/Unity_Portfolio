@@ -12,8 +12,8 @@ namespace Battle
             currentPhase.ClosePhase();
             currentPhase.enabled = false;
 
-            currentPhase.enabled = true;
-            currentPhase.EnterPhase();
+            nextPhase.enabled = true;
+            nextPhase.EnterPhase();
         }
     }
 }

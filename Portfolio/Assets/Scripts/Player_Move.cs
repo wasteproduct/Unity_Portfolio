@@ -21,8 +21,9 @@ namespace Player
 
         public void StartMoving()
         {
-            if (phaseManager.CurrentPhase == phaseManager.Phase_Battle) StartMove_Battle();
-            else StartMove_Explore();
+            if (phaseManager.CurrentPhase == phaseManager.Phase_Battle) return;
+
+            StartMove_Explore();
         }
 
         public void Initialize(List<GameObject> playerCharacters)
@@ -34,52 +35,52 @@ namespace Player
             Captain = characters[0];
         }
 
-        private void StartMove_Battle()
-        {
-            if (clickEvent.pathFound == false) return;
+        //private void StartMove_Battle()
+        //{
+        //    if (clickEvent.pathFound == false) return;
 
-            if (battleManager.GetComponent<Manager_Battle>().OutOfMovableRange(clickEvent.destinationTile) == true)
-            {
-                print("Out of movable range.");
-                return;
-            }
+        //    if (battleManager.GetComponent<Manager_Battle>().OutOfMovableRange(clickEvent.destinationTile) == true)
+        //    {
+        //        print("Out of movable range.");
+        //        return;
+        //    }
 
-            moveController.moving = true;
+        //    moveController.moving = true;
 
-            StartCoroutine(Move_Battle());
-        }
+        //    StartCoroutine(Move_Battle());
+        //}
 
-        private IEnumerator Move_Battle()
-        {
-            int targetIndex = 1;
-            float elapsedTime = 0.0f;
-            float lerpTime = 0.0f;
+        //private IEnumerator Move_Battle()
+        //{
+        //    int targetIndex = 1;
+        //    float elapsedTime = 0.0f;
+        //    float lerpTime = 0.0f;
 
-            while (true)
-            {
-                if (elapsedTime >= moveController.ElapsedTimeLimit)
-                {
-                    targetIndex++;
-                    elapsedTime = 0.0f;
+        //    while (true)
+        //    {
+        //        if (elapsedTime >= moveController.ElapsedTimeLimit)
+        //        {
+        //            targetIndex++;
+        //            elapsedTime = 0.0f;
 
-                    if (targetIndex >= aStar.FinalTrack.Count)
-                    {
-                        moveController.moving = false;
+        //            if (targetIndex >= aStar.FinalTrack.Count)
+        //            {
+        //                moveController.moving = false;
 
-                        break;
-                    }
-                }
+        //                break;
+        //            }
+        //        }
 
-                elapsedTime += Time.deltaTime;
-                lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
+        //        elapsedTime += Time.deltaTime;
+        //        lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
 
-                battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter.Move(targetIndex, lerpTime);
+        //        battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter.Move(targetIndex, lerpTime);
 
-                yield return null;
-            }
+        //        yield return null;
+        //    }
 
-            battleManager.GetComponent<Manager_Battle>().StartAction();
-        }
+        //    battleManager.GetComponent<Manager_Battle>().StartAction();
+        //}
 
         private void StartMove_Explore()
         {

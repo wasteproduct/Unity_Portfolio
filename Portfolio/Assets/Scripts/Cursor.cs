@@ -144,12 +144,13 @@ public class Cursor : MonoBehaviour
             clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
         }
 
-        if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
-        else if (phaseManager.CurrentPhase == phaseManager.Phase_Battle)
-        {
-            Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter;
-            clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTurnCharacter.StandingTileX, currentTurnCharacter.StandingTileZ], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value]);
-        }
+        clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
+        //if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
+        //else if (phaseManager.CurrentPhase == phaseManager.Phase_Battle)
+        //{
+        //    Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter;
+        //    clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTurnCharacter.StandingTileX, currentTurnCharacter.StandingTileZ], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value]);
+        //}
 
         if (clickEvent.pathFound == false)
         {
