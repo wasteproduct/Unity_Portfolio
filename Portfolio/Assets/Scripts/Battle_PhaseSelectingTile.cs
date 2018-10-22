@@ -7,7 +7,18 @@ namespace Battle
     public class Battle_PhaseSelectingTile : Battle_PhaseBase
     {
         public Battle_MovableTilesManager movableTilesManager;
-        //public Battle_TurnController turnController;
+        public Event_Click clickEvent;
+
+        public override void ClickWork()
+        {
+            if (movableTilesManager.OutOfMovableRange(clickEvent.destinationTile))
+            {
+                print("Out of movable range.");
+                return;
+            }
+
+            phaseManager.EnterNextPhase();
+        }
 
         public override void ClosePhase()
         {
@@ -19,12 +30,6 @@ namespace Battle
             movableTilesManager.SetTiles();
         }
 
-        // switch phase
-        public void StartMoving()
-        {
-            
-        }
-
         // Use this for initialization
         void Start()
         {
@@ -34,10 +39,7 @@ namespace Battle
         // Update is called once per frame
         void Update()
         {
-            //if(input. ...)
-            //{
-            //  startmoving;
-            //}
+
         }
     }
 }

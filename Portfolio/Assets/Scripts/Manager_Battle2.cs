@@ -13,17 +13,23 @@ namespace Battle
         public Battle_MovableTilesManager movableTilesManager;
         public GameObject tileMap;
 
-        private Battle_PhaseSelectingTile phaseSelectingTile;
+        public void ClickWork()
+        {
+            battlePhaseManager.CurrentPhase.ClickWork();
+        }
 
         public void Initialize(List<GameObject> enemiesInZone)
         {
-            phaseSelectingTile = this.gameObject.GetComponent<Battle_PhaseSelectingTile>();
-
             turnController.Initialize(player.GetComponent<Player_DungeonSettings>().PlayerCharacters, enemiesInZone);
             movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
 
-            phaseSelectingTile.enabled = true;
-            phaseSelectingTile.EnterPhase();
+            Battle_PhaseBase[] phases = new Battle_PhaseBase[4];
+            phases[0] = this.GetComponent<Battle_PhaseSelectingTile>();
+            phases[1] = this.GetComponent<Battle_PhaseMoving>();
+            phases[2] = this.GetComponent<Battle_PhaseSelectingTarget>();
+            phases[3] = this.GetComponent<Battle_PhaseAction>();
+
+            battlePhaseManager.Initialize(phases);
 
             //playerManager = player.GetComponent<Player_DungeonSettings>();
 

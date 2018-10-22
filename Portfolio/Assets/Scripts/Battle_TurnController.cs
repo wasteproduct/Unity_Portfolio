@@ -7,9 +7,12 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Turn Controller", order = 1)]
     public class Battle_TurnController : ScriptableObject
     {
+        public Calculation_Move moveController;
+
         public Character_InBattle CurrentTurnCharacter { get; private set; }
         public List<Character_InBattle> PlayerCharacters { get; private set; }
         public List<Character_InBattle> EnemyCharacters { get; private set; }
+        public float ElapsedTimeLimit { get { return moveController.ElapsedTimeLimit; } }
 
         public void Initialize(List<GameObject> playerCharacters, List<GameObject> enemiesInZone)
         {

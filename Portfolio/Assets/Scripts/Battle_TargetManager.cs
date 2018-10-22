@@ -11,6 +11,19 @@ namespace Battle
 
         public List<GameObject> Targets;
 
+        public void SearchTargets()
+        {
+            Targets = new List<GameObject>();
+
+            
+        }
+
+
+
+
+
+
+        // failure
         public GameObject Enemy_ChooseTarget(Character_InBattle currentTurnCharacter)
         {
             // 거리에 따른

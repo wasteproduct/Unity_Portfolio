@@ -6,6 +6,11 @@ namespace Battle
 {
     public class Battle_PhaseAction : Battle_PhaseBase
     {
+        public override void ClickWork()
+        {
+
+        }
+
         public override void ClosePhase()
         {
 

@@ -6,6 +6,13 @@ namespace Battle
 {
     public class Battle_PhaseSelectingTarget : Battle_PhaseBase
     {
+        public Battle_TargetManager targetManager;
+
+        public override void ClickWork()
+        {
+
+        }
+
         public override void ClosePhase()
         {
 
