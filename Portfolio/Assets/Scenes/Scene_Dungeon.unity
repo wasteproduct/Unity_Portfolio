@@ -657,6 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseNumber: 3
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
 --- !u!114 &1289549703
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,12 @@ namespace Battle
 
         public void Initialize(List<GameObject> enemiesInZone)
         {
+            // Initialize enemies
+            for (int i = 0; i < enemiesInZone.Count; i++)
+            {
+                enemiesInZone[i].GetComponent<Character_InBattle>().Initialize(tileMap.GetComponent<Map_Main>().MapData, true);
+            }
+
             turnController.Initialize(player.GetComponent<Player_DungeonSettings>().PlayerCharacters, enemiesInZone);
             movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
 

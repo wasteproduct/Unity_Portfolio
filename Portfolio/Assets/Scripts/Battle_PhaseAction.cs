@@ -6,6 +6,9 @@ namespace Battle
 {
     public class Battle_PhaseAction : Battle_PhaseBase
     {
+        public Battle_TargetManager targetManager;
+        public Battle_TurnController turnController;
+
         public override void ClickWork()
         {
 
@@ -13,12 +16,17 @@ namespace Battle
 
         public override void ClosePhase()
         {
-
+            turnController.SwitchTurn();
         }
 
         public override void EnterPhase()
         {
+            print("Phase Action.");
 
+            if (targetManager.TargetFound == false)
+            {
+                phaseManager.EnterNextPhase();
+            }
         }
 
         // Use this for initialization

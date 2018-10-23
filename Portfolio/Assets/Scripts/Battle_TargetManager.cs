@@ -10,12 +10,31 @@ namespace Battle
         public Battle_TurnController turnController;
 
         public List<GameObject> Targets;
+        public bool TargetFound { get; private set; }
+        public bool OnlyOneTarget { get; private set; }
 
         public void SearchTargets()
         {
+            TargetFound = false;
+            OnlyOneTarget = false;
+
             Targets = new List<GameObject>();
 
-            
+            Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
+            for (int i = 0; i < turnController.OppositeSide.Count; i++)
+            {
+                Character_InBattle oppositeCharacter = turnController.OppositeSide[i];
+
+                int xDistance = Mathf.Abs(oppositeCharacter.StandingTileX - currentTurnCharacter.StandingTileX);
+                int zDistance = Mathf.Abs(oppositeCharacter.StandingTileZ - currentTurnCharacter.StandingTileZ);
+
+                if (xDistance + zDistance > currentTurnCharacter.AttackRange) continue;
+
+                Targets.Add(turnController.OppositeSide[i].gameObject);
+            }
+
+            TargetFound = (Targets.Count > 0) ? true : false;
+            OnlyOneTarget = (Targets.Count == 1) ? true : false;
         }
 
 
@@ -57,7 +76,7 @@ namespace Battle
             }
 
             // temporary
-            if (turnController.enemyTurn.flag == true) return;
+            //if (turnController.enemyTurn.flag == true) return;
 
             for (int i = 0; i < Targets.Count; i++)
             {

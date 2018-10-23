@@ -27,6 +27,8 @@ namespace Battle
 
         public override void EnterPhase()
         {
+            print("Phase Moving.");
+
             elapsedTime = 0.0f;
             lerpTime = 0.0f;
             targetIndex = 1;

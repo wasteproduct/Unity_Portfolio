@@ -20,7 +20,11 @@ namespace Battle
 
         public override void EnterPhase()
         {
+            print("Phase Selecting Target.");
 
+            targetManager.SearchTargets();
+
+            if (targetManager.TargetFound == false) phaseManager.EnterNextPhase();
         }
 
         // Use this for initialization
