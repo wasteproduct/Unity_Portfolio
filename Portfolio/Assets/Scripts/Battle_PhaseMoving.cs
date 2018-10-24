@@ -49,10 +49,10 @@ namespace Battle
                 elapsedTime = 0.0f;
                 targetIndex++;
 
-                if (targetIndex >= aStar.FinalTrack.Count)
-                {
-                    phaseManager.EnterNextPhase();
-                }
+                //if (targetIndex >= track.Count)
+                //{
+                //    phaseManager.EnterNextPhase();
+                //}
             }
         }
     }

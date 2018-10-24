@@ -19,6 +19,7 @@ namespace Battle
         public List<Character_InBattle> EnemyCharacters { get; private set; }
         public List<Character_InBattle> OppositeSide { get; private set; }
         public float ElapsedTimeLimit { get { return moveController.ElapsedTimeLimit; } }
+        public bool EnemyTurn { get; private set; }
 
         public void Initialize(List<GameObject> playerCharacters, List<GameObject> enemiesInZone)
         {
@@ -58,6 +59,7 @@ namespace Battle
             currentTurn = playerTurn;
             CurrentTurnCharacter = PlayerCharacters[0];
             OppositeSide = EnemyCharacters;
+            EnemyTurn = false;
         }
 
         private void SetCurrentTurnCharacter()
@@ -66,6 +68,7 @@ namespace Battle
 
             currentTurn++;
             if (currentTurn >= turnMax) currentTurn -= turnMax;
+            EnemyTurn = !EnemyTurn;
 
             for (int i = 0; i < OppositeSide.Count; i++)
             {
