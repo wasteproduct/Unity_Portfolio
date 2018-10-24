@@ -34,7 +34,7 @@ namespace Battle
 
             if (enemyTurn.flag == true)
             {
-                target = targetManager.Enemy_ChooseTarget(CurrentTurnCharacter);
+                //target = targetManager.Enemy_ChooseTarget(CurrentTurnCharacter);
                 CurrentTurnCharacter.gameObject.GetComponent<Enemy_Move>().StartMoving(movableTilesManager.MovableTiles, target);
             }
             else

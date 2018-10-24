@@ -8,6 +8,7 @@ namespace Battle
     {
         public Battle_MovableTilesManager movableTilesManager;
         public Event_Click clickEvent;
+        public Battle_AIManager aiManager;
 
         public override void ClickWork()
         {
@@ -30,6 +31,12 @@ namespace Battle
             print("Phase Selecting Tile.");
 
             movableTilesManager.SetTiles();
+
+            //if (turnController.EnemyTurn == true)
+            //{
+            //    aiManager.SetChasedTarget();
+
+            //}
         }
 
         // Update is called once per frame

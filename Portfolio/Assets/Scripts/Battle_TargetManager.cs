@@ -56,28 +56,10 @@ namespace Battle
 
 
         // failure
-        public GameObject Enemy_ChooseTarget(Character_InBattle currentTurnCharacter)
-        {
-            // 거리에 따른
-            int closestDistance = 99999999;
-            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            GameObject result = null;
-            for (int i = 0; i < oppositeSide.Count; i++)
-            {
-                int distance = Mathf.Abs(oppositeSide[i].StandingTileX - currentTurnCharacter.StandingTileX) + Mathf.Abs(oppositeSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    result = oppositeSide[i].gameObject;
-                }
-            }
-
-            // 타입에 따른
-
-            // 체력에 따른
-
-            return result;
-        }
+        //public GameObject Enemy_ChooseTarget(Character_InBattle currentTurnCharacter)
+        //{
+            
+        //}
 
         public void CountTargetsInAttackRange(Character_InBattle currentTurnCharacter)
         {

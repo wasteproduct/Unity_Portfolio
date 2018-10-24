@@ -8,6 +8,7 @@ namespace Battle
     {
         public int phaseNumber;
         public Manager_BattlePhase phaseManager;
+        public Battle_TurnController turnController;
 
         public abstract void ClickWork();
         public abstract void ClosePhase();

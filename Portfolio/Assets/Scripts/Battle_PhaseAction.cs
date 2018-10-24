@@ -7,7 +7,6 @@ namespace Battle
     public class Battle_PhaseAction : Battle_PhaseBase
     {
         public Battle_TargetManager targetManager;
-        public Battle_TurnController turnController;
 
         public override void ClickWork()
         {
