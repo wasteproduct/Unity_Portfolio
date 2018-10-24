@@ -8,17 +8,30 @@ namespace Battle
     public class Battle_TargetManager : ScriptableObject
     {
         public Battle_TurnController turnController;
+        public Variable_Bool choosingTarget;
 
-        public List<GameObject> Targets;
+        public List<GameObject> PotentialTargets { get; private set; }
         public bool TargetFound { get; private set; }
         public bool OnlyOneTarget { get; private set; }
+        public GameObject Target { get; set; }
+
+        public void HighlightTargets(bool flag)
+        {
+            for (int i = 0; i < PotentialTargets.Count; i++)
+            {
+                PotentialTargets[i].GetComponent<Character_InBattle>().HighlightAsTarget(flag);
+            }
+        }
 
         public void SearchTargets()
         {
+            choosingTarget.flag = true;
+
             TargetFound = false;
             OnlyOneTarget = false;
+            Target = null;
 
-            Targets = new List<GameObject>();
+            PotentialTargets = new List<GameObject>();
 
             Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
             for (int i = 0; i < turnController.OppositeSide.Count; i++)
@@ -30,11 +43,11 @@ namespace Battle
 
                 if (xDistance + zDistance > currentTurnCharacter.AttackRange) continue;
 
-                Targets.Add(turnController.OppositeSide[i].gameObject);
+                PotentialTargets.Add(turnController.OppositeSide[i].gameObject);
             }
 
-            TargetFound = (Targets.Count > 0) ? true : false;
-            OnlyOneTarget = (Targets.Count == 1) ? true : false;
+            TargetFound = (PotentialTargets.Count > 0) ? true : false;
+            OnlyOneTarget = (PotentialTargets.Count == 1) ? true : false;
         }
 
 
@@ -68,20 +81,20 @@ namespace Battle
 
         public void CountTargetsInAttackRange(Character_InBattle currentTurnCharacter)
         {
-            Targets = new List<GameObject>();
+            //Targets = new List<GameObject>();
 
-            for (int i = 0; i < turnController.OppositeSide.Count; i++)
-            {
-                if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - currentTurnCharacter.StandingTileX) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ)) <= currentTurnCharacter.AttackRange) Targets.Add(turnController.OppositeSide[i].gameObject);
-            }
+            //for (int i = 0; i < turnController.OppositeSide.Count; i++)
+            //{
+            //    if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - currentTurnCharacter.StandingTileX) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ)) <= currentTurnCharacter.AttackRange) Targets.Add(turnController.OppositeSide[i].gameObject);
+            //}
 
-            // temporary
-            //if (turnController.enemyTurn.flag == true) return;
+            //// temporary
+            ////if (turnController.enemyTurn.flag == true) return;
 
-            for (int i = 0; i < Targets.Count; i++)
-            {
-                Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);
-            }
+            //for (int i = 0; i < Targets.Count; i++)
+            //{
+            //    Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);
+            //}
         }
     }
 }

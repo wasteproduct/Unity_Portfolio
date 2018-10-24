@@ -32,12 +32,6 @@ namespace Battle
             movableTilesManager.SetTiles();
         }
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {

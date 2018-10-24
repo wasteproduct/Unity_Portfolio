@@ -26,13 +26,8 @@ namespace Battle
             if (targetManager.TargetFound == false)
             {
                 phaseManager.EnterNextPhase();
+                return;
             }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
         }
 
         // Update is called once per frame

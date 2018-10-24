@@ -74,15 +74,15 @@ namespace Battle
 
             while (true)
             {
-                if (targetManager.Targets.Count <= 0) choosingTarget.flag = false;
+                if (targetManager.PotentialTargets.Count <= 0) choosingTarget.flag = false;
 
-                if (targetManager.Targets.Count == 1)
+                if (targetManager.PotentialTargets.Count == 1)
                 {
-                    target = targetManager.Targets[0];
+                    target = targetManager.PotentialTargets[0];
                     choosingTarget.flag = false;
                 }
 
-                if (targetManager.Targets.Count > 1)
+                if (targetManager.PotentialTargets.Count > 1)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {

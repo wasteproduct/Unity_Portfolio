@@ -673,6 +673,8 @@ MonoBehaviour:
   phaseNumber: 2
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}
+  layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
 --- !u!114 &1289549704
 MonoBehaviour:
   m_ObjectHideFlags: 0
