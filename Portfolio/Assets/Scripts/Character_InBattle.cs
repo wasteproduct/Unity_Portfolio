@@ -6,7 +6,10 @@ using MapDataSet;
 
 public class Character_InBattle : MonoBehaviour
 {
-    public Calculation_AStar aStar;
+    public Calculation_Move moveController;
+
+    private float elapsedTime;
+    private int nextTileIndex;
 
     // temporary
     public int AttackRange { get; private set; }
@@ -18,6 +21,7 @@ public class Character_InBattle : MonoBehaviour
     public bool TurnFinished { get; private set; }
     public int StandingTileX { get; private set; }
     public int StandingTileZ { get; private set; }
+    public bool Arrived { get; private set; }
     public bool ActionFinished()
     {
         TurnFinished = true;
@@ -25,6 +29,32 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
+    public void SetTrack(bool enemyTurn)
+    {
+        elapsedTime = 0.0f;
+        nextTileIndex = 1;
+        Arrived = false;
+
+        moveController.SetTrack(MapData, enemyTurn);
+    }
+
+    public void Move()
+    {
+        if (Arrived == true) return;
+
+        elapsedTime += Time.deltaTime;
+
+        this.gameObject.transform.position = moveController.LerpPosition(nextTileIndex, elapsedTime);
+
+        if (elapsedTime >= moveController.ElapsedTimeLimit)
+        {
+            elapsedTime = 0.0f;
+            nextTileIndex++;
+
+            if (nextTileIndex >= moveController.Track.Count) Arrived = true;
+        }
+    }
 
     // temporary
     public void HighlightAsTarget(bool flag)
@@ -53,23 +83,6 @@ public class Character_InBattle : MonoBehaviour
             MovableDistance = 2;
         }
     }
-
-    //public void Move(int targetIndex, float lerpTime)
-    //{
-    //    Node_AStar startNode = aStar.FinalTrack[targetIndex - 1];
-    //    Node_AStar targetNode = aStar.FinalTrack[targetIndex];
-
-    //    float startX = MapData.TileData[startNode.X, startNode.Z].X;
-    //    float startZ = MapData.TileData[startNode.X, startNode.Z].Z;
-
-    //    float targetX = MapData.TileData[targetNode.X, targetNode.Z].X;
-    //    float targetZ = MapData.TileData[targetNode.X, targetNode.Z].Z;
-
-    //    float x = Mathf.Lerp(startX, targetX, lerpTime);
-    //    float z = Mathf.Lerp(startZ, targetZ, lerpTime);
-
-    //    this.gameObject.transform.position = new Vector3(x, 0.0f, z);
-    //}
 
     // Update is called once per frame
     void Update()
