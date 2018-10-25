@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4186115826990246}
   - component: {fileID: 114637541972455594}
   - component: {fileID: 114984837902125978}
-  - component: {fileID: 114767113309337400}
   - component: {fileID: 135284859975091466}
   m_Layer: 0
   m_Name: Enemy
@@ -128,17 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620adcc8d46f8b74cbd4874fca91af7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114767113309337400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1172814101561026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dea23b88becb304a96a196860e57f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114984837902125978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c62385ae6bcc749a49ba3258ef5fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   meshRenderer: {fileID: 23312451867363924}
 --- !u!135 &135284859975091466
 SphereCollider:

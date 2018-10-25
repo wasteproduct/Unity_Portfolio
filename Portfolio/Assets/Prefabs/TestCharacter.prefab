@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4784639667983388}
   - component: {fileID: 114774852922888706}
   - component: {fileID: 114945784411884110}
-  - component: {fileID: 114699944913881984}
   - component: {fileID: 114755492412343674}
   - component: {fileID: 114391998818878020}
   - component: {fileID: 54453342339734726}
@@ -149,17 +148,6 @@ MonoBehaviour:
   layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
---- !u!114 &114699944913881984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300629457799162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dea23b88becb304a96a196860e57f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114755492412343674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c62385ae6bcc749a49ba3258ef5fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   meshRenderer: {fileID: 0}
 --- !u!136 &136946901734425030
 CapsuleCollider:

@@ -9,7 +9,6 @@ namespace Battle
     public class Battle_AIManager : ScriptableObject
     {
         public Battle_TurnController turnController;
-        public Calculation_AStar aStar;
 
         public GameObject ChasedTarget { get; private set; }
 
