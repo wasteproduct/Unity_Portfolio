@@ -1551,6 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5fcdb19418c1444ab03680815e5c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
 --- !u!114 &114187259242236178
 MonoBehaviour:
   m_ObjectHideFlags: 1

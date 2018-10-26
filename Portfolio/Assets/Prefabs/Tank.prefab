@@ -299,7 +299,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4366897920736036}
-  - component: {fileID: 114596512594034104}
+  - component: {fileID: 114190705086192800}
+  - component: {fileID: 114779144431061504}
+  - component: {fileID: 114947516839233892}
+  - component: {fileID: 114887517621289022}
+  - component: {fileID: 54332639462069862}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -884,7 +888,7 @@ Transform:
   m_GameObject: {fileID: 1533071126506800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 4308845485196648}
   m_Father: {fileID: 0}
@@ -1703,6 +1707,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745741848660072}
   m_Mesh: {fileID: 4300012, guid: 21d36c3d2565f4c4d9f581b3f6c8d54e, type: 3}
+--- !u!54 &54332639462069862
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!95 &95579959396379280
 Animator:
   serializedVersion: 3
@@ -1739,7 +1758,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114596512594034104
+--- !u!114 &114190705086192800
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1747,15 +1766,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533071126506800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a85b1e1543b42b439e6185fb8787019, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a339068b8e568d42ae24e90e3cb8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  registeredEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114598889239603430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1768,6 +1781,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
+--- !u!114 &114779144431061504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c62385ae6bcc749a49ba3258ef5fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
+  meshRenderer: {fileID: 0}
+--- !u!114 &114887517621289022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5fcdb19418c1444ab03680815e5c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
+--- !u!114 &114947516839233892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24d0059a72483c4092803bceefa0f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
+  rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
+  currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
+  currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
 --- !u!114 &114959093400585522
 MonoBehaviour:
   m_ObjectHideFlags: 1
