@@ -6,6 +6,8 @@ using MapDataSet;
 
 public class Character_ExploreFellow : Character_Explore
 {
+    public Calculation_Turn rotationCalculator;
+
     private List<Node_AStar> privateTrack;
 
     public Map_Data MapData { get; private set; }
@@ -14,7 +16,7 @@ public class Character_ExploreFellow : Character_Explore
     {
         MapData = mapData;
 
-        startingRotation = this.gameObject.transform.rotation;
+        StartingRotation = this.gameObject.transform.rotation;
     }
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class Character_ExploreFellow : Character_Explore
 
     public override void UpdateStartingRotation()
     {
-        startingRotation = this.gameObject.transform.rotation;
+        StartingRotation = this.gameObject.transform.rotation;
     }
 
     public override void SetTrack(List<Node_AStar> track)
@@ -49,5 +51,6 @@ public class Character_ExploreFellow : Character_Explore
         float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
         this.gameObject.transform.position = new Vector3(x, 0.0f, z);
+        this.gameObject.transform.rotation = rotationCalculator.LerpRotation((int)startX, (int)startZ, (int)targetX, (int)targetZ, StartingRotation, lerpTime);
     }
 }

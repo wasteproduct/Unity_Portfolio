@@ -33,7 +33,7 @@ public class Character_ExploreCaptain : Character_Explore
         IntoEnemyZone = false;
         SteppedEnemyZone = null;
 
-        startingRotation = this.gameObject.transform.rotation;
+        StartingRotation = this.gameObject.transform.rotation;
     }
 
     public override void Move(int targetIndex, float lerpTime)
@@ -51,12 +51,12 @@ public class Character_ExploreCaptain : Character_Explore
         float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
         this.gameObject.transform.position = new Vector3(x, 0.0f, z);
-        this.gameObject.transform.rotation = rotationCalculator.LerpRotation((int)startX, (int)startZ, (int)targetX, (int)targetZ, startingRotation, lerpTime);
+        this.gameObject.transform.rotation = rotationCalculator.LerpRotation((int)startX, (int)startZ, (int)targetX, (int)targetZ, StartingRotation, lerpTime);
     }
 
     public override void UpdateStartingRotation()
     {
-        startingRotation = this.gameObject.transform.rotation;
+        StartingRotation = this.gameObject.transform.rotation;
     }
 
     // Update is called once per frame

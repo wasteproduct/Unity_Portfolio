@@ -6,8 +6,7 @@ public abstract class Character_Explore : MonoBehaviour
 {
     public int StandingTileX { get; protected set; }
     public int StandingTileZ { get; protected set; }
-
-    protected Quaternion startingRotation;
+    public Quaternion StartingRotation { get; protected set; }
 
     public abstract void Initialize(MapDataSet.Map_Data mapData);
     public abstract void Move(int targetIndex, float lerpTime);

@@ -50,15 +50,33 @@ namespace Player
             captain.GetComponent<Character_InBattle>().Initialize(mapData, false);
             PlayerCharacters.Add(captain);
 
-            for (int i = 0; i < 2; i++)
+            int offset = -1;
+            for (int i = 0; i < playerTeam.teamFellow.Length; i++)
             {
-                int offset = i + 1;
+                if (playerTeam.teamFellow[i] == null) continue;
 
-                GameObject newFellow = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)(currentTileZ.value - offset)), Quaternion.identity);
-                newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-                newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
-                PlayerCharacters.Add(newFellow);
+                for (int j = 0; j < characterDatabase.Models.Count; j++)
+                {
+                    if (playerTeam.teamFellow[i].TypeID == characterDatabase.Models[j].typeID)
+                    {
+                        GameObject newFellow = Instantiate(characterDatabase.Models[j].modelPrefab, new Vector3(currentTileX.value, 0.0f, currentTileZ.value + offset), Quaternion.identity);
+                        newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
+                        newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
+                        PlayerCharacters.Add(newFellow);
+
+                        offset--;
+                    }
+                }
             }
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    int offset = i + 1;
+
+            //    GameObject newFellow = Instantiate(testCharacter, new Vector3(currentTileX.value, 0.0f, currentTileZ.value - offset), Quaternion.identity);
+            //    newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
+            //    newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
+            //    PlayerCharacters.Add(newFellow);
+            //}
 
             this.gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
 

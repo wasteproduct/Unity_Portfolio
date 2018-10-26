@@ -9,6 +9,7 @@ public class Character_InBattle : MonoBehaviour
 
     private float elapsedTime;
     private int nextTileIndex;
+    private Quaternion startingRotation;
 
     // temporary
     public int AttackRange { get; private set; }
@@ -33,6 +34,7 @@ public class Character_InBattle : MonoBehaviour
     {
         elapsedTime = 0.0f;
         nextTileIndex = 1;
+        startingRotation = this.gameObject.transform.rotation;
         Arrived = false;
 
         moveController.SetTrack(MapData);
@@ -45,12 +47,13 @@ public class Character_InBattle : MonoBehaviour
         elapsedTime += Time.deltaTime;
 
         this.gameObject.transform.position = moveController.LerpPosition(nextTileIndex, elapsedTime);
-        //this.gameObject.transform.rotation=
+        this.gameObject.transform.rotation = moveController.LerpRotation(nextTileIndex, elapsedTime, startingRotation);
 
         if (elapsedTime >= moveController.ElapsedTimeLimit)
         {
             elapsedTime = 0.0f;
             nextTileIndex++;
+            startingRotation = this.gameObject.transform.rotation;
 
             if (nextTileIndex >= moveController.Track.Count) Arrived = true;
         }
@@ -71,6 +74,8 @@ public class Character_InBattle : MonoBehaviour
 
         this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+
+        startingRotation = this.gameObject.transform.rotation;
 
         if (enemyCharacter == true) this.gameObject.layer = LayerMask.NameToLayer("Enemy");
 
