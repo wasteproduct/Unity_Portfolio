@@ -54,7 +54,7 @@ namespace Battle
 
             SetEnemies(enemiesInZone);
 
-            turnController.Initialize(inBattleEnemies);
+            //turnController.Initialize(inBattleEnemies);
 
             target = null;
 
@@ -131,7 +131,7 @@ namespace Battle
                 }
             }
 
-            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
+            //CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             //movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
             StartAction();
         }
@@ -266,7 +266,7 @@ namespace Battle
             }
 
             target = null;
-            CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
+            //CurrentTurnCharacter = turnController.SetCurrentTurnCharacter(inBattleCharactersPlayer, inBattleEnemies, rewind);
             //movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
         }
 

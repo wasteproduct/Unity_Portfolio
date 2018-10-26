@@ -45,6 +45,7 @@ public class Character_InBattle : MonoBehaviour
         elapsedTime += Time.deltaTime;
 
         this.gameObject.transform.position = moveController.LerpPosition(nextTileIndex, elapsedTime);
+        //this.gameObject.transform.rotation=
 
         if (elapsedTime >= moveController.ElapsedTimeLimit)
         {

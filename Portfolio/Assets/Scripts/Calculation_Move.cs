@@ -12,6 +12,7 @@ public class Calculation_Move : ScriptableObject
     public Calculation_AStar aStar;
     public Battle_TurnController turnController;
     public Battle_MovableTilesManager movableTilesManager;
+    public Calculation_Turn rotationCalculator;
 
     private readonly float elapsedTimeLimit = .2f;
 
@@ -35,6 +36,22 @@ public class Calculation_Move : ScriptableObject
         }
 
         Track = new List<Node_AStar>(aStar.FinalTrack);
+    }
+
+    public Quaternion LerpRotation(int nextTileIndex, float elapsedTime, Quaternion startingRotation)
+    {
+        Node_AStar startNode = Track[nextTileIndex - 1];
+        Node_AStar targetNode = Track[nextTileIndex];
+
+        int startX = startNode.X;
+        int startZ = startNode.Z;
+
+        int endX = targetNode.X;
+        int endZ = targetNode.Z;
+
+        float lerpTime = elapsedTime / elapsedTimeLimit;
+
+        return rotationCalculator.LerpRotation(startX, startZ, endX, endZ, startingRotation, lerpTime);
     }
 
     public Vector3 LerpPosition(int nextTileIndex, float elapsedTime)

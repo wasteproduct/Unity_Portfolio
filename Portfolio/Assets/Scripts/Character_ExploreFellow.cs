@@ -13,6 +13,8 @@ public class Character_ExploreFellow : Character_Explore
     public override void Initialize(Map_Data mapData)
     {
         MapData = mapData;
+
+        startingRotation = this.gameObject.transform.rotation;
     }
 
     // Update is called once per frame
@@ -20,6 +22,11 @@ public class Character_ExploreFellow : Character_Explore
     {
         this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+    }
+
+    public override void UpdateStartingRotation()
+    {
+        startingRotation = this.gameObject.transform.rotation;
     }
 
     public override void SetTrack(List<Node_AStar> track)

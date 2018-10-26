@@ -195,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303148158369926}
   - component: {fileID: 95543681724852564}
+  - component: {fileID: 136043685102054018}
   m_Layer: 0
   m_Name: Soldier_marine
   m_TagString: Untagged
@@ -1536,6 +1537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
   layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
+  rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
 --- !u!114 &114106740896537864
@@ -1573,6 +1575,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a339068b8e568d42ae24e90e3cb8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &136043685102054018
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328369479723630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.56
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.28, z: 0}
 --- !u!137 &137030508883393396
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

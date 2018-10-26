@@ -35,53 +35,6 @@ namespace Player
             Captain = characters[0];
         }
 
-        //private void StartMove_Battle()
-        //{
-        //    if (clickEvent.pathFound == false) return;
-
-        //    if (battleManager.GetComponent<Manager_Battle>().OutOfMovableRange(clickEvent.destinationTile) == true)
-        //    {
-        //        print("Out of movable range.");
-        //        return;
-        //    }
-
-        //    moveController.moving = true;
-
-        //    StartCoroutine(Move_Battle());
-        //}
-
-        //private IEnumerator Move_Battle()
-        //{
-        //    int targetIndex = 1;
-        //    float elapsedTime = 0.0f;
-        //    float lerpTime = 0.0f;
-
-        //    while (true)
-        //    {
-        //        if (elapsedTime >= moveController.ElapsedTimeLimit)
-        //        {
-        //            targetIndex++;
-        //            elapsedTime = 0.0f;
-
-        //            if (targetIndex >= aStar.FinalTrack.Count)
-        //            {
-        //                moveController.moving = false;
-
-        //                break;
-        //            }
-        //        }
-
-        //        elapsedTime += Time.deltaTime;
-        //        lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
-
-        //        battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter.Move(targetIndex, lerpTime);
-
-        //        yield return null;
-        //    }
-
-        //    battleManager.GetComponent<Manager_Battle>().StartAction();
-        //}
-
         private void StartMove_Explore()
         {
             if (clickEvent.pathFound == false) return;
@@ -129,6 +82,7 @@ namespace Player
 
                     targetIndex++;
                     elapsedTime = 0.0f;
+                    UpdateStartingRotations();
 
                     if (targetIndex >= aStar.FinalTrack.Count)
                     {
@@ -149,6 +103,14 @@ namespace Player
                 }
 
                 yield return null;
+            }
+        }
+
+        private void UpdateStartingRotations()
+        {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_InDungeon>().MoveController.UpdateStartingRotation();
             }
         }
 
