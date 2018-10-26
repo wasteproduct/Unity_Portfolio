@@ -692,7 +692,6 @@ MonoBehaviour:
   phaseNumber: 1
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
-  aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
 --- !u!1 &1553519080
 GameObject:
   m_ObjectHideFlags: 0

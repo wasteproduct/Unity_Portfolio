@@ -13,3 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moving: 0
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
+    type: 2}

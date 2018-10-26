@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AStar;
 using MapDataSet;
 
 public class Character_InBattle : MonoBehaviour
@@ -30,13 +29,13 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
-    public void SetTrack(bool enemyTurn)
+    public void SetTrack()
     {
         elapsedTime = 0.0f;
         nextTileIndex = 1;
         Arrived = false;
 
-        moveController.SetTrack(MapData, enemyTurn);
+        moveController.SetTrack(MapData);
     }
 
     public void Move()

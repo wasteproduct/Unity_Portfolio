@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using AStar;
 using MapDataSet;
+using Battle;
 
 [CreateAssetMenu(fileName = "", menuName = "Calculation/Move", order = 1)]
 public class Calculation_Move : ScriptableObject
 {
     public bool moving = false;
     public Calculation_AStar aStar;
+    public Battle_TurnController turnController;
+    public Battle_MovableTilesManager movableTilesManager;
 
     private readonly float elapsedTimeLimit = .2f;
 
@@ -16,15 +19,22 @@ public class Calculation_Move : ScriptableObject
     public Map_Data MapData { get; private set; }
     public List<Node_AStar> Track { get; private set; }
 
-    public void SetTrack(Map_Data mapData, bool enemyTurn)
+    public void SetTrack(Map_Data mapData)
     {
         MapData = mapData;
 
-        if (enemyTurn == true)
-        {
+        int startX = turnController.CurrentTurnCharacter.StandingTileX;
+        int startZ = turnController.CurrentTurnCharacter.StandingTileZ;
 
+        bool pathFound = aStar.FindPath(MapData.TileData, MapData.TileData[startX, startZ], movableTilesManager.DestinationTile);
+
+        if (pathFound == false)
+        {
+            Debug.Log("Failed to find path.");
+            return;
         }
-        else Track = new List<Node_AStar>(aStar.FinalTrack);
+
+        Track = new List<Node_AStar>(aStar.FinalTrack);
     }
 
     public Vector3 LerpPosition(int nextTileIndex, float elapsedTime)

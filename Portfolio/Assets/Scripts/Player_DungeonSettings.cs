@@ -30,7 +30,22 @@ namespace Player
 
             PlayerCharacters = new List<GameObject>();
 
-            GameObject captain = Instantiate<GameObject>(testCharacter, new Vector3((float)currentTileX.value, 0.0f, (float)currentTileZ.value), Quaternion.identity);
+            GameObject captain = null;
+            for (int i = 0; i < characterDatabase.Models.Count; i++)
+            {
+                if (characterDatabase.Models[i].typeID == playerTeam.captain.TypeID)
+                {
+                    captain = Instantiate(characterDatabase.Models[i].modelPrefab, new Vector3(currentTileX.value, 0.0f, currentTileZ.value), Quaternion.identity);
+                    break;
+                }
+            }
+
+            if (captain == null)
+            {
+                print("Null captain.");
+                return;
+            }
+
             captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
             captain.GetComponent<Character_InBattle>().Initialize(mapData, false);
             PlayerCharacters.Add(captain);

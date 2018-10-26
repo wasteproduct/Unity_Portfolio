@@ -18,6 +18,8 @@ namespace Battle
                 return;
             }
 
+            movableTilesManager.SetDestinationTile(clickEvent.destinationTile);
+
             phaseManager.EnterNextPhase();
         }
 
@@ -32,11 +34,12 @@ namespace Battle
 
             movableTilesManager.SetTiles();
 
-            //if (turnController.EnemyTurn == true)
-            //{
-            //    aiManager.SetChasedTarget();
-
-            //}
+            if (turnController.EnemyTurn == true)
+            {
+                aiManager.SetChasedTarget();
+                aiManager.SetDestinationTile();
+                phaseManager.EnterNextPhase();
+            }
         }
 
         // Update is called once per frame

@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92e4c72064bbdc42a194d7f718a6d25, type: 3}
   m_Name: Model_Soldier
   m_EditorClassIdentifier: 
-  modelPrefab: {fileID: 1552323826897812, guid: 5efdd39f181b83b4091faa44c2aa317f,
+  modelPrefab: {fileID: 1189806245226096, guid: 28cb599f9ee95f24f98546efc405f18a,
     type: 2}
   typeID: 0

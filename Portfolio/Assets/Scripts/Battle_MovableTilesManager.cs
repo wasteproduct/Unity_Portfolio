@@ -15,6 +15,13 @@ namespace Battle
         private Map_Data mapData;
 
         public List<GameObject> MovableTiles { get; private set; }
+        public Map_TileData DestinationTile { get; private set; }
+
+        public void SetDestinationTile(Map_TileData destinationTile)
+        {
+            DestinationTile = null;
+            DestinationTile = destinationTile;
+        }
 
         public bool OutOfMovableRange(Map_TileData destinationTile)
         {
@@ -97,35 +104,6 @@ namespace Battle
 
             return false;
         }
-
-        //public void SetTiles(Character_InBattle currentTurnCharacter, List<Character_InBattle> inBattleCharactersPlayer, List<Character_InBattle> inBattleEnemies)
-        //{
-        //    ClearTilesList();
-
-        //    int standingX = currentTurnCharacter.StandingTileX;
-        //    int standingZ = currentTurnCharacter.StandingTileZ;
-        //    int movableDistance = currentTurnCharacter.MovableDistance;
-
-        //    for (int z = standingZ - movableDistance; z <= standingZ + movableDistance; z++)
-        //    {
-        //        for (int x = standingX - movableDistance; x <= standingX + movableDistance; x++)
-        //        {
-        //            if ((Mathf.Abs(z - standingZ) + Mathf.Abs(x - standingX)) > movableDistance) continue;
-
-        //            if (mapData.TileData[x, z].Type != TileType.Floor) continue;
-
-        //            //if (TileOccupied(x, z, currentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies) == true) continue;
-
-        //            Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
-        //            GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-        //            //bool targetInRange = TargetsInAttackRange(x, z, currentTurnCharacter.AttackRange);
-
-        //            //newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
-
-        //            MovableTiles.Add(newTile);
-        //        }
-        //    }
-        //}
 
         private void ClearTilesList()
         {
