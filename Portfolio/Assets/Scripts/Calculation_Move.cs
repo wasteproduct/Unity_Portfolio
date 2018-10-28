@@ -14,7 +14,7 @@ public class Calculation_Move : ScriptableObject
     public Battle_MovableTilesManager movableTilesManager;
     public Calculation_Turn rotationCalculator;
 
-    private readonly float elapsedTimeLimit = .2f;
+    private readonly float elapsedTimeLimit = .32f;
 
     public float ElapsedTimeLimit { get { return elapsedTimeLimit; } }
     public Map_Data MapData { get; private set; }

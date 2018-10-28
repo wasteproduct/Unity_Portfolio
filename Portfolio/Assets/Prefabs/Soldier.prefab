@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 114187259242236178}
   - component: {fileID: 114096428085651668}
   - component: {fileID: 114106740896537864}
+  - component: {fileID: 114827855230529924}
   - component: {fileID: 54276385091090022}
   m_Layer: 0
   m_Name: Soldier
@@ -1565,6 +1566,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   meshRenderer: {fileID: 0}
+--- !u!114 &114827855230529924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189806245226096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de84ede3804a34544a5eed6c092de705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
+  run: {fileID: 11400000, guid: 86a0a53f7e86b274aac205e96145236c, type: 2}
 --- !u!114 &114856304742411126
 MonoBehaviour:
   m_ObjectHideFlags: 1

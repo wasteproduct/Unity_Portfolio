@@ -55,6 +55,12 @@ namespace Player
                 characters[i].GetComponent<Character_InDungeon>().MoveController.SetTrack(track);
             }
 
+            //for (int i = 0; i < characters.Count; i++)
+            //{
+            //    characters[i].GetComponent<Character_StateManager>().SetState_Run();
+            //}
+            Captain.GetComponent<Character_StateManager>().SetState_Run();
+
             StartCoroutine(Move_Explore());
         }
 
@@ -77,6 +83,8 @@ namespace Player
                         Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
                         dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle(enemiesInZone);
 
+                        Captain.GetComponent<Character_StateManager>().SetState_Idle();
+
                         break;
                     }
 
@@ -89,6 +97,8 @@ namespace Player
                         if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
 
                         moveController.moving = false;
+
+                        Captain.GetComponent<Character_StateManager>().SetState_Idle();
 
                         break;
                     }
