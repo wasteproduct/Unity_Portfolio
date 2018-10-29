@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4186115826990246}
   - component: {fileID: 114637541972455594}
   - component: {fileID: 114984837902125978}
+  - component: {fileID: 114618875875238814}
   - component: {fileID: 135284859975091466}
   m_Layer: 0
   m_Name: Enemy
@@ -116,6 +117,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523358856453370}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114618875875238814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172814101561026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de84ede3804a34544a5eed6c092de705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleExploration: {fileID: 0}
+  runExploration: {fileID: 0}
+  idleBattle: {fileID: 0}
+  runBattle: {fileID: 0}
 --- !u!114 &114637541972455594
 MonoBehaviour:
   m_ObjectHideFlags: 1

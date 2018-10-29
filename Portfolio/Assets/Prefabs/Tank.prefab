@@ -1774,9 +1774,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de84ede3804a34544a5eed6c092de705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
-  run: {fileID: 11400000, guid: 86a0a53f7e86b274aac205e96145236c, type: 2}
-  animator: {fileID: 0}
+  idleExploration: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
+  runExploration: {fileID: 11400000, guid: 86a0a53f7e86b274aac205e96145236c, type: 2}
+  idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
+  runBattle: {fileID: 11400000, guid: 7dc8ad26b9a447747a342f174f8bcc47, type: 2}
 --- !u!114 &114779144431061504
 MonoBehaviour:
   m_ObjectHideFlags: 1
