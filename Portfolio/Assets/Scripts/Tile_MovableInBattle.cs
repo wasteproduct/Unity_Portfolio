@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Battle;
 
 namespace TileDataSet
 {
     public class Tile_MovableInBattle : MonoBehaviour
     {
+        public Battle_TurnController turnController;
         public Material normal;
         public Material attack;
 
@@ -16,19 +18,23 @@ namespace TileDataSet
             TileData = tileData;
             this.GetComponent<MeshRenderer>().material = normal;
 
-            //if (targetInRange == true) this.GetComponent<MeshRenderer>().material = attack;
             bool targetInRange = TargetsInAttackRange();
+
+            if (targetInRange == true) this.GetComponent<MeshRenderer>().material = attack;
         }
 
         private bool TargetsInAttackRange()
         {
-            //List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            //int attackRange = turnController.CurrentTurnCharacter.AttackRange;
+            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
+            int attackRange = turnController.CurrentTurnCharacter.AttackRange;
 
-            //for (int i = 0; i < oppositeSide.Count; i++)
-            //{
-            //    if ((Mathf.Abs(oppositeSide[i].StandingTileX - x) + Mathf.Abs(oppositeSide[i].StandingTileZ - z)) <= attackRange) return true;
-            //}
+            for (int i = 0; i < oppositeSide.Count; i++)
+            {
+                int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
+                int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
+
+                if ((x + z) <= attackRange) return true;
+            }
 
             return false;
         }
