@@ -60,26 +60,12 @@ namespace Battle
 
                     Vector3 newTilePosition = new Vector3((float)mapData.TileData[x, z].X, 0.0f, (float)mapData.TileData[x, z].Z);
                     GameObject newTile = Instantiate(tilePrefab, newTilePosition, Quaternion.identity);
-                    bool targetInRange = TargetsInAttackRange(x, z);
 
-                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z], targetInRange);
+                    newTile.GetComponent<Tile_MovableInBattle>().SetDetails(mapData.TileData[x, z]);
 
                     MovableTiles.Add(newTile);
                 }
             }
-        }
-
-        private bool TargetsInAttackRange(int x, int z)
-        {
-            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            int attackRange = turnController.CurrentTurnCharacter.AttackRange;
-
-            for (int i = 0; i < oppositeSide.Count; i++)
-            {
-                if ((Mathf.Abs(oppositeSide[i].StandingTileX - x) + Mathf.Abs(oppositeSide[i].StandingTileZ - z)) <= attackRange) return true;
-            }
-
-            return false;
         }
 
         private bool TileOccupied(int x, int z)
