@@ -10,6 +10,7 @@ public class Character_InBattle : MonoBehaviour
     private float elapsedTime;
     private int nextTileIndex;
     private Quaternion startingRotation;
+    private Character_StateManager stateManager;
 
     // temporary
     public int AttackRange { get; private set; }
@@ -29,6 +30,11 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
+    public void SetState_Run()
+    {
+        stateManager.SetState_Run(true);
+    }
 
     public void SetTrack()
     {
@@ -55,7 +61,11 @@ public class Character_InBattle : MonoBehaviour
             nextTileIndex++;
             startingRotation = this.gameObject.transform.rotation;
 
-            if (nextTileIndex >= moveController.Track.Count) Arrived = true;
+            if (nextTileIndex >= moveController.Track.Count)
+            {
+                stateManager.SetState_Idle(true);
+                Arrived = true;
+            }
         }
     }
 
@@ -76,6 +86,7 @@ public class Character_InBattle : MonoBehaviour
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
 
         startingRotation = this.gameObject.transform.rotation;
+        stateManager = GetComponent<Character_StateManager>();
 
         if (enemyCharacter == true) this.gameObject.layer = LayerMask.NameToLayer("Enemy");
 

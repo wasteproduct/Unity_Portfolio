@@ -70,15 +70,6 @@ namespace Player
                     }
                 }
             }
-            //for (int i = 0; i < 2; i++)
-            //{
-            //    int offset = i + 1;
-
-            //    GameObject newFellow = Instantiate(testCharacter, new Vector3(currentTileX.value, 0.0f, currentTileZ.value - offset), Quaternion.identity);
-            //    newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
-            //    newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
-            //    PlayerCharacters.Add(newFellow);
-            //}
 
             this.gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
 

@@ -54,26 +54,25 @@ namespace Player
                 track.Insert(0, aStar.Node[characterMoveController.StandingTileX, characterMoveController.StandingTileZ]);
                 characters[i].GetComponent<Character_InDungeon>().MoveController.SetTrack(track);
             }
-
-            //Captain.GetComponent<Character_StateManager>().SetState_Run();
-            SetState_Run();
+            
+            SetState_Run(false);
 
             StartCoroutine(Move_Explore());
         }
 
-        private void SetState_Run()
+        private void SetState_Run(bool battlePhase)
         {
             for (int i = 0; i < characters.Count; i++)
             {
-                characters[i].GetComponent<Character_StateManager>().SetState_Run();
+                characters[i].GetComponent<Character_StateManager>().SetState_Run(battlePhase);
             }
         }
 
-        private void SetState_Idle()
+        private void SetState_Idle(bool battlePhase)
         {
             for (int i = 0; i < characters.Count; i++)
             {
-                characters[i].GetComponent<Character_StateManager>().SetState_Idle();
+                characters[i].GetComponent<Character_StateManager>().SetState_Idle(battlePhase);
             }
         }
 
@@ -96,8 +95,7 @@ namespace Player
                         Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
                         dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle(enemiesInZone);
 
-                        //Captain.GetComponent<Character_StateManager>().SetState_Idle();
-                        SetState_Idle();
+                        SetState_Idle(true);
 
                         break;
                     }
@@ -112,8 +110,7 @@ namespace Player
 
                         moveController.moving = false;
 
-                        //Captain.GetComponent<Character_StateManager>().SetState_Idle();
-                        SetState_Idle();
+                        SetState_Idle(false);
 
                         break;
                     }

@@ -238,7 +238,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4445833005706260}
-  - component: {fileID: 95589365596257580}
   m_Layer: 0
   m_Name: Weapon_DoubleGun_lvl3
   m_TagString: Untagged
@@ -1731,29 +1730,11 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536263505382988}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 093db1386d50d0e4dade337bd3157e63, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 72ee2c246a9697040ae4688ee71ebe6d, type: 3}
   m_Controller: {fileID: 9100000, guid: 03889c0d795f11840bae02ecaf294dee, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95589365596257580
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1416724767540800}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 72ee2c246a9697040ae4688ee71ebe6d, type: 3}
-  m_Controller: {fileID: 9100000, guid: b28b46b010ee19347b681679cc8f2089, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

@@ -27,6 +27,7 @@ namespace Battle
             currentTurnCharacter = turnController.CurrentTurnCharacter;
 
             currentTurnCharacter.SetTrack();
+            currentTurnCharacter.SetState_Run();
         }
 
         // Update is called once per frame
