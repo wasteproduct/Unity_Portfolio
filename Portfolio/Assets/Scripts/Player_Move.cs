@@ -55,13 +55,26 @@ namespace Player
                 characters[i].GetComponent<Character_InDungeon>().MoveController.SetTrack(track);
             }
 
-            //for (int i = 0; i < characters.Count; i++)
-            //{
-            //    characters[i].GetComponent<Character_StateManager>().SetState_Run();
-            //}
-            Captain.GetComponent<Character_StateManager>().SetState_Run();
+            //Captain.GetComponent<Character_StateManager>().SetState_Run();
+            SetState_Run();
 
             StartCoroutine(Move_Explore());
+        }
+
+        private void SetState_Run()
+        {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_StateManager>().SetState_Run();
+            }
+        }
+
+        private void SetState_Idle()
+        {
+            for (int i = 0; i < characters.Count; i++)
+            {
+                characters[i].GetComponent<Character_StateManager>().SetState_Idle();
+            }
         }
 
         private IEnumerator Move_Explore()
@@ -83,7 +96,8 @@ namespace Player
                         Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
                         dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle(enemiesInZone);
 
-                        Captain.GetComponent<Character_StateManager>().SetState_Idle();
+                        //Captain.GetComponent<Character_StateManager>().SetState_Idle();
+                        SetState_Idle();
 
                         break;
                     }
@@ -98,7 +112,8 @@ namespace Player
 
                         moveController.moving = false;
 
-                        Captain.GetComponent<Character_StateManager>().SetState_Idle();
+                        //Captain.GetComponent<Character_StateManager>().SetState_Idle();
+                        SetState_Idle();
 
                         break;
                     }

@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 114779144431061504}
   - component: {fileID: 114947516839233892}
   - component: {fileID: 114887517621289022}
+  - component: {fileID: 114609997872188260}
   - component: {fileID: 54332639462069862}
   m_Layer: 0
   m_Name: Tank
@@ -1731,8 +1732,8 @@ Animator:
   m_GameObject: {fileID: 1536263505382988}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 093db1386d50d0e4dade337bd3157e63, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
+  m_Controller: {fileID: 9100000, guid: 03889c0d795f11840bae02ecaf294dee, type: 2}
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -1781,6 +1782,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoving: {fileID: 11400000, guid: 741fc6dbb88d8ed489d9d24ca68a8d94, type: 2}
+--- !u!114 &114609997872188260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de84ede3804a34544a5eed6c092de705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
+  run: {fileID: 11400000, guid: 86a0a53f7e86b274aac205e96145236c, type: 2}
+  animator: {fileID: 0}
 --- !u!114 &114779144431061504
 MonoBehaviour:
   m_ObjectHideFlags: 1

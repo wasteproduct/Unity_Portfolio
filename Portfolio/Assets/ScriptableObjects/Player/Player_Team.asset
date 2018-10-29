@@ -18,5 +18,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: baaa148d90f261449bdd58591fe36473, type: 2}
   - {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
-  characterInBattleBase: {fileID: 11400000, guid: de7c40c6ecf36d941b266a4102014b9b,
-    type: 2}

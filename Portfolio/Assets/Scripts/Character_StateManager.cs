@@ -7,7 +7,7 @@ public class Character_StateManager : MonoBehaviour
     public Character_State idle;
     public Character_State run;
 
-    private Animator animator;
+    public Animator animator;
 
     public Character_State CurrentState { get; private set; }
 

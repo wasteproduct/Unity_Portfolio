@@ -63,7 +63,7 @@ namespace Player
                         GameObject newFellow = Instantiate(characterDatabase.Models[j].modelPrefab, new Vector3(currentTileX.value, 0.0f, currentTileZ.value + offset), Quaternion.identity);
                         newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
                         newFellow.GetComponent<Character_InBattle>().Initialize(mapData, false);
-                        //newFellow.GetComponent<Character_StateManager>().Initialize();
+                        newFellow.GetComponent<Character_StateManager>().Initialize();
                         PlayerCharacters.Add(newFellow);
 
                         offset--;
