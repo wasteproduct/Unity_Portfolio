@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TileDataSet;
 
 namespace Battle
 {
@@ -11,17 +12,37 @@ namespace Battle
         public Battle_MovableTilesManager movableTilesManager;
 
         public List<Battle_Action> ExecutableActions { get; private set; }
+        public Battle_Action ExecutedAction { get; private set; }
+
+        public void SetExecutedAction(Battle_Action selectedAction)
+        {
+            ExecutedAction = null;
+            ExecutedAction = selectedAction;
+        }
 
         public void SetExecutableActions()
         {
             ExecutableActions = new List<Battle_Action>();
 
             CheckAttackTile();
+
+            CheckSkillTile();
+        }
+
+        private void CheckSkillTile()
+        {
+            Tile_MovableInBattle destinationTile = movableTilesManager.DestinationTile.GetComponent<Tile_MovableInBattle>();
+
+            if (destinationTile.SkillTile == false) return;
         }
 
         private void CheckAttackTile()
         {
-            //if(movableTilesManager)
+            Tile_MovableInBattle destinationTile = movableTilesManager.DestinationTile.GetComponent<Tile_MovableInBattle>();
+
+            if (destinationTile.AttackTile == false) return;
+
+            ExecutableActions.Add(actionList.actionAttack);
         }
     }
 }

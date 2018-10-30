@@ -46,20 +46,25 @@ public class Character_InBattle : MonoBehaviour
         moveController.SetTrack(MapData);
     }
 
+    public void HeadToTarget()
+    {
+        //
+    }
+
     public void Move()
     {
         if (Arrived == true) return;
 
         elapsedTime += Time.deltaTime;
 
-        this.gameObject.transform.position = moveController.LerpPosition(nextTileIndex, elapsedTime);
-        this.gameObject.transform.rotation = moveController.LerpRotation(nextTileIndex, elapsedTime, startingRotation);
+        gameObject.transform.position = moveController.LerpPosition(nextTileIndex, elapsedTime);
+        gameObject.transform.rotation = moveController.LerpRotation(nextTileIndex, elapsedTime, startingRotation);
 
         if (elapsedTime >= moveController.ElapsedTimeLimit)
         {
             elapsedTime = 0.0f;
             nextTileIndex++;
-            startingRotation = this.gameObject.transform.rotation;
+            startingRotation = gameObject.transform.rotation;
 
             if (nextTileIndex >= moveController.Track.Count)
             {

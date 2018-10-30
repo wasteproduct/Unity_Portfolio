@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Battle_Action List
   m_EditorClassIdentifier: 
   actionAttack: {fileID: 11400000, guid: dee6e08b959b4a6468ffb906b337473c, type: 2}
+  actionSkill1: {fileID: 11400000, guid: 9d8322fb5e73ec2448f0d6dc26ba9cc2, type: 2}

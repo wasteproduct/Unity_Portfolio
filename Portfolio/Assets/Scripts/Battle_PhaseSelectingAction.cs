@@ -6,6 +6,8 @@ namespace Battle
 {
     public class Battle_PhaseSelectingAction : Battle_PhaseBase
     {
+        public Battle_ActionManager actionManager;
+
         public override void ClickWork()
         {
 
@@ -20,7 +22,21 @@ namespace Battle
         {
             print("Phase Selecting Action.");
 
-            phaseManager.EnterNextPhase();
+            int actionsNumber = actionManager.ExecutableActions.Count;
+
+            if (actionsNumber <= 0)
+            {
+                actionManager.SetExecutedAction(null);
+                phaseManager.EnterNextPhase();
+                return;
+            }
+
+            if (actionsNumber == 1)
+            {
+                actionManager.SetExecutedAction(actionManager.ExecutableActions[0]);
+                phaseManager.EnterNextPhase();
+                return;
+            }
         }
     }
 }

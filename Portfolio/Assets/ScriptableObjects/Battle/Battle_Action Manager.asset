@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e92272e9c5ade4d960ac4ef4986933, type: 3}
   m_Name: Battle_Action Manager
   m_EditorClassIdentifier: 
-  actionList: {fileID: 0}
+  actionList: {fileID: 11400000, guid: 75a1573d510e0114f99fca400bc7c455, type: 2}
   movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
     type: 2}

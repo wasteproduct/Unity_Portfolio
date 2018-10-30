@@ -8,5 +8,6 @@ namespace Battle
     public class Battle_ActionList : ScriptableObject
     {
         public Battle_Action actionAttack;
+        public Battle_Action actionSkill1;
     }
 }
