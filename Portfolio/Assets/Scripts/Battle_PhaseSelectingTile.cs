@@ -9,6 +9,7 @@ namespace Battle
         public Battle_MovableTilesManager movableTilesManager;
         public Event_Click clickEvent;
         public Battle_AIManager aiManager;
+        public Battle_ActionManager actionManager;
 
         public override void ClickWork()
         {
@@ -25,7 +26,7 @@ namespace Battle
 
         public override void ClosePhase()
         {
-
+            actionManager.SetExecutableActions();
         }
 
         public override void EnterPhase()

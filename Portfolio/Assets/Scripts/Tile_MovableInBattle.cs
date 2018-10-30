@@ -12,18 +12,30 @@ namespace TileDataSet
         public Material attack;
 
         public Map_TileData TileData { get; private set; }
+        public bool AttackTile { get; private set; }
+        public bool SkillTile { get; private set; }
 
         public void SetDetails(Map_TileData tileData)
         {
+            GetComponent<MeshRenderer>().material = normal;
+
             TileData = tileData;
-            this.GetComponent<MeshRenderer>().material = normal;
+            AttackTile = false;
+            SkillTile = false;
 
-            bool targetInRange = TargetsInAttackRange();
+            CheckAttackRange();
+            //bool targetInAttackRange = TargetsInAttackRange();
 
-            if (targetInRange == true) this.GetComponent<MeshRenderer>().material = attack;
+            //if (targetInAttackRange == true)
+            //{
+            //    GetComponent<MeshRenderer>().material = attack;
+            //    AttackTile = true;
+            //}
+
+            if (AttackTile == true) GetComponent<MeshRenderer>().material = attack;
         }
 
-        private bool TargetsInAttackRange()
+        private void CheckAttackRange()
         {
             List<Character_InBattle> oppositeSide = turnController.OppositeSide;
             int attackRange = turnController.CurrentTurnCharacter.AttackRange;
@@ -33,10 +45,28 @@ namespace TileDataSet
                 int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
                 int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
 
-                if ((x + z) <= attackRange) return true;
+                if ((x + z) <= attackRange)
+                {
+                    AttackTile = true;
+                    return;
+                }
             }
-
-            return false;
         }
+
+        //private bool TargetsInAttackRange()
+        //{
+        //    List<Character_InBattle> oppositeSide = turnController.OppositeSide;
+        //    int attackRange = turnController.CurrentTurnCharacter.AttackRange;
+
+        //    for (int i = 0; i < oppositeSide.Count; i++)
+        //    {
+        //        int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
+        //        int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
+
+        //        if ((x + z) <= attackRange) return true;
+        //    }
+
+        //    return false;
+        //}
     }
 }

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Character_StateManager : MonoBehaviour
 {
-    public Character_State idleExploration;
-    public Character_State runExploration;
-    public Character_State idleBattle;
-    public Character_State runBattle;
+    public Character_StateList stateList;
 
     private Animator animator;
 
@@ -17,7 +14,7 @@ public class Character_StateManager : MonoBehaviour
     {
         if (animator == null) return;
 
-        CurrentState = (battlePhase == true) ? idleBattle : idleExploration;
+        CurrentState = (battlePhase == true) ? stateList.idleBattle : stateList.idleExploration;
 
         animator.SetInteger("CurrentState", CurrentState.value);
     }
@@ -26,7 +23,7 @@ public class Character_StateManager : MonoBehaviour
     {
         if (animator == null) return;
 
-        CurrentState = (battlePhase == true) ? runBattle : runExploration;
+        CurrentState = (battlePhase == true) ? stateList.runBattle : stateList.runExploration;
 
         animator.SetInteger("CurrentState", CurrentState.value);
     }
@@ -37,7 +34,7 @@ public class Character_StateManager : MonoBehaviour
 
         if (animator == null) return;
 
-        CurrentState = idleExploration;
+        CurrentState = stateList.idleExploration;
 
         animator.SetInteger("CurrentState", CurrentState.value);
     }

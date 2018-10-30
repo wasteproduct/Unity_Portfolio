@@ -4,6 +4,7 @@ using UnityEngine;
 using AStar;
 using MapDataSet;
 using Battle;
+using TileDataSet;
 
 [CreateAssetMenu(fileName = "", menuName = "Calculation/Move", order = 1)]
 public class Calculation_Move : ScriptableObject
@@ -27,7 +28,7 @@ public class Calculation_Move : ScriptableObject
         int startX = turnController.CurrentTurnCharacter.StandingTileX;
         int startZ = turnController.CurrentTurnCharacter.StandingTileZ;
 
-        bool pathFound = aStar.FindPath(MapData.TileData, MapData.TileData[startX, startZ], movableTilesManager.DestinationTile);
+        bool pathFound = aStar.FindPath(MapData.TileData, MapData.TileData[startX, startZ], movableTilesManager.DestinationTile.GetComponent<Tile_MovableInBattle>().TileData);
 
         if (pathFound == false)
         {

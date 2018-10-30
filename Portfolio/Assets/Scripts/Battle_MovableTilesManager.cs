@@ -15,9 +15,24 @@ namespace Battle
         private Map_Data mapData;
 
         public List<GameObject> MovableTiles { get; private set; }
-        public Map_TileData DestinationTile { get; private set; }
+        public GameObject DestinationTile { get; private set; }
 
         public void SetDestinationTile(Map_TileData destinationTile)
+        {
+            for (int i = 0; i < MovableTiles.Count; i++)
+            {
+                Map_TileData tileData = MovableTiles[i].GetComponent<Tile_MovableInBattle>().TileData;
+
+                if (tileData == destinationTile)
+                {
+                    DestinationTile = MovableTiles[i];
+                    Debug.Log("Destination fixed.");
+                    return;
+                }
+            }
+        }
+
+        public void SetDestinationTile(GameObject destinationTile)
         {
             DestinationTile = null;
             DestinationTile = destinationTile;

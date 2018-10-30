@@ -128,10 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de84ede3804a34544a5eed6c092de705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleExploration: {fileID: 0}
-  runExploration: {fileID: 0}
-  idleBattle: {fileID: 0}
-  runBattle: {fileID: 0}
+  stateList: {fileID: 11400000, guid: 468b5f16acf43d8429f151760d1d3a1e, type: 2}
 --- !u!114 &114637541972455594
 MonoBehaviour:
   m_ObjectHideFlags: 1

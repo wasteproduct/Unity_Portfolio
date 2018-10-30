@@ -108,5 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdbaa692e762624fa678b405b30668c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   normal: {fileID: 2100000, guid: 451cd76c2ac18b442985ac9e533d6e1a, type: 2}
   attack: {fileID: 2100000, guid: 79bf819024cf283448e8e84942598f95, type: 2}

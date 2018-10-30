@@ -29,11 +29,12 @@ namespace Battle
             turnController.Initialize(player.GetComponent<Player_DungeonSettings>().PlayerCharacters, enemiesInZone);
             movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
 
-            Battle_PhaseBase[] phases = new Battle_PhaseBase[4];
-            phases[0] = this.GetComponent<Battle_PhaseSelectingTile>();
-            phases[1] = this.GetComponent<Battle_PhaseMoving>();
-            phases[2] = this.GetComponent<Battle_PhaseSelectingTarget>();
-            phases[3] = this.GetComponent<Battle_PhaseAction>();
+            Battle_PhaseBase[] phases = new Battle_PhaseBase[5];
+            phases[0] = GetComponent<Battle_PhaseSelectingTile>();
+            phases[1] = GetComponent<Battle_PhaseMoving>();
+            phases[2] = GetComponent<Battle_PhaseSelectingTarget>();
+            phases[3] = GetComponent<Battle_PhaseSelectingAction>();
+            phases[4] = GetComponent<Battle_PhaseAction>();
 
             battlePhaseManager.Initialize(phases);
 
