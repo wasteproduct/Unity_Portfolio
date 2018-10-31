@@ -16,7 +16,7 @@ namespace Battle
 
         public override void ClosePhase()
         {
-            turnController.SwitchTurn();
+            
         }
 
         public override void EnterPhase()
@@ -46,13 +46,8 @@ namespace Battle
 
                 yield return null;
             }
-
-            Battle_Action executedAction = actionManager.ExecutedAction;
-
-            currentTurnCharacter.SetState(executedAction.actionState);
-
-            // 데미지 계산, 체력 계산, 사망 처리 등등
-            //actionManager.ExecutedAction.Play();
+            
+            actionManager.ExecutedAction.Play();
         }
 
         // Update is called once per frame

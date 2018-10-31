@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Battle;
 
-public class StateBehaviour_Attack : MonoBehaviour {
+public class StateBehaviour_Attack : StateMachineBehaviour
+{
+    public Character_State idleBattle;
+    public Manager_BattlePhase phaseManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        animator.SetInteger("CurrentState", idleBattle.value);
+        phaseManager.EnterNextPhase();
+    }
 }

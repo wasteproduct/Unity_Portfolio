@@ -107,13 +107,13 @@ public class Character_InBattle : MonoBehaviour
         Dead = false;
         TurnFinished = false;
 
-        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
-        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+        StandingTileX = (int)(gameObject.transform.position.x + .5f);
+        StandingTileZ = (int)(gameObject.transform.position.z + .5f);
 
-        startingRotation = this.gameObject.transform.rotation;
+        startingRotation = gameObject.transform.rotation;
         stateManager = GetComponent<Character_StateManager>();
 
-        if (enemyCharacter == true) this.gameObject.layer = LayerMask.NameToLayer("Enemy");
+        if (enemyCharacter == true) gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         // temporary
         AttackRange = 3;
