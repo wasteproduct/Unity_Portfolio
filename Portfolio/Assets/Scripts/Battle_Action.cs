@@ -7,6 +7,6 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Action", order = 1)]
     public class Battle_Action : ScriptableObject
     {
-
+        public Character_State actionState;
     }
 }

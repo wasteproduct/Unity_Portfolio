@@ -505,6 +505,9 @@ MonoBehaviour:
   dungeonPlay: {fileID: 1553519080}
   phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
   battleManager: {fileID: 1289549696}
+  idleExploration: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
+  idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
+  runExploration: {fileID: 11400000, guid: 86a0a53f7e86b274aac205e96145236c, type: 2}
 --- !u!1 &1289549696
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +644,6 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
-  rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
 --- !u!114 &1289549703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +675,7 @@ MonoBehaviour:
   phaseNumber: 1
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  runBattle: {fileID: 11400000, guid: 7dc8ad26b9a447747a342f174f8bcc47, type: 2}
 --- !u!114 &1289549705
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,10 @@ using MapDataSet;
 public class Character_InBattle : MonoBehaviour
 {
     public Calculation_Move moveController;
+    public Character_State idleBattle;
+    public Character_State runBattle;
 
+    private Quaternion targetRotation;
     private float elapsedTime;
     private int nextTileIndex;
     private Quaternion startingRotation;
@@ -23,6 +26,7 @@ public class Character_InBattle : MonoBehaviour
     public int StandingTileX { get; private set; }
     public int StandingTileZ { get; private set; }
     public bool Arrived { get; private set; }
+    public bool StartAction { get; private set; }
     public bool ActionFinished()
     {
         TurnFinished = true;
@@ -31,24 +35,40 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
-    public void SetState_Run()
+    public void SetState(Character_State newState)
     {
-        stateManager.SetState_Run(true);
+        stateManager.SetState(newState);
     }
 
     public void SetTrack()
     {
         elapsedTime = 0.0f;
         nextTileIndex = 1;
-        startingRotation = this.gameObject.transform.rotation;
+        startingRotation = gameObject.transform.rotation;
         Arrived = false;
 
         moveController.SetTrack(MapData);
     }
 
+    public void SetTargetRotation(Vector3 targetPosition)
+    {
+        StartAction = false;
+
+        Vector3 forward = targetPosition - gameObject.transform.position;
+        targetRotation = Quaternion.LookRotation(forward);
+    }
+
     public void HeadToTarget()
     {
-        //
+        if (StartAction == true) return;
+
+        elapsedTime += Time.deltaTime;
+
+        float lerpTime = elapsedTime / moveController.ElapsedTimeLimit;
+
+        gameObject.transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, lerpTime);
+
+        if (lerpTime >= 1.0f) StartAction = true;
     }
 
     public void Move()
@@ -68,7 +88,7 @@ public class Character_InBattle : MonoBehaviour
 
             if (nextTileIndex >= moveController.Track.Count)
             {
-                stateManager.SetState_Idle(true);
+                stateManager.SetState(idleBattle);
                 Arrived = true;
             }
         }

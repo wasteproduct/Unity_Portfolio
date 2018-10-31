@@ -10,20 +10,11 @@ public class Character_StateManager : MonoBehaviour
 
     public Character_State CurrentState { get; private set; }
 
-    public void SetState_Idle(bool battlePhase)
+    public void SetState(Character_State newState)
     {
         if (animator == null) return;
-
-        CurrentState = (battlePhase == true) ? stateList.idleBattle : stateList.idleExploration;
-
-        animator.SetInteger("CurrentState", CurrentState.value);
-    }
-
-    public void SetState_Run(bool battlePhase)
-    {
-        if (animator == null) return;
-
-        CurrentState = (battlePhase == true) ? stateList.runBattle : stateList.runExploration;
+        
+        CurrentState = newState;
 
         animator.SetInteger("CurrentState", CurrentState.value);
     }

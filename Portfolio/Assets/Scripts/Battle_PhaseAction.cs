@@ -8,7 +8,6 @@ namespace Battle
     {
         public Battle_TargetManager targetManager;
         public Battle_ActionManager actionManager;
-        public Calculation_Turn rotationCalculator;
 
         public override void ClickWork()
         {
@@ -30,18 +29,30 @@ namespace Battle
                 return;
             }
 
-            StartCoroutine(HeadToTarget());
+            StartCoroutine(ExecuteAction());
         }
 
-        private IEnumerator HeadToTarget()
+        private IEnumerator ExecuteAction()
         {
             Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
-            while(true)
+
+            currentTurnCharacter.SetTargetRotation(targetManager.Target.gameObject.transform.position);
+
+            while (true)
             {
                 currentTurnCharacter.HeadToTarget();
 
+                if (currentTurnCharacter.StartAction == true) break;
+
                 yield return null;
             }
+
+            Battle_Action executedAction = actionManager.ExecutedAction;
+
+            currentTurnCharacter.SetState(executedAction.actionState);
+
+            // 데미지 계산, 체력 계산, 사망 처리 등등
+            //actionManager.ExecutedAction.Play();
         }
 
         // Update is called once per frame

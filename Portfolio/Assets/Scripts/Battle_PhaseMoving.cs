@@ -8,6 +8,8 @@ namespace Battle
 {
     public class Battle_PhaseMoving : Battle_PhaseBase
     {
+        public Character_State runBattle;
+
         private Character_InBattle currentTurnCharacter;
 
         public override void ClickWork()
@@ -27,7 +29,7 @@ namespace Battle
             currentTurnCharacter = turnController.CurrentTurnCharacter;
 
             currentTurnCharacter.SetTrack();
-            currentTurnCharacter.SetState_Run();
+            currentTurnCharacter.SetState(runBattle);
         }
 
         // Update is called once per frame

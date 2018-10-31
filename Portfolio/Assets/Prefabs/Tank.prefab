@@ -1787,6 +1787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
+  idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
+  runBattle: {fileID: 11400000, guid: 7dc8ad26b9a447747a342f174f8bcc47, type: 2}
   meshRenderer: {fileID: 0}
 --- !u!114 &114887517621289022
 MonoBehaviour:

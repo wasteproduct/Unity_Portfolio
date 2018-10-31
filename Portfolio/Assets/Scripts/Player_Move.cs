@@ -14,6 +14,9 @@ namespace Player
         public GameObject dungeonPlay;
         public Manager_DungeonPhase phaseManager;
         public GameObject battleManager;
+        public Character_State idleExploration;
+        public Character_State idleBattle;
+        public Character_State runExploration;
 
         private List<GameObject> characters;
 
@@ -54,25 +57,27 @@ namespace Player
                 track.Insert(0, aStar.Node[characterMoveController.StandingTileX, characterMoveController.StandingTileZ]);
                 characters[i].GetComponent<Character_InDungeon>().MoveController.SetTrack(track);
             }
-            
-            SetState_Run(false);
+
+            SetState_Run();
 
             StartCoroutine(Move_Explore());
         }
 
-        private void SetState_Run(bool battlePhase)
+        private void SetState_Run()
         {
             for (int i = 0; i < characters.Count; i++)
             {
-                characters[i].GetComponent<Character_StateManager>().SetState_Run(battlePhase);
+                characters[i].GetComponent<Character_StateManager>().SetState(runExploration);
             }
         }
 
         private void SetState_Idle(bool battlePhase)
         {
+            Character_State idle = (battlePhase == true) ? idleBattle : idleExploration;
+
             for (int i = 0; i < characters.Count; i++)
             {
-                characters[i].GetComponent<Character_StateManager>().SetState_Idle(battlePhase);
+                characters[i].GetComponent<Character_StateManager>().SetState(idle);
             }
         }
 
