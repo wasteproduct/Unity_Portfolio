@@ -113,5 +113,5 @@ MonoBehaviour:
   zoneTilePrefab: {fileID: 1927754894111990, guid: e796f0e90872e9a41acf7fbcce78df53,
     type: 2}
   zoneTileMaterial: {fileID: 2100000, guid: 451cd76c2ac18b442985ac9e533d6e1a, type: 2}
-  enemyPrefab: {fileID: 1172814101561026, guid: aa2fd9e534d60bf4cb8bbb25b958541a,
+  enemyPrefab: {fileID: 1603032203583802, guid: a897a6fea93ff9342bd8dbad7125a844,
     type: 2}

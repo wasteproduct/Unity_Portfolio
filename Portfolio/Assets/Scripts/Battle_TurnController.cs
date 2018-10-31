@@ -105,6 +105,8 @@ namespace Battle
                     continue;
                 }
 
+                enemiesInZone[i].GetComponent<Character_StateManager>().Initialize();
+
                 EnemyCharacters.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
             }
         }
