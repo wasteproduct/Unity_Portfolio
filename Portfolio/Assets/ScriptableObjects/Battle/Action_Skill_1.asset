@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d82655efdbf7d74aaa7f68936bb583c, type: 3}
   m_Name: Action_Skill_1
   m_EditorClassIdentifier: 
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionState: {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
