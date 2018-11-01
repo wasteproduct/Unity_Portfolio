@@ -12,6 +12,7 @@ public class Manager_DungeonPlay : MonoBehaviour
     public Manager_CommonFeatures commonFeatures;
     public Manager_DungeonPhase phaseManager;
     public Calculation_Move moveController;
+    public Battle_ObjectManager battleObjectManager;
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,8 @@ public class Manager_DungeonPlay : MonoBehaviour
         aStar.Initialize(tileMap.GetComponent<Map_Main>().MapData);
 
         phaseManager.PhaseToExplore();
+
+        battleObjectManager.Initialize();
     }
 
     // Update is called once per frame

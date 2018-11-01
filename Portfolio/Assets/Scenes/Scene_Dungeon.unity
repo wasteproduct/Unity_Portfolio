@@ -516,7 +516,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1289549698}
-  - component: {fileID: 1289549697}
   - component: {fileID: 1289549700}
   - component: {fileID: 1289549701}
   - component: {fileID: 1289549699}
@@ -532,26 +531,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1289549697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289549696}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14e79d59134ae8a4c895437b2f8efa33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 596837744}
-  tileMap: {fileID: 1982687470}
-  movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
-    type: 2}
-  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
-  enemyTurn: {fileID: 11400000, guid: e47c44774fee2f24f9333de796f0408f, type: 2}
-  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
-  choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}
-  layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
 --- !u!4 &1289549698
 Transform:
   m_ObjectHideFlags: 0
@@ -741,6 +720,8 @@ MonoBehaviour:
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
   phaseManager: {fileID: 11400000, guid: d1b0aa3024ed4074cbd6f65514d02557, type: 2}
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
+  battleObjectManager: {fileID: 11400000, guid: 4c629c32fa6b6e84e8ba8fed025649f5,
+    type: 2}
 --- !u!4 &1553519082
 Transform:
   m_ObjectHideFlags: 0

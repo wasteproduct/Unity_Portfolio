@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e8a46abfe6dc340b58ea745ef0a38c, type: 3}
   m_Name: Battle_Target Manager
   m_EditorClassIdentifier: 
+  objectManager: {fileID: 11400000, guid: 4c629c32fa6b6e84e8ba8fed025649f5, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}

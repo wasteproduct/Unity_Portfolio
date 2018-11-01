@@ -39,7 +39,7 @@ namespace Battle
             }
             else
             {
-                targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
+                //targetManager.CountTargetsInAttackRange(CurrentTurnCharacter);
                 StartCoroutine(CurrentTurnCharacterAction());
             }
         }

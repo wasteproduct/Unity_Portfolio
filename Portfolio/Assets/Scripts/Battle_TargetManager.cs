@@ -7,6 +7,7 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Target Manager", order = 1)]
     public class Battle_TargetManager : ScriptableObject
     {
+        public Battle_ObjectManager objectManager;
         public Battle_TurnController turnController;
         public Variable_Bool choosingTarget;
 
@@ -15,6 +16,29 @@ namespace Battle
         public bool OnlyOneTarget { get; private set; }
         public GameObject Target { get; set; }
 
+        public void Update()
+        {
+            SpinTargetMarks();
+        }
+
+        public void MarkAvailableTargets()
+        {
+            List<GameObject> targetMarks = objectManager.TargetMarks;
+
+            for (int i = 0; i < PotentialTargets.Count; i++)
+            {
+                targetMarks[i].gameObject.SetActive(true);
+
+                targetMarks[i].gameObject.transform.position = PotentialTargets[i].gameObject.transform.position;
+            }
+        }
+
+        public void RemoveMarks()
+        {
+            objectManager.DisableTargetMarks();
+        }
+
+        // temporary
         public void HighlightTargets(bool flag)
         {
             for (int i = 0; i < PotentialTargets.Count; i++)
@@ -50,33 +74,14 @@ namespace Battle
             OnlyOneTarget = (PotentialTargets.Count == 1) ? true : false;
         }
 
-
-
-
-
-
-        // failure
-        //public GameObject Enemy_ChooseTarget(Character_InBattle currentTurnCharacter)
-        //{
-            
-        //}
-
-        public void CountTargetsInAttackRange(Character_InBattle currentTurnCharacter)
+        private void SpinTargetMarks()
         {
-            //Targets = new List<GameObject>();
+            for (int i = 0; i < objectManager.TargetMarks.Count; i++)
+            {
+                GameObject targetMark = objectManager.TargetMarks[i];
 
-            //for (int i = 0; i < turnController.OppositeSide.Count; i++)
-            //{
-            //    if ((Mathf.Abs(turnController.OppositeSide[i].StandingTileX - currentTurnCharacter.StandingTileX) + Mathf.Abs(turnController.OppositeSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ)) <= currentTurnCharacter.AttackRange) Targets.Add(turnController.OppositeSide[i].gameObject);
-            //}
-
-            //// temporary
-            ////if (turnController.enemyTurn.flag == true) return;
-
-            //for (int i = 0; i < Targets.Count; i++)
-            //{
-            //    Targets[i].GetComponent<Character_InBattle>().HighlightAsTarget(true);
-            //}
+                targetMark.gameObject.transform.Rotate(0, 256.0f * Time.deltaTime, 0);
+            }
         }
     }
 }

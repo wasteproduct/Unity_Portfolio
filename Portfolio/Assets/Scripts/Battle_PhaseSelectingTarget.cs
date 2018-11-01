@@ -18,8 +18,8 @@ namespace Battle
         public override void ClosePhase()
         {
             choosingTarget.flag = false;
-
-            targetManager.HighlightTargets(false);
+            
+            targetManager.RemoveMarks();
         }
 
         public override void EnterPhase()
@@ -40,18 +40,22 @@ namespace Battle
                 phaseManager.EnterNextPhase();
                 return;
             }
+            
+            targetManager.MarkAvailableTargets();
 
-            targetManager.HighlightTargets(true);
+            print("Select Target");
         }
 
         // Update is called once per frame
         void Update()
         {
+            targetManager.Update();
+
             if (Input.GetMouseButtonUp(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
-
+                
                 if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
                 {
                     if ((1 << hitInfo.collider.gameObject.layer) == layers.Enemy)

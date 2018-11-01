@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799332834fabf824094cdfa83e11f21e, type: 3}
+  m_Name: Battle_Object Manager
+  m_EditorClassIdentifier: 
+  choosingTarget: {fileID: 11400000, guid: fc4a62d71e96aac478caab143a1e6a47, type: 2}
+  targetMarkPrefab: {fileID: 1063520703524150, guid: 21d8b37c1581b3a46a74b67a5ccd2e8f,
+    type: 2}
