@@ -71,7 +71,7 @@ namespace Player
                 }
             }
 
-            this.gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
+            gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
 
             Camera.main.GetComponent<Camera_Movement>().SetFocus(captain.gameObject);
         }

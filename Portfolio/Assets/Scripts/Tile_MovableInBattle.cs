@@ -42,6 +42,8 @@ namespace TileDataSet
 
             for (int i = 0; i < oppositeSide.Count; i++)
             {
+                if (oppositeSide[i].Dead == true) continue;
+
                 int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
                 int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
 

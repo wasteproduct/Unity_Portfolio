@@ -12,10 +12,29 @@ namespace Battle
         public Battle_TurnController turnController;
         public Battle_MovableTilesManager movableTilesManager;
         public GameObject tileMap;
+        public GameObject dungeonPlayManager;
+        public Character_State idleExploration;
 
         public void ClickWork()
         {
             battlePhaseManager.CurrentPhase.ClickWork();
+        }
+
+        public void FinishBattle()
+        {
+            // 전투 결과 반영
+
+            // 탐험 모드
+            List<Character_InBattle> playerCharacters = turnController.PlayerCharacters;
+            for (int i = 0; i < playerCharacters.Count; i++)
+            {
+                playerCharacters[i].SetState(idleExploration);
+            }
+
+            // 타일 제거
+            movableTilesManager.ClearTilesList();
+
+            dungeonPlayManager.GetComponent<Manager_DungeonPlay>().FinishBattle();
         }
 
         public void Initialize(List<GameObject> enemiesInZone)
@@ -38,21 +57,6 @@ namespace Battle
             phases[5] = GetComponent<Battle_PhaseClosingTurn>();
 
             battlePhaseManager.Initialize(phases);
-
-            //playerManager = player.GetComponent<Player_DungeonSettings>();
-
-            //movableTilesManager.Initialize(tileMap.GetComponent<Map_Main>().MapData);
-
-            //SetPlayerCharacters();
-
-            //SetEnemies(enemiesInZone);
-
-            //turnController.Initialize(inBattleEnemies);
-
-            //target = null;
-
-            //CurrentTurnCharacter = inBattleCharactersPlayer[0];
-            //movableTilesManager.SetTiles(CurrentTurnCharacter, inBattleCharactersPlayer, inBattleEnemies);
         }
 
         // Use this for initialization

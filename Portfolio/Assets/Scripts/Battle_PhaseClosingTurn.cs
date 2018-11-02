@@ -22,10 +22,19 @@ namespace Battle
         {
             print("Phase Closing Turn.");
 
-            // 데미지 계산, 사망 여부, 피격 액션 등등
-            //if(targetManager.)
+            StartCoroutine(FinalProcess());
+        }
 
-            phaseManager.EnterNextPhase();
+        private IEnumerator FinalProcess()
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            turnController.RemoveDeadCharacters();
+
+            bool allEnemiesDead = turnController.CheckAllEnemiesDead();
+
+            if (allEnemiesDead == true) gameObject.GetComponent<Manager_Battle2>().FinishBattle();
+            else phaseManager.EnterNextPhase();
         }
     }
 }

@@ -8,6 +8,8 @@ public class Character_InBattle : MonoBehaviour
     public Calculation_Move moveController;
     public Character_State idleBattle;
     public Character_State runBattle;
+    public Character_State damaged;
+    public Character_State dead;
 
     private Quaternion targetRotation;
     private float elapsedTime;
@@ -17,8 +19,10 @@ public class Character_InBattle : MonoBehaviour
 
     // temporary
     public int AttackRange { get; private set; }
-    public MeshRenderer meshRenderer;
+    //public MeshRenderer meshRenderer;
     public int MovableDistance { get; private set; }
+    public float HP { get; private set; }
+    public float AttackDamage { get; private set; }
 
     public Map_Data MapData { get; private set; }
     public bool Dead { get; private set; }
@@ -34,6 +38,18 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
+    public void Damage(float attackDamage)
+    {
+        HP -= attackDamage;
+
+        if (HP <= 0.0f)
+        {
+            Dead = true;
+            stateManager.SetState(dead);
+        }
+        else stateManager.SetState(damaged);
+    }
 
     public void SetState(Character_State newState)
     {
@@ -97,7 +113,7 @@ public class Character_InBattle : MonoBehaviour
     // temporary
     public void HighlightAsTarget(bool flag)
     {
-        meshRenderer.material.color = (flag == true) ? Color.red : Color.white;
+        //meshRenderer.material.color = (flag == true) ? Color.red : Color.white;
     }
 
     public void Initialize(Map_Data mapData, bool enemyCharacter)
@@ -116,12 +132,15 @@ public class Character_InBattle : MonoBehaviour
         if (enemyCharacter == true) gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         // temporary
+        HP = 20.0f;
         AttackRange = 3;
         MovableDistance = 3;
+        AttackDamage = 10.0f;
         if (enemyCharacter == true)
         {
             AttackRange = 1;
             MovableDistance = 2;
+            AttackDamage = 5.0f;
         }
     }
 

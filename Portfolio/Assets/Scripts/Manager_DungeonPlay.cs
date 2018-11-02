@@ -30,6 +30,13 @@ public class Manager_DungeonPlay : MonoBehaviour
 
     }
 
+    public void FinishBattle()
+    {
+        phaseManager.PhaseToExplore();
+
+        battleManager.gameObject.SetActive(false);
+    }
+
     public void StartBattle(List<GameObject> enemiesInZone)
     {
         phaseManager.PhaseToBattle();

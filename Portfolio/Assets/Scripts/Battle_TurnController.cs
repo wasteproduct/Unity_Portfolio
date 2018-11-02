@@ -21,6 +21,39 @@ namespace Battle
         public float ElapsedTimeLimit { get { return moveController.ElapsedTimeLimit; } }
         public bool EnemyTurn { get; private set; }
 
+        public bool CheckAllEnemiesDead()
+        {
+            for (int i = 0; i < EnemyCharacters.Count; i++)
+            {
+                if (EnemyCharacters[i].Dead == false) return false;
+            }
+
+            return true;
+        }
+
+        public void RemoveDeadCharacters()
+        {
+            for (int i = 0; i < PlayerCharacters.Count; i++)
+            {
+                if (PlayerCharacters[i].Dead == true)
+                {
+                    Destroy(PlayerCharacters[i].gameObject);
+
+                    PlayerCharacters.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < EnemyCharacters.Count; i++)
+            {
+                if (EnemyCharacters[i].Dead == true)
+                {
+                    Destroy(EnemyCharacters[i].gameObject);
+
+                    EnemyCharacters.RemoveAt(i);
+                }
+            }
+        }
+
         public void Initialize(List<GameObject> playerCharacters, List<GameObject> enemiesInZone)
         {
             SetPlayerCharacters(playerCharacters);
@@ -72,6 +105,8 @@ namespace Battle
 
             for (int i = 0; i < OppositeSide.Count; i++)
             {
+                if (OppositeSide[i].Dead == true) continue;
+
                 if (OppositeSide[i].TurnFinished == false)
                 {
                     CurrentTurnCharacter = OppositeSide[i];

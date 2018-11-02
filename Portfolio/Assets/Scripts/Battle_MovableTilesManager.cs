@@ -83,6 +83,18 @@ namespace Battle
             }
         }
 
+        public void ClearTilesList()
+        {
+            for (int i = MovableTiles.Count - 1; i >= 0; i--)
+            {
+                Destroy(MovableTiles[i].gameObject);
+
+                MovableTiles.RemoveAt(i);
+            }
+
+            MovableTiles.Clear();
+        }
+
         private bool TileOccupied(int x, int z)
         {
             List<Character_InBattle> playerCharacters = turnController.PlayerCharacters;
@@ -104,18 +116,6 @@ namespace Battle
             }
 
             return false;
-        }
-
-        private void ClearTilesList()
-        {
-            for (int i = MovableTiles.Count - 1; i >= 0; i--)
-            {
-                Destroy(MovableTiles[i].gameObject);
-
-                MovableTiles.RemoveAt(i);
-            }
-
-            MovableTiles.Clear();
         }
     }
 }

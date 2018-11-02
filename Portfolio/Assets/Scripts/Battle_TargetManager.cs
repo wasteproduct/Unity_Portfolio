@@ -60,6 +60,8 @@ namespace Battle
             Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
             for (int i = 0; i < turnController.OppositeSide.Count; i++)
             {
+                if (turnController.OppositeSide[i].Dead == true) continue;
+
                 Character_InBattle oppositeCharacter = turnController.OppositeSide[i];
 
                 int xDistance = Mathf.Abs(oppositeCharacter.StandingTileX - currentTurnCharacter.StandingTileX);
