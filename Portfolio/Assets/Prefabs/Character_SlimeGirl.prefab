@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 114948999635178098}
   - component: {fileID: 136221815343652590}
   m_Layer: 0
-  m_Name: SlimeGirl
+  m_Name: Character_SlimeGirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2251,7 +2251,8 @@ MonoBehaviour:
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
   runBattle: {fileID: 11400000, guid: 7dc8ad26b9a447747a342f174f8bcc47, type: 2}
-  meshRenderer: {fileID: 0}
+  damaged: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
+  dead: {fileID: 11400000, guid: d2c07634a8406aa4689940df7af8408a, type: 2}
 --- !u!114 &114948999635178098
 MonoBehaviour:
   m_ObjectHideFlags: 1

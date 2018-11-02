@@ -580,6 +580,8 @@ MonoBehaviour:
   movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
     type: 2}
   tileMap: {fileID: 1982687470}
+  dungeonPlayManager: {fileID: 1553519080}
+  idleExploration: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
 --- !u!114 &1289549701
 MonoBehaviour:
   m_ObjectHideFlags: 0
