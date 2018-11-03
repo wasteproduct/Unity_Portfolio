@@ -7,6 +7,7 @@ namespace Battle
     public class Battle_PhaseClosingTurn : Battle_PhaseBase
     {
         public Battle_TargetManager targetManager;
+        public Battle_MovableTilesManager movableTilesManager;
 
         public override void ClickWork()
         {
@@ -21,6 +22,8 @@ namespace Battle
         public override void EnterPhase()
         {
             print("Phase Closing Turn.");
+
+            movableTilesManager.ClearTilesList();
 
             StartCoroutine(FinalProcess());
         }

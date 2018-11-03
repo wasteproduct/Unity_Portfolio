@@ -85,6 +85,8 @@ namespace Battle
 
         public void ClearTilesList()
         {
+            if (MovableTiles.Count <= 0) return;
+
             for (int i = MovableTiles.Count - 1; i >= 0; i--)
             {
                 Destroy(MovableTiles[i].gameObject);
