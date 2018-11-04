@@ -141,6 +141,7 @@ namespace Battle
                 }
 
                 enemiesInZone[i].GetComponent<Character_StateManager>().Initialize();
+                enemiesInZone[i].GetComponent<Character_InBattle>().StartBattle();
 
                 EnemyCharacters.Add(enemiesInZone[i].GetComponent<Character_InBattle>());
             }
@@ -157,6 +158,8 @@ namespace Battle
                     playerCharacters[i].gameObject.SetActive(false);
                     continue;
                 }
+
+                playerCharacters[i].GetComponent<Character_InBattle>().StartBattle();
 
                 PlayerCharacters.Add(playerCharacters[i].GetComponent<Character_InBattle>());
             }

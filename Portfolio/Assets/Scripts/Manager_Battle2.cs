@@ -14,6 +14,10 @@ namespace Battle
         public GameObject tileMap;
         public GameObject dungeonPlayManager;
         public Character_State idleExploration;
+        public Variable_Quaternion rotationBattleStatus;
+        public Variable_GameObject captain;
+
+        private bool battleStarted = false;
 
         public void ClickWork()
         {
@@ -22,14 +26,18 @@ namespace Battle
 
         public void FinishBattle()
         {
+            battleStarted = false;
+
             // 전투 결과 반영
 
             // 탐험 모드
             List<Character_InBattle> playerCharacters = turnController.PlayerCharacters;
             for (int i = 0; i < playerCharacters.Count; i++)
             {
+                playerCharacters[i].FinishBattle();
                 playerCharacters[i].SetState(idleExploration);
             }
+            Camera.main.GetComponent<Camera_Movement>().ChangeFocus(captain.value);
 
             // 타일 제거
             movableTilesManager.ClearTilesList();
@@ -57,6 +65,8 @@ namespace Battle
             phases[5] = GetComponent<Battle_PhaseClosingTurn>();
 
             battlePhaseManager.Initialize(phases);
+
+            battleStarted = true;
         }
 
         // Use this for initialization
@@ -68,7 +78,19 @@ namespace Battle
         // Update is called once per frame
         void Update()
         {
+            if (battleStarted == false) return;
 
+            rotationBattleStatus.value = CalculateBattleStatusRotation();
+        }
+
+        private Quaternion CalculateBattleStatusRotation()
+        {
+            Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
+
+            Vector3 forward = currentTurnCharacter.battleStatus.transform.position - Camera.main.transform.position;
+            forward.Normalize();
+
+            return Quaternion.LookRotation(forward, Vector3.up);
         }
     }
 }

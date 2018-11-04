@@ -16,7 +16,7 @@ namespace Battle
 
         public override void ClosePhase()
         {
-            turnController.SwitchTurn();
+
         }
 
         public override void EnterPhase()
@@ -24,6 +24,9 @@ namespace Battle
             print("Phase Closing Turn.");
 
             movableTilesManager.ClearTilesList();
+
+            turnController.SwitchTurn();
+            Camera.main.GetComponent<Camera_Movement>().ChangeFocus(turnController.CurrentTurnCharacter.gameObject);
 
             StartCoroutine(FinalProcess());
         }

@@ -15,6 +15,7 @@ namespace Player
         public Character_Database characterDatabase;
         public Variable_Int currentTileX;
         public Variable_Int currentTileZ;
+        public Variable_GameObject objectCaptain;
 
         private Map_Data mapData;
 
@@ -74,6 +75,8 @@ namespace Player
             gameObject.GetComponent<Player_Move>().Initialize(PlayerCharacters);
 
             Camera.main.GetComponent<Camera_Movement>().SetFocus(captain.gameObject);
+
+            objectCaptain.value = captain;
         }
 
         // Update is called once per frame

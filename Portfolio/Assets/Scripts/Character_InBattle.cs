@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MapDataSet;
+using UnityEngine.UI;
 
 public class Character_InBattle : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Character_InBattle : MonoBehaviour
     public Character_State runBattle;
     public Character_State damaged;
     public Character_State dead;
+    public GameObject battleStatus;
+
+    public Slider healthBar;
+    public Text healthText;
 
     private Quaternion targetRotation;
     private float elapsedTime;
@@ -21,8 +26,9 @@ public class Character_InBattle : MonoBehaviour
     public int AttackRange { get; private set; }
     //public MeshRenderer meshRenderer;
     public int MovableDistance { get; private set; }
-    public float HP { get; private set; }
+    public float CurrentHP { get; private set; }
     public float AttackDamage { get; private set; }
+    private float maximumHP;
 
     public Map_Data MapData { get; private set; }
     public bool Dead { get; private set; }
@@ -39,11 +45,22 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
+    public void FinishBattle()
+    {
+        battleStatus.SetActive(false);
+    }
+
+    public void StartBattle()
+    {
+        battleStatus.SetActive(true);
+        healthBar.value = CurrentHP;
+    }
+
     public void Damage(float attackDamage)
     {
-        HP -= attackDamage;
+        CurrentHP -= attackDamage;
 
-        if (HP <= 0.0f)
+        if (CurrentHP <= 0.0f)
         {
             Dead = true;
             stateManager.SetState(dead);
@@ -132,16 +149,19 @@ public class Character_InBattle : MonoBehaviour
         if (enemyCharacter == true) gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         // temporary
-        HP = 20.0f;
+        maximumHP = 100.0f;
+        CurrentHP = maximumHP;
         AttackRange = 3;
         MovableDistance = 3;
-        AttackDamage = 10.0f;
+        AttackDamage = 50.0f;
         if (enemyCharacter == true)
         {
             AttackRange = 1;
             MovableDistance = 2;
-            AttackDamage = 5.0f;
+            AttackDamage = 25.0f;
         }
+        healthBar.maxValue = maximumHP;
+        healthBar.minValue = 0.0f;
     }
 
     // Update is called once per frame
@@ -149,5 +169,8 @@ public class Character_InBattle : MonoBehaviour
     {
         this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
         this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+
+        healthBar.value = CurrentHP;
+        healthText.text = CurrentHP.ToString() + " / " + maximumHP.ToString();
     }
 }
