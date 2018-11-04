@@ -2382,6 +2382,7 @@ MonoBehaviour:
   runBattle: {fileID: 11400000, guid: 7dc8ad26b9a447747a342f174f8bcc47, type: 2}
   damaged: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
   dead: {fileID: 11400000, guid: d2c07634a8406aa4689940df7af8408a, type: 2}
+  battleStatus: {fileID: 1980786239572188}
   healthBar: {fileID: 114358015329401362}
   healthText: {fileID: 114258963281071112}
 --- !u!114 &114218703503573024
@@ -2552,6 +2553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c3a738a9e49d846a68320150246a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationBattleStatus: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662,
+    type: 2}
 --- !u!136 &136221815343652590
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -509,6 +509,7 @@ MonoBehaviour:
   characterDatabase: {fileID: 11400000, guid: 1b18d7319caf97d4f8812fd13fa47b44, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
+  objectCaptain: {fileID: 11400000, guid: c904f7a2575b26547954e5f61bcfc40c, type: 2}
 --- !u!4 &596837746
 Transform:
   m_ObjectHideFlags: 0
@@ -644,6 +645,9 @@ MonoBehaviour:
   tileMap: {fileID: 1982687470}
   dungeonPlayManager: {fileID: 1553519080}
   idleExploration: {fileID: 11400000, guid: 44f71033e9749e14395db0e01fe3744d, type: 2}
+  rotationBattleStatus: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662,
+    type: 2}
+  captain: {fileID: 11400000, guid: c904f7a2575b26547954e5f61bcfc40c, type: 2}
 --- !u!114 &1289549701
 MonoBehaviour:
   m_ObjectHideFlags: 0
