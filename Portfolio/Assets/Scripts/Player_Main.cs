@@ -122,6 +122,7 @@ namespace Player
         public Editor_CharacterData[] Characters;
     }
 
+    // very bad
     [System.Serializable]
     public class Editor_CharacterData
     {
@@ -131,13 +132,17 @@ namespace Player
         public int Agility;
         public int Intelligence;
 
+        public string Skill1;
+
         public Editor_CharacterData(Character_Base character)
         {
-            this.Name = character.Name;
-            this.TypeID = character.TypeID;
-            this.Strength = character.Strength;
-            this.Agility = character.Agility;
-            this.Intelligence = character.Intelligence;
+            Name = character.Name;
+            TypeID = character.TypeID;
+            Strength = character.Strength;
+            Agility = character.Agility;
+            Intelligence = character.Intelligence;
+
+            Skill1 = character.Skill1;
         }
     }
 }

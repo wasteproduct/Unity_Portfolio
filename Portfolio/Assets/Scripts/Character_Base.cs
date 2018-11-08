@@ -13,24 +13,24 @@ namespace Character
         public int Strength;
         public int Agility;
         public int Intelligence;
-        //public List<Skill_Base> skills;
 
-        //public void CopyData(Character_Base copiedBase)
-        //{
-        //    this.characterName = copiedBase.characterName;
-        //    this.typeID = copiedBase.typeID;
-        //    this.strength = copiedBase.strength;
-        //    this.agility = copiedBase.agility;
-        //    this.intelligence = copiedBase.intelligence;
-        //}
+        [SerializeField]
+        private string skill1;
+
+        public string Skill1 { get { return skill1; } }
+        //public List<Skill_Base> skills;
+        // Make skills data as json file
+        // Load data when characters instantiated
 
         public void CopyData(Editor_CharacterData copiedBase)
         {
-            this.Name = copiedBase.Name;
-            this.TypeID = copiedBase.TypeID;
-            this.Strength = copiedBase.Strength;
-            this.Agility = copiedBase.Agility;
-            this.Intelligence = copiedBase.Intelligence;
+            Name = copiedBase.Name;
+            TypeID = copiedBase.TypeID;
+            Strength = copiedBase.Strength;
+            Agility = copiedBase.Agility;
+            Intelligence = copiedBase.Intelligence;
+
+            skill1 = copiedBase.Skill1;
         }
     }
 }
