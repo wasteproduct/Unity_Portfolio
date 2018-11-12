@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330822a1198b8914f9b7fa7ece4b3ec1, type: 3}
   m_Name: Skill_Attack_Grenade
   m_EditorClassIdentifier: 
+  range: 2
   damage: 75
-  range: 1
+  scale: 1
   splashedDamageRate: 0.5

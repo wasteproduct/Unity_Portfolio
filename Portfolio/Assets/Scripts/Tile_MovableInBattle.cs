@@ -10,6 +10,7 @@ namespace TileDataSet
         public Battle_TurnController turnController;
         public Material normal;
         public Material attack;
+        public Material skill;
 
         public Map_TileData TileData { get; private set; }
         public bool AttackTile { get; private set; }
@@ -24,6 +25,8 @@ namespace TileDataSet
             SkillTile = false;
 
             CheckAttackRange();
+
+            CheckSkillRange();
             //bool targetInAttackRange = TargetsInAttackRange();
 
             //if (targetInAttackRange == true)
@@ -33,6 +36,31 @@ namespace TileDataSet
             //}
 
             if (AttackTile == true) GetComponent<MeshRenderer>().material = attack;
+
+            if (SkillTile == true) GetComponent<MeshRenderer>().material = skill;
+        }
+
+        private void CheckSkillRange()
+        {
+            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
+            
+            // temporary
+            if (turnController.CurrentTurnCharacter.skill1 == null) return;
+            int skillRange = turnController.CurrentTurnCharacter.skill1.Range;
+
+            for (int i = 0; i < oppositeSide.Count; i++)
+            {
+                if (oppositeSide[i].Dead == true) continue;
+
+                int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
+                int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
+
+                if ((x + z) <= skillRange)
+                {
+                    SkillTile = true;
+                    return;
+                }
+            }
         }
 
         private void CheckAttackRange()

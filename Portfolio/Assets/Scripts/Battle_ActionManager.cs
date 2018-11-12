@@ -8,7 +8,9 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Action Manager", order = 1)]
     public class Battle_ActionManager : ScriptableObject
     {
-        public Battle_ActionList actionList;
+        public Battle_Action actionAttack;
+        public Battle_Action actionSkill1;
+
         public Battle_MovableTilesManager movableTilesManager;
 
         public List<Battle_Action> ExecutableActions { get; private set; }
@@ -34,6 +36,8 @@ namespace Battle
             Tile_MovableInBattle destinationTile = movableTilesManager.DestinationTile.GetComponent<Tile_MovableInBattle>();
 
             if (destinationTile.SkillTile == false) return;
+
+            ExecutableActions.Add(actionSkill1);
         }
 
         private void CheckAttackTile()
@@ -42,7 +46,7 @@ namespace Battle
 
             if (destinationTile.AttackTile == false) return;
 
-            ExecutableActions.Add(actionList.actionAttack);
+            ExecutableActions.Add(actionAttack);
         }
     }
 }

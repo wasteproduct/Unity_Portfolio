@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill_Support : MonoBehaviour {
+namespace Skill
+{
+    public class Skill_Support : Skill_Base
+    {
+        public override void SetTarget(GameObject target)
+        {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        }
+    }
 }

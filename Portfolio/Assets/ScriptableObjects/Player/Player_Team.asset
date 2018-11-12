@@ -15,6 +15,6 @@ MonoBehaviour:
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
   captain: {fileID: 11400000, guid: 172573804df7b83479f5e1c5f033fecd, type: 2}
   teamFellow:
-  - {fileID: 0}
   - {fileID: 11400000, guid: baaa148d90f261449bdd58591fe36473, type: 2}
   - {fileID: 11400000, guid: 931d4843e35db9f4d9415a4ae681ed18, type: 2}
+  - {fileID: 0}

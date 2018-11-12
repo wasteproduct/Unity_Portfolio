@@ -111,3 +111,4 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   normal: {fileID: 2100000, guid: 451cd76c2ac18b442985ac9e533d6e1a, type: 2}
   attack: {fileID: 2100000, guid: 79bf819024cf283448e8e84942598f95, type: 2}
+  skill: {fileID: 2100000, guid: fab6c51577a4f79429806a3c55f275d1, type: 2}

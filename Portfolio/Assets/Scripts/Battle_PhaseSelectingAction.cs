@@ -7,6 +7,7 @@ namespace Battle
     public class Battle_PhaseSelectingAction : Battle_PhaseBase
     {
         public Battle_ActionManager actionManager;
+        public GameObject selectAction;
 
         public override void ClickWork()
         {
@@ -36,6 +37,13 @@ namespace Battle
                 actionManager.SetExecutedAction(actionManager.ExecutableActions[0]);
                 phaseManager.EnterNextPhase();
                 return;
+            }
+
+            if (actionsNumber > 1)
+            {
+                // Select Action
+                selectAction.gameObject.SetActive(true);
+                selectAction.GetComponent<Battle_ActionSelectingManager>().SetList();
             }
         }
     }

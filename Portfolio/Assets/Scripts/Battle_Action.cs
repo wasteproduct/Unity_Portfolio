@@ -8,7 +8,11 @@ namespace Battle
     public class Battle_Action : ScriptableObject
     {
         public Battle_TurnController turnController;
-        public Character_State actionState;
+
+        [SerializeField]
+        private Character_State actionState;
+
+        public Character_State ActionState { get { return actionState; } }
 
         public void Play()
         {

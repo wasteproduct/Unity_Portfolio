@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MapDataSet;
 using UnityEngine.UI;
+using Skill;
 
 public class Character_InBattle : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Character_InBattle : MonoBehaviour
     public Character_State damaged;
     public Character_State dead;
     public GameObject battleStatus;
+    public Skill_Base skill1;
 
     public Slider healthBar;
     public Text healthText;
