@@ -8,57 +8,48 @@ namespace TileDataSet
     public class Tile_MovableInBattle : MonoBehaviour
     {
         public Battle_TurnController turnController;
-        public Material normal;
-        public Material attack;
-        public Material skill;
+        public Battle_ActionManager actionManager;
+        public Material tileNormal;
+        public Material tileAttack;
+        public Material tileSkill;
 
         public Map_TileData TileData { get; private set; }
-        public bool AttackTile { get; private set; }
-        public bool SkillTile { get; private set; }
+        public List<Battle_Action> AvailableActions { get; private set; }
 
         public void SetDetails(Map_TileData tileData)
         {
-            GetComponent<MeshRenderer>().material = normal;
+            GetComponent<MeshRenderer>().material = tileNormal;
 
             TileData = tileData;
-            AttackTile = false;
-            SkillTile = false;
+            AvailableActions = new List<Battle_Action>();
 
             CheckAttackRange();
 
-            CheckSkillRange();
-            //bool targetInAttackRange = TargetsInAttackRange();
-
-            //if (targetInAttackRange == true)
-            //{
-            //    GetComponent<MeshRenderer>().material = attack;
-            //    AttackTile = true;
-            //}
-
-            if (AttackTile == true) GetComponent<MeshRenderer>().material = attack;
-
-            if (SkillTile == true) GetComponent<MeshRenderer>().material = skill;
+            CheckSkillsRange();
         }
 
-        private void CheckSkillRange()
+        private void CheckSkillsRange()
         {
             List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            
-            // temporary
-            if (turnController.CurrentTurnCharacter.skill1 == null) return;
-            int skillRange = turnController.CurrentTurnCharacter.skill1.Range;
+            Battle_Action[] skills = turnController.CurrentTurnCharacter.actionSkills;
 
-            for (int i = 0; i < oppositeSide.Count; i++)
+            for (int i = 0; i < skills.Length; i++)
             {
-                if (oppositeSide[i].Dead == true) continue;
+                int skillRange = turnController.CurrentTurnCharacter.actionSkills[i].Range;
 
-                int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
-                int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
-
-                if ((x + z) <= skillRange)
+                for (int j = 0; j < oppositeSide.Count; j++)
                 {
-                    SkillTile = true;
-                    return;
+                    if (oppositeSide[j].Dead == true) continue;
+
+                    int x = Mathf.Abs(oppositeSide[j].StandingTileX - TileData.X);
+                    int z = Mathf.Abs(oppositeSide[j].StandingTileZ - TileData.Z);
+
+                    if ((x + z) <= skillRange)
+                    {
+                        AvailableActions.Add(turnController.CurrentTurnCharacter.actionSkills[i]);
+                        GetComponent<MeshRenderer>().material = tileSkill;
+                        return;
+                    }
                 }
             }
         }
@@ -66,7 +57,7 @@ namespace TileDataSet
         private void CheckAttackRange()
         {
             List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-            int attackRange = turnController.CurrentTurnCharacter.AttackRange;
+            int attackRange = turnController.CurrentTurnCharacter.actionAttack.Range;
 
             for (int i = 0; i < oppositeSide.Count; i++)
             {
@@ -77,26 +68,11 @@ namespace TileDataSet
 
                 if ((x + z) <= attackRange)
                 {
-                    AttackTile = true;
+                    AvailableActions.Add(turnController.CurrentTurnCharacter.actionAttack);
+                    GetComponent<MeshRenderer>().material = tileAttack;
                     return;
                 }
             }
         }
-
-        //private bool TargetsInAttackRange()
-        //{
-        //    List<Character_InBattle> oppositeSide = turnController.OppositeSide;
-        //    int attackRange = turnController.CurrentTurnCharacter.AttackRange;
-
-        //    for (int i = 0; i < oppositeSide.Count; i++)
-        //    {
-        //        int x = Mathf.Abs(oppositeSide[i].StandingTileX - TileData.X);
-        //        int z = Mathf.Abs(oppositeSide[i].StandingTileZ - TileData.Z);
-
-        //        if ((x + z) <= attackRange) return true;
-        //    }
-
-        //    return false;
-        //}
     }
 }

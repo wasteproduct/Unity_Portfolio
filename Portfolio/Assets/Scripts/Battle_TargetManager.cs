@@ -67,7 +67,7 @@ namespace Battle
                 int xDistance = Mathf.Abs(oppositeCharacter.StandingTileX - currentTurnCharacter.StandingTileX);
                 int zDistance = Mathf.Abs(oppositeCharacter.StandingTileZ - currentTurnCharacter.StandingTileZ);
 
-                if (xDistance + zDistance > currentTurnCharacter.AttackRange) continue;
+                if (xDistance + zDistance > currentTurnCharacter.actionAttack.Range) continue;
 
                 PotentialTargets.Add(turnController.OppositeSide[i].gameObject);
             }

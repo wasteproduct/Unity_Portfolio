@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MapDataSet;
 using UnityEngine.UI;
-using Skill;
+using Battle;
 
 public class Character_InBattle : MonoBehaviour
 {
@@ -13,7 +13,8 @@ public class Character_InBattle : MonoBehaviour
     public Character_State damaged;
     public Character_State dead;
     public GameObject battleStatus;
-    public Skill_Base skill1;
+    public Battle_Action actionAttack;
+    public Battle_Action[] actionSkills;
 
     public Slider healthBar;
     public Text healthText;
@@ -25,11 +26,8 @@ public class Character_InBattle : MonoBehaviour
     private Character_StateManager stateManager;
 
     // temporary
-    public int AttackRange { get; private set; }
-    //public MeshRenderer meshRenderer;
     public int MovableDistance { get; private set; }
     public float CurrentHP { get; private set; }
-    public float AttackDamage { get; private set; }
     private float maximumHP;
 
     public Map_Data MapData { get; private set; }
@@ -153,15 +151,8 @@ public class Character_InBattle : MonoBehaviour
         // temporary
         maximumHP = 100.0f;
         CurrentHP = maximumHP;
-        AttackRange = 3;
         MovableDistance = 3;
-        AttackDamage = 50.0f;
-        if (enemyCharacter == true)
-        {
-            AttackRange = 1;
-            MovableDistance = 2;
-            AttackDamage = 25.0f;
-        }
+        if (enemyCharacter == true) MovableDistance = 2;
         healthBar.maxValue = maximumHP;
         healthBar.minValue = 0.0f;
     }

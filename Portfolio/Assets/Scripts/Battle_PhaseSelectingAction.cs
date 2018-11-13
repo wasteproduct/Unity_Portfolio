@@ -44,6 +44,7 @@ namespace Battle
                 // Select Action
                 selectAction.gameObject.SetActive(true);
                 selectAction.GetComponent<Battle_ActionSelectingManager>().SetList();
+                return;
             }
         }
     }

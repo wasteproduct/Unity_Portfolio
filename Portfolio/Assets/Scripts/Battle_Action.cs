@@ -11,8 +11,14 @@ namespace Battle
 
         [SerializeField]
         private Character_State actionState;
+        [SerializeField]
+        private int range;
+        [SerializeField]
+        private float power;
 
         public Character_State ActionState { get { return actionState; } }
+        public int Range { get { return range; } }
+        public float Power { get { return power; } }
 
         public void Play()
         {
