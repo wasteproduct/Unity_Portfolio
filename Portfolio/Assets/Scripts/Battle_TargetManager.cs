@@ -26,8 +26,13 @@ namespace Battle
 
             if (actionScale == 0) return;
 
-            // 여기
-            List<int[,]> inScaleTiles = new List<int[,]>();
+            //여기
+            List<Character_InBattle> potentialTargets = turnController.OppositeSide;
+
+            for(int i=0;i<potentialTargets.Count;i++)
+            {
+
+            }
         }
 
         public void Update()
