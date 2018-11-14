@@ -7,25 +7,22 @@ namespace Battle
 {
     public class Battle_ActionButton : MonoBehaviour
     {
+        public GameObject battleManager;
+
         public Text buttonText;
 
         public Battle_Action CorrespondingAction { get; private set; }
 
+        public void SelectAction()
+        {
+            battleManager.GetComponent<Battle_PhaseSelectingAction>().SelectAction(CorrespondingAction);
+        }
+
         public void SetCorrespondingAction(Battle_Action correspondingAction)
         {
             CorrespondingAction = correspondingAction;
+
+            buttonText.text = CorrespondingAction.ActionName;
         }
-
-        //// Use this for initialization
-        //void Start()
-        //{
-
-        //}
-
-        //// Update is called once per frame
-        //void Update()
-        //{
-
-        //}
     }
 }

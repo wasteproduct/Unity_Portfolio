@@ -10,6 +10,14 @@ namespace Battle
 
         public GameObject[] actionButton;
 
+        public void DisableButtons()
+        {
+            for (int i = 0; i < actionButton.Length; i++)
+            {
+                actionButton[i].gameObject.SetActive(false);
+            }
+        }
+
         public void SetList()
         {
             List<Battle_Action> actions = actionManager.ExecutableActions;
@@ -20,17 +28,5 @@ namespace Battle
                 actionButton[i].gameObject.GetComponent<Battle_ActionButton>().SetCorrespondingAction(actions[i]);
             }
         }
-
-        //// Use this for initialization
-        //void Start()
-        //{
-
-        //}
-
-        //// Update is called once per frame
-        //void Update()
-        //{
-
-        //}
     }
 }

@@ -7,7 +7,17 @@ namespace Battle
     public class Battle_PhaseSelectingAction : Battle_PhaseBase
     {
         public Battle_ActionManager actionManager;
-        public GameObject selectAction;
+        public GameObject availableActionsList;
+
+        public void SelectAction(Battle_Action selectedAction)
+        {
+            actionManager.SetExecutedAction(selectedAction);
+
+            availableActionsList.GetComponent<Battle_ActionSelectingManager>().DisableButtons();
+            availableActionsList.gameObject.SetActive(false);
+
+            phaseManager.EnterNextPhase();
+        }
 
         public override void ClickWork()
         {
@@ -41,9 +51,8 @@ namespace Battle
 
             if (actionsNumber > 1)
             {
-                // Select Action
-                selectAction.gameObject.SetActive(true);
-                selectAction.GetComponent<Battle_ActionSelectingManager>().SetList();
+                availableActionsList.gameObject.SetActive(true);
+                availableActionsList.GetComponent<Battle_ActionSelectingManager>().SetList();
                 return;
             }
         }

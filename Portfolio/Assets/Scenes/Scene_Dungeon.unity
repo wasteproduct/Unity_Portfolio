@@ -539,7 +539,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack
+  m_Text: Action
 --- !u!222 &473468304
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skill
+  m_Text: Action
 --- !u!222 &526432233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 999498580}
   - component: {fileID: 999498579}
   m_Layer: 5
-  m_Name: Skill_2
+  m_Name: Slot_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99998, y: -22.5}
+  m_AnchoredPosition: {x: 160, y: -22.5}
   m_SizeDelta: {x: 320, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999498579
@@ -768,6 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296cd0d441bef7d4d82cfef61e4bcc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 1289549696}
   buttonText: {fileID: 1105332768}
 --- !u!114 &999498580
 MonoBehaviour:
@@ -807,7 +808,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 999498581}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999498579}
+        m_MethodName: SelectAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &999498581
@@ -910,7 +922,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skill
+  m_Text: Action
 --- !u!222 &1051937924
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -984,7 +996,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skill
+  m_Text: Action
 --- !u!222 &1105332769
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1004,7 +1016,7 @@ GameObject:
   - component: {fileID: 1287982801}
   - component: {fileID: 1287982802}
   m_Layer: 5
-  m_Name: SelectAction
+  m_Name: AvailableActions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,7 +1285,7 @@ MonoBehaviour:
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
-  selectAction: {fileID: 1287982797}
+  availableActionsList: {fileID: 1287982797}
 --- !u!114 &1289549706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,7 +1316,7 @@ GameObject:
   - component: {fileID: 1310397655}
   - component: {fileID: 1310397658}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: Slot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,7 +1379,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1310397656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1310397658}
+        m_MethodName: SelectAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1310397656
@@ -1414,6 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296cd0d441bef7d4d82cfef61e4bcc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 1289549696}
   buttonText: {fileID: 473468303}
 --- !u!1 &1553519080
 GameObject:
@@ -1477,7 +1501,7 @@ GameObject:
   - component: {fileID: 1682794628}
   - component: {fileID: 1682794627}
   m_Layer: 5
-  m_Name: Skill_1
+  m_Name: Slot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,7 +1523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99998, y: -22.5}
+  m_AnchoredPosition: {x: 160, y: -22.5}
   m_SizeDelta: {x: 320, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682794627
@@ -1513,6 +1537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296cd0d441bef7d4d82cfef61e4bcc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 1289549696}
   buttonText: {fileID: 526432232}
 --- !u!114 &1682794628
 MonoBehaviour:
@@ -1552,7 +1577,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1682794629}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682794627}
+        m_MethodName: SelectAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1682794629
@@ -1695,7 +1731,7 @@ GameObject:
   - component: {fileID: 1807876740}
   - component: {fileID: 1807876739}
   m_Layer: 5
-  m_Name: Skill_3
+  m_Name: Slot_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,7 +1753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159.99998, y: -22.5}
+  m_AnchoredPosition: {x: 160, y: -22.5}
   m_SizeDelta: {x: 320, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807876739
@@ -1731,6 +1767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296cd0d441bef7d4d82cfef61e4bcc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleManager: {fileID: 1289549696}
   buttonText: {fileID: 1051937923}
 --- !u!114 &1807876740
 MonoBehaviour:
@@ -1770,7 +1807,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807876741}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1807876739}
+        m_MethodName: SelectAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1807876741

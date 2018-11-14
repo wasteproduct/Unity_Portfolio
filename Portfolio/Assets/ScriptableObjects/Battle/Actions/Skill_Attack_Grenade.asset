@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: Skill_Attack_Grenade
   m_EditorClassIdentifier: 
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  actionName: Grenade
   actionState: {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
   range: 2
   power: 75
+  scale: 1
+  splashedPowerRate: 0.5

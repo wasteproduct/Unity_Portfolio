@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  actionName: Attack
   actionState: {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
   range: 3
   power: 50
+  scale: 0
+  splashedPowerRate: 0
