@@ -18,7 +18,7 @@ namespace Battle
         [SerializeField]
         private float power;
         [SerializeField]
-        private float scale;
+        private int scale;
         [SerializeField]
         private float splashedPowerRate;
 
@@ -26,7 +26,7 @@ namespace Battle
         public Character_State ActionState { get { return actionState; } }
         public int Range { get { return range; } }
         public float Power { get { return power; } }
-        public float Scale { get { return scale; } }
+        public int Scale { get { return scale; } }
         public float SplashedPowerRate { get { return splashedPowerRate; } }
 
         public void Play()

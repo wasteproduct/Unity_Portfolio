@@ -32,7 +32,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
         {
             targetHit = true;
             // play hit motion
-            Character_InBattle hitTarget = targetManager.Target.GetComponent<Character_InBattle>();
+            Character_InBattle hitTarget = targetManager.SelectedTarget.GetComponent<Character_InBattle>();
             hitTarget.Damage(turnController.CurrentTurnCharacter.actionAttack.Power);
         }
     }

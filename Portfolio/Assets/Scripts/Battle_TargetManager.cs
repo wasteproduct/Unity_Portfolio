@@ -14,7 +14,21 @@ namespace Battle
         public List<GameObject> PotentialTargets { get; private set; }
         public bool TargetFound { get; private set; }
         public bool OnlyOneTarget { get; private set; }
-        public GameObject Target { get; set; }
+        public GameObject SelectedTarget { get; set; }
+        public List<Character_InBattle> FinalTargets { get; private set; }
+
+        public void SetFinalTargets(int actionScale)
+        {
+            FinalTargets = new List<Character_InBattle>()
+            {
+                SelectedTarget.GetComponent<Character_InBattle>()
+            };
+
+            if (actionScale == 0) return;
+
+            // 여기
+            List<int[,]> inScaleTiles = new List<int[,]>();
+        }
 
         public void Update()
         {
@@ -38,22 +52,13 @@ namespace Battle
             objectManager.DisableTargetMarks();
         }
 
-        // temporary
-        public void HighlightTargets(bool flag)
-        {
-            for (int i = 0; i < PotentialTargets.Count; i++)
-            {
-                PotentialTargets[i].GetComponent<Character_InBattle>().HighlightAsTarget(flag);
-            }
-        }
-
         public void SearchTargets()
         {
             choosingTarget.flag = true;
 
             TargetFound = false;
             OnlyOneTarget = false;
-            Target = null;
+            SelectedTarget = null;
 
             PotentialTargets = new List<GameObject>();
 

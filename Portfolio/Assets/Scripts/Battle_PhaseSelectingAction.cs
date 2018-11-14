@@ -8,6 +8,7 @@ namespace Battle
     {
         public Battle_ActionManager actionManager;
         public GameObject availableActionsList;
+        public Battle_TargetManager targetManager;
 
         public void SelectAction(Battle_Action selectedAction)
         {
@@ -15,6 +16,8 @@ namespace Battle
 
             availableActionsList.GetComponent<Battle_ActionSelectingManager>().DisableButtons();
             availableActionsList.gameObject.SetActive(false);
+
+            targetManager.SetFinalTargets(selectedAction.Scale);
 
             phaseManager.EnterNextPhase();
         }

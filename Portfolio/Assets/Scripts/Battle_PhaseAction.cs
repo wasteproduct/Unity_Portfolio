@@ -36,7 +36,7 @@ namespace Battle
         {
             Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
 
-            currentTurnCharacter.SetTargetRotation(targetManager.Target.gameObject.transform.position);
+            currentTurnCharacter.SetTargetRotation(targetManager.SelectedTarget.gameObject.transform.position);
 
             while (true)
             {

@@ -36,7 +36,7 @@ namespace Battle
 
             if (targetManager.OnlyOneTarget == true)
             {
-                targetManager.Target = targetManager.PotentialTargets[0];
+                targetManager.SelectedTarget = targetManager.PotentialTargets[0];
                 phaseManager.EnterNextPhase();
                 return;
             }
@@ -67,7 +67,7 @@ namespace Battle
                         {
                             if (clickedEnemy == potentialTargets[i])
                             {
-                                targetManager.Target = clickedEnemy;
+                                targetManager.SelectedTarget = clickedEnemy;
                                 phaseManager.EnterNextPhase();
                                 return;
                             }
