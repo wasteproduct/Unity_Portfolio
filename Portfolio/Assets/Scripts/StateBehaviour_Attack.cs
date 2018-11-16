@@ -9,6 +9,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public Manager_BattlePhase phaseManager;
     public Battle_TargetManager targetManager;
     public Battle_TurnController turnController;
+    public Battle_ActionManager actionManager;
     public float targetHitTime;
 
     private bool targetHit;
@@ -32,8 +33,17 @@ public class StateBehaviour_Attack : StateMachineBehaviour
         {
             targetHit = true;
             // play hit motion
-            Character_InBattle hitTarget = targetManager.SelectedTarget.GetComponent<Character_InBattle>();
-            hitTarget.Damage(turnController.CurrentTurnCharacter.actionAttack.Power);
+            //Character_InBattle hitTarget = targetManager.SelectedTarget.GetComponent<Character_InBattle>();
+            //hitTarget.Damage(turnController.CurrentTurnCharacter.actionAttack.Power);
+            List<Character_InBattle> finalTargets = targetManager.FinalTargets;
+            Battle_Action executedAction = actionManager.ExecutedAction;
+
+            finalTargets[0].Damage(executedAction.Power);
+            for (int i = 1; i < finalTargets.Count; i++)
+            {
+                float splashedDamage = executedAction.Power * executedAction.SplashedPowerRate;
+                finalTargets[i].Damage(splashedDamage);
+            }
         }
     }
 }

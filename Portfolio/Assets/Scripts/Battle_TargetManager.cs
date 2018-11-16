@@ -26,12 +26,19 @@ namespace Battle
 
             if (actionScale == 0) return;
 
-            //여기
+            Character_InBattle selectedTarget = SelectedTarget.GetComponent<Character_InBattle>();
             List<Character_InBattle> potentialTargets = turnController.OppositeSide;
 
-            for(int i=0;i<potentialTargets.Count;i++)
+            for (int i = 0; i < potentialTargets.Count; i++)
             {
+                if (potentialTargets[i].Dead == true) continue;
 
+                int x = Mathf.Abs(potentialTargets[i].StandingTileX - selectedTarget.StandingTileX);
+                int z = Mathf.Abs(potentialTargets[i].StandingTileZ - selectedTarget.StandingTileZ);
+
+                if ((x + z) == 0) continue;
+
+                if ((x + z) <= actionScale) FinalTargets.Add(potentialTargets[i]);
             }
         }
 

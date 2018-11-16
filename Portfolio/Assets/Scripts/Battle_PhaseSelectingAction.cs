@@ -48,6 +48,7 @@ namespace Battle
             if (actionsNumber == 1)
             {
                 actionManager.SetExecutedAction(actionManager.ExecutableActions[0]);
+                targetManager.SetFinalTargets(actionManager.ExecutedAction.Scale);
                 phaseManager.EnterNextPhase();
                 return;
             }

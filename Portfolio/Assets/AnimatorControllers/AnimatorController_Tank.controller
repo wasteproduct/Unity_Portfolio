@@ -42,6 +42,7 @@ MonoBehaviour:
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   targetHitTime: 0
 --- !u!1101 &1101004599594857156
 AnimatorStateTransition:

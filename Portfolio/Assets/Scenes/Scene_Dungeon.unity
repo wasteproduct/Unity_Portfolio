@@ -1286,6 +1286,7 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   availableActionsList: {fileID: 1287982797}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
 --- !u!114 &1289549706
 MonoBehaviour:
   m_ObjectHideFlags: 0
