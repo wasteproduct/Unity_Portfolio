@@ -6,6 +6,8 @@ namespace Tutorial
 {
     public class Tutorial_AnimatorTest : MonoBehaviour
     {
+        public string booleanName;
+
         private Animator animator;
 
         // Use this for initialization
@@ -19,9 +21,9 @@ namespace Tutorial
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                animator.SetBool("grenade", true);
+                animator.SetBool(booleanName, true);
             }
         }
     }

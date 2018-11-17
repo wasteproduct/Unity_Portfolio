@@ -66,6 +66,9 @@ namespace Battle
 
         public void SearchTargets()
         {
+            // temporary
+            if (turnController.CurrentTurnCharacter.actionAttack == null) return;
+
             choosingTarget.flag = true;
 
             TargetFound = false;

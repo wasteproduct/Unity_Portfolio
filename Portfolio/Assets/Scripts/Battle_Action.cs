@@ -14,6 +14,8 @@ namespace Battle
         [SerializeField]
         private Character_State actionState;
         [SerializeField]
+        private Battle_ActionType actionType;
+        [SerializeField]
         private int range;
         [SerializeField]
         private float power;
@@ -24,6 +26,7 @@ namespace Battle
 
         public string ActionName { get { return actionName; } }
         public Character_State ActionState { get { return actionState; } }
+        public Battle_ActionType ActionType { get { return actionType; } }
         public int Range { get { return range; } }
         public float Power { get { return power; } }
         public int Scale { get { return scale; } }

@@ -11,7 +11,9 @@ namespace TileDataSet
         public Battle_ActionManager actionManager;
         public Material tileNormal;
         public Material tileAttack;
-        public Material tileSkill;
+        public Material tileSkillAttack;
+        public Material tileSkillSupport;
+        public Material tileSkillDebuff;
 
         public Map_TileData TileData { get; private set; }
         public List<Battle_Action> AvailableActions { get; private set; }
@@ -25,10 +27,10 @@ namespace TileDataSet
 
             CheckAttackRange();
 
-            CheckSkillsRange();
+            CheckAttackSkillsRange();
         }
 
-        private void CheckSkillsRange()
+        private void CheckAttackSkillsRange()
         {
             List<Character_InBattle> oppositeSide = turnController.OppositeSide;
             Battle_Action[] skills = turnController.CurrentTurnCharacter.actionSkills;
@@ -47,7 +49,7 @@ namespace TileDataSet
                     if ((x + z) <= skillRange)
                     {
                         AvailableActions.Add(turnController.CurrentTurnCharacter.actionSkills[i]);
-                        GetComponent<MeshRenderer>().material = tileSkill;
+                        GetComponent<MeshRenderer>().material = tileSkillAttack;
                         return;
                     }
                 }
@@ -56,6 +58,8 @@ namespace TileDataSet
 
         private void CheckAttackRange()
         {
+            if (turnController.CurrentTurnCharacter.actionAttack == null) return;
+
             List<Character_InBattle> oppositeSide = turnController.OppositeSide;
             int attackRange = turnController.CurrentTurnCharacter.actionAttack.Range;
 
