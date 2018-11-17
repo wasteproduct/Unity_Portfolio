@@ -32,9 +32,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
         if (animatorStateInfo.normalizedTime >= targetHitTime)
         {
             targetHit = true;
-            // play hit motion
-            //Character_InBattle hitTarget = targetManager.SelectedTarget.GetComponent<Character_InBattle>();
-            //hitTarget.Damage(turnController.CurrentTurnCharacter.actionAttack.Power);
+
             List<Character_InBattle> finalTargets = targetManager.FinalTargets;
             Battle_Action executedAction = actionManager.ExecutedAction;
 

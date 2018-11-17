@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 114620763610867846}
   - component: {fileID: 114869197119053990}
   - component: {fileID: 54229932126630554}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Character_Fella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1353,7 +1353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338686710603684}
   - component: {fileID: 95668989402629910}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Red_Fella(MainModel)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -31,7 +31,7 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Selecting Tile.");
+            //print("Phase Selecting Tile.");
 
             movableTilesManager.SetTiles();
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionName: Grenade
   actionState: {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
+  actionType: {fileID: 11400000, guid: 97244da1920fd684bb1a5602778dcf18, type: 2}
   range: 2
   power: 75
   scale: 1

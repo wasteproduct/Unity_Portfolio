@@ -56,6 +56,13 @@ public class Character_InBattle : MonoBehaviour
         healthBar.value = CurrentHP;
     }
 
+    public void Heal(float healingAmount)
+    {
+        CurrentHP += healingAmount;
+
+        if (CurrentHP > maximumHP) CurrentHP = maximumHP;
+    }
+
     public void Damage(float attackDamage)
     {
         CurrentHP -= attackDamage;
@@ -145,8 +152,6 @@ public class Character_InBattle : MonoBehaviour
 
         startingRotation = gameObject.transform.rotation;
         stateManager = GetComponent<Character_StateManager>();
-
-        if (enemyCharacter == true) gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         // temporary
         maximumHP = 100.0f;

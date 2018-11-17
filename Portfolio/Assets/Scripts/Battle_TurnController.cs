@@ -18,6 +18,7 @@ namespace Battle
         public List<Character_InBattle> PlayerCharacters { get; private set; }
         public List<Character_InBattle> EnemyCharacters { get; private set; }
         public List<Character_InBattle> OppositeSide { get; private set; }
+        public List<Character_InBattle> SameSide { get; private set; }
         public float ElapsedTimeLimit { get { return moveController.ElapsedTimeLimit; } }
         public bool EnemyTurn { get; private set; }
 
@@ -92,6 +93,7 @@ namespace Battle
             currentTurn = playerTurn;
             CurrentTurnCharacter = PlayerCharacters[0];
             OppositeSide = EnemyCharacters;
+            SameSide = PlayerCharacters;
             EnemyTurn = false;
         }
 
@@ -118,9 +120,11 @@ namespace Battle
             {
                 case playerTurn:
                     OppositeSide = EnemyCharacters;
+                    SameSide = PlayerCharacters;
                     break;
                 case enemyTurn:
                     OppositeSide = PlayerCharacters;
+                    SameSide = EnemyCharacters;
                     break;
                 default:
                     Debug.Log("Invalid turn value.");

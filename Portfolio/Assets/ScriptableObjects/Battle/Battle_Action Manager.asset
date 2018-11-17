@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e92272e9c5ade4d960ac4ef4986933, type: 3}
   m_Name: Battle_Action Manager
   m_EditorClassIdentifier: 
-  actionAttack: {fileID: 11400000, guid: dee6e08b959b4a6468ffb906b337473c, type: 2}
-  actionSkill1: {fileID: 11400000, guid: 9d8322fb5e73ec2448f0d6dc26ba9cc2, type: 2}
   movableTilesManager: {fileID: 11400000, guid: 318b818f8c9239342a6da7d315562efd,
     type: 2}
+  actionAttack: {fileID: 11400000, guid: 97244da1920fd684bb1a5602778dcf18, type: 2}
+  actionSupport: {fileID: 11400000, guid: b7af23fe314dff64eba86ab56a0d02b2, type: 2}
+  actionDebuff: {fileID: 11400000, guid: 51688fc715bc48a479fbddbbc8034b8c, type: 2}

@@ -59,8 +59,8 @@ namespace Battle
             Battle_PhaseBase[] phases = new Battle_PhaseBase[6];
             phases[0] = GetComponent<Battle_PhaseSelectingTile>();
             phases[1] = GetComponent<Battle_PhaseMoving>();
-            phases[2] = GetComponent<Battle_PhaseSelectingTarget>();
-            phases[3] = GetComponent<Battle_PhaseSelectingAction>();
+            phases[2] = GetComponent<Battle_PhaseSelectingAction>();
+            phases[3] = GetComponent<Battle_PhaseSelectingTarget>();
             phases[4] = GetComponent<Battle_PhaseAction>();
             phases[5] = GetComponent<Battle_PhaseClosingTurn>();
 

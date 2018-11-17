@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 114134352456924012}
   - component: {fileID: 114948999635178098}
   - component: {fileID: 136221815343652590}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Character_SlimeGirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}

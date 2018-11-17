@@ -28,6 +28,34 @@ namespace TileDataSet
             CheckAttackRange();
 
             CheckAttackSkillsRange();
+
+            CheckSupportSkillsRange();
+        }
+
+        private void CheckSupportSkillsRange()
+        {
+            List<Character_InBattle> sameSide = turnController.SameSide;
+            Battle_Action[] skills = turnController.CurrentTurnCharacter.actionSkills;
+
+            for (int i = 0; i < skills.Length; i++)
+            {
+                if (skills[i].ActionType != actionManager.actionSupport) continue;
+
+                for (int j = 0; j < sameSide.Count; j++)
+                {
+                    if (sameSide[j].Dead == true) continue;
+
+                    int x = Mathf.Abs(sameSide[j].StandingTileX - TileData.X);
+                    int z = Mathf.Abs(sameSide[j].StandingTileZ - TileData.Z);
+
+                    if ((x + z) <= skills[i].Range)
+                    {
+                        AvailableActions.Add(turnController.CurrentTurnCharacter.actionSkills[i]);
+                        GetComponent<MeshRenderer>().material = tileSkillSupport;
+                        break;
+                    }
+                }
+            }
         }
 
         private void CheckAttackSkillsRange()
@@ -37,7 +65,7 @@ namespace TileDataSet
 
             for (int i = 0; i < skills.Length; i++)
             {
-                int skillRange = turnController.CurrentTurnCharacter.actionSkills[i].Range;
+                if (skills[i].ActionType != actionManager.actionAttack) continue;
 
                 for (int j = 0; j < oppositeSide.Count; j++)
                 {
@@ -46,11 +74,11 @@ namespace TileDataSet
                     int x = Mathf.Abs(oppositeSide[j].StandingTileX - TileData.X);
                     int z = Mathf.Abs(oppositeSide[j].StandingTileZ - TileData.Z);
 
-                    if ((x + z) <= skillRange)
+                    if ((x + z) <= skills[i].Range)
                     {
                         AvailableActions.Add(turnController.CurrentTurnCharacter.actionSkills[i]);
                         GetComponent<MeshRenderer>().material = tileSkillAttack;
-                        return;
+                        break;
                     }
                 }
             }

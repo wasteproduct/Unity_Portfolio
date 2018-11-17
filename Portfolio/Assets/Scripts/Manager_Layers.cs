@@ -10,9 +10,9 @@ public class Manager_Layers : ScriptableObject
     private LayerMask enemyZone;
 
     [SerializeField]
-    private LayerMask enemy;
+    private LayerMask character;
 
     public LayerMask TileMap { get { return tileMap; } }
     public LayerMask EnemyZone { get { return enemyZone; } }
-    public LayerMask Enemy { get { return enemy; } }
+    public LayerMask Character { get { return character; } }
 }

@@ -11,10 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d82655efdbf7d74aaa7f68936bb583c, type: 3}
   m_Name: Skill_Support_Heal
   m_EditorClassIdentifier: 
-  turnController: {fileID: 0}
-  actionName: 
-  actionState: {fileID: 0}
-  range: 0
-  power: 0
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  actionName: Heal
+  actionState: {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
+  actionType: {fileID: 11400000, guid: b7af23fe314dff64eba86ab56a0d02b2, type: 2}
+  range: 3
+  power: 25
   scale: 0
   splashedPowerRate: 0

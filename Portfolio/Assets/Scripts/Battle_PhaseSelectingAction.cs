@@ -8,7 +8,6 @@ namespace Battle
     {
         public Battle_ActionManager actionManager;
         public GameObject availableActionsList;
-        public Battle_TargetManager targetManager;
 
         public void SelectAction(Battle_Action selectedAction)
         {
@@ -16,8 +15,6 @@ namespace Battle
 
             availableActionsList.GetComponent<Battle_ActionSelectingManager>().DisableButtons();
             availableActionsList.gameObject.SetActive(false);
-
-            targetManager.SetFinalTargets(selectedAction.Scale);
 
             phaseManager.EnterNextPhase();
         }
@@ -34,7 +31,7 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Selecting Action.");
+            //print("Phase Selecting Action.");
 
             int actionsNumber = actionManager.ExecutableActions.Count;
 
@@ -48,7 +45,6 @@ namespace Battle
             if (actionsNumber == 1)
             {
                 actionManager.SetExecutedAction(actionManager.ExecutableActions[0]);
-                targetManager.SetFinalTargets(actionManager.ExecutedAction.Scale);
                 phaseManager.EnterNextPhase();
                 return;
             }

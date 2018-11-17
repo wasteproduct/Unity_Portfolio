@@ -31,7 +31,7 @@ namespace Battle
         {
             TargetMarks = new List<GameObject>();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 TargetMarks.Add(Instantiate(targetMarkPrefab));
             }

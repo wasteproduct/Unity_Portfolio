@@ -9,16 +9,22 @@ namespace Battle
     {
         public Battle_ObjectManager objectManager;
         public Battle_TurnController turnController;
-        public Variable_Bool choosingTarget;
+        public Battle_ActionType actionTypeSupport;
 
-        public List<GameObject> PotentialTargets { get; private set; }
+        private List<Character_InBattle> searchedSide;
+
+        public List<GameObject> AvailableTargets { get; private set; }
         public bool TargetFound { get; private set; }
         public bool OnlyOneTarget { get; private set; }
         public GameObject SelectedTarget { get; set; }
         public List<Character_InBattle> FinalTargets { get; private set; }
 
-        public void SetFinalTargets(int actionScale)
+        public void SetFinalTargets(Battle_Action executedAction)
         {
+            if (executedAction == null) return;
+
+            int actionScale = executedAction.Scale;
+
             FinalTargets = new List<Character_InBattle>()
             {
                 SelectedTarget.GetComponent<Character_InBattle>()
@@ -27,18 +33,17 @@ namespace Battle
             if (actionScale == 0) return;
 
             Character_InBattle selectedTarget = SelectedTarget.GetComponent<Character_InBattle>();
-            List<Character_InBattle> potentialTargets = turnController.OppositeSide;
 
-            for (int i = 0; i < potentialTargets.Count; i++)
+            for (int i = 0; i < searchedSide.Count; i++)
             {
-                if (potentialTargets[i].Dead == true) continue;
+                if (searchedSide[i].Dead == true) continue;
 
-                int x = Mathf.Abs(potentialTargets[i].StandingTileX - selectedTarget.StandingTileX);
-                int z = Mathf.Abs(potentialTargets[i].StandingTileZ - selectedTarget.StandingTileZ);
+                int x = Mathf.Abs(searchedSide[i].StandingTileX - selectedTarget.StandingTileX);
+                int z = Mathf.Abs(searchedSide[i].StandingTileZ - selectedTarget.StandingTileZ);
 
                 if ((x + z) == 0) continue;
 
-                if ((x + z) <= actionScale) FinalTargets.Add(potentialTargets[i]);
+                if ((x + z) <= actionScale) FinalTargets.Add(searchedSide[i]);
             }
         }
 
@@ -51,11 +56,11 @@ namespace Battle
         {
             List<GameObject> targetMarks = objectManager.TargetMarks;
 
-            for (int i = 0; i < PotentialTargets.Count; i++)
+            for (int i = 0; i < AvailableTargets.Count; i++)
             {
                 targetMarks[i].gameObject.SetActive(true);
 
-                targetMarks[i].gameObject.transform.position = PotentialTargets[i].gameObject.transform.position;
+                targetMarks[i].gameObject.transform.position = AvailableTargets[i].gameObject.transform.position;
             }
         }
 
@@ -64,36 +69,36 @@ namespace Battle
             objectManager.DisableTargetMarks();
         }
 
-        public void SearchTargets()
+        public void SetAvailableTargets(Battle_Action executedAction)
         {
-            // temporary
-            if (turnController.CurrentTurnCharacter.actionAttack == null) return;
-
-            choosingTarget.flag = true;
+            searchedSide = null;
 
             TargetFound = false;
             OnlyOneTarget = false;
             SelectedTarget = null;
 
-            PotentialTargets = new List<GameObject>();
+            AvailableTargets = new List<GameObject>();
 
+            if (executedAction.ActionType == actionTypeSupport) searchedSide = turnController.SameSide;
+            else searchedSide = turnController.OppositeSide;
+
+            // search targets
             Character_InBattle currentTurnCharacter = turnController.CurrentTurnCharacter;
-            for (int i = 0; i < turnController.OppositeSide.Count; i++)
+
+            for (int i = 0; i < searchedSide.Count; i++)
             {
-                if (turnController.OppositeSide[i].Dead == true) continue;
+                if (searchedSide[i].Dead == true) continue;
 
-                Character_InBattle oppositeCharacter = turnController.OppositeSide[i];
+                int x = Mathf.Abs(searchedSide[i].StandingTileX - currentTurnCharacter.StandingTileX);
+                int z = Mathf.Abs(searchedSide[i].StandingTileZ - currentTurnCharacter.StandingTileZ);
 
-                int xDistance = Mathf.Abs(oppositeCharacter.StandingTileX - currentTurnCharacter.StandingTileX);
-                int zDistance = Mathf.Abs(oppositeCharacter.StandingTileZ - currentTurnCharacter.StandingTileZ);
+                if ((x + z) > executedAction.Range) continue;
 
-                if (xDistance + zDistance > currentTurnCharacter.actionAttack.Range) continue;
-
-                PotentialTargets.Add(turnController.OppositeSide[i].gameObject);
+                AvailableTargets.Add(searchedSide[i].gameObject);
             }
 
-            TargetFound = (PotentialTargets.Count > 0) ? true : false;
-            OnlyOneTarget = (PotentialTargets.Count == 1) ? true : false;
+            TargetFound = (AvailableTargets.Count > 0) ? true : false;
+            OnlyOneTarget = (AvailableTargets.Count == 1) ? true : false;
         }
 
         private void SpinTargetMarks()

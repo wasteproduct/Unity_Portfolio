@@ -24,7 +24,7 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Moving.");
+            //print("Phase Moving.");
 
             currentTurnCharacter = turnController.CurrentTurnCharacter;
 

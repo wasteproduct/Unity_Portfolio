@@ -21,7 +21,7 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Closing Turn.");
+            //print("Phase Closing Turn.");
 
             movableTilesManager.ClearTilesList();
 

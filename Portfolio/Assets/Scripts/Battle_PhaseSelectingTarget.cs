@@ -7,6 +7,7 @@ namespace Battle
     public class Battle_PhaseSelectingTarget : Battle_PhaseBase
     {
         public Battle_TargetManager targetManager;
+        public Battle_ActionManager actionManager;
         public Variable_Bool choosingTarget;
         public Manager_Layers layers;
 
@@ -17,6 +18,8 @@ namespace Battle
 
         public override void ClosePhase()
         {
+            targetManager.SetFinalTargets(actionManager.ExecutedAction);
+
             choosingTarget.flag = false;
             
             targetManager.RemoveMarks();
@@ -24,9 +27,15 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Selecting Target.");
+            //print("Phase Selecting Target.");
 
-            targetManager.SearchTargets();
+            if (actionManager.NothingToDo == true)
+            {
+                phaseManager.EnterNextPhase();
+                return;
+            }
+
+            targetManager.SetAvailableTargets(actionManager.ExecutedAction);
 
             if (targetManager.TargetFound == false)
             {
@@ -36,14 +45,14 @@ namespace Battle
 
             if (targetManager.OnlyOneTarget == true)
             {
-                targetManager.SelectedTarget = targetManager.PotentialTargets[0];
+                targetManager.SelectedTarget = targetManager.AvailableTargets[0];
                 phaseManager.EnterNextPhase();
                 return;
             }
+
+            choosingTarget.flag = true;
             
             targetManager.MarkAvailableTargets();
-
-            print("Select Target");
         }
 
         // Update is called once per frame
@@ -58,16 +67,17 @@ namespace Battle
                 
                 if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
                 {
-                    if ((1 << hitInfo.collider.gameObject.layer) == layers.Enemy)
+                    if ((1 << hitInfo.collider.gameObject.layer) == layers.Character)
                     {
-                        GameObject clickedEnemy = hitInfo.collider.gameObject;
-                        List<GameObject> potentialTargets = targetManager.PotentialTargets;
+                        GameObject clickedTarget = hitInfo.collider.gameObject;
+                        List<GameObject> availableTargets = targetManager.AvailableTargets;
 
-                        for (int i = 0; i < potentialTargets.Count; i++)
+                        for (int i = 0; i < availableTargets.Count; i++)
                         {
-                            if (clickedEnemy == potentialTargets[i])
+                            if (clickedTarget == availableTargets[i])
                             {
-                                targetManager.SelectedTarget = clickedEnemy;
+                                print("hit");
+                                targetManager.SelectedTarget = clickedTarget;
                                 phaseManager.EnterNextPhase();
                                 return;
                             }

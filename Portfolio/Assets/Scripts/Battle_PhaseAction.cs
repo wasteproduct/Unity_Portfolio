@@ -21,9 +21,9 @@ namespace Battle
 
         public override void EnterPhase()
         {
-            print("Phase Action.");
+            //print("Phase Action.");
 
-            if ((targetManager.TargetFound == false) || (actionManager.ExecutedAction == null))
+            if (actionManager.NothingToDo == true)
             {
                 phaseManager.EnterNextPhase();
                 return;
