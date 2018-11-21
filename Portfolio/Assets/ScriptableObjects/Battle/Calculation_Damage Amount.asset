@@ -8,12 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330822a1198b8914f9b7fa7ece4b3ec1, type: 3}
-  m_Name: Skill_Attack_Grenade
+  m_Script: {fileID: 11500000, guid: 33779fbff80d28c43ad62f480f7fc3d3, type: 3}
+  m_Name: Calculation_Damage Amount
   m_EditorClassIdentifier: 
-  skillName: Grenade
-  range: 2
-  <Target>k__BackingField: {fileID: 0}
-  damage: 75
-  scale: 1
-  splashedDamageRate: 0.5
+  debuffParameter: {fileID: 11400000, guid: eb5ab880c3d20f3428561ea0f2a57be3, type: 2}

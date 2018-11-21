@@ -18,6 +18,8 @@ public class Character_InBattle : MonoBehaviour
 
     public Slider healthBar;
     public Text healthText;
+    public GameObject conditionPanel;
+    public GameObject debuffPrefab;
 
     private Quaternion targetRotation;
     private float elapsedTime;
@@ -37,6 +39,7 @@ public class Character_InBattle : MonoBehaviour
     public int StandingTileZ { get; private set; }
     public bool Arrived { get; private set; }
     public bool StartAction { get; private set; }
+    //public List<Debuff> AppliedDebuffs { get; private set; }
     public bool ActionFinished()
     {
         TurnFinished = true;
@@ -44,6 +47,16 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
+    public void ApplyDebuff(Debuff appliedDebuff)
+    {
+        //AppliedDebuffs.Add(appliedDebuff);
+    }
+
+    public void UpdateBattleStatus()
+    {
+
+    }
 
     public void FinishBattle()
     {
@@ -152,6 +165,8 @@ public class Character_InBattle : MonoBehaviour
 
         startingRotation = gameObject.transform.rotation;
         stateManager = GetComponent<Character_StateManager>();
+
+        //AppliedDebuffs = new List<Debuff>();
 
         // temporary
         maximumHP = 100.0f;

@@ -23,6 +23,8 @@ namespace Battle
         private int scale;
         [SerializeField]
         private float splashedPowerRate;
+        [SerializeField]
+        private Debuff debuffInformation;
 
         public string ActionName { get { return actionName; } }
         public Character_State ActionState { get { return actionState; } }
@@ -31,6 +33,7 @@ namespace Battle
         public float Power { get { return power; } }
         public int Scale { get { return scale; } }
         public float SplashedPowerRate { get { return splashedPowerRate; } }
+        public Debuff DebuffInformation { get { return debuffInformation; } }
 
         public void Play()
         {

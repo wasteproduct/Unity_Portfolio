@@ -10,6 +10,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public Battle_TargetManager targetManager;
     public Battle_TurnController turnController;
     public Battle_ActionManager actionManager;
+    public Calculation_DamageAmount damageCalculator;
     public float targetHitTime;
 
     private bool targetHit;
@@ -34,13 +35,14 @@ public class StateBehaviour_Attack : StateMachineBehaviour
             targetHit = true;
 
             List<Character_InBattle> finalTargets = targetManager.FinalTargets;
-            Battle_Action executedAction = actionManager.ExecutedAction;
+            //float appliedDamage = damageCalculator.CalculateDamageAmount(actionManager.ExecutedAction.Power, turnController.CurrentTurnCharacter.AppliedDebuffs);
+            float splashedAmountRate = actionManager.ExecutedAction.SplashedPowerRate;
 
-            finalTargets[0].Damage(executedAction.Power);
+            //finalTargets[0].Damage(appliedDamage);
             for (int i = 1; i < finalTargets.Count; i++)
             {
-                float splashedDamage = executedAction.Power * executedAction.SplashedPowerRate;
-                finalTargets[i].Damage(splashedDamage);
+                //float splashedDamage = appliedDamage * splashedAmountRate;
+                //finalTargets[i].Damage(splashedDamage);
             }
         }
     }
