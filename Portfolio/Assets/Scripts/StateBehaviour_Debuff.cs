@@ -19,7 +19,7 @@ public class StateBehaviour_Debuff : StateMachineBehaviour
 
         for (int i = 0; i < finalTargets.Count; i++)
         {
-            finalTargets[i].ApplyDebuff(executedAction.DebuffInformation);
+            finalTargets[i].ApplyDebuff(executedAction.DebuffData);
         }
 
         phaseManager.EnterNextPhase();

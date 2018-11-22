@@ -39,7 +39,7 @@ public class Character_InBattle : MonoBehaviour
     public int StandingTileZ { get; private set; }
     public bool Arrived { get; private set; }
     public bool StartAction { get; private set; }
-    //public List<Debuff> AppliedDebuffs { get; private set; }
+    public List<Debuff> AppliedDebuffs { get; private set; }
     public bool ActionFinished()
     {
         TurnFinished = true;
@@ -48,14 +48,12 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
-    public void ApplyDebuff(Debuff appliedDebuff)
+    public void ApplyDebuff(Debuff_Data appliedDebuffData)
     {
-        //AppliedDebuffs.Add(appliedDebuff);
-    }
+        GameObject newDebuff = Instantiate(debuffPrefab, conditionPanel.transform);
+        newDebuff.GetComponent<Debuff>().Initialize(appliedDebuffData);
 
-    public void UpdateBattleStatus()
-    {
-
+        AppliedDebuffs.Add(newDebuff.GetComponent<Debuff>());
     }
 
     public void FinishBattle()
@@ -147,12 +145,6 @@ public class Character_InBattle : MonoBehaviour
         }
     }
 
-    // temporary
-    public void HighlightAsTarget(bool flag)
-    {
-        //meshRenderer.material.color = (flag == true) ? Color.red : Color.white;
-    }
-
     public void Initialize(Map_Data mapData, bool enemyCharacter)
     {
         MapData = mapData;
@@ -166,7 +158,7 @@ public class Character_InBattle : MonoBehaviour
         startingRotation = gameObject.transform.rotation;
         stateManager = GetComponent<Character_StateManager>();
 
-        //AppliedDebuffs = new List<Debuff>();
+        AppliedDebuffs = new List<Debuff>();
 
         // temporary
         maximumHP = 100.0f;
@@ -180,8 +172,8 @@ public class Character_InBattle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
-        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+        StandingTileX = (int)(gameObject.transform.position.x + .5f);
+        StandingTileZ = (int)(gameObject.transform.position.z + .5f);
 
         healthBar.value = CurrentHP;
         healthText.text = CurrentHP.ToString() + " / " + maximumHP.ToString();

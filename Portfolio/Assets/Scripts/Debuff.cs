@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Battle
+public class Debuff : MonoBehaviour
 {
-    public abstract class Debuff : ScriptableObject
+    public Debuff_Type DebuffType { get; private set; }
+    public int RemainingCycles { get; private set; }
+    public float ReductionRate { get; private set; }
+
+    public void Initialize(Debuff_Data debuffData)
     {
-        public Battle_TargetManager targetManager;
-        public Debuff_Type type;
+        GetComponent<Image>().sprite = debuffData.UIImage;
+        DebuffType = debuffData.DebuffType;
+        RemainingCycles = debuffData.LastingCycles;
+        ReductionRate = debuffData.ReductionRate;
     }
 }

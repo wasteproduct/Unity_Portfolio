@@ -30,6 +30,34 @@ namespace TileDataSet
             CheckAttackSkillsRange();
 
             CheckSupportSkillsRange();
+
+            CheckDebuffSkillsRange();
+        }
+
+        private void CheckDebuffSkillsRange()
+        {
+            List<Character_InBattle> oppositeSide = turnController.OppositeSide;
+            Battle_Action[] skills = turnController.CurrentTurnCharacter.actionSkills;
+
+            for (int i = 0; i < skills.Length; i++)
+            {
+                if (skills[i].ActionType != actionManager.actionDebuff) continue;
+
+                for (int j = 0; j < oppositeSide.Count; j++)
+                {
+                    if (oppositeSide[j].Dead == true) continue;
+
+                    int x = Mathf.Abs(oppositeSide[j].StandingTileX - TileData.X);
+                    int z = Mathf.Abs(oppositeSide[j].StandingTileZ - TileData.Z);
+
+                    if ((x + z) <= skills[i].Range)
+                    {
+                        AvailableActions.Add(turnController.CurrentTurnCharacter.actionSkills[i]);
+                        GetComponent<MeshRenderer>().material = tileSkillDebuff;
+                        break;
+                    }
+                }
+            }
         }
 
         private void CheckSupportSkillsRange()

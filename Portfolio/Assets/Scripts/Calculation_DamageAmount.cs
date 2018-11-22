@@ -15,11 +15,9 @@ namespace Battle
 
             for (int i = 0; i < appliedDebuffs.Count; i++)
             {
-                if (appliedDebuffs[i].type != debuffParameter) continue;
+                if (appliedDebuffs[i].DebuffType != debuffParameter) continue;
 
-                Debuff_Parameter appliedDebuff = (Debuff_Parameter)appliedDebuffs[i];
-
-                result -= (result * appliedDebuff.ReductionRate);
+                result -= (result * appliedDebuffs[i].ReductionRate);
             }
 
             return result;

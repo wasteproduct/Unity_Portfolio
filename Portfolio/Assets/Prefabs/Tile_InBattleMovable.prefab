@@ -114,4 +114,4 @@ MonoBehaviour:
   tileAttack: {fileID: 2100000, guid: 79bf819024cf283448e8e84942598f95, type: 2}
   tileSkillAttack: {fileID: 2100000, guid: fab6c51577a4f79429806a3c55f275d1, type: 2}
   tileSkillSupport: {fileID: 2100000, guid: 798db3ad70dc30241b766da8ee2ab809, type: 2}
-  tileSkillDebuff: {fileID: 0}
+  tileSkillDebuff: {fileID: 2100000, guid: cc895cb1d66c5fa439fc3832f7400673, type: 2}
