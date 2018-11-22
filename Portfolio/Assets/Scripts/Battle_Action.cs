@@ -25,6 +25,8 @@ namespace Battle
         private float splashedPowerRate;
         [SerializeField]
         private Debuff_Data debuffData;
+        [SerializeField]
+        private CustomSound actionSound;
 
         public string ActionName { get { return actionName; } }
         public Character_State ActionState { get { return actionState; } }
@@ -34,6 +36,7 @@ namespace Battle
         public int Scale { get { return scale; } }
         public float SplashedPowerRate { get { return splashedPowerRate; } }
         public Debuff_Data DebuffData { get { return debuffData; } }
+        public CustomSound ActionSound { get { return actionSound; } }
 
         public void Play()
         {

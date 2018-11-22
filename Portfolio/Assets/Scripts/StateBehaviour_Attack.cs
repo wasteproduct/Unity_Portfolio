@@ -5,13 +5,13 @@ using Battle;
 
 public class StateBehaviour_Attack : StateMachineBehaviour
 {
-    public AudioClip attackSound;
     public Character_State idleBattle;
     public Manager_BattlePhase phaseManager;
     public Battle_TargetManager targetManager;
     public Battle_TurnController turnController;
     public Battle_ActionManager actionManager;
     public Calculation_DamageAmount damageCalculator;
+    public Event_SoundPlay eventSoundPlay;
     public float targetHitTime;
 
     private bool targetHit;
@@ -19,6 +19,9 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         targetHit = false;
+
+        eventSoundPlay.PlayedSound = actionManager.ExecutedAction.ActionSound;
+        eventSoundPlay.Run();
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
