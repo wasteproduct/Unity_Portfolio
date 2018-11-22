@@ -5,6 +5,7 @@ using Battle;
 
 public class StateBehaviour_Attack : StateMachineBehaviour
 {
+    public AudioClip attackSound;
     public Character_State idleBattle;
     public Manager_BattlePhase phaseManager;
     public Battle_TargetManager targetManager;
