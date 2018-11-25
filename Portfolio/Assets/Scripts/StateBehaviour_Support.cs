@@ -9,6 +9,15 @@ public class StateBehaviour_Support : StateMachineBehaviour
     public Manager_BattlePhase phaseManager;
     public Battle_TargetManager targetManager;
     public Battle_ActionManager actionManager;
+    public Event_SoundPlay eventSoundPlay;
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        if (actionManager.ExecutedAction.ActionSound == null) return;
+
+        eventSoundPlay.PlayedSound = actionManager.ExecutedAction.ActionSound;
+        eventSoundPlay.Run();
+    }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {

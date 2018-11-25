@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e1c5c469cdb174d9b7215cc99d3600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSoundPlay: {fileID: 0}
+  eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
 --- !u!114 &1332485949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1484,12 +1484,12 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1332485947}
-        m_MethodName: 
+      - m_Target: {fileID: 1332485948}
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

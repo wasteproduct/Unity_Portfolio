@@ -38,13 +38,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6524e14037288854e83b5712564b280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSound: {fileID: 0}
   idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   damageCalculator: {fileID: 11400000, guid: 9a02cd4a6385ca4478566ccd15bb91e5, type: 2}
+  eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
   targetHitTime: 0.3
 --- !u!114 &114294396567083648
 MonoBehaviour:
@@ -57,13 +57,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6524e14037288854e83b5712564b280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSound: {fileID: 0}
   idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
   targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   damageCalculator: {fileID: 11400000, guid: 9a02cd4a6385ca4478566ccd15bb91e5, type: 2}
+  eventSoundPlay: {fileID: 0}
   targetHitTime: 0.5
 --- !u!1101 &1101111232473847550
 AnimatorStateTransition:

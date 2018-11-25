@@ -20,6 +20,8 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     {
         targetHit = false;
 
+        if (actionManager.ExecutedAction.ActionSound == null) return;
+
         eventSoundPlay.PlayedSound = actionManager.ExecutedAction.ActionSound;
         eventSoundPlay.Run();
     }

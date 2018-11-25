@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 114620763610867846}
   - component: {fileID: 114869197119053990}
   - component: {fileID: 54229932126630554}
+  - component: {fileID: 136051675797877066}
   m_Layer: 11
   m_Name: Character_Fella
   m_TagString: Untagged
@@ -6040,6 +6041,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!136 &136051675797877066
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125473257450764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5.12
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.56, z: 0}
 --- !u!137 &137105971900928540
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
