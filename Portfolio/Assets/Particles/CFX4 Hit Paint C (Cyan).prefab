@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4611239359068700}
   - component: {fileID: 198065750961441792}
   - component: {fileID: 199942119695161996}
-  - component: {fileID: 114343177175353666}
+  - component: {fileID: 114143884340108748}
   m_Layer: 0
   m_Name: CFX4 Hit Paint C (Cyan)
   m_TagString: Untagged
@@ -73,7 +73,7 @@ Transform:
   m_Father: {fileID: 4611239359068700}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114343177175353666
+--- !u!114 &114143884340108748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -81,9 +81,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566253222885588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 044fcbc7988435747a8edb264dd3d3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loop: 0
+  playTimeLength: 0
 --- !u!198 &198065750961441792
 ParticleSystem:
   m_ObjectHideFlags: 1

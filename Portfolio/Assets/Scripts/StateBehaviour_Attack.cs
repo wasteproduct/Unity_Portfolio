@@ -19,6 +19,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         targetHit = false;
+        turnController.CurrentTurnCharacter.PlayAttackEffect();
 
         if (actionManager.ExecutedAction.ActionSound == null) return;
 

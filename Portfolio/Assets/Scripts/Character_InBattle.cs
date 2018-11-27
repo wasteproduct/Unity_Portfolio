@@ -13,6 +13,8 @@ public class Character_InBattle : MonoBehaviour
     public Character_State damaged;
     public Character_State dead;
     public GameObject battleStatus;
+    public GameObject hitEffect;
+    public GameObject attackEffect;
     public Battle_Action actionAttack;
     public Battle_Action[] actionSkills;
 
@@ -47,6 +49,24 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
+
+    public void PlayAttackEffect()
+    {
+        if (attackEffect == null) return;
+
+        attackEffect.gameObject.SetActive(true);
+
+        attackEffect.GetComponent<EffectController>().PlayEffect();
+    }
+
+    public void PlayHitEffect()
+    {
+        if (hitEffect == null) return;
+
+        hitEffect.gameObject.SetActive(true);
+
+        hitEffect.GetComponent<EffectController>().PlayEffect();
+    }
 
     public void ApplyDebuff(Debuff_Data appliedDebuffData)
     {
@@ -84,6 +104,8 @@ public class Character_InBattle : MonoBehaviour
             stateManager.SetState(dead);
         }
         else stateManager.SetState(damaged);
+
+        PlayHitEffect();
     }
 
     public void SetState(Character_State newState)
