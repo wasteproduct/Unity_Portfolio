@@ -7,7 +7,7 @@ public class EffectController : MonoBehaviour
     public bool loop;
     public float playTimeLength;
 
-    private ParticleSystem particleComponent;
+    private ParticleSystem particleComponent = null;
 
     public void PlayEffect()
     {
@@ -21,7 +21,11 @@ public class EffectController : MonoBehaviour
         particleComponent.Play();
 
         // 지속성 이펙트
-        if (loop == true) yield return new WaitForSeconds(playTimeLength);
+        if (loop == true)
+        {
+            print(playTimeLength);
+            yield return new WaitForSeconds(playTimeLength);
+        }
         // 단발성 이펙트
         else
         {

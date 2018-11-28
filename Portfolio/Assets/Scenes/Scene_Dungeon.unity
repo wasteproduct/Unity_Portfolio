@@ -1764,7 +1764,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'effect
 
-    each action will have effect'
+    sort played effect in CIB'
 --- !u!222 &1724008085
 CanvasRenderer:
   m_ObjectHideFlags: 0

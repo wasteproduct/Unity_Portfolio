@@ -50,13 +50,18 @@ public class Character_InBattle : MonoBehaviour
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
 
+    public void PlayActionEffect()
+    {
+
+    }
+
     public void PlayAttackEffect()
     {
         if (attackEffect == null) return;
 
         attackEffect.gameObject.SetActive(true);
 
-        attackEffect.GetComponent<EffectController>().PlayEffect();
+        attackEffect.gameObject.GetComponent<EffectController>().PlayEffect();
     }
 
     public void PlayHitEffect()
@@ -65,7 +70,7 @@ public class Character_InBattle : MonoBehaviour
 
         hitEffect.gameObject.SetActive(true);
 
-        hitEffect.GetComponent<EffectController>().PlayEffect();
+        hitEffect.gameObject.GetComponent<EffectController>().PlayEffect();
     }
 
     public void ApplyDebuff(Debuff_Data appliedDebuffData)
