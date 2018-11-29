@@ -86,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   playTimeLength: 0
+  actionState: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
 --- !u!198 &198065750961441792
 ParticleSystem:
   m_ObjectHideFlags: 1

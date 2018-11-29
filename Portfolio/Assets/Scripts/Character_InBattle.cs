@@ -13,8 +13,6 @@ public class Character_InBattle : MonoBehaviour
     public Character_State damaged;
     public Character_State dead;
     public GameObject battleStatus;
-    public GameObject hitEffect;
-    public GameObject attackEffect;
     public Battle_Action actionAttack;
     public Battle_Action[] actionSkills;
 
@@ -42,6 +40,7 @@ public class Character_InBattle : MonoBehaviour
     public bool Arrived { get; private set; }
     public bool StartAction { get; private set; }
     public List<Debuff> AppliedDebuffs { get; private set; }
+    public Character_EffectManager EffectManager { get; private set; }
     public bool ActionFinished()
     {
         TurnFinished = true;
@@ -49,29 +48,6 @@ public class Character_InBattle : MonoBehaviour
     }
 
     public void SetTurnFinished(bool flag) { TurnFinished = flag; }
-
-    public void PlayActionEffect()
-    {
-
-    }
-
-    public void PlayAttackEffect()
-    {
-        if (attackEffect == null) return;
-
-        attackEffect.gameObject.SetActive(true);
-
-        attackEffect.gameObject.GetComponent<EffectController>().PlayEffect();
-    }
-
-    public void PlayHitEffect()
-    {
-        if (hitEffect == null) return;
-
-        hitEffect.gameObject.SetActive(true);
-
-        hitEffect.gameObject.GetComponent<EffectController>().PlayEffect();
-    }
 
     public void ApplyDebuff(Debuff_Data appliedDebuffData)
     {
@@ -110,7 +86,7 @@ public class Character_InBattle : MonoBehaviour
         }
         else stateManager.SetState(damaged);
 
-        PlayHitEffect();
+        EffectManager.PlayHitEffect();
     }
 
     public void SetState(Character_State newState)
@@ -186,6 +162,7 @@ public class Character_InBattle : MonoBehaviour
         stateManager = GetComponent<Character_StateManager>();
 
         AppliedDebuffs = new List<Debuff>();
+        EffectManager = GetComponent<Character_EffectManager>();
 
         // temporary
         maximumHP = 100.0f;

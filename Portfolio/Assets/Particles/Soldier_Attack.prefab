@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4037372040293360
 Transform:
   m_ObjectHideFlags: 1
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 1
   playTimeLength: 0.4
+  actionState: {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
 --- !u!114 &114810530870377378
 MonoBehaviour:
   m_ObjectHideFlags: 1

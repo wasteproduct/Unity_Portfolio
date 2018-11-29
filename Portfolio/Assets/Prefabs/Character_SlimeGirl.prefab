@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 4305187037432814}
   - component: {fileID: 114134352456924012}
   - component: {fileID: 114948999635178098}
+  - component: {fileID: 114846766983848692}
   - component: {fileID: 136221815343652590}
   m_Layer: 11
   m_Name: Character_SlimeGirl
@@ -2463,8 +2464,6 @@ MonoBehaviour:
   damaged: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
   dead: {fileID: 11400000, guid: d2c07634a8406aa4689940df7af8408a, type: 2}
   battleStatus: {fileID: 1980786239572188}
-  hitEffect: {fileID: 1123604481315760}
-  attackEffect: {fileID: 0}
   actionAttack: {fileID: 11400000, guid: 9b22b5c2ab239fc41bf22f607c84c9f1, type: 2}
   actionSkills: []
   healthBar: {fileID: 114358015329401362}
@@ -2626,6 +2625,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loop: 0
   playTimeLength: 0
+  actionState: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
+--- !u!114 &114846766983848692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603032203583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8893bb1a317a2864b9ef874aaba522b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1123604481315760}
+  actionEffects: []
+  actionStates:
+  - {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
+  - {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
 --- !u!114 &114848657698850312
 MonoBehaviour:
   m_ObjectHideFlags: 1

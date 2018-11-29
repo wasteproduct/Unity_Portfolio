@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 114497986940092300}
   - component: {fileID: 114468095539430378}
   - component: {fileID: 114316321641428538}
+  - component: {fileID: 114651401261411538}
   - component: {fileID: 54448997693609646}
   m_Layer: 11
   m_Name: Character_Sheep
@@ -1700,6 +1701,19 @@ MonoBehaviour:
   conditionPanel: {fileID: 1899336504809006}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}
+--- !u!114 &114651401261411538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284732833751890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8893bb1a317a2864b9ef874aaba522b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  actionEffects: []
 --- !u!114 &114764477705665954
 MonoBehaviour:
   m_ObjectHideFlags: 1

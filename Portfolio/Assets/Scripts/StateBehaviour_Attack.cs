@@ -19,7 +19,9 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         targetHit = false;
-        turnController.CurrentTurnCharacter.PlayActionEffect();
+
+        // "maybe" temporary
+        turnController.CurrentTurnCharacter.EffectManager.PlayActionEffect(actionManager.ExecutedAction);
 
         if (actionManager.ExecutedAction.ActionSound == null) return;
 

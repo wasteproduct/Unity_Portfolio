@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 114947516839233892}
   - component: {fileID: 114887517621289022}
   - component: {fileID: 114609997872188260}
+  - component: {fileID: 114738076562982594}
   - component: {fileID: 54332639462069862}
   m_Layer: 11
   m_Name: Character_Tank
@@ -2101,6 +2102,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
+--- !u!114 &114738076562982594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8893bb1a317a2864b9ef874aaba522b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  actionEffects: []
 --- !u!114 &114779144431061504
 MonoBehaviour:
   m_ObjectHideFlags: 1
