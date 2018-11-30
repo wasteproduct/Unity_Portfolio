@@ -7,18 +7,17 @@ public class StateBehaviour_Attack : StateMachineBehaviour
 {
     public Character_State idleBattle;
     public Manager_BattlePhase phaseManager;
-    public Battle_TargetManager targetManager;
     public Battle_TurnController turnController;
     public Battle_ActionManager actionManager;
-    public Calculation_DamageAmount damageCalculator;
     public Event_SoundPlay eventSoundPlay;
-    public float targetHitTime;
+    public Battle_ImpactBase onImpact;
+    public float impactTime;
 
-    private bool targetHit;
+    private bool impactOn;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        targetHit = false;
+        impactOn = false;
 
         // "maybe" temporary
         turnController.CurrentTurnCharacter.EffectManager.PlayActionEffect(actionManager.ExecutedAction);
@@ -37,22 +36,13 @@ public class StateBehaviour_Attack : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        if (targetHit == true) return;
+        if (impactOn == true) return;
 
-        if (animatorStateInfo.normalizedTime >= targetHitTime)
+        if (animatorStateInfo.normalizedTime >= impactTime)
         {
-            targetHit = true;
+            impactOn = true;
 
-            List<Character_InBattle> finalTargets = targetManager.FinalTargets;
-            float appliedDamage = damageCalculator.CalculateDamageAmount(actionManager.ExecutedAction.Power, turnController.CurrentTurnCharacter.AppliedDebuffs);
-            float splashedAmountRate = actionManager.ExecutedAction.SplashedPowerRate;
-
-            finalTargets[0].Damage(appliedDamage);
-            for (int i = 1; i < finalTargets.Count; i++)
-            {
-                float splashedDamage = appliedDamage * splashedAmountRate;
-                finalTargets[i].Damage(splashedDamage);
-            }
+            onImpact.Run();
         }
     }
 }

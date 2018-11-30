@@ -1762,9 +1762,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'effect
+  m_Text: 'throw banana
 
-    sort played effect in CIB'
+    banana explodes'
 --- !u!222 &1724008085
 CanvasRenderer:
   m_ObjectHideFlags: 0

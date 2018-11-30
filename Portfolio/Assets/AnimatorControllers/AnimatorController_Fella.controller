@@ -40,12 +40,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleBattle: {fileID: 11400000, guid: 3e57ab23a055fe74f96bb5ae1b5f40fe, type: 2}
   phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
-  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
-  damageCalculator: {fileID: 11400000, guid: 9a02cd4a6385ca4478566ccd15bb91e5, type: 2}
   eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
-  targetHitTime: 0
+  onImpact: {fileID: 11400000, guid: a66149e75fa74224ab7c71d6cae9e70b, type: 2}
+  impactTime: 0
 --- !u!114 &114483954864962086
 MonoBehaviour:
   m_ObjectHideFlags: 1

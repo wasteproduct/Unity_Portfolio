@@ -13,7 +13,7 @@ namespace Tutorial
         // Use this for initialization
         void Start()
         {
-            offset = new Vector3(0, 1.6f, 3.2f);
+            offset = new Vector3(0, .8f, 1.6f);
 
             this.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         }
