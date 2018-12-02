@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5009aae747b56d40beb2bbeba759496, type: 3}
+  m_Name: Impact_Soldier Grenade
+  m_EditorClassIdentifier: 
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  banana: {fileID: 1680808602662428, guid: 4be8e8eae63facc4bbcc04b2c5e07d45, type: 2}

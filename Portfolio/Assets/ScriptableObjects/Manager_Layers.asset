@@ -20,3 +20,6 @@ MonoBehaviour:
   character:
     serializedVersion: 2
     m_Bits: 2048
+  thrownObject:
+    serializedVersion: 2
+    m_Bits: 4096

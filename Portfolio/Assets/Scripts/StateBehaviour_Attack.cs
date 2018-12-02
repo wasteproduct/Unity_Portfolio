@@ -11,7 +11,7 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public Battle_ActionManager actionManager;
     public Event_SoundPlay eventSoundPlay;
     public Battle_ImpactBase onImpact;
-    public float impactTime;
+    public float impactTimePercentage;
 
     private bool impactOn;
 
@@ -31,14 +31,13 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         animator.SetInteger("CurrentState", idleBattle.value);
-        phaseManager.EnterNextPhase();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         if (impactOn == true) return;
 
-        if (animatorStateInfo.normalizedTime >= impactTime)
+        if (animatorStateInfo.normalizedTime >= impactTimePercentage)
         {
             impactOn = true;
 

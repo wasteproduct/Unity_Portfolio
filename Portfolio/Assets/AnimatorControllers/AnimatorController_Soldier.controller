@@ -44,7 +44,7 @@ MonoBehaviour:
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
   onImpact: {fileID: 11400000, guid: a66149e75fa74224ab7c71d6cae9e70b, type: 2}
-  impactTime: 0
+  impactTimePercentage: 0.4
 --- !u!114 &114294396567083648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61,8 +61,8 @@ MonoBehaviour:
   turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   eventSoundPlay: {fileID: 0}
-  onImpact: {fileID: 11400000, guid: a66149e75fa74224ab7c71d6cae9e70b, type: 2}
-  impactTime: 0
+  onImpact: {fileID: 11400000, guid: 2a40f7c6d2632d049844897be622efd8, type: 2}
+  impactTimePercentage: 0.4
 --- !u!1101 &1101111232473847550
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
