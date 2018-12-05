@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63e0f257378584589bb9c7f84c4511, type: 3}
   m_Name: Sound_TankGunShot
   m_EditorClassIdentifier: 
-  playedSound: {fileID: 0}
-  repetitionCount: 0
+  playedSound: {fileID: 8300000, guid: 7908f16abe34f9048b44edca6ba65bd9, type: 3}
+  repetitionCount: 1
   startPlayingTime: 0
   repetitionInterval: 0
