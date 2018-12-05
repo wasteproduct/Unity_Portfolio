@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class Object_Banana : MonoBehaviour
 {
-    public Manager_Layers layers;
+    public Calculation_ApplyDamage damageApplier;
+    public Battle.Manager_BattlePhase phaseManager;
+    public GameObject effectExplosion;
+    public CustomSound soundExplosion;
+    public Event_SoundPlay eventSoundPlay;
 
-    private void OnEnable()
-    {
-        //Physics.IgnoreLayerCollision()
-    }
+    private float elapsedTime = 0.0f;
 
-    // Use this for initialization
-    void Start()
+    private void Explode()
     {
+        GameObject explosion = Instantiate(effectExplosion, transform.position, transform.rotation);
+        explosion.GetComponent<EffectController>().PlayEffect();
+
+        eventSoundPlay.PlayedSound = soundExplosion;
+        eventSoundPlay.Run();
+
+        damageApplier.ApplyDamage();
+        phaseManager.EnterNextPhase();
+
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
 
+        if (elapsedTime >= 2.0f) Explode();
     }
 }

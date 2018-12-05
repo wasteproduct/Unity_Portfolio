@@ -21,6 +21,8 @@ namespace Battle
 
         public void SetFinalTargets(Battle_Action executedAction)
         {
+            if (SelectedTarget == null) return;
+
             if (executedAction == null) return;
 
             int actionScale = executedAction.Scale;

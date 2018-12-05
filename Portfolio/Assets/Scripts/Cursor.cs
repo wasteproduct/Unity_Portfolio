@@ -179,10 +179,10 @@ public class Cursor : MonoBehaviour
         switch (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type)
         {
             case TileType.Floor:
-                this.GetComponent<Renderer>().material = green;
+                GetComponent<Renderer>().material = green;
                 break;
             case TileType.Door:
-                this.GetComponent<Renderer>().material = yellow;
+                GetComponent<Renderer>().material = yellow;
                 break;
         }
     }

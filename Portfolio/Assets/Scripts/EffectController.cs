@@ -7,6 +7,7 @@ public class EffectController : MonoBehaviour
     public bool loop;
     public float playTimeLength;
     public Character_State actionState;
+    public bool destroyed;
 
     private ParticleSystem particleComponent = null;
 
@@ -35,5 +36,7 @@ public class EffectController : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+
+        if (destroyed == true) Destroy(gameObject);
     }
 }

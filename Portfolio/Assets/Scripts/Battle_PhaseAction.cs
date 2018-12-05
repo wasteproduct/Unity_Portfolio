@@ -9,9 +9,6 @@ namespace Battle
         public Battle_TargetManager targetManager;
         public Battle_ActionManager actionManager;
 
-        private bool countingOn;
-        private float elapsedTime;
-
         public override void ClickWork()
         {
 
@@ -32,8 +29,6 @@ namespace Battle
                 return;
             }
 
-            countingOn = false;
-
             StartCoroutine(ExecuteAction());
         }
 
@@ -53,17 +48,12 @@ namespace Battle
             }
             
             actionManager.ExecutedAction.Play();
-            countingOn = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (countingOn == false) return;
 
-            elapsedTime += Time.deltaTime;
-
-            if (elapsedTime >= actionManager.ExecutedAction.ActionLength) phaseManager.EnterNextPhase();
         }
     }
 }

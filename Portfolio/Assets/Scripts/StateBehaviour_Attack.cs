@@ -31,6 +31,8 @@ public class StateBehaviour_Attack : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         animator.SetInteger("CurrentState", idleBattle.value);
+
+        if (actionManager.ExecutedAction.AdditionalAction == false) phaseManager.EnterNextPhase();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
