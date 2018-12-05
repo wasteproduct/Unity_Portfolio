@@ -44,7 +44,7 @@ MonoBehaviour:
   actionManager: {fileID: 11400000, guid: 4f9d337a8c36dc947b28d4e0e720f1b7, type: 2}
   eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
   onImpact: {fileID: 11400000, guid: a66149e75fa74224ab7c71d6cae9e70b, type: 2}
-  impactTime: 0
+  impactTimePercentage: 0.3
 --- !u!114 &114483954864962086
 MonoBehaviour:
   m_ObjectHideFlags: 1

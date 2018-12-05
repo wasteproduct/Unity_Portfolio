@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23299269016098714}
   - component: {fileID: 54555387465253294}
   - component: {fileID: 136511168847985870}
+  - component: {fileID: 114560737650197646}
   m_Layer: 12
   m_Name: Banana
   m_TagString: Untagged
@@ -100,6 +101,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114560737650197646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680808602662428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e95d47933065a4386334954e25177d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageApplier: {fileID: 11400000, guid: 24cf1acccad3dc745a70b088da164c92, type: 2}
+  phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
+  effectExplosion: {fileID: 1432934292098426, guid: c71fc405fa946bf4aa482ee9cd6d963a,
+    type: 2}
+  soundExplosion: {fileID: 11400000, guid: 33f38bc1e4970864db0e421f5a069fd6, type: 2}
+  eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
 --- !u!136 &136511168847985870
 CapsuleCollider:
   m_ObjectHideFlags: 1

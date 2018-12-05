@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63e0f257378584589bb9c7f84c4511, type: 3}
   m_Name: Sound_FellaGunShot
   m_EditorClassIdentifier: 
-  playedSound: {fileID: 0}
-  repetitionCount: 0
+  playedSound: {fileID: 8300000, guid: fccc46974bfb74a4498b8793b264e90c, type: 3}
+  repetitionCount: 2
   startPlayingTime: 0
-  repetitionInterval: 0
+  repetitionInterval: 0.2

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63e0f257378584589bb9c7f84c4511, type: 3}
   m_Name: Sound_BananaExplosion
   m_EditorClassIdentifier: 
-  playedSound: {fileID: 0}
-  repetitionCount: 0
+  playedSound: {fileID: 8300000, guid: bb4cf88a07f339b40805eb2f9001892e, type: 3}
+  repetitionCount: 1
   startPlayingTime: 0
   repetitionInterval: 0

@@ -19,3 +19,6 @@ MonoBehaviour:
   power: 75
   scale: 1
   splashedPowerRate: 0.5
+  debuffData: {fileID: 0}
+  actionSound: {fileID: 0}
+  additionalAction: 1

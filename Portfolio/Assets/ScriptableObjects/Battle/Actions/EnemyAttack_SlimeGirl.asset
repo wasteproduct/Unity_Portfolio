@@ -21,3 +21,4 @@ MonoBehaviour:
   splashedPowerRate: 0
   debuffData: {fileID: 0}
   actionSound: {fileID: 11400000, guid: cbadbf3463e2ec94ea663d1390127696, type: 2}
+  additionalAction: 0

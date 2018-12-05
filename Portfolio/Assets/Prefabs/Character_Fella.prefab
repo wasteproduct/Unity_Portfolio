@@ -6001,7 +6001,7 @@ MonoBehaviour:
   damaged: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
   dead: {fileID: 11400000, guid: d2c07634a8406aa4689940df7af8408a, type: 2}
   battleStatus: {fileID: 1936847661749420}
-  actionAttack: {fileID: 11400000, guid: dee6e08b959b4a6468ffb906b337473c, type: 2}
+  actionAttack: {fileID: 11400000, guid: dfd5b29f6ac6b5741a35aa5b167e8bfb, type: 2}
   actionSkills:
   - {fileID: 11400000, guid: 29f44ee417fe6c446991ed4346ea220d, type: 2}
   healthBar: {fileID: 114388161430154116}
