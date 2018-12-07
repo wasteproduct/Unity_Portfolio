@@ -50,6 +50,7 @@ namespace Player
             captain.GetComponent<Character_InDungeon>().Initialize(true, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());
             captain.GetComponent<Character_InBattle>().Initialize(mapData, false);
             captain.GetComponent<Character_StateManager>().Initialize();
+            captain.GetComponent<FogOfWar_Revealer>().RegisterRevealer();
             PlayerCharacters.Add(captain);
 
             int offset = -1;

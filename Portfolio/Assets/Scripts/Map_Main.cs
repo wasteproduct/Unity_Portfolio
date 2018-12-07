@@ -15,6 +15,7 @@ public class Map_Main : MonoBehaviour
     public GameObject dungeonWall;
     public GameObject dungeonDoor;
     public EnemyZonesData enemyZonesData;
+    public GameObject fogOfWar;
 
     public Map_Data MapData { get; private set; }
 
@@ -22,6 +23,8 @@ public class Map_Main : MonoBehaviour
     void Start()
     {
         GenerateMap();
+
+        fogOfWar.GetComponent<FogOfWar_Manager>().Initialize(MapData.TilesRow, MapData.TilesColumn);
     }
 
     // Update is called once per frame

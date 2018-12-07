@@ -3,7 +3,7 @@
 		_MainTex("Base (RGB)", 2D) = "white" {}
 	}
 		SubShader{
-			Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+			Tags { "RenderType" = "Transparent" "Queue" = "Transparent" /*"RenderQueue" = "0"*/}
 			Blend SrcAlpha OneMinusSrcAlpha
 			Cull Off
 			LOD 200

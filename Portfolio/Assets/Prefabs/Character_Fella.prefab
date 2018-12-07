@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 114851761681484244}
   - component: {fileID: 114453303099628692}
   - component: {fileID: 114620763610867846}
+  - component: {fileID: 114498341760837662}
   - component: {fileID: 114869197119053990}
   - component: {fileID: 114502948154007956}
   - component: {fileID: 54229932126630554}
@@ -5872,6 +5873,17 @@ MonoBehaviour:
   rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
+--- !u!114 &114498341760837662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125473257450764}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc093c70ae6c14448bcfe2a0b80a3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114502948154007956
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -47,13 +47,13 @@ public class Cursor : MonoBehaviour
 
         if (choosingTarget.flag == true)
         {
-            this.transform.position = Vector3.zero;
+            transform.position = Vector3.zero;
             return;
         }
 
         LeftClick();
 
-        this.transform.position = new Vector3((float)mouseOnTileX.value, 0.0f, (float)mouseOnTileZ.value);
+        transform.position = new Vector3(mouseOnTileX.value, 0.0f, mouseOnTileZ.value);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
@@ -73,7 +73,7 @@ public class Cursor : MonoBehaviour
 
     private void SetMouseOnTile(RaycastHit hitInfo)
     {
-        if ((1 << hitInfo.collider.gameObject.layer == (int)layers.TileMap) || (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone))
+        if ((1 << hitInfo.collider.gameObject.layer == layers.TileMap) || (1 << hitInfo.collider.gameObject.layer == layers.EnemyZone))
         {
             mouseOnTileX.value = (int)(hitInfo.point.x + .5f);
             mouseOnTileZ.value = (int)(hitInfo.point.z + .5f);
@@ -105,7 +105,7 @@ public class Cursor : MonoBehaviour
 
             //Explore_CheckIntoEnemyZone();
 
-            this.GetComponent<Renderer>().material = defaultColor;
+            GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
 
             clickEvent.Run();

@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 114576572343437090}
   - component: {fileID: 114497986940092300}
   - component: {fileID: 114468095539430378}
+  - component: {fileID: 114637249899957386}
   - component: {fileID: 114316321641428538}
   - component: {fileID: 114651401261411538}
   - component: {fileID: 54448997693609646}
@@ -1701,6 +1702,17 @@ MonoBehaviour:
   conditionPanel: {fileID: 1899336504809006}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}
+--- !u!114 &114637249899957386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284732833751890}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc093c70ae6c14448bcfe2a0b80a3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114651401261411538
 MonoBehaviour:
   m_ObjectHideFlags: 1

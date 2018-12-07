@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FogOfWar_Revealer : MonoBehaviour {
+public class FogOfWar_Revealer : MonoBehaviour
+{
+    [SerializeField]
+    private int revealedAreaRadius;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int RevealedAreaRadius { get { return revealedAreaRadius; } }
+
+    public void SetRadius(int newRadius)
+    {
+        revealedAreaRadius = newRadius;
+    }
+
+    public void RegisterRevealer()
+    {
+        FogOfWar_Manager.Instance.RegisterRevealer(this);
+    }
 }

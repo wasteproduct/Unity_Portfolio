@@ -13,15 +13,15 @@ namespace Tutorial
         // Use this for initialization
         void Start()
         {
-            offset = new Vector3(0, .8f, 1.6f);
+            offset = new Vector3(-8.0f, 8.0f, -8.0f);
 
-            this.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            transform.rotation = Quaternion.Euler(30.0f, 45.0f, 0.0f);
         }
 
         // Update is called once per frame
         void Update()
         {
-            this.transform.position = focus.gameObject.transform.position + offset;
+            transform.position = focus.gameObject.transform.position + offset;
         }
     }
 }

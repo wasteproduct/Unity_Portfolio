@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 114187259242236178}
   - component: {fileID: 114096428085651668}
   - component: {fileID: 114106740896537864}
+  - component: {fileID: 114450371720251008}
   - component: {fileID: 114827855230529924}
   - component: {fileID: 114924164068476658}
   - component: {fileID: 54276385091090022}
@@ -2041,6 +2042,7 @@ MonoBehaviour:
   loop: 1
   playTimeLength: 0.4
   actionState: {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
+  destroyed: 0
 --- !u!114 &114358819905493102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2122,6 +2124,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114450371720251008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1189806245226096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc093c70ae6c14448bcfe2a0b80a3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  revealedAreaRadius: 5
 --- !u!114 &114554177721045378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2206,9 +2220,6 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   actionEffects:
   - {fileID: 1759998079550074}
-  actionStates:
-  - {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
-  - {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
 --- !u!114 &114928145085996782
 MonoBehaviour:
   m_ObjectHideFlags: 1
