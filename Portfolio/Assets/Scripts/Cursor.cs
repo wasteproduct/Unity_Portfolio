@@ -55,11 +55,19 @@ public class Cursor : MonoBehaviour
 
         transform.position = new Vector3(mouseOnTileX.value, 0.0f, mouseOnTileZ.value);
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = PassedRay();
         RaycastHit hitInfo;
+
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    print("Origin : " + ray.origin);
+        //    print("Direction : " + ray.direction);
+        //}
 
         if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
         {
+            Debug.DrawLine(ray.origin, hitInfo.point, Color.blue);
+
             SetMouseOnTile(hitInfo);
 
             HighlightDoor();
@@ -71,10 +79,32 @@ public class Cursor : MonoBehaviour
         mouseOnTileZ.value = commonFeatures.invalidIndex;
     }
 
+    private Ray PassedRay()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        Ray result = new Ray();
+
+        if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+        {
+            if (1 << hitInfo.collider.gameObject.layer == layers.FogOfWar)
+            {
+                result.origin = hitInfo.point + ray.direction * .2f;
+                result.direction = ray.direction;
+            }
+        }
+
+        Debug.DrawLine(ray.origin, result.origin, Color.red);
+
+        return result;
+    }
+
     private void SetMouseOnTile(RaycastHit hitInfo)
     {
         if ((1 << hitInfo.collider.gameObject.layer == layers.TileMap) || (1 << hitInfo.collider.gameObject.layer == layers.EnemyZone))
         {
+            print("hit");
             mouseOnTileX.value = (int)(hitInfo.point.x + .5f);
             mouseOnTileZ.value = (int)(hitInfo.point.z + .5f);
 

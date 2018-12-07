@@ -11,9 +11,12 @@ public class Manager_Layers : ScriptableObject
     private LayerMask character;
     [SerializeField]
     private LayerMask thrownObject;
+    [SerializeField]
+    private LayerMask fogOfWar;
 
     public LayerMask TileMap { get { return tileMap; } }
     public LayerMask EnemyZone { get { return enemyZone; } }
     public LayerMask Character { get { return character; } }
     public LayerMask ThrownObject { get { return thrownObject; } }
+    public LayerMask FogOfWar { get { return fogOfWar; } }
 }
