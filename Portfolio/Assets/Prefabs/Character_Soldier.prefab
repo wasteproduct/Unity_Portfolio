@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc093c70ae6c14448bcfe2a0b80a3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  revealedAreaRadius: 2
+  revealedAreaRadius: 1
 --- !u!114 &114554177721045378
 MonoBehaviour:
   m_ObjectHideFlags: 1

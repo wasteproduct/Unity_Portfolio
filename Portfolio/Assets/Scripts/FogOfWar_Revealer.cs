@@ -5,14 +5,9 @@ using UnityEngine;
 public class FogOfWar_Revealer : MonoBehaviour
 {
     [SerializeField]
-    private int revealedAreaRadius;
+    private int revealedDistance;
 
-    public int RevealedAreaRadius { get { return revealedAreaRadius; } }
-
-    public void SetRadius(int newRadius)
-    {
-        revealedAreaRadius = newRadius;
-    }
+    public int RevealedDistance { get { return revealedDistance; } }
 
     public void RegisterRevealer()
     {

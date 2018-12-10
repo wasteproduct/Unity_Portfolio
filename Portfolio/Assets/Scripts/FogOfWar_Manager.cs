@@ -9,6 +9,10 @@ public class FogOfWar_Manager : MonoBehaviour
     private Color fogOfWarColor;
     [SerializeField]
     private LayerMask fogOfWarLayer;
+    [SerializeField]
+    private Variable_Int currentTileX;
+    [SerializeField]
+    private Variable_Int currentTileZ;
 
     private Texture2D fogOfWarTexture;
     private Color[] pixels;
@@ -16,12 +20,33 @@ public class FogOfWar_Manager : MonoBehaviour
     private int pixelsPerUnit;
     private Vector2 centerPixel;
 
+    private int tilesRow, tilesColumn;
+
     public static FogOfWar_Manager Instance { get; private set; }
+
+    // 여기
+    public void RevealArea()
+    {
+        int revealedDistance = revealers[0].RevealedDistance;
+
+        for(int z=currentTileZ.value-revealedDistance;z<=currentTileZ.value+revealedDistance;z++)
+        {
+            if ((z < 0) || (z >= tilesColumn)) continue;
+
+            for(int x=currentTileX.value-revealedDistance;x<=currentTileX.value+revealedDistance;x++)
+            {
+                if ((x < 0) || (x >= tilesRow)) continue;
+            }
+        }
+    }
 
     public void Initialize(int rowSize, int columnSize)
     {
-        transform.position = new Vector3(rowSize / 2, 5.0f, columnSize / 2);
-        transform.localScale *= rowSize * 1.28f;
+        tilesRow = rowSize;
+        tilesColumn = columnSize;
+
+        transform.position = new Vector3(tilesRow / 2, 5.0f, tilesColumn / 2);
+        transform.localScale *= tilesColumn * 1.28f;
 
         Instance = this;
 
@@ -103,7 +128,7 @@ public class FogOfWar_Manager : MonoBehaviour
                 int pixelX = Mathf.RoundToInt(translatedPosition.x * pixelsPerUnit + centerPixel.x);
                 int pixelY = Mathf.RoundToInt(translatedPosition.z * pixelsPerUnit + centerPixel.y);
 
-                CreateCircle(pixelX, pixelY, revealer.RevealedAreaRadius);
+                CreateCircle(pixelX, pixelY, revealer.RevealedDistance);
             }
         }
 

@@ -33,7 +33,7 @@ public class Character_ExploreCaptain : Character_Explore
         IntoEnemyZone = false;
         SteppedEnemyZone = null;
 
-        StartingRotation = this.gameObject.transform.rotation;
+        StartingRotation = gameObject.transform.rotation;
     }
 
     public override void Move(int targetIndex, float lerpTime)
@@ -50,28 +50,28 @@ public class Character_ExploreCaptain : Character_Explore
         float x = Mathf.Lerp(startX, targetX, lerpTime);
         float z = Mathf.Lerp(startZ, targetZ, lerpTime);
 
-        this.gameObject.transform.position = new Vector3(x, 0.0f, z);
-        this.gameObject.transform.rotation = rotationCalculator.LerpRotation((int)startX, (int)startZ, (int)targetX, (int)targetZ, StartingRotation, lerpTime);
+        gameObject.transform.position = new Vector3(x, 0.0f, z);
+        gameObject.transform.rotation = rotationCalculator.LerpRotation((int)startX, (int)startZ, (int)targetX, (int)targetZ, StartingRotation, lerpTime);
     }
 
     public override void UpdateStartingRotation()
     {
-        StartingRotation = this.gameObject.transform.rotation;
+        StartingRotation = gameObject.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTileX.value = (int)(this.gameObject.transform.position.x + .5f);
-        currentTileZ.value = (int)(this.gameObject.transform.position.z + .5f);
+        currentTileX.value = (int)(gameObject.transform.position.x + .5f);
+        currentTileZ.value = (int)(gameObject.transform.position.z + .5f);
 
-        this.StandingTileX = (int)(this.gameObject.transform.position.x + .5f);
-        this.StandingTileZ = (int)(this.gameObject.transform.position.z + .5f);
+        StandingTileX = (int)(gameObject.transform.position.x + .5f);
+        StandingTileZ = (int)(gameObject.transform.position.z + .5f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (1 << other.gameObject.layer == (int)layers.EnemyZone)
+        if (1 << other.gameObject.layer == layers.EnemyZone)
         {
             IntoEnemyZone = true;
             SteppedEnemyZone = other.gameObject;
@@ -80,7 +80,7 @@ public class Character_ExploreCaptain : Character_Explore
 
     private void OnTriggerExit(Collider other)
     {
-        if (1 << other.gameObject.layer == (int)layers.EnemyZone)
+        if (1 << other.gameObject.layer == layers.EnemyZone)
         {
             IntoEnemyZone = false;
             SteppedEnemyZone = null;
