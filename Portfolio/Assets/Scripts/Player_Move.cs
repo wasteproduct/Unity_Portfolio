@@ -81,6 +81,7 @@ namespace Player
             }
         }
 
+        // reveal map
         private IEnumerator Move_Explore()
         {
             int targetIndex = 1;
