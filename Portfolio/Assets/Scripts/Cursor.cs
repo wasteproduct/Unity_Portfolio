@@ -104,7 +104,6 @@ public class Cursor : MonoBehaviour
     {
         if ((1 << hitInfo.collider.gameObject.layer == layers.TileMap) || (1 << hitInfo.collider.gameObject.layer == layers.EnemyZone))
         {
-            print("hit");
             mouseOnTileX.value = (int)(hitInfo.point.x + .5f);
             mouseOnTileZ.value = (int)(hitInfo.point.z + .5f);
 

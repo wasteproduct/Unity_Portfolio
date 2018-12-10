@@ -70,7 +70,7 @@ public class Map_Main : MonoBehaviour
                     break;
             }
 
-            GameObject newDoor = Instantiate<GameObject>(dungeonDoor, new Vector3((float)MapData.Doors[i].X, 0.0f, (float)MapData.Doors[i].Z), rotation, this.transform);
+            GameObject newDoor = Instantiate(dungeonDoor, new Vector3(MapData.Doors[i].X, 0.0f, MapData.Doors[i].Z), rotation, transform);
 
             Object_Door newDoorHandler = newDoor.GetComponentInChildren<Object_Door>();
             newDoorHandler.SetIndex(MapData.Doors[i].X, MapData.Doors[i].Z);
@@ -80,7 +80,7 @@ public class Map_Main : MonoBehaviour
 
     private void CombineMapMeshes()
     {
-        MeshFilter[] meshFilters = this.GetComponentsInChildren<MeshFilter>(true);
+        MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>(true);
 
         CombineInstance[] instances = new CombineInstance[meshFilters.Length];
 
@@ -93,7 +93,7 @@ public class Map_Main : MonoBehaviour
 
         for (int i = 0; i < meshFilters.Length; i++)
         {
-            if (meshFilters[i].transform == this.transform) continue;
+            if (meshFilters[i].transform == transform) continue;
 
             instances[i] = new CombineInstance();
 
@@ -118,34 +118,34 @@ public class Map_Main : MonoBehaviour
         Mesh combinedFloor = new Mesh();
         combinedFloor.CombineMeshes(floors.ToArray());
 
-        this.GetComponent<MeshCollider>().sharedMesh = combinedFloor;
+        GetComponent<MeshCollider>().sharedMesh = combinedFloor;
 
         Mesh combinedWall = new Mesh();
         combinedWall.CombineMeshes(walls.ToArray());
 
         CombineInstance[] combinedInstances = new CombineInstance[2];
         combinedInstances[0].mesh = combinedFloor;
-        combinedInstances[0].transform = this.transform.localToWorldMatrix;
+        combinedInstances[0].transform = transform.localToWorldMatrix;
         combinedInstances[1].mesh = combinedWall;
-        combinedInstances[1].transform = this.transform.localToWorldMatrix;
+        combinedInstances[1].transform = transform.localToWorldMatrix;
 
-        this.GetComponent<MeshCollider>().sharedMesh = combinedFloor;
+        GetComponent<MeshCollider>().sharedMesh = combinedFloor;
 
         Mesh ultimateMesh = new Mesh();
         ultimateMesh.CombineMeshes(combinedInstances, false);
 
-        this.GetComponent<MeshRenderer>().sharedMaterials = new Material[2];
+        GetComponent<MeshRenderer>().sharedMaterials = new Material[2];
 
         for (int i = 0; i < 2; i++)
         {
-            this.GetComponent<MeshRenderer>().sharedMaterials = materials.ToArray();
+            GetComponent<MeshRenderer>().sharedMaterials = materials.ToArray();
         }
 
-        this.GetComponent<MeshFilter>().mesh = ultimateMesh;
+        GetComponent<MeshFilter>().mesh = ultimateMesh;
 
-        for (int i = this.transform.childCount - 1; i >= 0; i--)
+        for (int i = transform.childCount - 1; i >= 0; i--)
         {
-            Destroy(this.transform.GetChild(i).gameObject);
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 
@@ -163,7 +163,7 @@ public class Map_Main : MonoBehaviour
                         BuildWall(x, z);
                         break;
                     default:
-                        Instantiate<GameObject>(dungeonFloor, new Vector3((float)x, 0.0f, (float)z), Quaternion.identity, this.transform);
+                        Instantiate(dungeonFloor, new Vector3(x, 0.0f, z), Quaternion.identity, transform);
                         break;
                 }
             }
@@ -189,7 +189,7 @@ public class Map_Main : MonoBehaviour
                     break;
             }
 
-            Instantiate<GameObject>(dungeonWall, new Vector3((float)x, 0.0f, (float)z), rotation, this.transform);
+            Instantiate(dungeonWall, new Vector3(x, 0.0f, z), rotation, transform);
         }
     }
 }

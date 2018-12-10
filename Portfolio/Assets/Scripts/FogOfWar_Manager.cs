@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class FogOfWar_Manager : MonoBehaviour
@@ -22,7 +21,7 @@ public class FogOfWar_Manager : MonoBehaviour
     public void Initialize(int rowSize, int columnSize)
     {
         transform.position = new Vector3(rowSize / 2, 5.0f, columnSize / 2);
-        transform.localScale *= (rowSize * 1.28f);
+        transform.localScale *= rowSize * 1.28f;
 
         Instance = this;
 
