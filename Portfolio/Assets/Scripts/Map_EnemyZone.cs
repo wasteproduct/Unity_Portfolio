@@ -34,10 +34,10 @@ public class Map_EnemyZone : MonoBehaviour
 
         int emptySpace = Random.Range(left, 4);
 
-        Vector3 leftPosition = new Vector3((float)ZoneData.leftTile.X, 0.0f, (float)ZoneData.leftTile.Z);
-        Vector3 rightPosition = new Vector3((float)ZoneData.rightTile.X, 0.0f, (float)ZoneData.rightTile.Z);
-        Vector3 upperPosition = new Vector3((float)ZoneData.upperTile.X, 0.0f, (float)ZoneData.upperTile.Z);
-        Vector3 lowerPosition = new Vector3((float)ZoneData.lowerTile.X, 0.0f, (float)ZoneData.lowerTile.Z);
+        Vector3 leftPosition = new Vector3(ZoneData.leftTile.X, 0.0f, ZoneData.leftTile.Z);
+        Vector3 rightPosition = new Vector3(ZoneData.rightTile.X, 0.0f, ZoneData.rightTile.Z);
+        Vector3 upperPosition = new Vector3(ZoneData.upperTile.X, 0.0f, ZoneData.upperTile.Z);
+        Vector3 lowerPosition = new Vector3(ZoneData.lowerTile.X, 0.0f, ZoneData.lowerTile.Z);
 
         switch (emptySpace)
         {
@@ -66,10 +66,10 @@ public class Map_EnemyZone : MonoBehaviour
 
     private void CreateZone()
     {
-        int zoneLeft = ZoneData.centerTile.X - EnemyZonesData.zoneLength / 2;
-        int zoneRight = zoneLeft + EnemyZonesData.zoneLength;
-        int zoneBottom = ZoneData.centerTile.Z - EnemyZonesData.zoneLength / 2;
-        int zoneTop = zoneBottom + EnemyZonesData.zoneLength;
+        int zoneLeft = ZoneData.left;
+        int zoneRight = ZoneData.right;
+        int zoneBottom = ZoneData.bottom;
+        int zoneTop = ZoneData.top;
 
         List<GameObject> tiles = new List<GameObject>();
 
@@ -77,7 +77,7 @@ public class Map_EnemyZone : MonoBehaviour
         {
             for (int x = zoneLeft; x < zoneRight; x++)
             {
-                GameObject newTile = Instantiate<GameObject>(zoneTilePrefab, new Vector3((float)x, 0.0f, (float)z), Quaternion.identity);
+                GameObject newTile = Instantiate(zoneTilePrefab, new Vector3(x, 0.0f, z), Quaternion.identity);
 
                 tiles.Add(newTile);
             }
@@ -85,7 +85,7 @@ public class Map_EnemyZone : MonoBehaviour
 
         CombineInstance[] combineInstances = new CombineInstance[tiles.Count];
 
-        for(int i=0;i<tiles.Count;i++)
+        for (int i = 0; i < tiles.Count; i++)
         {
             combineInstances[i] = new CombineInstance();
 
@@ -96,9 +96,9 @@ public class Map_EnemyZone : MonoBehaviour
         Mesh combinedZone = new Mesh();
         combinedZone.CombineMeshes(combineInstances);
 
-        this.GetComponent<MeshCollider>().sharedMesh = combinedZone;
-        this.GetComponent<MeshRenderer>().sharedMaterial = zoneTileMaterial;
-        this.GetComponent<MeshFilter>().mesh = combinedZone;
+        GetComponent<MeshCollider>().sharedMesh = combinedZone;
+        GetComponent<MeshRenderer>().sharedMaterial = zoneTileMaterial;
+        GetComponent<MeshFilter>().mesh = combinedZone;
 
         for (int i = tiles.Count - 1; i >= 0; i--)
         {

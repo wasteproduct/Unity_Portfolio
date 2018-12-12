@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using MapDataSet;
 
 public class FogOfWar_Manager : MonoBehaviour
 {
@@ -19,36 +20,73 @@ public class FogOfWar_Manager : MonoBehaviour
     private List<FogOfWar_Revealer> revealers;
     private int pixelsPerUnit;
     private Vector2 centerPixel;
-
     private int tilesRow, tilesColumn;
 
     public static FogOfWar_Manager Instance { get; private set; }
+    public Map_Data MapData { get; private set; }
 
-    // 여기
+    //여기
+    public void RevealArea(Map_EnemyZone enemyZone)
+    {
+        int areaLeft = enemyZone.ZoneData.left;
+        int areaRight = enemyZone.ZoneData.right;
+        int areaBottom = enemyZone.ZoneData.bottom;
+        int areaTop = enemyZone.ZoneData.top;
+
+        for (int z = areaBottom; z <= areaTop; z++)
+        {
+            for (int x = areaLeft; x <= areaRight; x++)
+            {
+
+            }
+        }
+    }
+    
     public void RevealArea()
     {
         int revealedDistance = revealers[0].RevealedDistance;
 
-        for(int z=currentTileZ.value-revealedDistance;z<=currentTileZ.value+revealedDistance;z++)
+        for (int z = currentTileZ.value - revealedDistance; z <= currentTileZ.value + revealedDistance; z++)
         {
             if ((z < 0) || (z >= tilesColumn)) continue;
 
-            for(int x=currentTileX.value-revealedDistance;x<=currentTileX.value+revealedDistance;x++)
+            for (int x = currentTileX.value - revealedDistance; x <= currentTileX.value + revealedDistance; x++)
             {
                 if ((x < 0) || (x >= tilesRow)) continue;
+
+                if (MapData.TileData[x, z].Revealed == true) continue;
+                
+                Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(new Vector3(x, 0, z)));
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(ray, out hitInfo, 1000.0f, fogOfWarLayer.value))
+                {
+                    print("hit");
+
+                    Vector3 translatedPosition = hitInfo.point - transform.position;
+
+                    int pixelX = Mathf.RoundToInt(translatedPosition.x * pixelsPerUnit + centerPixel.x);
+                    int pixelY = Mathf.RoundToInt(translatedPosition.z * pixelsPerUnit + centerPixel.y);
+
+                    RevealTile(pixelX, pixelY);
+
+                    MapData.TileData[x, z].Revealed = true;
+                }
             }
         }
+
+        fogOfWarTexture.SetPixels(pixels);
+        fogOfWarTexture.Apply(false);
     }
 
-    public void Initialize(int rowSize, int columnSize)
+    public void Initialize(Map_Data mapData)
     {
-        tilesRow = rowSize;
-        tilesColumn = columnSize;
+        MapData = mapData;
+        tilesRow = MapData.TilesRow;
+        tilesColumn = MapData.TilesColumn;
 
         transform.position = new Vector3(tilesRow / 2, 5.0f, tilesColumn / 2);
         transform.localScale *= tilesColumn * 1.28f;
-
-        Instance = this;
 
         Renderer renderer = GetComponent<Renderer>();
         Material material = null;
@@ -78,27 +116,29 @@ public class FogOfWar_Manager : MonoBehaviour
         revealers.Add(revealer);
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void RevealTile(int originX, int originY)
+    {
+        int halfUnit = pixelsPerUnit / 2;
+
+        for (int y = -halfUnit; y <= halfUnit; y++)
+        {
+            for (int x = -halfUnit; x <= halfUnit; x++)
+            {
+                pixels[(originY + y) * textureSize + originX + x] = new Color(0, 0, 0, 0);
+            }
+        }
+    }
+
     private void ClearPixels()
     {
         for (int i = 0; i < pixels.Length; i++)
         {
             pixels[i] = fogOfWarColor;
-        }
-    }
-
-    private void CreateCircle(int originX, int originY, int radius)
-    {
-        int scale = pixelsPerUnit * radius;
-
-        for (int y = -scale; y <= scale; y++)
-        {
-            for (int x = -scale; x <= scale; x++)
-            {
-                if (x * x + y * y <= scale * scale)
-                {
-                    pixels[(originY + y) * textureSize + originX + x] = new Color(0, 0, 0, 0);
-                }
-            }
         }
     }
 
@@ -111,28 +151,6 @@ public class FogOfWar_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ClearPixels();
 
-        for (int i = 0; i < revealers.Count; i++)
-        {
-            FogOfWar_Revealer revealer = revealers[i];
-
-            Vector3 screenPoint = Camera.main.WorldToScreenPoint(revealer.transform.position);
-            Ray ray = Camera.main.ScreenPointToRay(screenPoint);
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(ray, out hitInfo, 1000.0f, fogOfWarLayer.value))
-            {
-                Vector3 translatedPosition = hitInfo.point - transform.position;
-
-                int pixelX = Mathf.RoundToInt(translatedPosition.x * pixelsPerUnit + centerPixel.x);
-                int pixelY = Mathf.RoundToInt(translatedPosition.z * pixelsPerUnit + centerPixel.y);
-
-                CreateCircle(pixelX, pixelY, revealer.RevealedDistance);
-            }
-        }
-
-        fogOfWarTexture.SetPixels(pixels);
-        fogOfWarTexture.Apply(false);
     }
 }

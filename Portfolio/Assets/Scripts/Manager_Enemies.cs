@@ -22,7 +22,7 @@ public class Manager_Enemies : MonoBehaviour
     {
         for (int i = 0; i < zonesData.Zones.Count; i++)
         {
-            GameObject newEnemyZone = Instantiate<GameObject>(enemyZonePrefab);
+            GameObject newEnemyZone = Instantiate(enemyZonePrefab);
             newEnemyZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[i]);
         }
     }

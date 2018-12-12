@@ -24,7 +24,7 @@ public class Map_Main : MonoBehaviour
     {
         GenerateMap();
 
-        fogOfWar.GetComponent<FogOfWar_Manager>().Initialize(MapData.TilesRow, MapData.TilesColumn);
+        fogOfWar.GetComponent<FogOfWar_Manager>().Initialize(MapData);
     }
 
     // Update is called once per frame

@@ -12,9 +12,12 @@ public class EnemyZonesData : ScriptableObject
         public Map_TileData rightTile;
         public Map_TileData upperTile;
         public Map_TileData lowerTile;
-    }
 
-    public const int zoneLength = 11;
+        public int left;
+        public int right;
+        public int bottom;
+        public int top;
+    }
     
     private List<EnemyZone> zones = new List<EnemyZone>();
     public List<EnemyZone> Zones { get { return zones; } }
@@ -28,6 +31,11 @@ public class EnemyZonesData : ScriptableObject
         newZone.rightTile = right;
         newZone.upperTile = upper;
         newZone.lowerTile = lower;
+
+        newZone.left = center.X - 5;
+        newZone.right = center.X + 5;
+        newZone.bottom = center.Z - 5;
+        newZone.top = center.Z + 5;
 
         zones.Add(newZone);
     }

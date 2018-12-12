@@ -109,6 +109,7 @@ namespace Player
                     targetIndex++;
                     elapsedTime = 0.0f;
                     UpdateStartingRotations();
+                    FogOfWar_Manager.Instance.RevealArea();
 
                     if (targetIndex >= aStar.FinalTrack.Count)
                     {

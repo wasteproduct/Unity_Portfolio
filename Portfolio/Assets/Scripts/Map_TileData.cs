@@ -31,12 +31,16 @@ namespace TileDataSet
             Type = TileType.None;
 
             Walls = new List<WallDirection>();
+
+            Revealed = false;
         }
 
         public int X { get; private set; }
         public int Z { get; private set; }
         public TileType Type { get; set; }
         public List<WallDirection> Walls { get; private set; }
+        public bool Revealed { get; set; }
+
         public Object_Door Door { get; set; }
 
         public void OpenDoor()

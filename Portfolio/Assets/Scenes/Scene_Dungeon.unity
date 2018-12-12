@@ -503,10 +503,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureSize: 1024
-  fogOfWarColor: {r: 0.4, g: 0.4, b: 0.4, a: 0.8}
+  fogOfWarColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   fogOfWarLayer:
     serializedVersion: 2
     m_Bits: 8192
+  currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
+  currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
 --- !u!64 &442811699
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -858,6 +860,8 @@ MonoBehaviour:
   fogOfWarLayer:
     serializedVersion: 2
     m_Bits: 8192
+  currentTileX: {fileID: 0}
+  currentTileZ: {fileID: 0}
 --- !u!64 &610456123
 MeshCollider:
   m_ObjectHideFlags: 0

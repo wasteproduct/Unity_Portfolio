@@ -50,6 +50,8 @@ public class Camera_Movement : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(30.0f, 45.0f, 0.0f);
         stopUpdate = false;
+
+        FogOfWar_Manager.Instance.RevealArea();
     }
 
     // Update is called once per frame
