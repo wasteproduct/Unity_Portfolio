@@ -62,7 +62,7 @@ namespace Battle
 
             if (Input.GetMouseButtonUp(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = PassedRay();
                 RaycastHit hitInfo;
                 
                 if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
@@ -76,7 +76,6 @@ namespace Battle
                         {
                             if (clickedTarget == availableTargets[i])
                             {
-                                print("hit");
                                 targetManager.SelectedTarget = clickedTarget;
                                 phaseManager.EnterNextPhase();
                                 return;
@@ -85,6 +84,27 @@ namespace Battle
                     }
                 }
             }
+        }
+
+        private Ray PassedRay()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+
+            Ray result = new Ray();
+
+            if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
+            {
+                if (1 << hitInfo.collider.gameObject.layer == layers.FogOfWar)
+                {
+                    result.origin = hitInfo.point + ray.direction * .2f;
+                    result.direction = ray.direction;
+                }
+            }
+
+            Debug.DrawLine(ray.origin, result.origin, Color.red);
+
+            return result;
         }
     }
 }

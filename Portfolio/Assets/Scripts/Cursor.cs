@@ -58,12 +58,6 @@ public class Cursor : MonoBehaviour
         Ray ray = PassedRay();
         RaycastHit hitInfo;
 
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    print("Origin : " + ray.origin);
-        //    print("Direction : " + ray.direction);
-        //}
-
         if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.blue);
@@ -132,30 +126,12 @@ public class Cursor : MonoBehaviour
 
             clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
 
-            //Explore_CheckIntoEnemyZone();
-
             GetComponent<Renderer>().material = defaultColor;
             leftClicked = false;
 
             clickEvent.Run();
         }
     }
-
-    //private void Explore_CheckIntoEnemyZone()
-    //{
-    //    if (phaseManager.CurrentPhase != phaseManager.Phase_Explore) return;
-
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    RaycastHit hitInfo;
-    //    if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
-    //    {
-    //        if (1 << hitInfo.collider.gameObject.layer == (int)layers.EnemyZone)
-    //        {
-    //            clickEvent.intoEnemyZone = true;
-    //            clickEvent.destroyedObject = hitInfo.collider.gameObject;
-    //        }
-    //    }
-    //}
 
     private void TracePath()
     {
@@ -172,12 +148,10 @@ public class Cursor : MonoBehaviour
             clickEvent.doorTileClicked = true;
             clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
         }
-
-        //clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
+        
         if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
         else if (phaseManager.CurrentPhase == phaseManager.Phase_Battle)
         {
-            //Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle>().CurrentTurnCharacter;
             Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle2>().turnController.CurrentTurnCharacter;
             clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTurnCharacter.StandingTileX, currentTurnCharacter.StandingTileZ], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value]);
         }

@@ -97,6 +97,7 @@ namespace Player
                     {
                         moveController.moving = false;
 
+                        FogOfWar_Manager.Instance.RevealArea(Captain.GetComponent<Character_ExploreCaptain>().SteppedEnemyZone.GetComponent<Map_EnemyZone>());
                         List<GameObject> enemiesInZone = Captain.GetComponent<Character_ExploreCaptain>().SteppedEnemyZone.GetComponent<Map_EnemyZone>().StayingEnemies;
                         Captain.GetComponent<Character_ExploreCaptain>().DestroySteppedEnemyZone();
                         dungeonPlay.GetComponent<Manager_DungeonPlay>().StartBattle(enemiesInZone);

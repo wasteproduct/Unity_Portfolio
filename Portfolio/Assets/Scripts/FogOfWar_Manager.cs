@@ -24,8 +24,7 @@ public class FogOfWar_Manager : MonoBehaviour
 
     public static FogOfWar_Manager Instance { get; private set; }
     public Map_Data MapData { get; private set; }
-
-    //여기
+    
     public void RevealArea(Map_EnemyZone enemyZone)
     {
         int areaLeft = enemyZone.ZoneData.left;
@@ -37,9 +36,27 @@ public class FogOfWar_Manager : MonoBehaviour
         {
             for (int x = areaLeft; x <= areaRight; x++)
             {
+                if (MapData.TileData[x, z].Revealed == true) continue;
 
+                Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(new Vector3(x, 0, z)));
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(ray, out hitInfo, 1000.0f, fogOfWarLayer.value))
+                {
+                    Vector3 translatedPosition = hitInfo.point - transform.position;
+
+                    int pixelX = Mathf.RoundToInt(translatedPosition.x * pixelsPerUnit + centerPixel.x);
+                    int pixelY = Mathf.RoundToInt(translatedPosition.z * pixelsPerUnit + centerPixel.y);
+
+                    RevealTile(pixelX, pixelY);
+
+                    MapData.TileData[x, z].Revealed = true;
+                }
             }
         }
+
+        fogOfWarTexture.SetPixels(pixels);
+        fogOfWarTexture.Apply(false);
     }
     
     public void RevealArea()
@@ -61,8 +78,6 @@ public class FogOfWar_Manager : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hitInfo, 1000.0f, fogOfWarLayer.value))
                 {
-                    print("hit");
-
                     Vector3 translatedPosition = hitInfo.point - transform.position;
 
                     int pixelX = Mathf.RoundToInt(translatedPosition.x * pixelsPerUnit + centerPixel.x);
