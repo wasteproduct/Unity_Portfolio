@@ -35,7 +35,7 @@ namespace Player
         {
             LoadData();
 
-            Character_Base newCharacter = ScriptableObject.CreateInstance<Character_Base>();
+            Character_Base newCharacter = CreateInstance<Character_Base>();
             newCharacter.Name = addedCharacterBase.Name;
             newCharacter.TypeID = addedCharacterBase.TypeID;
             newCharacter.Strength = addedCharacterBase.Strength;
