@@ -10,14 +10,32 @@ namespace Tutorial
 
         public void WriteJSON()
         {
-            jsonStreamer = this.gameObject.GetComponent<Tutorial_StreamingAsset>();
+            jsonStreamer = gameObject.GetComponent<Tutorial_StreamingAsset>();
             jsonStreamer.WriteJSON();
         }
 
         public void AddCharacter()
         {
-            jsonStreamer = this.gameObject.GetComponent<Tutorial_StreamingAsset>();
+            jsonStreamer = gameObject.GetComponent<Tutorial_StreamingAsset>();
             jsonStreamer.AddCharacter();
+        }
+
+        private List<int> intList;
+
+        private void Start()
+        {
+
+        }
+    }
+
+    public class IntegerAdder
+    {
+        public IntegerAdder(List<int> intList)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                intList.Add(i);
+            }
         }
     }
 }

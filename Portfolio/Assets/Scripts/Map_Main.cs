@@ -10,7 +10,7 @@ public class Map_Main : MonoBehaviour
 {
     public Manager_CommonFeatures commonFeatures;
 
-    public MapSize mapSize;
+    //public MapSize mapSize;
     public GameObject dungeonFloor;
     public GameObject dungeonWall;
     public GameObject dungeonDoor;
@@ -35,7 +35,8 @@ public class Map_Main : MonoBehaviour
 
     public void GenerateMap()
     {
-        MapData = new Map_Data(mapSize, commonFeatures, enemyZonesData);
+        //MapData = new Map_Data(mapSize, commonFeatures, enemyZonesData);
+        MapData = new Map_Data(commonFeatures, enemyZonesData);
 
         //ClearAll();
 
@@ -48,7 +49,7 @@ public class Map_Main : MonoBehaviour
 
     private void SetObjects()
     {
-        SetDoors();
+        //SetDoors();
     }
 
     private void SetDoors()
@@ -151,9 +152,9 @@ public class Map_Main : MonoBehaviour
 
     private void SetMapMeshes()
     {
-        for (int z = 0; z < MapData.TilesColumn; z++)
+        for (int z = 0; z < MapData.MapLength; z++)
         {
-            for (int x = 0; x < MapData.TilesRow; x++)
+            for (int x = 0; x < MapData.MapLength; x++)
             {
                 switch (MapData.TileData[x, z].Type)
                 {

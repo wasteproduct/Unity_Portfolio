@@ -97,8 +97,10 @@ public class FogOfWar_Manager : MonoBehaviour
     public void Initialize(Map_Data mapData)
     {
         MapData = mapData;
-        tilesRow = MapData.TilesRow;
-        tilesColumn = MapData.TilesColumn;
+        //tilesRow = MapData.TilesRow;
+        //tilesColumn = MapData.TilesColumn;
+        tilesRow = MapData.MapLength;
+        tilesColumn = MapData.MapLength;
 
         transform.position = new Vector3(tilesRow / 2, 5.0f, tilesColumn / 2);
         transform.localScale *= tilesColumn * 1.28f;

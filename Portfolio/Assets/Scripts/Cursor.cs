@@ -43,7 +43,7 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ResetDoorColors();
+        //ResetDoorColors();
 
         if (choosingTarget.flag == true)
         {

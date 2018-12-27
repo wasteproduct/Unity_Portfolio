@@ -18,8 +18,10 @@ namespace AStar
 
         public void Initialize(Map_Data mapData)
         {
-            row = mapData.TilesRow;
-            column = mapData.TilesColumn;
+            //row = mapData.TilesRow;
+            //column = mapData.TilesColumn;
+            row = mapData.MapLength;
+            column = mapData.MapLength;
 
             currentNode = null;
 
