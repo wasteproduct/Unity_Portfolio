@@ -33,7 +33,7 @@ public class Cursor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.GetComponent<Renderer>().material = defaultColor;
+        GetComponent<Renderer>().material = defaultColor;
 
         mapData = tileMap.GetComponent<Map_Main>().MapData;
 
@@ -190,15 +190,15 @@ public class Cursor : MonoBehaviour
         }
     }
 
-    private void ResetDoorColors()
-    {
-        for (int i = 0; i < mapData.Doors.Count; i++)
-        {
-            if (mapData.Doors[i].Door.Highlighted == false) continue;
+    //private void ResetDoorColors()
+    //{
+    //    for (int i = 0; i < mapData.Doors.Count; i++)
+    //    {
+    //        if (mapData.Doors[i].Door.Highlighted == false) continue;
 
-            mapData.Doors[i].Door.ResetDoorColor();
-        }
-    }
+    //        mapData.Doors[i].Door.ResetDoorColor();
+    //    }
+    //}
 
     private void HighlightDoor()
     {

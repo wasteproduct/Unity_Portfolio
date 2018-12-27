@@ -2151,7 +2151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
-  mapSize: 0
   dungeonFloor: {fileID: 1303644814882566, guid: a2b39cdfffacfba4c9f396470849fb75,
     type: 2}
   dungeonWall: {fileID: 1383172206021514, guid: 8ff6a71ef62be3b4b9ab12fd68d19b8f,
@@ -2160,6 +2159,7 @@ MonoBehaviour:
     type: 2}
   enemyZonesData: {fileID: 11400000, guid: 30a710838e6e03849812c0af513f70ea, type: 2}
   fogOfWar: {fileID: 442811697}
+  debugTile: {fileID: 1301933339576566, guid: bc21036f7037dea43a2d56e646e92937, type: 2}
 --- !u!33 &1982687473
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2182,7 +2182,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 49a4731f51b56744f996b742cf81401a, type: 2}
+  - {fileID: 2100000, guid: 8c0135acbc8d08f48bc9792b0b03bf16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -97,8 +97,6 @@ public class FogOfWar_Manager : MonoBehaviour
     public void Initialize(Map_Data mapData)
     {
         MapData = mapData;
-        //tilesRow = MapData.TilesRow;
-        //tilesColumn = MapData.TilesColumn;
         tilesRow = MapData.MapLength;
         tilesColumn = MapData.MapLength;
 

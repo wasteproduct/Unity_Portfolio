@@ -9,13 +9,13 @@ using MapObject;
 public class Map_Main : MonoBehaviour
 {
     public Manager_CommonFeatures commonFeatures;
-
-    //public MapSize mapSize;
+    
     public GameObject dungeonFloor;
     public GameObject dungeonWall;
     public GameObject dungeonDoor;
     public EnemyZonesData enemyZonesData;
     public GameObject fogOfWar;
+    public GameObject debugTile;
 
     public Map_Data MapData { get; private set; }
 
@@ -33,18 +33,23 @@ public class Map_Main : MonoBehaviour
 
     }
 
-    public void GenerateMap()
+    public void GenerateMap(bool editor = false)
     {
-        //MapData = new Map_Data(mapSize, commonFeatures, enemyZonesData);
         MapData = new Map_Data(commonFeatures, enemyZonesData);
-
-        //ClearAll();
 
         SetMapMeshes();
 
-        CombineMapMeshes();
+        CombineMapMeshes(editor);
 
         SetObjects();
+    }
+
+    public void DestroyMap()
+    {
+        DestroyImmediate(GetComponent<MeshFilter>().sharedMesh);
+        GetComponent<MeshFilter>().sharedMesh = null;
+        DestroyImmediate(GetComponent<MeshCollider>().sharedMesh);
+        GetComponent<MeshCollider>().sharedMesh = null;
     }
 
     private void SetObjects()
@@ -52,34 +57,34 @@ public class Map_Main : MonoBehaviour
         //SetDoors();
     }
 
-    private void SetDoors()
-    {
-        for (int i = 0; i < MapData.Doors.Count; i++)
-        {
-            Quaternion rotation = Quaternion.identity;
+    //private void SetDoors()
+    //{
+    //    for (int i = 0; i < MapData.Doors.Count; i++)
+    //    {
+    //        Quaternion rotation = Quaternion.identity;
 
-            switch (MapData.Doors[i].Walls[0])
-            {
-                case TileDataSet.WallDirection.Left:
-                    rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
-                    break;
-                case TileDataSet.WallDirection.Right:
-                    rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-                    break;
-                case TileDataSet.WallDirection.Far:
-                    rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                    break;
-            }
+    //        switch (MapData.Doors[i].Walls[0])
+    //        {
+    //            case TileDataSet.WallDirection.Left:
+    //                rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+    //                break;
+    //            case TileDataSet.WallDirection.Right:
+    //                rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
+    //                break;
+    //            case TileDataSet.WallDirection.Far:
+    //                rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+    //                break;
+    //        }
 
-            GameObject newDoor = Instantiate(dungeonDoor, new Vector3(MapData.Doors[i].X, 0.0f, MapData.Doors[i].Z), rotation, transform);
+    //        GameObject newDoor = Instantiate(dungeonDoor, new Vector3(MapData.Doors[i].X, 0.0f, MapData.Doors[i].Z), rotation, transform);
 
-            Object_Door newDoorHandler = newDoor.GetComponentInChildren<Object_Door>();
-            newDoorHandler.SetIndex(MapData.Doors[i].X, MapData.Doors[i].Z);
-            MapData.Doors[i].Door = newDoorHandler;
-        }
-    }
+    //        Object_Door newDoorHandler = newDoor.GetComponentInChildren<Object_Door>();
+    //        newDoorHandler.SetIndex(MapData.Doors[i].X, MapData.Doors[i].Z);
+    //        MapData.Doors[i].Door = newDoorHandler;
+    //    }
+    //}
 
-    private void CombineMapMeshes()
+    private void CombineMapMeshes(bool editor)
     {
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>(true);
 
@@ -146,7 +151,8 @@ public class Map_Main : MonoBehaviour
 
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
-            Destroy(transform.GetChild(i).gameObject);
+            if (editor == true) DestroyImmediate(transform.GetChild(i).gameObject);
+            else Destroy(transform.GetChild(i).gameObject);
         }
     }
 
