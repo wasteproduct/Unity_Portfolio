@@ -9,10 +9,10 @@ using MapObject;
 public class Map_Main : MonoBehaviour
 {
     public Manager_CommonFeatures commonFeatures;
+    public Manager_Interactors managerInteractors;
     
     public GameObject dungeonFloor;
     public GameObject dungeonWall;
-    public GameObject dungeonDoor;
     public EnemyZonesData enemyZonesData;
     public GameObject fogOfWar;
     public GameObject debugTile;
@@ -50,11 +50,13 @@ public class Map_Main : MonoBehaviour
         GetComponent<MeshFilter>().sharedMesh = null;
         DestroyImmediate(GetComponent<MeshCollider>().sharedMesh);
         GetComponent<MeshCollider>().sharedMesh = null;
+
+        managerInteractors.DestroyTreasureBoxes(true);
     }
 
     private void SetInteractors()
     {
-
+        managerInteractors.SetTreasureBoxes(MapData);
     }
 
     private void CombineMapMeshes(bool editor)

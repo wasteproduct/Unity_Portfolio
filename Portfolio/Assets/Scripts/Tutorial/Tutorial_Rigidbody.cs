@@ -6,7 +6,7 @@ namespace Tutorial
 {
     public class Tutorial_Rigidbody : MonoBehaviour
     {
-        private Rigidbody rigidbody;
+        private new Rigidbody rigidbody;
 
         // Use this for initialization
         void Start()

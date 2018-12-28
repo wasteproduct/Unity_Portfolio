@@ -28,6 +28,6 @@ public class Miscellaneous_JsonCreator : MonoBehaviour
         }*/
     public void Save()
     {
-        string skillData = File.ReadAllText(Application.streamingAssetsPath + "/" + fileName + ".json");
+        //string skillData = File.ReadAllText(Application.streamingAssetsPath + "/" + fileName + ".json");
     }
 }
