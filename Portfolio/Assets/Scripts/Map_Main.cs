@@ -41,7 +41,7 @@ public class Map_Main : MonoBehaviour
 
         CombineMapMeshes(editor);
 
-        SetObjects();
+        SetInteractors();
     }
 
     public void DestroyMap()
@@ -52,37 +52,10 @@ public class Map_Main : MonoBehaviour
         GetComponent<MeshCollider>().sharedMesh = null;
     }
 
-    private void SetObjects()
+    private void SetInteractors()
     {
-        //SetDoors();
+
     }
-
-    //private void SetDoors()
-    //{
-    //    for (int i = 0; i < MapData.Doors.Count; i++)
-    //    {
-    //        Quaternion rotation = Quaternion.identity;
-
-    //        switch (MapData.Doors[i].Walls[0])
-    //        {
-    //            case TileDataSet.WallDirection.Left:
-    //                rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
-    //                break;
-    //            case TileDataSet.WallDirection.Right:
-    //                rotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-    //                break;
-    //            case TileDataSet.WallDirection.Far:
-    //                rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-    //                break;
-    //        }
-
-    //        GameObject newDoor = Instantiate(dungeonDoor, new Vector3(MapData.Doors[i].X, 0.0f, MapData.Doors[i].Z), rotation, transform);
-
-    //        Object_Door newDoorHandler = newDoor.GetComponentInChildren<Object_Door>();
-    //        newDoorHandler.SetIndex(MapData.Doors[i].X, MapData.Doors[i].Z);
-    //        MapData.Doors[i].Door = newDoorHandler;
-    //    }
-    //}
 
     private void CombineMapMeshes(bool editor)
     {
