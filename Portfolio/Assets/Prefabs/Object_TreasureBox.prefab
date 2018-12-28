@@ -219,3 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box: {fileID: 1674013751665630}
+  effectExplosion: {fileID: 1432934292098426, guid: c71fc405fa946bf4aa482ee9cd6d963a,
+    type: 2}
+  soundExplosion: {fileID: 11400000, guid: 33f38bc1e4970864db0e421f5a069fd6, type: 2}
+  eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
