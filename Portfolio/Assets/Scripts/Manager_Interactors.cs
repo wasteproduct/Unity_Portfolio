@@ -58,6 +58,6 @@ public class Manager_Interactors : ScriptableObject
 
     private void OnDisable()
     {
-        treasureBoxes.Clear();
+        if (treasureBoxes != null) treasureBoxes.Clear();
     }
 }

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33141251796901106}
   - component: {fileID: 23369356745535644}
   - component: {fileID: 95492457036352536}
+  - component: {fileID: 114062248853616354}
   m_Layer: 0
   m_Name: tresure_box
   m_TagString: Untagged
@@ -207,6 +208,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114062248853616354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674013751665630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f52d78dbecaa6498795bae77724647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactorScript: {fileID: 114090469500667614}
 --- !u!114 &114090469500667614
 MonoBehaviour:
   m_ObjectHideFlags: 1

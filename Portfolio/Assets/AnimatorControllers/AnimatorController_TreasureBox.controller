@@ -38,6 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5259ea5378fc20f4d8502d1a2715c667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxResultEvent: {fileID: 11400000, guid: fdc8d8f6a98a390409742b2716ff0fc7, type: 2}
 --- !u!1101 &1101616166340781382
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

@@ -15,23 +15,26 @@ public class Object_TreasureBox : Object_InteractorBase
 
     private Animator animator;
 
+    public override void CallReaction()
+    {
+        // can vary
+        Explode();
+    }
+
     public override void Interact()
     {
         animator.SetBool("Open", true);
     }
 
-    private void Explode()
+    public void Explode()
     {
         GameObject explosion = Instantiate(effectExplosion, transform.position, transform.rotation);
         explosion.GetComponent<EffectController>().PlayEffect();
 
         eventSoundPlay.PlayedSound = soundExplosion;
         eventSoundPlay.Run();
-    }
 
-    private void OnEnable()
-    {
-        
+        Destroy(transform.gameObject);
     }
 
     // Use this for initialization
