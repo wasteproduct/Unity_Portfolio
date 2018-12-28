@@ -42,9 +42,11 @@ namespace Player
         {
             if (clickEvent.pathFound == false) return;
 
-            if ((aStar.FinalTrack.Count < 2) && (clickEvent.doorTileClicked == true))
+            if (aStar.FinalTrack.Count < 2)
             {
-                clickEvent.doorTile.OpenDoor();
+                //if (clickEvent.doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+                if (clickEvent.interactorClicked == true) clickEvent.interactorTile.React();
+
                 return;
             }
 
@@ -87,7 +89,8 @@ namespace Player
             int targetIndex = 1;
             float elapsedTime = 0.0f;
             float lerpTime = 0.0f;
-            bool doorTileClicked = clickEvent.doorTileClicked;
+            //bool doorTileClicked = clickEvent.doorTileClicked;
+            bool interactorClicked = clickEvent.interactorClicked;
 
             while (true)
             {
@@ -114,7 +117,8 @@ namespace Player
 
                     if (targetIndex >= aStar.FinalTrack.Count)
                     {
-                        if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+                        //if (doorTileClicked == true) clickEvent.doorTile.OpenDoor();
+                        if (interactorClicked == true) clickEvent.interactorTile.React();
 
                         moveController.moving = false;
 

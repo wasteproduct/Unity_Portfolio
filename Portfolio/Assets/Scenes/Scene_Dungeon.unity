@@ -2152,6 +2152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonFeatures: {fileID: 11400000, guid: 692c1f80fc0aa884498808bcb8554fea, type: 2}
   managerInteractors: {fileID: 11400000, guid: 43d00ecda9e0bb34aafece568861331f, type: 2}
+  clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   dungeonFloor: {fileID: 1303644814882566, guid: a2b39cdfffacfba4c9f396470849fb75,
     type: 2}
   dungeonWall: {fileID: 1383172206021514, guid: 8ff6a71ef62be3b4b9ab12fd68d19b8f,

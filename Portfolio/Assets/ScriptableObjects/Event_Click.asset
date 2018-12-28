@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorTileClicked: 0
   pathFound: 1
+  interactorClicked: 0

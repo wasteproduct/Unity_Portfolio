@@ -10,6 +10,7 @@ public class Map_Main : MonoBehaviour
 {
     public Manager_CommonFeatures commonFeatures;
     public Manager_Interactors managerInteractors;
+    public Event_Click clickEvent;
     
     public GameObject dungeonFloor;
     public GameObject dungeonWall;
@@ -22,6 +23,8 @@ public class Map_Main : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        clickEvent.Initialize();
+
         GenerateMap();
 
         fogOfWar.GetComponent<FogOfWar_Manager>().Initialize(MapData);
@@ -41,7 +44,7 @@ public class Map_Main : MonoBehaviour
 
         CombineMapMeshes(editor);
 
-        SetInteractors();
+        SetInteractors(editor);
     }
 
     public void DestroyMap()
@@ -54,9 +57,9 @@ public class Map_Main : MonoBehaviour
         managerInteractors.DestroyTreasureBoxes(true);
     }
 
-    private void SetInteractors()
+    private void SetInteractors(bool editor)
     {
-        managerInteractors.SetTreasureBoxes(MapData);
+        managerInteractors.SetTreasureBoxes(MapData, editor);
     }
 
     private void CombineMapMeshes(bool editor)

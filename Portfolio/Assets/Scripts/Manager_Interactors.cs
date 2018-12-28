@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MapDataSet;
+using TileDataSet;
 
 [CreateAssetMenu(fileName = "", menuName = "Manager/Interactors", order = 1)]
 public class Manager_Interactors : ScriptableObject
@@ -18,11 +19,13 @@ public class Manager_Interactors : ScriptableObject
             if (editor == true) DestroyImmediate(treasureBoxes[i].gameObject);
             else Destroy(treasureBoxes[i].gameObject);
         }
-        treasureBoxes = null;
+        treasureBoxes.Clear();
     }
 
-    public void SetTreasureBoxes(Map_Data mapData)
+    public void SetTreasureBoxes(Map_Data mapData, bool editor)
     {
+        DestroyTreasureBoxes(editor);
+
         treasureBoxes = new List<GameObject>();
 
         List<Room> rooms = mapData.Rooms;
@@ -41,11 +44,20 @@ public class Manager_Interactors : ScriptableObject
 
                 if ((boxX == previousX) && (boxZ == previousZ)) break;
 
-                treasureBoxes.Add(Instantiate(treasureBox, new Vector3(boxX, 0, boxZ), Quaternion.identity));
+                GameObject newBox = Instantiate(treasureBox, new Vector3(boxX, 0, boxZ), Quaternion.Euler(0.0f, 180.0f, 0.0f));
+                mapData.TileData[boxX, boxZ].Interactor = newBox.GetComponent<Object_TreasureBox>();
+                mapData.TileData[boxX, boxZ].Type = TileType.Interactor;
+
+                treasureBoxes.Add(newBox);
 
                 previousX = boxX;
                 previousZ = boxZ;
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        treasureBoxes.Clear();
     }
 }

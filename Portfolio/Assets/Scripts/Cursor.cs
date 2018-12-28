@@ -43,8 +43,6 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ResetDoorColors();
-
         if (choosingTarget.flag == true)
         {
             transform.position = Vector3.zero;
@@ -140,16 +138,24 @@ public class Cursor : MonoBehaviour
         if ((mouseOnTileX.value == commonFeatures.invalidIndex) || (mouseOnTileZ.value == commonFeatures.invalidIndex)) return;
 
         clickEvent.pathFound = false;
-        clickEvent.doorTileClicked = false;
-        clickEvent.doorTile = null;
+        //clickEvent.doorTileClicked = false;
+        //clickEvent.doorTile = null;
+        clickEvent.interactorClicked = false;
+        clickEvent.interactorTile = null;
 
-        if (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type == TileType.Door)
+        //if (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type == TileType.Door)
+        //{
+        //    clickEvent.doorTileClicked = true;
+        //    clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
+        //}
+
+        if (mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value].Type == TileType.Interactor)
         {
-            clickEvent.doorTileClicked = true;
-            clickEvent.doorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
+            clickEvent.interactorClicked = true;
+            clickEvent.interactorTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
         }
-        
-        if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.doorTileClicked);
+
+        if (phaseManager.CurrentPhase == phaseManager.Phase_Explore) clickEvent.pathFound = aStar.FindPath(mapData.TileData, mapData.TileData[currentTileX.value, currentTileZ.value], mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value], clickEvent.interactorClicked);
         else if (phaseManager.CurrentPhase == phaseManager.Phase_Battle)
         {
             Character_InBattle currentTurnCharacter = battleManager.GetComponent<Manager_Battle2>().turnController.CurrentTurnCharacter;
@@ -189,16 +195,6 @@ public class Cursor : MonoBehaviour
                 break;
         }
     }
-
-    //private void ResetDoorColors()
-    //{
-    //    for (int i = 0; i < mapData.Doors.Count; i++)
-    //    {
-    //        if (mapData.Doors[i].Door.Highlighted == false) continue;
-
-    //        mapData.Doors[i].Door.ResetDoorColor();
-    //    }
-    //}
 
     private void HighlightDoor()
     {

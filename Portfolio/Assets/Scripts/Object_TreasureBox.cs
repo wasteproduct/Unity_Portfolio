@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_TreasureBox : MonoBehaviour
+public class Object_TreasureBox : Object_InteractorBase
 {
     [SerializeField]
     private GameObject box;
 
     private Animator animator;
 
-    public void OpenBox()
+    public override void Interact()
     {
         animator.SetBool("Open", true);
     }

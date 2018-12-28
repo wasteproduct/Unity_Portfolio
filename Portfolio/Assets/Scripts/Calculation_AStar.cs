@@ -39,7 +39,7 @@ namespace AStar
             FinalTrack = new List<Node_AStar>();
         }
 
-        public bool FindPath(Map_TileData[,] tileData, Map_TileData startingTile, Map_TileData destinationTile, bool doorTile = false)
+        public bool FindPath(Map_TileData[,] tileData, Map_TileData startingTile, Map_TileData destinationTile, bool interactorTile = false)
         {
             if (startingTile == destinationTile) return false;
 
@@ -51,7 +51,7 @@ namespace AStar
 
             int failureCount = row * column;
 
-            if (doorTile == true) Node[destinationTile.X, destinationTile.Z].Passable = true;
+            if (interactorTile == true) Node[destinationTile.X, destinationTile.Z].Passable = true;
 
             while (true)
             {
@@ -98,9 +98,9 @@ namespace AStar
 
                 if (currentNode == Node[destinationTile.X, destinationTile.Z])
                 {
-                    int whileBreaker = row * column;
+                    int whileBreaker = 64 * 64;
 
-                    if (doorTile == true) currentNode = currentNode.Parent;
+                    if (interactorTile == true) currentNode = currentNode.Parent;
 
                     while (true)
                     {

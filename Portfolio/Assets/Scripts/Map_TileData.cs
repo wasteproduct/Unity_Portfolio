@@ -9,7 +9,8 @@ namespace TileDataSet
         Floor,
         Door,
         DoorWall,
-        Wall
+        Wall,
+        Interactor
     }
 
     public enum WallDirection
@@ -42,6 +43,12 @@ namespace TileDataSet
         public bool Revealed { get; set; }
 
         public Object_Door Door { get; set; }
+        public Object_InteractorBase Interactor { get; set; }
+
+        public void React()
+        {
+            Interactor.Interact();
+        }
 
         public void OpenDoor()
         {
