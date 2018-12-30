@@ -26,3 +26,6 @@ MonoBehaviour:
   fogOfWar:
     serializedVersion: 2
     m_Bits: 8192
+  dungeonUI:
+    serializedVersion: 2
+    m_Bits: 16384

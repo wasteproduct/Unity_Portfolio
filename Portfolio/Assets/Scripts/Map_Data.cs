@@ -119,7 +119,7 @@ namespace MapDataSet
 
             StartingTile = TileData[LeafAreas[0].CenterX, LeafAreas[0].CenterZ];
 
-            //SetEnemyZones(rooms, enemyZonesData);
+            SetEnemyZones(enemyZonesData);
         }
 
         public int MapLength { get; private set; }
@@ -130,19 +130,19 @@ namespace MapDataSet
         public List<MapArea> TotalAreas { get; private set; }
         public List<Room> Rooms { get; private set; }
 
-        //private void SetEnemyZones(List<Room> rooms, EnemyZonesData enemyZonesData)
-        //{
-        //    for (int i = 1; i < rooms.Count; i++)
-        //    {
-        //        Map_TileData center = TileData[rooms[i].CenterX, rooms[i].CenterZ];
-        //        Map_TileData left = TileData[rooms[i].CenterX - 1, rooms[i].CenterZ];
-        //        Map_TileData right = TileData[rooms[i].CenterX + 1, rooms[i].CenterZ];
-        //        Map_TileData upper = TileData[rooms[i].CenterX, rooms[i].CenterZ + 1];
-        //        Map_TileData lower = TileData[rooms[i].CenterX, rooms[i].CenterZ - 1];
+        private void SetEnemyZones(EnemyZonesData enemyZonesData)
+        {
+            for (int i = 1; i < Rooms.Count; i++)
+            {
+                Map_TileData center = TileData[Rooms[i].LocatedArea.CenterX, Rooms[i].LocatedArea.CenterZ];
+                Map_TileData left = TileData[Rooms[i].LocatedArea.CenterX - 1, Rooms[i].LocatedArea.CenterZ];
+                Map_TileData right = TileData[Rooms[i].LocatedArea.CenterX + 1, Rooms[i].LocatedArea.CenterZ];
+                Map_TileData upper = TileData[Rooms[i].LocatedArea.CenterX, Rooms[i].LocatedArea.CenterZ + 1];
+                Map_TileData lower = TileData[Rooms[i].LocatedArea.CenterX, Rooms[i].LocatedArea.CenterZ - 1];
 
-        //        enemyZonesData.AddNewZone(center, left, right, upper, lower);
-        //    }
-        //}
+                enemyZonesData.AddNewZone(center, left, right, upper, lower);
+            }
+        }
 
         private void SetWalls()
         {

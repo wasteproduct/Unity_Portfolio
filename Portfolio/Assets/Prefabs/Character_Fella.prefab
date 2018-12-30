@@ -5884,6 +5884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc093c70ae6c14448bcfe2a0b80a3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revealedDistance: 0
 --- !u!114 &114502948154007956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6044,8 +6045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c3a738a9e49d846a68320150246a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationBattleStatus: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662,
-    type: 2}
+  rotationBattleUI: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662, type: 2}
 --- !u!114 &114941669428918492
 MonoBehaviour:
   m_ObjectHideFlags: 1

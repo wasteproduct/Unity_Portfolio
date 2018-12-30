@@ -49,6 +49,12 @@ public class Cursor : MonoBehaviour
             return;
         }
 
+        if (clickEvent.uIClicked == true)
+        {
+            clickEvent.uIClicked = false;
+            return;
+        }
+
         LeftClick();
 
         transform.position = new Vector3(mouseOnTileX.value, 0.0f, mouseOnTileZ.value);

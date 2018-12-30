@@ -236,3 +236,4 @@ MonoBehaviour:
     type: 2}
   soundExplosion: {fileID: 11400000, guid: 33f38bc1e4970864db0e421f5a069fd6, type: 2}
   eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
+  clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}

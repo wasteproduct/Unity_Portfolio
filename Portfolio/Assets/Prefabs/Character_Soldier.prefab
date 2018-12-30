@@ -2204,8 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c3a738a9e49d846a68320150246a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationBattleStatus: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662,
-    type: 2}
+  rotationBattleUI: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662, type: 2}
 --- !u!114 &114924164068476658
 MonoBehaviour:
   m_ObjectHideFlags: 1

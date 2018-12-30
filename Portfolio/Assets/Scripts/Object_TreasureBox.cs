@@ -12,6 +12,8 @@ public class Object_TreasureBox : Object_InteractorBase
     private CustomSound soundExplosion;
     [SerializeField]
     private Event_SoundPlay eventSoundPlay;
+    [SerializeField]
+    private Event_Click clickEvent;
 
     private Animator animator;
 
@@ -24,6 +26,8 @@ public class Object_TreasureBox : Object_InteractorBase
     public override void Interact()
     {
         animator.SetBool("Open", true);
+
+        clickEvent.interactorClicked = false;
     }
 
     public void Explode()

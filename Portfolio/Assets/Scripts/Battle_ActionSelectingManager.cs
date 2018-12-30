@@ -6,9 +6,10 @@ namespace Battle
 {
     public class Battle_ActionSelectingManager : MonoBehaviour
     {
-        public Battle_ActionManager actionManager;
-
-        public GameObject[] actionButton;
+        [SerializeField]
+        private GameObject[] actionButton;
+        [SerializeField]
+        private Battle_ActionManager actionManager;
 
         public void DisableButtons()
         {
@@ -20,6 +21,8 @@ namespace Battle
 
         public void SetList()
         {
+            GetComponent<RectTransform>().position = Input.mousePosition;
+
             List<Battle_Action> actions = actionManager.ExecutableActions;
 
             for (int i = 0; i < actions.Count; i++)

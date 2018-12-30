@@ -2626,6 +2626,7 @@ MonoBehaviour:
   loop: 0
   playTimeLength: 0
   actionState: {fileID: 11400000, guid: 3668babe205f9984d84fcc928c627bfe, type: 2}
+  destroyed: 0
 --- !u!114 &114846766983848692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2639,9 +2640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 1123604481315760}
   actionEffects: []
-  actionStates:
-  - {fileID: 11400000, guid: ead9c4af8cfd383478d76a10811721f9, type: 2}
-  - {fileID: 11400000, guid: 7f2586e51e720b44192316f0e9d081ed, type: 2}
 --- !u!114 &114848657698850312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2692,8 +2690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c3a738a9e49d846a68320150246a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationBattleStatus: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662,
-    type: 2}
+  rotationBattleUI: {fileID: 11400000, guid: 6daf7d07b46b3e445a55884c299e6662, type: 2}
 --- !u!136 &136221815343652590
 CapsuleCollider:
   m_ObjectHideFlags: 1
