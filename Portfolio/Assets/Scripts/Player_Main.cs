@@ -11,6 +11,8 @@ namespace Player
     {
         public Character_Database characterDatabase;
         public Player_Team playerTeam;
+        //[SerializeField]
+        //private 
 
         [SerializeField]
         private List<Character_Base> characters = new List<Character_Base>();

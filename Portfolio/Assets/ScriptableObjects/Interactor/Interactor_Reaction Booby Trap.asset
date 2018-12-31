@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e80a3c7d3b2e34486f1ca7ef09d874, type: 3}
+  m_Name: Interactor_Reaction Booby Trap
+  m_EditorClassIdentifier: 
+  effectExplosion: {fileID: 1432934292098426, guid: c71fc405fa946bf4aa482ee9cd6d963a,
+    type: 2}
+  soundExplosion: {fileID: 11400000, guid: 33f38bc1e4970864db0e421f5a069fd6, type: 2}
+  eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}

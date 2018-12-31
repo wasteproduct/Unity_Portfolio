@@ -55,6 +55,8 @@ public class Cursor : MonoBehaviour
             return;
         }
 
+        if (commonFeatures.interactingUI.flag == true) return;
+
         LeftClick();
 
         transform.position = new Vector3(mouseOnTileX.value, 0.0f, mouseOnTileZ.value);
@@ -127,6 +129,14 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if (leftClicked == false) return;
+            if (commonFeatures.cursorDisabled.flag == true)
+            {
+                commonFeatures.cursorDisabled.flag = false;
+                GetComponent<Renderer>().material = defaultColor;
+                leftClicked = false;
+
+                return;
+            }
 
             clickEvent.destinationTile = mapData.TileData[mouseOnTileX.value, mouseOnTileZ.value];
 

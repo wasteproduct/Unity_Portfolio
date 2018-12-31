@@ -22,6 +22,8 @@ public class Manager_DungeonPlay : MonoBehaviour
         phaseManager.PhaseToExplore();
 
         battleObjectManager.Initialize();
+
+        commonFeatures.Initialize();
     }
 
     // Update is called once per frame

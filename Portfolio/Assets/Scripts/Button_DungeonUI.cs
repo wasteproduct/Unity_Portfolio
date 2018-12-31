@@ -8,10 +8,19 @@ public class Button_DungeonUI : MonoBehaviour
     private Event_Click clickEvent;
     [SerializeField]
     private GameObject openedWindow;
+    [SerializeField]
+    private Variable_Bool interactingUI;
+    [SerializeField]
+    private Variable_Bool cursorDisabled;
 
     public void ButtonWork()
     {
         clickEvent.uIClicked = true;
+        interactingUI.flag = true;
+        cursorDisabled.flag = true;
+
+        gameObject.SetActive(false);
+        openedWindow.gameObject.SetActive(true);
     }
 
     // Use this for initialization

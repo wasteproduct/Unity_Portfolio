@@ -7,20 +7,24 @@ public class Object_TreasureBox : Object_InteractorBase
     [SerializeField]
     private GameObject box;
     [SerializeField]
-    private GameObject effectExplosion;
-    [SerializeField]
-    private CustomSound soundExplosion;
-    [SerializeField]
-    private Event_SoundPlay eventSoundPlay;
-    [SerializeField]
     private Event_Click clickEvent;
+    [SerializeField]
+    private Interactor_ReactionBase[] interactorReaction;
 
     private Animator animator;
 
     public override void CallReaction()
     {
-        // can vary
-        Explode();
+        int reactionNumber = Random.Range(0, interactorReaction.Length);
+
+        for (int i = 0; i < interactorReaction.Length; i++)
+        {
+            if (i == reactionNumber)
+            {
+                interactorReaction[i].InteractorReacts(this);
+                return;
+            }
+        }
     }
 
     public override void Interact()
@@ -28,17 +32,6 @@ public class Object_TreasureBox : Object_InteractorBase
         animator.SetBool("Open", true);
 
         clickEvent.interactorClicked = false;
-    }
-
-    public void Explode()
-    {
-        GameObject explosion = Instantiate(effectExplosion, transform.position, transform.rotation);
-        explosion.GetComponent<EffectController>().PlayEffect();
-
-        eventSoundPlay.PlayedSound = soundExplosion;
-        eventSoundPlay.Run();
-
-        Destroy(transform.gameObject);
     }
 
     // Use this for initialization

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layers: {fileID: 11400000, guid: cde98e4096eb70a4eb781c242ae3b29b, type: 2}
   rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
+  interactingUI: {fileID: 11400000, guid: 3f55c16cac7ed3d4ca2a677798b8d04f, type: 2}
+  cursorDisabled: {fileID: 11400000, guid: cb204e1e0106384458233e3d38f81753, type: 2}
