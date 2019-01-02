@@ -14,15 +14,15 @@ public class Character_InDungeon : MonoBehaviour
 
         if (captain == true)
         {
-            this.gameObject.GetComponent<Character_ExploreCaptain>().enabled = true;
-            this.gameObject.GetComponent<Character_ExploreCaptain>().Initialize(mapData);
-            this.MoveController = this.gameObject.GetComponent<Character_ExploreCaptain>();
+            gameObject.GetComponent<Character_ExploreCaptain>().enabled = true;
+            gameObject.GetComponent<Character_ExploreCaptain>().Initialize(mapData);
+            MoveController = gameObject.GetComponent<Character_ExploreCaptain>();
         }
         else
         {
-            this.gameObject.GetComponent<Character_ExploreFellow>().enabled = true;
-            this.gameObject.GetComponent<Character_ExploreFellow>().Initialize(mapData);
-            this.MoveController = this.gameObject.GetComponent<Character_ExploreFellow>();
+            gameObject.GetComponent<Character_ExploreFellow>().enabled = true;
+            gameObject.GetComponent<Character_ExploreFellow>().Initialize(mapData);
+            MoveController = gameObject.GetComponent<Character_ExploreFellow>();
         }
     }
 

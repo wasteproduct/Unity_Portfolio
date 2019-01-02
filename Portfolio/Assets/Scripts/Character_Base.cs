@@ -18,9 +18,6 @@ namespace Character
         private string skill1;
 
         public string Skill1 { get { return skill1; } }
-        //public List<Skill_Base> skills;
-        // Make skills data as json file
-        // Load data when characters instantiated
 
         public void CopyData(Editor_CharacterData copiedBase)
         {

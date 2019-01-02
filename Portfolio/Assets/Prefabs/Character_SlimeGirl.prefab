@@ -797,6 +797,7 @@ GameObject:
   - component: {fileID: 114134352456924012}
   - component: {fileID: 114948999635178098}
   - component: {fileID: 114846766983848692}
+  - component: {fileID: 114120981081549846}
   - component: {fileID: 136221815343652590}
   m_Layer: 11
   m_Name: Character_SlimeGirl
@@ -2420,6 +2421,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114120981081549846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603032203583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d58fe0aff50724aa82cf1d791cc3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 114358015329401362}
+  healthText: {fileID: 114258963281071112}
+  portraitImage: {fileID: 21300000, guid: 2ef2435766fce8b49bf39c246d565dbe, type: 3}
 --- !u!114 &114127847848105470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2466,8 +2481,6 @@ MonoBehaviour:
   battleStatus: {fileID: 1980786239572188}
   actionAttack: {fileID: 11400000, guid: 9b22b5c2ab239fc41bf22f607c84c9f1, type: 2}
   actionSkills: []
-  healthBar: {fileID: 114358015329401362}
-  healthText: {fileID: 114258963281071112}
   conditionPanel: {fileID: 1501977406637694}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}

@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 114842377584104390}
   - component: {fileID: 114609997872188260}
   - component: {fileID: 114738076562982594}
+  - component: {fileID: 114785077236294860}
   - component: {fileID: 54332639462069862}
   m_Layer: 11
   m_Name: Character_Tank
@@ -2134,11 +2135,23 @@ MonoBehaviour:
   battleStatus: {fileID: 1374353990159786}
   actionAttack: {fileID: 11400000, guid: e207260c3d9c7754aa1a0f02a4f175d1, type: 2}
   actionSkills: []
-  healthBar: {fileID: 114421342226909742}
-  healthText: {fileID: 114636698212330558}
   conditionPanel: {fileID: 1935407093421282}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}
+--- !u!114 &114785077236294860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d58fe0aff50724aa82cf1d791cc3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 114421342226909742}
+  healthText: {fileID: 114636698212330558}
+  portraitImage: {fileID: 21300000, guid: efeb74943accbdd4783410a0378acd05, type: 3}
 --- !u!114 &114842377584104390
 MonoBehaviour:
   m_ObjectHideFlags: 1

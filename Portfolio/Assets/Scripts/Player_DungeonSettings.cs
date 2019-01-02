@@ -78,6 +78,8 @@ namespace Player
             Camera.main.GetComponent<Camera_Movement>().SetFocus(captain.gameObject);
 
             objectCaptain.value = captain;
+
+            GetComponent<Player_InDungeonManager>().Initialize();
         }
 
         // Update is called once per frame

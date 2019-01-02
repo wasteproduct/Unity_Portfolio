@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 114498341760837662}
   - component: {fileID: 114869197119053990}
   - component: {fileID: 114502948154007956}
+  - component: {fileID: 114338166225275824}
   - component: {fileID: 54229932126630554}
   - component: {fileID: 136051675797877066}
   m_Layer: 11
@@ -5786,6 +5787,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114338166225275824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125473257450764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d58fe0aff50724aa82cf1d791cc3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 114388161430154116}
+  healthText: {fileID: 114526591399845080}
+  portraitImage: {fileID: 21300000, guid: c141e0f5d4e9dcc4ea8e0d1d91a8bf67, type: 3}
 --- !u!114 &114352748856932710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6017,8 +6032,6 @@ MonoBehaviour:
   actionAttack: {fileID: 11400000, guid: dfd5b29f6ac6b5741a35aa5b167e8bfb, type: 2}
   actionSkills:
   - {fileID: 11400000, guid: 29f44ee417fe6c446991ed4346ea220d, type: 2}
-  healthBar: {fileID: 114388161430154116}
-  healthText: {fileID: 114526591399845080}
   conditionPanel: {fileID: 1047193075024024}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}

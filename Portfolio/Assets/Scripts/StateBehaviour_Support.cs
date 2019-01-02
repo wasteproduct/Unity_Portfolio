@@ -26,11 +26,11 @@ public class StateBehaviour_Support : StateMachineBehaviour
         List<Character_InBattle> finalTargets = targetManager.FinalTargets;
         Battle_Action executedAction = actionManager.ExecutedAction;
 
-        finalTargets[0].Heal(executedAction.Power);
+        finalTargets[0].gameObject.GetComponent<Character_ConditionManager>().Heal(executedAction.Power);
         for (int i = 1; i < finalTargets.Count; i++)
         {
             float splashedAmount = executedAction.Power * executedAction.SplashedPowerRate;
-            finalTargets[i].Heal(splashedAmount);
+            finalTargets[i].gameObject.GetComponent<Character_ConditionManager>().Heal(splashedAmount);
         }
 
         phaseManager.EnterNextPhase();
