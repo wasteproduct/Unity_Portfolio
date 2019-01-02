@@ -148,17 +148,20 @@ public class Character_InBattle : MonoBehaviour
         StandingTileZ = (int)(gameObject.transform.position.z + .5f);
 
         startingRotation = gameObject.transform.rotation;
-        stateManager = GetComponent<Character_StateManager>();
 
         AppliedDebuffs = new List<Debuff>();
-        EffectManager = GetComponent<Character_EffectManager>();
-
-        conditionManager = GetComponent<Character_ConditionManager>();
 
         // temporary
         conditionManager.Initialize();
         MovableDistance = 3;
         if (enemyCharacter == true) MovableDistance = 2;
+    }
+
+    private void Awake()
+    {
+        stateManager = GetComponent<Character_StateManager>();
+        EffectManager = GetComponent<Character_EffectManager>();
+        conditionManager = GetComponent<Character_ConditionManager>();
     }
 
     // Update is called once per frame

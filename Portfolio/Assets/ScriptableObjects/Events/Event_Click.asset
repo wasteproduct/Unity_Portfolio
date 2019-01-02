@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab584298e761d84aaa5b85aee261ad2, type: 3}
   m_Name: Event_Click
   m_EditorClassIdentifier: 
-  doorTileClicked: 0
   pathFound: 1
   interactorClicked: 0
+  uIClicked: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
     type: 2}
   soundExplosion: {fileID: 11400000, guid: 33f38bc1e4970864db0e421f5a069fd6, type: 2}
   eventSoundPlay: {fileID: 11400000, guid: fbd2cac8e9ba3094d8553ddfae1cbdc1, type: 2}
+  eventBoobyTrap: {fileID: 11400000, guid: e7a9c40a53230aa43b56b10f4cab1c69, type: 2}

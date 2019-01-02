@@ -19,8 +19,10 @@ public class Interactor_ReactionGetItem : Interactor_ReactionBase
             if (i == itemNumber)
             {
                 items[i].GetNewItem();
-                return;
+                break;
             }
         }
+
+        Destroy(interactor.gameObject);
     }
 }

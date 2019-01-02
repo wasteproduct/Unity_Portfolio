@@ -11,6 +11,8 @@ public class Interactor_ReactionBoobyTrap : Interactor_ReactionBase
     private CustomSound soundExplosion;
     [SerializeField]
     private Event_SoundPlay eventSoundPlay;
+    [SerializeField]
+    private Event_BoobyTrap eventBoobyTrap;
 
     public override void InteractorReacts(Object_InteractorBase interactor)
     {
@@ -21,6 +23,8 @@ public class Interactor_ReactionBoobyTrap : Interactor_ReactionBase
 
         eventSoundPlay.PlayedSound = soundExplosion;
         eventSoundPlay.Run();
+
+        eventBoobyTrap.Run();
 
         Destroy(interactor.gameObject);
     }

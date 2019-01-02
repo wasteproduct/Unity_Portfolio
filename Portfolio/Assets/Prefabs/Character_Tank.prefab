@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 114609997872188260}
   - component: {fileID: 114738076562982594}
   - component: {fileID: 114785077236294860}
+  - component: {fileID: 114174036825637042}
   - component: {fileID: 54332639462069862}
   m_Layer: 11
   m_Name: Character_Tank
@@ -1906,6 +1907,34 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114174036825637042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533071126506800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a1dda4aee9ea34db69b0026b923312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registeredEvent: {fileID: 11400000, guid: e7a9c40a53230aa43b56b10f4cab1c69, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114785077236294860}
+        m_MethodName: DamageByBoobyTrap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114190705086192800
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,4 +14,5 @@ public abstract class Item_Base : ScriptableObject
     public Sprite ItemImage { get { return itemImage; } }
 
     public abstract void GetNewItem();
+    public abstract void UseItem();
 }

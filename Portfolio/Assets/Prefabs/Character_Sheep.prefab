@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 114316321641428538}
   - component: {fileID: 114651401261411538}
   - component: {fileID: 114180669520325652}
+  - component: {fileID: 114486814040377950}
   - component: {fileID: 54448997693609646}
   m_Layer: 11
   m_Name: Character_Sheep
@@ -1642,6 +1643,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationCalculator: {fileID: 11400000, guid: 85ff22058d60e5442a0472c2c1b1df61, type: 2}
+--- !u!114 &114486814040377950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284732833751890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a1dda4aee9ea34db69b0026b923312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registeredEvent: {fileID: 11400000, guid: e7a9c40a53230aa43b56b10f4cab1c69, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114180669520325652}
+        m_MethodName: DamageByBoobyTrap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114488227941398530
 MonoBehaviour:
   m_ObjectHideFlags: 1

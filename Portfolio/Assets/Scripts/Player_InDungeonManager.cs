@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Character;
 
 namespace Player
 {
@@ -14,7 +13,13 @@ namespace Player
 
         public void Initialize()
         {
+            List<GameObject> playerCharacters = GetComponent<Player_DungeonSettings>().PlayerCharacters;
 
+            for (int i = 0; i < playerCharacters.Count; i++)
+            {
+                GameObject newPortrait = Instantiate(portraitPrefab, portraitsPanel.transform);
+                newPortrait.GetComponent<Character_InDungeonPortrait>().Initialize(playerCharacters[i]);
+            }
         }
 
         // Use this for initialization

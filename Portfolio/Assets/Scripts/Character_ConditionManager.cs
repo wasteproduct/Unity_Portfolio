@@ -12,9 +12,14 @@ public class Character_ConditionManager : MonoBehaviour
     [SerializeField]
     private Sprite portraitImage;
 
-    private float maximumHP;
-
+    public float MaximumHP { get; private set; }
     public float CurrentHP { get; private set; }
+    public Sprite PortraitImage { get { return portraitImage; } }
+
+    public void DamageByBoobyTrap()
+    {
+        CurrentHP -= MaximumHP / 3.0f;
+    }
 
     public void ReduceHealth(float attackDamage)
     {
@@ -29,15 +34,15 @@ public class Character_ConditionManager : MonoBehaviour
     public void CustomUpdate()
     {
         healthBar.value = CurrentHP;
-        healthText.text = CurrentHP.ToString() + " / " + maximumHP.ToString();
+        healthText.text = CurrentHP.ToString() + " / " + MaximumHP.ToString();
     }
 
     public void Initialize()
     {
-        maximumHP = 100.0f;
-        CurrentHP = maximumHP;
+        MaximumHP = 100.0f;
+        CurrentHP = MaximumHP;
 
-        healthBar.maxValue = maximumHP;
+        healthBar.maxValue = MaximumHP;
         healthBar.minValue = 0.0f;
     }
 
@@ -45,7 +50,7 @@ public class Character_ConditionManager : MonoBehaviour
     {
         CurrentHP += healingAmount;
 
-        if (CurrentHP > maximumHP) CurrentHP = maximumHP;
+        if (CurrentHP > MaximumHP) CurrentHP = MaximumHP;
     }
 
     // Use this for initialization
