@@ -10,6 +10,14 @@ namespace Player
         private GameObject portraitsPanel;
         [SerializeField]
         private GameObject portraitPrefab;
+        [SerializeField]
+        private GameObject noticingWindow;
+
+        public void GetNewItem()
+        {
+            noticingWindow.gameObject.SetActive(true);
+            noticingWindow.GetComponent<UI_NoticingWindow>().ShowNewItem();
+        }
 
         public void Initialize()
         {

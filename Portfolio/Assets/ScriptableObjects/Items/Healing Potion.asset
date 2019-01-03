@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5de73b6a95911840a9948583813ac40, type: 3}
   m_Name: Healing Potion
   m_EditorClassIdentifier: 
+  itemName: Healing Potion
+  itemDescription: Recovers 50 health.
   itemImage: {fileID: 21300000, guid: da63ecc32fc9cc74c85315cfa5bbf386, type: 3}
   iD: {fileID: 11400000, guid: 41909b34dcc843048b4bad63401dcd8c, type: 2}
   inventory: {fileID: 11400000, guid: 82159d040a6ac0b4c90220eb6ae1abdd, type: 2}
+  eventGetItem: {fileID: 11400000, guid: 6e1b31317f7836e468482373794a1385, type: 2}
