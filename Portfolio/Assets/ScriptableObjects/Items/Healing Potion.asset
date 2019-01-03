@@ -17,3 +17,4 @@ MonoBehaviour:
   iD: {fileID: 11400000, guid: 41909b34dcc843048b4bad63401dcd8c, type: 2}
   inventory: {fileID: 11400000, guid: 82159d040a6ac0b4c90220eb6ae1abdd, type: 2}
   eventGetItem: {fileID: 11400000, guid: 6e1b31317f7836e468482373794a1385, type: 2}
+  eventUseItem: {fileID: 11400000, guid: 8056b2d9258756647979c36aa91c59a8, type: 2}

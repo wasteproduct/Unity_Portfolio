@@ -7,7 +7,7 @@ public class Item_HealingPotion : Item_Base
 {
     public override void UseItem()
     {
-
+        eventUseItem.TargetCharacter.CharacterCondition.Heal(50.0f);
     }
 
     public override void GetNewItem()

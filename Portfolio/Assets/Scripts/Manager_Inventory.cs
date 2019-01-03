@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Player;
 
 public class Manager_Inventory : MonoBehaviour
@@ -11,11 +10,26 @@ public class Manager_Inventory : MonoBehaviour
     [SerializeField]
     private Variable_Bool interactingUI;
     [SerializeField]
-    private GameObject[] slot;
+    private Player_InDungeonManager playerManager;
+    [SerializeField]
+    private Button_InventorySlot[] slot;
+
+    public void SelectItem()
+    {
+        for (int i = 0; i < slot.Length; i++)
+        {
+            slot[i].HighlightItem(false);
+        }
+    }
 
     public void Editor_GetSlots()
     {
-        //find
+        Button_InventorySlot[] slots = GetComponentsInChildren<Button_InventorySlot>();
+
+        for (int i = 0; i < slot.Length; i++)
+        {
+            slot[i] = slots[i];
+        }
     }
 
     // Use this for initialization
@@ -32,14 +46,25 @@ public class Manager_Inventory : MonoBehaviour
 
     private void OnEnable()
     {
+        for (int i = 0; i < slot.Length; i++)
+        {
+            slot[i].Initialize();
+        }
+
         for (int i = 0; i < inventory.Items.Count; i++)
         {
-            slot[i].GetComponent<Button_InventorySlot>().SetButton(inventory.Items[i]);
+            slot[i].SetButton(inventory.Items[i]);
         }
     }
 
     private void OnDisable()
     {
+        for (int i = 0; i < slot.Length; i++)
+        {
+            slot[i].HighlightItem(false);
+        }
+        playerManager.DisableAll();
+
         interactingUI.flag = false;
     }
 }

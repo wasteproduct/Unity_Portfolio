@@ -16,6 +16,8 @@ public abstract class Item_Base : ScriptableObject
     protected Player.Player_Inventory inventory;
     [SerializeField]
     protected Event_GetItem eventGetItem;
+    [SerializeField]
+    protected Event_UseItem eventUseItem;
 
     public string ItemName { get { return itemName; } }
     public string ItemDescription { get { return itemDescription; } }
