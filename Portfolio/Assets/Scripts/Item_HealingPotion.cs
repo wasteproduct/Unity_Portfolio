@@ -8,6 +8,8 @@ public class Item_HealingPotion : Item_Base
     public override void UseItem()
     {
         eventUseItem.TargetCharacter.CharacterCondition.Heal(50.0f);
+
+        inventory.RemoveItem(eventSelectItem.SelectedItem);
     }
 
     public override void GetNewItem()
@@ -18,6 +20,9 @@ public class Item_HealingPotion : Item_Base
         newPotion.itemImage = itemImage;
         newPotion.iD = iD;
         newPotion.inventory = inventory;
+        newPotion.eventGetItem = eventGetItem;
+        newPotion.eventUseItem = eventUseItem;
+        newPotion.eventSelectItem = eventSelectItem;
 
         inventory.AddNewItem(newPotion);
 

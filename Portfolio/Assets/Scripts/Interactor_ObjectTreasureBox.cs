@@ -2,17 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_TreasureBox : Object_InteractorBase
+public class Interactor_ObjectTreasureBox : Interactor_Base
 {
-    [SerializeField]
-    private GameObject box;
-    [SerializeField]
-    private Event_Click clickEvent;
-    [SerializeField]
-    private Interactor_ReactionBase[] interactorReaction;
-
-    private Animator animator;
-
     public override void CallReaction()
     {
         int reactionNumber = Random.Range(0, interactorReaction.Length);
@@ -32,17 +23,5 @@ public class Object_TreasureBox : Object_InteractorBase
         animator.SetBool("Open", true);
 
         clickEvent.interactorClicked = false;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        animator = box.GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -8,12 +8,17 @@ public class Button_InventorySlot : MonoBehaviour
     [SerializeField]
     private Image selectedFrame;
     [SerializeField]
-    private Event_SelectItem eventItemSelect;
+    private Event_SelectItem eventSelectItem;
 
     public Item_Base CorrespondingItem { get; private set; }
+    public int SlotNumber { get; private set; }
 
-    public void Initialize()
+    public void Initialize(int slotNumber)
     {
+        SlotNumber = slotNumber;
+        CorrespondingItem = null;
+
+        gameObject.GetComponent<Image>().sprite = null;
         gameObject.GetComponent<Button>().interactable = false;
     }
 
@@ -24,8 +29,9 @@ public class Button_InventorySlot : MonoBehaviour
 
     public void SelectItem()
     {
-        eventItemSelect.SelectedItem = CorrespondingItem;
-        eventItemSelect.Run();
+        eventSelectItem.SelectedItem = CorrespondingItem;
+        eventSelectItem.SelectedSlotNumber = SlotNumber;
+        eventSelectItem.Run();
 
         HighlightItem(true);
     }

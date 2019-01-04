@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34aec7130aaa0064ab371f185925613d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 1674013751665630}
+  animator: {fileID: 95492457036352536}
   clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   interactorReaction:
   - {fileID: 11400000, guid: c0197ccbc8de74646a6654af0f14b6eb, type: 2}

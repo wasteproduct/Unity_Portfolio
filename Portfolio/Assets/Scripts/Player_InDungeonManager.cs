@@ -13,6 +13,8 @@ namespace Player
         [SerializeField]
         private GameObject noticingWindow;
         [SerializeField]
+        private Manager_Inventory inventory;
+        [SerializeField]
         private Event_SelectItem eventSelectItem;
 
         public List<Character_InDungeonPortrait> PlayerCharacters { get; private set; }
@@ -20,6 +22,8 @@ namespace Player
         public void UseItem()
         {
             eventSelectItem.SelectedItem.UseItem();
+
+            inventory.UseItem(eventSelectItem.SelectedSlotNumber);
         }
 
         public void DisableAll()

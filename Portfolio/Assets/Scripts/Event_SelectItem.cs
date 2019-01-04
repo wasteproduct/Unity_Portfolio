@@ -6,4 +6,5 @@ using UnityEngine;
 public class Event_SelectItem : CustomEvent
 {
     public Item_Base SelectedItem { get; set; }
+    public int SelectedSlotNumber { get; set; }
 }

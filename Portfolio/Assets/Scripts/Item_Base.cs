@@ -18,6 +18,8 @@ public abstract class Item_Base : ScriptableObject
     protected Event_GetItem eventGetItem;
     [SerializeField]
     protected Event_UseItem eventUseItem;
+    [SerializeField]
+    protected Event_SelectItem eventSelectItem;
 
     public string ItemName { get { return itemName; } }
     public string ItemDescription { get { return itemDescription; } }

@@ -14,7 +14,7 @@ public class Interactor_ReactionBoobyTrap : Interactor_ReactionBase
     [SerializeField]
     private Event_BoobyTrap eventBoobyTrap;
 
-    public override void InteractorReacts(Object_InteractorBase interactor)
+    public override void InteractorReacts(Interactor_Base interactor)
     {
         Transform interactorTransform = interactor.gameObject.transform;
 

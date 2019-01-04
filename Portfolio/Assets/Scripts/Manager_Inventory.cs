@@ -14,6 +14,13 @@ public class Manager_Inventory : MonoBehaviour
     [SerializeField]
     private Button_InventorySlot[] slot;
 
+    public void UseItem(int slotNumber)
+    {
+        slot[slotNumber].Initialize(slotNumber);
+        slot[slotNumber].HighlightItem(false);
+        playerManager.DisableAll();
+    }
+
     public void SelectItem()
     {
         for (int i = 0; i < slot.Length; i++)
@@ -32,23 +39,11 @@ public class Manager_Inventory : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnEnable()
     {
         for (int i = 0; i < slot.Length; i++)
         {
-            slot[i].Initialize();
+            slot[i].Initialize(i);
         }
 
         for (int i = 0; i < inventory.Items.Count; i++)

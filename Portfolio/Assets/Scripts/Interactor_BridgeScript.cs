@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_BridgeScript : MonoBehaviour
+public class Interactor_BridgeScript : MonoBehaviour
 {
     [SerializeField]
-    private Object_InteractorBase interactorScript;
+    private Interactor_Base interactorScript;
 
     public void CallReaction()
     {

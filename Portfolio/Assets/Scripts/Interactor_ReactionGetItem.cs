@@ -8,7 +8,7 @@ public class Interactor_ReactionGetItem : Interactor_ReactionBase
     [SerializeField]
     private Item_Database itemDatabase;
 
-    public override void InteractorReacts(Object_InteractorBase interactor)
+    public override void InteractorReacts(Interactor_Base interactor)
     {
         Item_Base[] items = itemDatabase.Items;
 

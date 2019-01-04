@@ -13,7 +13,7 @@ public class StateBehaviour_TreasureBox : StateMachineBehaviour
         if (animatorStateInfo.normalizedTime >= 1.0f)
         {
             opened = true;
-            animator.gameObject.GetComponent<Object_BridgeScript>().CallReaction();
+            animator.gameObject.GetComponent<Interactor_BridgeScript>().CallReaction();
         }
     }
 }

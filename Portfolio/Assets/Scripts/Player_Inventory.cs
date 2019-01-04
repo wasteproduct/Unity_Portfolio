@@ -12,6 +12,11 @@ namespace Player
 
         public List<Item_Base> Items { get { return items; } }
 
+        public void RemoveItem(Item_Base usedItem)
+        {
+            if (items.Contains(usedItem) == true) items.Remove(usedItem);
+        }
+
         public void AddNewItem(Item_Base newItem)
         {
             items.Add(newItem);

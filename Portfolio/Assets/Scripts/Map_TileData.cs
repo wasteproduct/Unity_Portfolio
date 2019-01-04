@@ -43,7 +43,7 @@ namespace TileDataSet
         public bool Revealed { get; set; }
 
         public Object_Door Door { get; set; }
-        public Object_InteractorBase Interactor { get; set; }
+        public Interactor_Base Interactor { get; set; }
 
         public void React()
         {

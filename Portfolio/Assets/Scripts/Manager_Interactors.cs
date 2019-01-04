@@ -45,7 +45,7 @@ public class Manager_Interactors : ScriptableObject
                 if ((boxX == previousX) && (boxZ == previousZ)) break;
 
                 GameObject newBox = Instantiate(treasureBox, new Vector3(boxX, 0, boxZ), Quaternion.Euler(0.0f, 180.0f, 0.0f));
-                mapData.TileData[boxX, boxZ].Interactor = newBox.GetComponent<Object_TreasureBox>();
+                mapData.TileData[boxX, boxZ].Interactor = newBox.GetComponent<Interactor_ObjectTreasureBox>();
                 mapData.TileData[boxX, boxZ].Type = TileType.Interactor;
 
                 treasureBoxes.Add(newBox);
