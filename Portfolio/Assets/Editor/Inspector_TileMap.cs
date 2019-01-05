@@ -26,5 +26,13 @@ public class Inspector_TileMap : Editor
 
             EditorUtility.SetDirty(mapMain);
         }
+
+        if (GUILayout.Button("Clear Lists"))
+        {
+            Map_Main mapMain = (Map_Main)target;
+            mapMain.Editor_ClearLists();
+
+            EditorUtility.SetDirty(mapMain);
+        }
     }
 }

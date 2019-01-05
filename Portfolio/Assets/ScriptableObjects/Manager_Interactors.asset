@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treasureBox: {fileID: 1742634032630942, guid: 86582363a97771142b2f6a42f6d1996a,
     type: 2}
+  nPCAcquireChan: {fileID: 1181265978732798, guid: 4fc6106487f0e0d4b91c31a18d36dae0,
+    type: 2}

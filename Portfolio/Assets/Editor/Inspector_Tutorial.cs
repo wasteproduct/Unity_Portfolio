@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using Tutorial;
 
@@ -12,17 +10,11 @@ public class Inspector_Tutorial : Editor
         //base.OnInspectorGUI();
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Write json"))
+        if (GUILayout.Button("Run"))
         {
             Tutorial_Manager tutorialManager = (Tutorial_Manager)target;
-            tutorialManager.WriteJSON();
-            EditorUtility.SetDirty(tutorialManager);
-        }
+            tutorialManager.Run();
 
-        if (GUILayout.Button("Add Character"))
-        {
-            Tutorial_Manager tutorialManager = (Tutorial_Manager)target;
-            tutorialManager.AddCharacter();
             EditorUtility.SetDirty(tutorialManager);
         }
     }

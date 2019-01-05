@@ -1,21 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interactor_NPCAcquireChan : Interactor_Base
 {
+    [SerializeField]
+    private Event_NPCTalking eventNPCTalking;
+    [SerializeField]
+    private string nPCName;
+
+    public string NPCName { get { return nPCName; } }
+
     public override void CallReaction()
     {
-        int reactionNumber = Random.Range(0, interactorReaction.Length);
 
-        for (int i = 0; i < interactorReaction.Length; i++)
-        {
-            if (i == reactionNumber)
-            {
-                interactorReaction[i].InteractorReacts(this);
-                return;
-            }
-        }
     }
 
     public override void Interact()
@@ -23,5 +19,8 @@ public class Interactor_NPCAcquireChan : Interactor_Base
         animator.SetInteger("CurrentState", 1);
 
         clickEvent.interactorClicked = false;
+
+        eventNPCTalking.TalkingNPC = this;
+        eventNPCTalking.Run();
     }
 }

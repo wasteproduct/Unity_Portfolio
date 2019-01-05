@@ -9,8 +9,57 @@ public class Manager_Interactors : ScriptableObject
 {
     [SerializeField]
     private GameObject treasureBox;
+    [SerializeField]
+    private GameObject nPCAcquireChan;
 
     private List<GameObject> treasureBoxes;
+    private List<GameObject> nPCs;
+
+    public void Editor_ClearInteractors()
+    {
+        nPCs.Clear();
+        treasureBoxes.Clear();
+    }
+
+    public void SetInteractors(Map_Data mapData, bool editor)
+    {
+        DestroyInteractors(editor);
+
+        SetNPC(mapData);
+        SetTreasureBoxes(mapData);
+    }
+
+    public void SetNPC(Map_Data mapData)
+    {
+        nPCs = new List<GameObject>();
+
+        Map_TileData startingTile = mapData.StartingTile;
+
+        int nPCX = startingTile.X + 3;
+        int nPCZ = startingTile.Z + 3;
+
+        GameObject newNPC = Instantiate(nPCAcquireChan, new Vector3(nPCX, 0, nPCZ), Quaternion.Euler(0.0f, 180.0f, 0.0f));
+        mapData.TileData[nPCX, nPCZ].Interactor = newNPC.GetComponent<Interactor_NPCAcquireChan>();
+        mapData.TileData[nPCX, nPCZ].Type = TileType.Interactor;
+
+        nPCs.Add(newNPC);
+    }
+
+    public void DestroyInteractors(bool editor)
+    {
+        DestroyNPCs(editor);
+        DestroyTreasureBoxes(editor);
+    }
+
+    public void DestroyNPCs(bool editor)
+    {
+        for (int i = 0; i < nPCs.Count; i++)
+        {
+            if (editor == true) DestroyImmediate(nPCs[i].gameObject);
+            else Destroy(nPCs[i].gameObject);
+        }
+        nPCs.Clear();
+    }
 
     public void DestroyTreasureBoxes(bool editor)
     {
@@ -22,10 +71,8 @@ public class Manager_Interactors : ScriptableObject
         treasureBoxes.Clear();
     }
 
-    public void SetTreasureBoxes(Map_Data mapData, bool editor)
+    public void SetTreasureBoxes(Map_Data mapData)
     {
-        DestroyTreasureBoxes(editor);
-
         treasureBoxes = new List<GameObject>();
 
         List<Room> rooms = mapData.Rooms;
@@ -35,23 +82,18 @@ public class Manager_Interactors : ScriptableObject
             Room currentRoom = rooms[i];
             int boxNumber = Random.Range(1, 3);
 
-            int previousX = -1;
-            int previousZ = -1;
             for (int j = 0; j < boxNumber; j++)
             {
                 int boxX = Random.Range(currentRoom.StartX + 2, currentRoom.EndX - 2);
                 int boxZ = Random.Range(currentRoom.StartZ + 2, currentRoom.EndZ - 2);
 
-                if ((boxX == previousX) && (boxZ == previousZ)) break;
+                if (mapData.TileData[boxX, boxZ].Type != TileType.Floor) break;
 
                 GameObject newBox = Instantiate(treasureBox, new Vector3(boxX, 0, boxZ), Quaternion.Euler(0.0f, 180.0f, 0.0f));
                 mapData.TileData[boxX, boxZ].Interactor = newBox.GetComponent<Interactor_ObjectTreasureBox>();
                 mapData.TileData[boxX, boxZ].Type = TileType.Interactor;
 
                 treasureBoxes.Add(newBox);
-
-                previousX = boxX;
-                previousZ = boxZ;
             }
         }
     }
@@ -59,5 +101,6 @@ public class Manager_Interactors : ScriptableObject
     private void OnDisable()
     {
         if (treasureBoxes != null) treasureBoxes.Clear();
+        if (nPCs != null) nPCs.Clear();
     }
 }

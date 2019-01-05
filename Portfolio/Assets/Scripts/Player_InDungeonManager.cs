@@ -11,13 +11,21 @@ namespace Player
         [SerializeField]
         private GameObject portraitPrefab;
         [SerializeField]
-        private GameObject noticingWindow;
+        private UI_NoticingWindow noticingWindow;
+        [SerializeField]
+        private UI_DialogueBox dialogueBox;
         [SerializeField]
         private Manager_Inventory inventory;
         [SerializeField]
         private Event_SelectItem eventSelectItem;
 
         public List<Character_InDungeonPortrait> PlayerCharacters { get; private set; }
+
+        public void NPCTalking()
+        {
+            dialogueBox.gameObject.SetActive(true);
+            dialogueBox.DisplayDialogueBox();
+        }
 
         public void UseItem()
         {
@@ -45,7 +53,7 @@ namespace Player
         public void GetNewItem()
         {
             noticingWindow.gameObject.SetActive(true);
-            noticingWindow.GetComponent<UI_NoticingWindow>().ShowNewItem();
+            noticingWindow.ShowNewItem();
         }
 
         public void Initialize()

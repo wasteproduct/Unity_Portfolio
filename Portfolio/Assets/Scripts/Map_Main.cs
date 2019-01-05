@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using MapDataSet;
-using MapObject;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -36,6 +35,11 @@ public class Map_Main : MonoBehaviour
 
     }
 
+    public void Editor_ClearLists()
+    {
+        managerInteractors.Editor_ClearInteractors();
+    }
+
     public void GenerateMap(bool editor = false)
     {
         MapData = new Map_Data(commonFeatures, enemyZonesData);
@@ -54,12 +58,12 @@ public class Map_Main : MonoBehaviour
         DestroyImmediate(GetComponent<MeshCollider>().sharedMesh);
         GetComponent<MeshCollider>().sharedMesh = null;
 
-        managerInteractors.DestroyTreasureBoxes(true);
+        managerInteractors.DestroyInteractors(true);
     }
 
     private void SetInteractors(bool editor)
     {
-        managerInteractors.SetTreasureBoxes(MapData, editor);
+        managerInteractors.SetInteractors(MapData, editor);
     }
 
     private void CombineMapMeshes(bool editor)

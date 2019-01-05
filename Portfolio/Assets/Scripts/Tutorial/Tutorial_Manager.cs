@@ -1,41 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 namespace Tutorial
 {
     public class Tutorial_Manager : MonoBehaviour
     {
-        private Tutorial_StreamingAsset jsonStreamer;
+        [SerializeField]
+        private string acquireChan;
 
-        public void WriteJSON()
+        public void Run()
         {
-            jsonStreamer = gameObject.GetComponent<Tutorial_StreamingAsset>();
-            jsonStreamer.WriteJSON();
-        }
+            //string playerDataJSON = File.ReadAllText(Application.streamingAssetsPath + "/Editor_PlayerData.json");
+            string acquireChanText = File.ReadAllText(Application.streamingAssetsPath + "/" + acquireChan + ".txt");
 
-        public void AddCharacter()
-        {
-            jsonStreamer = gameObject.GetComponent<Tutorial_StreamingAsset>();
-            jsonStreamer.AddCharacter();
+            print(acquireChanText);
         }
-
-        private List<int> intList;
 
         private void Start()
         {
-
-        }
-    }
-
-    public class IntegerAdder
-    {
-        public IntegerAdder(List<int> intList)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                intList.Add(i);
-            }
+            
         }
     }
 }
