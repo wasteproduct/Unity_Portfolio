@@ -12,6 +12,8 @@ public class Button_DungeonUI : MonoBehaviour
     private Variable_Bool interactingUI;
     [SerializeField]
     private Variable_Bool cursorDisabled;
+    [SerializeField]
+    private GameObject buttons;
 
     public void ButtonWork()
     {
@@ -19,7 +21,7 @@ public class Button_DungeonUI : MonoBehaviour
         interactingUI.flag = true;
         cursorDisabled.flag = true;
 
-        gameObject.SetActive(false);
+        buttons.gameObject.SetActive(false);
         openedWindow.gameObject.SetActive(true);
     }
 
