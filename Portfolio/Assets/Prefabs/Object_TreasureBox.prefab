@@ -236,3 +236,4 @@ MonoBehaviour:
   interactorReaction:
   - {fileID: 11400000, guid: c0197ccbc8de74646a6654af0f14b6eb, type: 2}
   - {fileID: 11400000, guid: f7ed6073c27f26f45b02f5739e7e79ce, type: 2}
+  eventClick: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}

@@ -6972,6 +6972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd7ac0f2bc785743b2df97246a7bb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactingUI: {fileID: 11400000, guid: 3f55c16cac7ed3d4ca2a677798b8d04f, type: 2}
   eventGetItem: {fileID: 11400000, guid: 6e1b31317f7836e468482373794a1385, type: 2}
   itemImage: {fileID: 180601155}
   itemName: {fileID: 1654257324}
@@ -7978,6 +7979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9719a87470980142b5df832ca074401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactingUI: {fileID: 11400000, guid: 3f55c16cac7ed3d4ca2a677798b8d04f, type: 2}
   eventNPCTalking: {fileID: 11400000, guid: ba20dc3e3914428418e1d306d89e43ab, type: 2}
   nPCName: {fileID: 112529118}
   dialogueContents: {fileID: 1723644205}

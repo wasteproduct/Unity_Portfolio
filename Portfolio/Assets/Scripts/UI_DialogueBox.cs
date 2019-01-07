@@ -7,6 +7,8 @@ using System.IO;
 public class UI_DialogueBox : MonoBehaviour
 {
     [SerializeField]
+    private Variable_Bool interactingUI;
+    [SerializeField]
     private Event_NPCTalking eventNPCTalking;
     [SerializeField]
     private Text nPCName;
@@ -32,5 +34,15 @@ public class UI_DialogueBox : MonoBehaviour
             dialogueContents.text = File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + ".txt");
             closeButtonText.text = "Sorry";
         }
+    }
+
+    private void OnEnable()
+    {
+        interactingUI.flag = true;
+    }
+
+    private void OnDisable()
+    {
+        interactingUI.flag = false;
     }
 }

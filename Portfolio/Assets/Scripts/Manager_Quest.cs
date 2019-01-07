@@ -12,7 +12,7 @@ public class Manager_Quest : MonoBehaviour
     [SerializeField]
     private Text[] quest;
 
-    public List<Interactor_NPCAcquireChan> Clients;
+    public List<Interactor_NPCAcquireChan> Clients = new List<Interactor_NPCAcquireChan>();
 
     public void AddQuest()
     {
@@ -30,10 +30,5 @@ public class Manager_Quest : MonoBehaviour
         {
             quest[i].text = Clients[i].NPCQuest.QuestText.text;
         }
-    }
-
-    private void Awake()
-    {
-        Clients = new List<Interactor_NPCAcquireChan>();
     }
 }

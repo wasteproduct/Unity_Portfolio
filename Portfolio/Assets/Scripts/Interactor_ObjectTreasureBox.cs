@@ -11,9 +11,11 @@ public class Interactor_ObjectTreasureBox : Interactor_Base
             if (i == reactionNumber)
             {
                 interactorReaction[i].InteractorReacts(this);
-                return;
+                break;
             }
         }
+
+        clickEvent.interactorTile.Type = TileDataSet.TileType.Floor;
     }
 
     public override void Interact()
