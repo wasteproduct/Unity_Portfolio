@@ -35,7 +35,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4633200265845516}
   - component: {fileID: 54332765215865216}
-  - component: {fileID: 136066081003153854}
+  - component: {fileID: 135023372840937596}
+  - component: {fileID: 114780490170869876}
   m_Layer: 0
   m_Name: TomahawkChicken
   m_TagString: Untagged
@@ -698,8 +699,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &136066081003153854
-CapsuleCollider:
+--- !u!114 &114780490170869876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020920526094804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c515d958fab977744a8620e6d41c1559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageApplier: {fileID: 11400000, guid: 24cf1acccad3dc745a70b088da164c92, type: 2}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  phaseManager: {fileID: 11400000, guid: eb88844b79e79ee4da2fc5797be5d6fb, type: 2}
+--- !u!135 &135023372840937596
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -707,9 +722,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.64
-  m_Height: 3.2
-  m_Direction: 2
+  serializedVersion: 2
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 1}
 --- !u!137 &137108469929232396
 SkinnedMeshRenderer:

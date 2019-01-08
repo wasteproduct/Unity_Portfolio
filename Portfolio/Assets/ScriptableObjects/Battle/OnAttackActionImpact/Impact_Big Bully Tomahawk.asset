@@ -11,3 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6338d34f16983454babae95799654633, type: 3}
   m_Name: Impact_Big Bully Tomahawk
   m_EditorClassIdentifier: 
+  turnController: {fileID: 11400000, guid: ba15e6c2f3b3f814bb888dc3ac38b8e2, type: 2}
+  targetManager: {fileID: 11400000, guid: b083ca85671aca84b9f99ad5b6cad102, type: 2}
+  chicken: {fileID: 1020920526094804, guid: 8a669aa62ed49c1449c1eb9cb4ea13eb, type: 2}

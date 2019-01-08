@@ -1,14 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Object_Banana : MonoBehaviour
 {
-    public Calculation_ApplyDamage damageApplier;
-    public Battle.Manager_BattlePhase phaseManager;
-    public GameObject effectExplosion;
-    public CustomSound soundExplosion;
-    public Event_SoundPlay eventSoundPlay;
+    [SerializeField]
+    private Calculation_ApplyDamage damageApplier;
+    [SerializeField]
+    private Battle.Manager_BattlePhase phaseManager;
+    [SerializeField]
+    private GameObject effectExplosion;
+    [SerializeField]
+    private CustomSound soundExplosion;
+    [SerializeField]
+    private Event_SoundPlay eventSoundPlay;
 
     private float elapsedTime = 0.0f;
 
