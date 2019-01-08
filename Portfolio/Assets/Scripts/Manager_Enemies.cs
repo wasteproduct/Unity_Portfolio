@@ -3,7 +3,6 @@
 public class Manager_Enemies : MonoBehaviour
 {
     public EnemyZonesData zonesData;
-    public GameObject enemyObject;
     public GameObject enemyZonePrefab;
 
     // Use this for initialization
