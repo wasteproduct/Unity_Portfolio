@@ -113,5 +113,5 @@ MonoBehaviour:
   zoneTilePrefab: {fileID: 1927754894111990, guid: e796f0e90872e9a41acf7fbcce78df53,
     type: 2}
   zoneTileMaterial: {fileID: 2100000, guid: 451cd76c2ac18b442985ac9e533d6e1a, type: 2}
-  enemyPrefab: {fileID: 1603032203583802, guid: a897a6fea93ff9342bd8dbad7125a844,
-    type: 2}
+  slimeGirl: {fileID: 1603032203583802, guid: a897a6fea93ff9342bd8dbad7125a844, type: 2}
+  bigBully: {fileID: 1495714188582056, guid: d2c720549a485f2419f85b2feb70d7c9, type: 2}

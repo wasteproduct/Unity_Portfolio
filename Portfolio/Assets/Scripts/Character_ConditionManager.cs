@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Character_ConditionManager : MonoBehaviour
 {
+    // temporary
+    [SerializeField]
+    private float maximumHP;
     [SerializeField]
     private Slider healthBar;
     [SerializeField]
@@ -12,7 +13,7 @@ public class Character_ConditionManager : MonoBehaviour
     [SerializeField]
     private Sprite portraitImage;
 
-    public float MaximumHP { get; private set; }
+    public float MaximumHP { get { return maximumHP; } }
     public float CurrentHP { get; private set; }
     public Sprite PortraitImage { get { return portraitImage; } }
 
@@ -39,7 +40,7 @@ public class Character_ConditionManager : MonoBehaviour
 
     public void Initialize()
     {
-        MaximumHP = 100.0f;
+        //MaximumHP = 100.0f;
         CurrentHP = MaximumHP;
 
         healthBar.maxValue = MaximumHP;
@@ -51,17 +52,5 @@ public class Character_ConditionManager : MonoBehaviour
         CurrentHP += healingAmount;
 
         if (CurrentHP > MaximumHP) CurrentHP = MaximumHP;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

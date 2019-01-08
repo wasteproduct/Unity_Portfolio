@@ -1808,7 +1808,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148876264706436}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071063, w: 0.70710725}
-  m_LocalPosition: {x: -0, y: 0, z: -2.6878028}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4045065588934330}
@@ -2490,10 +2490,10 @@ Animator:
   m_GameObject: {fileID: 1157678032088086}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 34eb55becdc0d4ba9b7aa7c22e9d869f, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 562daf8b2e35f594ca6ea77c2f8b027a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2566,7 +2566,8 @@ MonoBehaviour:
   dead: {fileID: 11400000, guid: d2c07634a8406aa4689940df7af8408a, type: 2}
   battleStatus: {fileID: 1062498659560124}
   actionAttack: {fileID: 11400000, guid: acff556c663a18442903df5bf5798f4d, type: 2}
-  actionSkills: []
+  actionSkills:
+  - {fileID: 11400000, guid: eaff3deef1442484187775ab8b73b700, type: 2}
   conditionPanel: {fileID: 1902439976159774}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}
@@ -2581,6 +2582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d58fe0aff50724aa82cf1d791cc3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumHP: 600
   healthBar: {fileID: 114693798650970150}
   healthText: {fileID: 114159339074678944}
   portraitImage: {fileID: 21300000, guid: 8dadf021ac5cd6d41bb424d79b7a160d, type: 3}

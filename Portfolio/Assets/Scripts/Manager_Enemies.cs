@@ -19,10 +19,23 @@ public class Manager_Enemies : MonoBehaviour
 
     private void CreateEnemyZones()
     {
-        for (int i = 0; i < zonesData.Zones.Count; i++)
+        int zonesNumber = zonesData.Zones.Count;
+
+        for (int i = 0; i < zonesNumber - 1; i++)
         {
             GameObject newEnemyZone = Instantiate(enemyZonePrefab);
-            newEnemyZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[i]);
+            newEnemyZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[i], false);
         }
+
+        GameObject bossZone = Instantiate(enemyZonePrefab);
+        bossZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[zonesNumber - 1], true);
+
+        //Test_BossOnly();
+    }
+
+    private void Test_BossOnly()
+    {
+        GameObject bossZone = Instantiate(enemyZonePrefab);
+        bossZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[0], true);
     }
 }
