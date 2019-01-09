@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class StateBehaviour_TreasureBox : StateMachineBehaviour
 {
+    [SerializeField]
+    private Event_Click eventClick;
+
     private bool opened = false;
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        eventClick.interactorTile.Type = TileDataSet.TileType.Floor;
+    }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {

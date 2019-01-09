@@ -14,8 +14,6 @@ public class Interactor_ObjectTreasureBox : Interactor_Base
                 break;
             }
         }
-
-        clickEvent.interactorTile.Type = TileDataSet.TileType.Floor;
     }
 
     public override void Interact()
