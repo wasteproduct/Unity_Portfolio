@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4138206338402290}
-  - component: {fileID: 114279899079098094}
+  - component: {fileID: 114521593770807164}
   m_Layer: 0
   m_Name: NPC_AcquireChan
   m_TagString: Untagged
@@ -1225,7 +1225,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114279899079098094
+--- !u!114 &114521593770807164
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1233,16 +1233,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1181265978732798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529a94818f230c549871d1efe0a2d19b, type: 3}
+  m_Script: {fileID: 11500000, guid: c8b0ce6102d04744b85b20e500ba747a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95843714937229822}
   clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   interactorReaction: []
-  nPCQuest: {fileID: 11400000, guid: 6ff39ca66c12a87499a6c86bbec31bfc, type: 2}
   eventNPCTalking: {fileID: 11400000, guid: ba20dc3e3914428418e1d306d89e43ab, type: 2}
-  nPCName: AcquireChan
-  questGiven: 0
+  nPCName: Acquire Chan
+  nPCQuest: []
 --- !u!114 &114635735295547678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1254,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f52d78dbecaa6498795bae77724647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactorScript: {fileID: 114279899079098094}
+  interactorScript: {fileID: 0}
 --- !u!137 &137107944910824846
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

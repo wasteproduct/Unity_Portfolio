@@ -18,22 +18,20 @@ public class UI_DialogueBox : MonoBehaviour
     private Button acceptButton;
     [SerializeField]
     private Text closeButtonText;
+    [SerializeField]
+    private UI_QuestList questList;
 
     public void DisplayDialogueBox()
     {
-        nPCName.text = eventNPCTalking.TalkingNPC.NPCName;
+        Interactor_NPC talkingNPC = eventNPCTalking.TalkingNPC;
 
-        if (eventNPCTalking.TalkingNPC.QuestGiven == true)
-        {
-            dialogueContents.text = File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + "NoQuest.txt");
-            closeButtonText.text = "...";
-        }
-        else
-        {
-            acceptButton.gameObject.SetActive(true);
-            dialogueContents.text = File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + ".txt");
-            closeButtonText.text = "Sorry";
-        }
+        nPCName.text = talkingNPC.NPCName;
+
+        dialogueContents.text = File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + ".txt");
+
+        closeButtonText.text = "Bye";
+
+        questList.SetList(talkingNPC);
     }
 
     private void OnEnable()

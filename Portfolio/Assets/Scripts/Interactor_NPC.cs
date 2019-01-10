@@ -1,25 +1,20 @@
 ﻿using UnityEngine;
 
-public class Interactor_NPCAcquireChan : Interactor_Base
+public class Interactor_NPC : Interactor_Base
 {
-    [SerializeField]
-    private Quest_Base nPCQuest;
     [SerializeField]
     private Event_NPCTalking eventNPCTalking;
     [SerializeField]
     private string nPCName;
     [SerializeField]
-    private bool questGiven = false;
+    private Quest_Base[] nPCQuest;
 
     public string NPCName { get { return nPCName; } }
-    public bool QuestGiven { get { return questGiven; } }
-    public Quest_Base NPCQuest { get { return nPCQuest; } }
+    public Quest_Base[] NPCQuest { get { return nPCQuest; } }
 
     public override void CallReaction()
     {
         animator.SetInteger("CurrentState", 2);
-
-        questGiven = true;
     }
 
     public override void Interact()

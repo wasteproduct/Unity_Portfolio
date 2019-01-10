@@ -33,13 +33,11 @@ public class Manager_Interactors : ScriptableObject
     {
         nPCs = new List<GameObject>();
 
-        Map_TileData startingTile = mapData.StartingTile;
-
-        int nPCX = startingTile.X + 3;
-        int nPCZ = startingTile.Z + 3;
+        int nPCX = mapData.StartingTile.X + 3;
+        int nPCZ = mapData.StartingTile.Z + 3;
 
         GameObject newNPC = Instantiate(nPCAcquireChan, new Vector3(nPCX, 0, nPCZ), Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        mapData.TileData[nPCX, nPCZ].Interactor = newNPC.GetComponent<Interactor_NPCAcquireChan>();
+        mapData.TileData[nPCX, nPCZ].Interactor = newNPC.GetComponent<Interactor_NPC>();
         mapData.TileData[nPCX, nPCZ].Type = TileType.Interactor;
 
         nPCs.Add(newNPC);
