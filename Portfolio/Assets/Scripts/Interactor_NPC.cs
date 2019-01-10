@@ -26,4 +26,12 @@ public class Interactor_NPC : Interactor_Base
         eventNPCTalking.TalkingNPC = this;
         eventNPCTalking.Run();
     }
+
+    private void Start()
+    {
+        for (int i = 0; i < nPCQuest.Length; i++)
+        {
+            nPCQuest[i].Given(false);
+        }
+    }
 }

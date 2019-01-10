@@ -1241,7 +1241,10 @@ MonoBehaviour:
   interactorReaction: []
   eventNPCTalking: {fileID: 11400000, guid: ba20dc3e3914428418e1d306d89e43ab, type: 2}
   nPCName: Acquire Chan
-  nPCQuest: []
+  nPCQuest:
+  - {fileID: 11400000, guid: 6ff39ca66c12a87499a6c86bbec31bfc, type: 2}
+  - {fileID: 11400000, guid: b027cc102530491488a0acbd97349227, type: 2}
+  - {fileID: 11400000, guid: 64875fd455191b44e9fcdaf3fb9d4472, type: 2}
 --- !u!114 &114635735295547678
 MonoBehaviour:
   m_ObjectHideFlags: 1

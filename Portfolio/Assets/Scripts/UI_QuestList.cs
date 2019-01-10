@@ -17,8 +17,18 @@ public class UI_QuestList : MonoBehaviour
 
                 if (quest.QuestGiven == true) continue;
 
+                questButton[i].gameObject.SetActive(true);
                 questButton[i].SetButton(quest);
+
+                break;
             }
         }
+    }
+
+    public void Editor_GetButtons()
+    {
+        UI_QuestButton[] buttons = GetComponentsInChildren<UI_QuestButton>(true);
+
+        for (int i = 0; i < questButton.Length; i++) { questButton[i] = buttons[i]; }
     }
 }

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d93ab02a538dc4cab8819e2d08e694, type: 3}
-  m_Name: Quest_AcquireChan
+  m_Name: Quest_TakenIceCream
   m_EditorClassIdentifier: 
   questText: {fileID: 4900000, guid: 7342bedb62558804a8765bd8aa0e7ea1, type: 3}

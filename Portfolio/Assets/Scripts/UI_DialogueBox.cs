@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
 public class UI_DialogueBox : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject uIButtons;
     [SerializeField]
     private Variable_Bool interactingUI;
     [SerializeField]
@@ -15,11 +15,13 @@ public class UI_DialogueBox : MonoBehaviour
     [SerializeField]
     private Text dialogueContents;
     [SerializeField]
-    private Button acceptButton;
+    private Button_AcceptQuest okayButton;
     [SerializeField]
-    private Text closeButtonText;
+    private Button_Close declineButton;
     [SerializeField]
     private UI_QuestList questList;
+
+    public void SetContents(string contents) { dialogueContents.text = contents; }
 
     public void DisplayDialogueBox()
     {
@@ -27,20 +29,25 @@ public class UI_DialogueBox : MonoBehaviour
 
         nPCName.text = talkingNPC.NPCName;
 
-        dialogueContents.text = File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + ".txt");
+        SetContents(File.ReadAllText(Application.streamingAssetsPath + "/" + nPCName.text + ".txt"));
 
-        closeButtonText.text = "Bye";
+        okayButton.gameObject.SetActive(false);
 
+        declineButton.SetButtonText("Bye");
+
+        questList.gameObject.SetActive(true);
         questList.SetList(talkingNPC);
     }
 
     private void OnEnable()
     {
+        uIButtons.gameObject.SetActive(false);
         interactingUI.flag = true;
     }
 
     private void OnDisable()
     {
+        uIButtons.gameObject.SetActive(true);
         interactingUI.flag = false;
     }
 }
