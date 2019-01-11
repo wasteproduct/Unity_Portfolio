@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AStar;
-using Battle;
 
 namespace Player
 {

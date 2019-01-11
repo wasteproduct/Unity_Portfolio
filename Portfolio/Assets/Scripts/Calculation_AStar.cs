@@ -181,13 +181,13 @@ namespace AStar
 
         public Node_AStar(Node_AStar copiedNode)
         {
-            this.X = copiedNode.X;
-            this.Z = copiedNode.Z;
-            this.Parent = copiedNode.Parent;
-            this.Passable = copiedNode.Passable;
-            this.DistanceFromStart = copiedNode.DistanceFromStart;
-            this.DistanceToDestination = copiedNode.DistanceToDestination;
-            this.CostToDestination = copiedNode.CostToDestination;
+            X = copiedNode.X;
+            Z = copiedNode.Z;
+            Parent = copiedNode.Parent;
+            Passable = copiedNode.Passable;
+            DistanceFromStart = copiedNode.DistanceFromStart;
+            DistanceToDestination = copiedNode.DistanceToDestination;
+            CostToDestination = copiedNode.CostToDestination;
         }
 
         // Constructor
@@ -219,13 +219,13 @@ namespace AStar
 
         private void CalculateDistanceFromStart()
         {
-            if ((this.Parent.X - this.X != 0) && (this.Parent.Z - this.Z != 0))
+            if ((Parent.X - X != 0) && (Parent.Z - Z != 0))
             {
-                this.DistanceFromStart = this.Parent.DistanceFromStart + 14;
+                DistanceFromStart = Parent.DistanceFromStart + 14;
             }
             else
             {
-                this.DistanceFromStart = this.Parent.DistanceFromStart + 10;
+                DistanceFromStart = Parent.DistanceFromStart + 10;
             }
         }
 

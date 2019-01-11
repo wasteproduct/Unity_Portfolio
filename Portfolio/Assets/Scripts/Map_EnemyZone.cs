@@ -1,16 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
 public class Map_EnemyZone : MonoBehaviour
 {
-    public GameObject zoneTilePrefab;
-    public Material zoneTileMaterial;
-    public GameObject slimeGirl;
-    public GameObject bigBully;
+    [SerializeField]
+    private GameObject zoneTilePrefab;
+    [SerializeField]
+    private Material zoneTileMaterial;
+    [SerializeField]
+    private GameObject slimeGirl;
+    [SerializeField]
+    private GameObject bigBully;
+    [SerializeField]
+    private UI_MinimapIcon minimapIcon;
 
     public EnemyZonesData.EnemyZone ZoneData { get; private set; }
     public List<GameObject> StayingEnemies { get; private set; }
@@ -22,6 +28,8 @@ public class Map_EnemyZone : MonoBehaviour
         CreateZone();
 
         SetEnemies(bossArea);
+
+        minimapIcon.SetIcon(new Vector3(ZoneData.centerTile.X, 0, ZoneData.centerTile.Z), bossArea);
     }
 
     private void SetEnemies(bool bossArea)
