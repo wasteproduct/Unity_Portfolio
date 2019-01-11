@@ -14,20 +14,26 @@ public class UI_QuestButton : MonoBehaviour
 
     public Quest_Base Quest { get; private set; }
 
-    public void SelectQuest()
+    public void SelectQuest(bool interactingNPC)
     {
-        dialogueBox.SetContents(Quest.QuestText);
-
-        declineButton.SetButtonText("Sorry");
-
         questManager.SelectedQuestButton = this;
+
+        if (interactingNPC == false) return;
+
+        ModifyDialogueBox();
     }
 
     public void SetButton(Quest_Base quest)
     {
         Quest = quest;
-        Quest.Given(true);
 
         questName.text = Quest.QuestName;
+    }
+
+    private void ModifyDialogueBox()
+    {
+        dialogueBox.SetContents(Quest.QuestText);
+
+        declineButton.SetButtonText("Sorry");
     }
 }

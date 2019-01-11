@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 namespace Tutorial
 {
     public class Tutorial_Manager : MonoBehaviour
     {
         [SerializeField]
-        private TextAsset questText;
+        private Text text;
 
         public void Run()
         {
-            print(questText.name);
+            text.text = "whwhh599";
         }
 
         private void Start()

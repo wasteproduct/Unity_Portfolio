@@ -9,19 +9,12 @@ public class UI_QuestList : MonoBehaviour
 
     public void SetList(Interactor_NPC talkingNPC)
     {
-        for (int i = 0; i < questButton.Length; i++)
+        Quest_Base[] unassignedQuests = talkingNPC.GetUnassignedQuests();
+
+        for (int i = 0; i < unassignedQuests.Length; i++)
         {
-            for (int j = 0; j < talkingNPC.NPCQuest.Length; j++)
-            {
-                Quest_Base quest = talkingNPC.NPCQuest[j];
-
-                if (quest.QuestGiven == true) continue;
-
-                questButton[i].gameObject.SetActive(true);
-                questButton[i].SetButton(quest);
-
-                break;
-            }
+            questButton[i].gameObject.SetActive(true);
+            questButton[i].SetButton(unassignedQuests[i]);
         }
     }
 
@@ -30,5 +23,13 @@ public class UI_QuestList : MonoBehaviour
         UI_QuestButton[] buttons = GetComponentsInChildren<UI_QuestButton>(true);
 
         for (int i = 0; i < questButton.Length; i++) { questButton[i] = buttons[i]; }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < questButton.Length; i++)
+        {
+            questButton[i].gameObject.SetActive(false);
+        }
     }
 }

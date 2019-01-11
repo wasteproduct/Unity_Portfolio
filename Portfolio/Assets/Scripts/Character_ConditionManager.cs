@@ -34,13 +34,12 @@ public class Character_ConditionManager : MonoBehaviour
 
     public void CustomUpdate()
     {
-        healthBar.value = CurrentHP;
-        healthText.text = CurrentHP.ToString() + " / " + MaximumHP.ToString();
+        healthBar.value = (int)CurrentHP;
+        healthText.text = healthBar.value.ToString() + " / " + MaximumHP.ToString();
     }
 
     public void Initialize()
     {
-        //MaximumHP = 100.0f;
         CurrentHP = MaximumHP;
 
         healthBar.maxValue = MaximumHP;

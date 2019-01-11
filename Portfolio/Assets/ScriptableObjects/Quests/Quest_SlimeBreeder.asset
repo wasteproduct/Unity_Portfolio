@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Quest_SlimeBreeder
   m_EditorClassIdentifier: 
   questText: {fileID: 4900000, guid: 3417c73804d28c54190bab6f2eb1656d, type: 3}
+  objective: {fileID: 4900000, guid: ad68cd5d0a21e414f969f0471f571623, type: 3}

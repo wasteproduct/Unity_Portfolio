@@ -9,6 +9,8 @@ public class Button_InventorySlot : MonoBehaviour
     private Image selectedFrame;
     [SerializeField]
     private Event_SelectItem eventSelectItem;
+    [SerializeField]
+    private Sprite slotImage;
 
     public Item_Base CorrespondingItem { get; private set; }
     public int SlotNumber { get; private set; }
@@ -18,7 +20,7 @@ public class Button_InventorySlot : MonoBehaviour
         SlotNumber = slotNumber;
         CorrespondingItem = null;
 
-        gameObject.GetComponent<Image>().sprite = null;
+        gameObject.GetComponent<Image>().sprite = slotImage;
         gameObject.GetComponent<Button>().interactable = false;
     }
 
