@@ -80,12 +80,8 @@ namespace Player
             objectCaptain.value = captain;
 
             GetComponent<Player_InDungeonManager>().Initialize();
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
+            GetComponent<Player_Navigator>().Initialize(mapData.Rooms);
         }
     }
 }

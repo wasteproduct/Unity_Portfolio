@@ -7,6 +7,8 @@ namespace Player
 {
     public class Player_Move : MonoBehaviour
     {
+        [SerializeField]
+        private Player_Navigator navigator;
         public Calculation_Move moveController;
         public Event_Click clickEvent;
         public Calculation_AStar aStar;
@@ -106,6 +108,8 @@ namespace Player
 
                         SetState_Idle(true);
 
+                        navigator.UpdateMinimap();
+
                         break;
                     }
 
@@ -122,6 +126,8 @@ namespace Player
                         moveController.moving = false;
 
                         SetState_Idle(false);
+
+                        navigator.UpdateMinimap();
 
                         break;
                     }
@@ -145,18 +151,6 @@ namespace Player
             {
                 characters[i].GetComponent<Character_InDungeon>().MoveController.UpdateStartingRotation();
             }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

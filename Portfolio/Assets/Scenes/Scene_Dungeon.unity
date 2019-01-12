@@ -3816,6 +3816,7 @@ GameObject:
   - component: {fileID: 596837745}
   - component: {fileID: 596837749}
   - component: {fileID: 596837747}
+  - component: {fileID: 596837754}
   - component: {fileID: 596837750}
   - component: {fileID: 596837751}
   - component: {fileID: 596837752}
@@ -3918,6 +3919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5fbf9e9e785b346841fda8b5651292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navigator: {fileID: 596837754}
   moveController: {fileID: 11400000, guid: ef8a8244871dd8548a0bd5fe724a646f, type: 2}
   clickEvent: {fileID: 11400000, guid: e69ef3b46280bde4abc6f10c210a1799, type: 2}
   aStar: {fileID: 11400000, guid: c122fe7fdf5700a438b2014bc46225c6, type: 2}
@@ -4039,6 +4041,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &596837754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596837744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c00078ab83f0940a40e4df24fb56f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
+  currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
+  minimapIcon: {fileID: 1577069689}
 --- !u!1 &640834423
 GameObject:
   m_ObjectHideFlags: 0
@@ -9936,6 +9952,7 @@ GameObject:
   - component: {fileID: 1577069688}
   - component: {fileID: 1577069687}
   - component: {fileID: 1577069686}
+  - component: {fileID: 1577069689}
   m_Layer: 15
   m_Name: MinimapIcon
   m_TagString: Untagged
@@ -10019,6 +10036,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1577069689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577069684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9e94d18c4c24a4296cdef1566f7b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconBattle: {fileID: 0}
+  iconBoss: {fileID: 0}
+  iconImage: {fileID: 0}
 --- !u!1 &1601609215
 GameObject:
   m_ObjectHideFlags: 0
