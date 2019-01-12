@@ -9,16 +9,21 @@ namespace Battle
     [CreateAssetMenu(fileName = "", menuName = "Battle/Movable Tiles Manager", order = 1)]
     public class Battle_MovableTilesManager : ScriptableObject
     {
-        public GameObject tilePrefab;
-        public Battle_TurnController turnController;
+        [SerializeField]
+        private GameObject tilePrefab;
+        [SerializeField]
+        private Battle_TurnController turnController;
 
         private Map_Data mapData;
 
         public List<GameObject> MovableTiles { get; private set; }
         public GameObject DestinationTile { get; private set; }
+        public bool NoMoving { get; private set; }
 
         public void SetDestinationTile(Map_TileData destinationTile)
         {
+            NoMoving = false;
+
             for (int i = 0; i < MovableTiles.Count; i++)
             {
                 Map_TileData tileData = MovableTiles[i].GetComponent<Tile_MovableInBattle>().TileData;
@@ -26,16 +31,14 @@ namespace Battle
                 if (tileData == destinationTile)
                 {
                     DestinationTile = MovableTiles[i];
-                    Debug.Log("Destination fixed.");
-                    return;
+                    break;
                 }
             }
-        }
 
-        public void SetDestinationTile(GameObject destinationTile)
-        {
-            DestinationTile = null;
-            DestinationTile = destinationTile;
+            int x = turnController.CurrentTurnCharacter.StandingTileX;
+            int z = turnController.CurrentTurnCharacter.StandingTileZ;
+
+            if (mapData.TileData[x, z] == destinationTile) NoMoving = true;
         }
 
         public bool OutOfMovableRange(Map_TileData destinationTile)

@@ -6,8 +6,12 @@ namespace Battle
 {
     public class Battle_PhaseSelectingAction : Battle_PhaseBase
     {
-        public Battle_ActionManager actionManager;
-        public GameObject availableActionsList;
+        [SerializeField]
+        private Battle_ActionManager actionManager;
+        [SerializeField]
+        private GameObject availableActionsList;
+        [SerializeField]
+        private Battle_AIManager aIManager;
 
         public void SelectAction(Battle_Action selectedAction)
         {
@@ -51,9 +55,12 @@ namespace Battle
 
             if (actionsNumber > 1)
             {
-                availableActionsList.gameObject.SetActive(true);
-                availableActionsList.GetComponent<Battle_ActionSelectingManager>().SetList();
-                return;
+                if (turnController.EnemyTurn == true) aIManager.SelectAction(actionManager);
+                else
+                {
+                    availableActionsList.gameObject.SetActive(true);
+                    availableActionsList.GetComponent<Battle_ActionSelectingManager>().SetList();
+                }
             }
         }
     }

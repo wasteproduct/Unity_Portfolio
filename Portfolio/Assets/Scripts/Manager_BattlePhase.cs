@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Battle
@@ -18,7 +17,7 @@ namespace Battle
             {
                 for (int j = 0; j < phases.Length - 1; j++)
                 {
-                    if (phases[j].phaseNumber > phases[j + 1].phaseNumber)
+                    if (phases[j].PhaseNumber > phases[j + 1].PhaseNumber)
                     {
                         Battle_PhaseBase latterPhase = phases[j];
                         phases[j] = phases[j + 1];
@@ -43,7 +42,7 @@ namespace Battle
             CurrentPhase.ClosePhase();
             CurrentPhase.enabled = false;
 
-            int currentPhaseNumber = CurrentPhase.phaseNumber;
+            int currentPhaseNumber = CurrentPhase.PhaseNumber;
             currentPhaseNumber++;
             if (currentPhaseNumber >= Phases.Count) currentPhaseNumber = 0;
 

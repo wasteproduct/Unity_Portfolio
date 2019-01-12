@@ -1,15 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Battle
 {
     public class Battle_PhaseSelectingTile : Battle_PhaseBase
     {
-        public Battle_MovableTilesManager movableTilesManager;
-        public Event_Click clickEvent;
-        public Battle_AIManager aiManager;
-        public Battle_ActionManager actionManager;
+        [SerializeField]
+        private Battle_MovableTilesManager movableTilesManager;
+        [SerializeField]
+        private Event_Click clickEvent;
+        [SerializeField]
+        private Battle_AIManager aIManager;
+        [SerializeField]
+        private Battle_ActionManager actionManager;
 
         public override void ClickWork()
         {
@@ -31,12 +33,13 @@ namespace Battle
 
         public override void EnterPhase()
         {
+            //print("Phase Selecting Tile.");
+
             movableTilesManager.SetTiles();
 
             if (turnController.EnemyTurn == true)
             {
-                aiManager.SetChasedTarget();
-                aiManager.SetDestinationTile();
+                aIManager.SetDestination();
                 phaseManager.EnterNextPhase();
             }
         }

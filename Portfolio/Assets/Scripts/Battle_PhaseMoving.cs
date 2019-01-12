@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using AStar;
-using MapDataSet;
+﻿using UnityEngine;
 
 namespace Battle
 {
     public class Battle_PhaseMoving : Battle_PhaseBase
     {
-        public Character_State runBattle;
+        [SerializeField]
+        private Character_State runBattle;
+        [SerializeField]
+        private Battle_MovableTilesManager movableTilesManager;
 
         private Character_InBattle currentTurnCharacter;
 
@@ -26,6 +25,12 @@ namespace Battle
         {
             //print("Phase Moving.");
 
+            if (movableTilesManager.NoMoving == true)
+            {
+                phaseManager.EnterNextPhase();
+                return;
+            }
+
             currentTurnCharacter = turnController.CurrentTurnCharacter;
 
             currentTurnCharacter.SetTrack();
@@ -35,6 +40,8 @@ namespace Battle
         // Update is called once per frame
         void Update()
         {
+            if (movableTilesManager.NoMoving == true) return;
+
             currentTurnCharacter.Move();
 
             if (currentTurnCharacter.Arrived == true) phaseManager.EnterNextPhase();

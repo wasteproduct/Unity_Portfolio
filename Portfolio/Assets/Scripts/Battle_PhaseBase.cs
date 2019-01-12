@@ -1,14 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Battle
 {
     public abstract class Battle_PhaseBase : MonoBehaviour
     {
-        public int phaseNumber;
-        public Manager_BattlePhase phaseManager;
-        public Battle_TurnController turnController;
+        [SerializeField]
+        protected int phaseNumber;
+        [SerializeField]
+        protected Manager_BattlePhase phaseManager;
+        [SerializeField]
+        protected Battle_TurnController turnController;
+
+        public int PhaseNumber { get { return phaseNumber; } }
 
         public abstract void ClickWork();
         public abstract void ClosePhase();

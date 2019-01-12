@@ -1,15 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Battle
 {
     public class Battle_PhaseSelectingTarget : Battle_PhaseBase
     {
-        public Battle_TargetManager targetManager;
-        public Battle_ActionManager actionManager;
-        public Variable_Bool choosingTarget;
-        public Manager_Layers layers;
+        [SerializeField]
+        private Battle_TargetManager targetManager;
+        [SerializeField]
+        private Battle_ActionManager actionManager;
+        [SerializeField]
+        private Variable_Bool choosingTarget;
+        [SerializeField]
+        private Manager_Layers layers;
+        [SerializeField]
+        private Battle_AIManager aIManager;
 
         public override void ClickWork()
         {
@@ -21,7 +26,7 @@ namespace Battle
             targetManager.SetFinalTargets(actionManager.ExecutedAction);
 
             choosingTarget.flag = false;
-            
+
             targetManager.RemoveMarks();
         }
 
@@ -50,8 +55,15 @@ namespace Battle
                 return;
             }
 
+            if (turnController.EnemyTurn == true)
+            {
+                aIManager.SelectTarget(targetManager);
+                phaseManager.EnterNextPhase();
+                return;
+            }
+
             choosingTarget.flag = true;
-            
+
             targetManager.MarkAvailableTargets();
         }
 
@@ -64,7 +76,7 @@ namespace Battle
             {
                 Ray ray = PassedRay();
                 RaycastHit hitInfo;
-                
+
                 if (Physics.Raycast(ray, out hitInfo, 100.0f) == true)
                 {
                     if ((1 << hitInfo.collider.gameObject.layer) == layers.Character)
