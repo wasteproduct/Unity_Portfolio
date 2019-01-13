@@ -11,8 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d373b2585d92a54b811b363065a3157, type: 3}
   m_Name: Character_Base_Tank
   m_EditorClassIdentifier: 
-  Name: Tank
-  TypeID: 1
-  Strength: 50
-  Agility: 10
-  Intelligence: 0
+  portrait: {fileID: 21300000, guid: efeb74943accbdd4783410a0378acd05, type: 3}
+  displayedModel: {fileID: 1670335668768086, guid: b48252ac9daa1254fab7332a1b78ba62,
+    type: 2}
+  characterName: Tank
+  typeID: 3
+  strength: 40
+  agility: 20
+  intelligence: 0

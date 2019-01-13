@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d373b2585d92a54b811b363065a3157, type: 3}
   m_Name: Character_Base_Sheep
   m_EditorClassIdentifier: 
-  Name: Sheep
-  TypeID: 3
-  Strength: 10
-  Agility: 20
-  Intelligence: 30
-  skill1: 
+  portrait: {fileID: 21300000, guid: 8aad692627c8aef4db41f0860a3a9f98, type: 3}
+  displayedModel: {fileID: 1181975606740668, guid: 0d34422805b14f04b969ca04b4ca91fa,
+    type: 2}
+  characterName: Sheep
+  typeID: 1
+  strength: 10
+  agility: 20
+  intelligence: 30

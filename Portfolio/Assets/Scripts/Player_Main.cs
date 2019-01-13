@@ -24,10 +24,10 @@ namespace Player
             if (characters.Contains(newCharacter) == false) characters.Add(newCharacter);
         }
 
-        private void OnEnable()
-        {
-            //LoadData();
-        }
+        //private void OnEnable()
+        //{
+        //    LoadData();
+        //}
 
         // Editor
         //public int listIndex;

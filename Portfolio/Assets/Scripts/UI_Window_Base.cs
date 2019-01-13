@@ -3,13 +3,17 @@
 public abstract class UI_Window_Base : MonoBehaviour
 {
     [SerializeField]
-    protected GameObject[] reactivatedObject;
+    protected GameObject[] reactivatedObjects;
+
+    protected abstract void CustomOnDisable();
 
     protected void OnDisable()
     {
-        for (int i = 0; i < reactivatedObject.Length; i++)
+        for (int i = 0; i < reactivatedObjects.Length; i++)
         {
-            reactivatedObject[i].gameObject.SetActive(true);
+            reactivatedObjects[i].gameObject.SetActive(true);
         }
+
+        CustomOnDisable();
     }
 }

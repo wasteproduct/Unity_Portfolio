@@ -11,8 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d373b2585d92a54b811b363065a3157, type: 3}
   m_Name: Character_Base_Soldier
   m_EditorClassIdentifier: 
-  Name: Soldier
-  TypeID: 0
-  Strength: 20
-  Agility: 20
-  Intelligence: 20
+  portrait: {fileID: 21300000, guid: 85f69e840323e6c48bed409119c9fedf, type: 3}
+  displayedModel: {fileID: 1851749761191982, guid: c84839e4b35ee6f4ea29924286b94f41,
+    type: 2}
+  characterName: Soldier
+  typeID: 0
+  strength: 20
+  agility: 20
+  intelligence: 20
