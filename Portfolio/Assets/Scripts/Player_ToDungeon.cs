@@ -73,28 +73,28 @@ public class Player_ToDungeon : MonoBehaviour
         }
     }
 
-    public void OpenSelectTeamFellows()
-    {
-        selectTeamFellowsPanel.SetActive(true);
+    //public void OpenSelectTeamFellows()
+    //{
+    //    selectTeamFellowsPanel.SetActive(true);
 
-        playerMain.LoadData();
+    //    playerMain.LoadData();
 
-        CancelSelection();
+    //    CancelSelection();
 
-        ClearPlayerTeam();
+    //    ClearPlayerTeam();
 
-        for (int i = 0; i < playerMain.Characters.Count; i++)
-        {
-            if (playerMain.Characters[i] == null) continue;
+    //    for (int i = 0; i < playerMain.Characters.Count; i++)
+    //    {
+    //        if (playerMain.Characters[i] == null) continue;
 
-            GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-            addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
+    //        GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
+    //        addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
-            characters.Add(addedSlot);
-        }
+    //        characters.Add(addedSlot);
+    //    }
 
-        InitializeTeamSlots();
-    }
+    //    InitializeTeamSlots();
+    //}
 
     public void CancelSelectTeamFellows(bool editor)
     {

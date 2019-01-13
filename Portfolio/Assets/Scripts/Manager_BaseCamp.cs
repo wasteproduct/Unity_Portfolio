@@ -26,22 +26,22 @@ public class Manager_BaseCamp : MonoBehaviour
         SceneManager.LoadScene("Scene_Dungeon");
     }
 
-    public void SelectTeamFellows()
-    {
-        if (windowOpened == true) return;
+    //public void SelectTeamFellows()
+    //{
+    //    if (windowOpened == true) return;
 
-        this.GetComponent<Player_ToDungeon>().OpenSelectTeamFellows();
+    //    this.GetComponent<Player_ToDungeon>().OpenSelectTeamFellows();
 
-        windowOpened = true;
+    //    windowOpened = true;
 
-        DisableButtons();
+    //    DisableButtons();
 
-        // 진행 버튼은 선택된 팀원 리스트에 담긴 데이터 json으로 저장, 다음 신 던전으로 진행
+    //    // 진행 버튼은 선택된 팀원 리스트에 담긴 데이터 json으로 저장, 다음 신 던전으로 진행
 
-        // 팀원 리스트에 담을 형식은 Editor_CharacterData
+    //    // 팀원 리스트에 담을 형식은 Editor_CharacterData
 
-        // 신 넘어가면 json에 담긴 리스트 읽어서 인 던전 플레이어 캐릭터 팀에 로드
-    }
+    //    // 신 넘어가면 json에 담긴 리스트 읽어서 인 던전 플레이어 캐릭터 팀에 로드
+    //}
 
     public void CancelSelectTeamFellows(bool editor = false)
     {
@@ -54,16 +54,16 @@ public class Manager_BaseCamp : MonoBehaviour
         EnableButtons();
     }
 
-    public void OpenCharacters()
-    {
-        if (windowOpened == true) return;
+    //public void OpenCharacters()
+    //{
+    //    if (windowOpened == true) return;
 
-        this.GetComponent<Player_Characters>().OpenCharacters();
+    //    this.GetComponent<Player_Characters>().OpenCharacters();
 
-        windowOpened = true;
+    //    windowOpened = true;
 
-        DisableButtons();
-    }
+    //    DisableButtons();
+    //}
 
     public void CloseCharacters(bool editor = false)
     {

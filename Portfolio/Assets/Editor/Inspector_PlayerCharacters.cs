@@ -2,18 +2,17 @@
 using UnityEditor;
 using Player;
 
-[CustomEditor(typeof(Player_Characters))]
+[CustomEditor(typeof(UI_Window_PlayerCharacters))]
 public class Inspector_PlayerCharacters : Editor
 {
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Select Character"))
+        if (GUILayout.Button("Get Slots"))
         {
-            Player_Characters playerCharacters = (Player_Characters)target;
-            playerCharacters.SelectCharacter();
+            UI_Window_PlayerCharacters playerCharacters = (UI_Window_PlayerCharacters)target;
+            playerCharacters.Editor_GetSlots();
 
             EditorUtility.SetDirty(playerCharacters);
         }

@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEditor;
 
 namespace Tutorial
 {
     public class Tutorial_Manager : MonoBehaviour
     {
-        [SerializeField]
-        private Text text;
-
         public void Run()
         {
-            text.text = "whwhh599";
+
         }
 
         private void Start()

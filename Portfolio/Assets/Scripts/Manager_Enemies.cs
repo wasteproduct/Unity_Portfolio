@@ -8,7 +8,9 @@ public class Manager_Enemies : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CreateEnemyZones();
+        //CreateEnemyZones();
+
+        Test_BossOnly();
     }
 
     // Update is called once per frame
@@ -29,8 +31,6 @@ public class Manager_Enemies : MonoBehaviour
 
         GameObject bossZone = Instantiate(enemyZonePrefab);
         bossZone.GetComponent<Map_EnemyZone>().SetZone(zonesData.Zones[zonesNumber - 1], true);
-
-        //Test_BossOnly();
     }
 
     private void Test_BossOnly()

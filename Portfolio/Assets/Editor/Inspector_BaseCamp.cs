@@ -10,13 +10,13 @@ public class Inspector_BaseCamp : Editor
         //base.OnInspectorGUI();
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Open Characters"))
-        {
-            Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
-            baseCamp.OpenCharacters();
+        //if (GUILayout.Button("Open Characters"))
+        //{
+        //    Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+        //    baseCamp.OpenCharacters();
 
-            EditorUtility.SetDirty(baseCamp);
-        }
+        //    EditorUtility.SetDirty(baseCamp);
+        //}
 
         if (GUILayout.Button("Close Characters"))
         {
@@ -26,13 +26,13 @@ public class Inspector_BaseCamp : Editor
             EditorUtility.SetDirty(baseCamp);
         }
 
-        if (GUILayout.Button("To Dungeon"))
-        {
-            Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
-            baseCamp.SelectTeamFellows();
+        //if (GUILayout.Button("To Dungeon"))
+        //{
+        //    Manager_BaseCamp baseCamp = (Manager_BaseCamp)target;
+        //    baseCamp.SelectTeamFellows();
 
-            EditorUtility.SetDirty(baseCamp);
-        }
+        //    EditorUtility.SetDirty(baseCamp);
+        //}
 
         if (GUILayout.Button("Cancel"))
         {

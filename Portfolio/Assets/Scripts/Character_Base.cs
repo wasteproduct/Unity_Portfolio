@@ -19,15 +19,15 @@ namespace Character
 
         public string Skill1 { get { return skill1; } }
 
-        public void CopyData(Editor_CharacterData copiedBase)
-        {
-            Name = copiedBase.Name;
-            TypeID = copiedBase.TypeID;
-            Strength = copiedBase.Strength;
-            Agility = copiedBase.Agility;
-            Intelligence = copiedBase.Intelligence;
+        //public void CopyData(Editor_CharacterData copiedBase)
+        //{
+        //    Name = copiedBase.Name;
+        //    TypeID = copiedBase.TypeID;
+        //    Strength = copiedBase.Strength;
+        //    Agility = copiedBase.Agility;
+        //    Intelligence = copiedBase.Intelligence;
 
-            skill1 = copiedBase.Skill1;
-        }
+        //    skill1 = copiedBase.Skill1;
+        //}
     }
 }

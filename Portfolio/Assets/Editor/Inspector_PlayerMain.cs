@@ -12,36 +12,36 @@ public class Inspector_PlayerMain : Editor
         //base.OnInspectorGUI();
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Add Character"))
-        {
-            Player_Main playerMain = (Player_Main)target;
-            playerMain.AddCharacter();
+        //if (GUILayout.Button("Add Character"))
+        //{
+        //    Player_Main playerMain = (Player_Main)target;
+        //    playerMain.AddCharacter();
 
-            EditorUtility.SetDirty(playerMain);
-        }
+        //    EditorUtility.SetDirty(playerMain);
+        //}
 
-        if (GUILayout.Button("Clear List"))
-        {
-            Player_Main playerMain = (Player_Main)target;
-            playerMain.ClearList();
+        //if (GUILayout.Button("Clear List"))
+        //{
+        //    Player_Main playerMain = (Player_Main)target;
+        //    playerMain.ClearList();
 
-            EditorUtility.SetDirty(playerMain);
-        }
+        //    EditorUtility.SetDirty(playerMain);
+        //}
 
-        if (GUILayout.Button("Refresh List"))
-        {
-            Player_Main playerMain = (Player_Main)target;
-            playerMain.LoadData();
+        //if (GUILayout.Button("Refresh List"))
+        //{
+        //    Player_Main playerMain = (Player_Main)target;
+        //    playerMain.LoadData();
 
-            EditorUtility.SetDirty(playerMain);
-        }
+        //    EditorUtility.SetDirty(playerMain);
+        //}
 
-        if (GUILayout.Button("Increase Strength"))
-        {
-            Player_Main playerMain = (Player_Main)target;
-            playerMain.IncreaseStrength();
+        //if (GUILayout.Button("Increase Strength"))
+        //{
+        //    Player_Main playerMain = (Player_Main)target;
+        //    playerMain.IncreaseStrength();
 
-            EditorUtility.SetDirty(playerMain);
-        }
+        //    EditorUtility.SetDirty(playerMain);
+        //}
     }
 }

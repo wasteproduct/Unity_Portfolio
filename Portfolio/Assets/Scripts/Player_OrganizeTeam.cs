@@ -41,25 +41,25 @@ namespace Player
             }
         }
 
-        public void OpenOrganizeTeam()
-        {
-            organizeTeamPanel.SetActive(true);
+        //public void OpenOrganizeTeam()
+        //{
+        //    organizeTeamPanel.SetActive(true);
 
-            playerMain.LoadData();
+        //    playerMain.LoadData();
 
-            SetCaptain();
-            SetFellows();
+        //    SetCaptain();
+        //    SetFellows();
 
-            for (int i = 1; i < playerMain.Characters.Count; i++)
-            {
-                if (playerMain.Characters[i] == null) continue;
+        //    for (int i = 1; i < playerMain.Characters.Count; i++)
+        //    {
+        //        if (playerMain.Characters[i] == null) continue;
 
-                GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-                //addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
+        //        GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
+        //        //addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
-                characters.Add(addedSlot);
-            }
-        }
+        //        characters.Add(addedSlot);
+        //    }
+        //}
 
         public void CloseOrganizeTeam(bool editor)
         {

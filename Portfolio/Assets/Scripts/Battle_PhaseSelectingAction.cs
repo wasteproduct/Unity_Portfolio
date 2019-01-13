@@ -55,7 +55,11 @@ namespace Battle
 
             if (actionsNumber > 1)
             {
-                if (turnController.EnemyTurn == true) aIManager.SelectAction(actionManager);
+                if (turnController.EnemyTurn == true)
+                {
+                    aIManager.SelectAction(actionManager);
+                    phaseManager.EnterNextPhase();
+                }
                 else
                 {
                     availableActionsList.gameObject.SetActive(true);

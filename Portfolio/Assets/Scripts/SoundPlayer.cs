@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
@@ -28,17 +27,5 @@ public class SoundPlayer : MonoBehaviour
 
             yield return new WaitForSeconds(playedSound.RepetitionInterval);
         }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

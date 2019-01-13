@@ -40,22 +40,22 @@ namespace Player
             intelligence.GetComponent<Text>().text = stringIntelligence + selectedSlot.CorrespondingCharacter.Intelligence.ToString();
         }
 
-        public void OpenCharacters()
-        {
-            charactersPanel.SetActive(true);
+        //public void OpenCharacters()
+        //{
+        //    charactersPanel.SetActive(true);
 
-            playerMain.LoadData();
+        //    playerMain.LoadData();
 
-            for (int i = 0; i < playerMain.Characters.Count; i++)
-            {
-                if (playerMain.Characters[i] == null) continue;
+        //    for (int i = 0; i < playerMain.Characters.Count; i++)
+        //    {
+        //        if (playerMain.Characters[i] == null) continue;
 
-                GameObject addedSlot = Instantiate<GameObject>(slotPrefab, slotField.transform);
-                addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
+        //        GameObject addedSlot = Instantiate(slotPrefab, slotField.transform);
+        //        addedSlot.GetComponent<Character_Slot>().Initialize(playerMain.Characters[i], SelectCharacter);
 
-                characters.Add(addedSlot);
-            }
-        }
+        //        characters.Add(addedSlot);
+        //    }
+        //}
 
         public void CloseCharacters(bool editor)
         {
