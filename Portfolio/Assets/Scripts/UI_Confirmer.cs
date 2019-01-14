@@ -7,6 +7,8 @@ public class UI_Confirmer : UI_Window_Base
 {
     [SerializeField]
     private Text confirmedContents;
+    [SerializeField]
+    private Variable_Bool interactingUI;
 
     public delegate void Delegate_Void();
 
@@ -23,8 +25,9 @@ public class UI_Confirmer : UI_Window_Base
         gameObject.SetActive(false);
     }
 
-    protected override void CustomOnDisable()
+    private void OnDisable()
     {
         VoidMethod = null;
+        interactingUI.flag = false;
     }
 }

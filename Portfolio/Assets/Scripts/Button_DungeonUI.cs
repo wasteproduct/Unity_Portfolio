@@ -21,19 +21,7 @@ public class Button_DungeonUI : MonoBehaviour
         interactingUI.flag = true;
         cursorDisabled.flag = true;
 
-        buttons.gameObject.SetActive(false);
-        openedWindow.gameObject.SetActive(true);
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (buttons != null) buttons.gameObject.SetActive(false);
+        if (openedWindow != null) openedWindow.gameObject.SetActive(true);
     }
 }

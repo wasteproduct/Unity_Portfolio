@@ -48,7 +48,7 @@ namespace Player
             }
         }
 
-        protected override void CustomOnDisable()
+        private void OnDisable()
         {
             for (int i = 0; i < characterSlots.Length; i++)
             {
