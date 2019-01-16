@@ -10,10 +10,21 @@ public class UI_Window_ComposeTeam : UI_Window_Base
     [SerializeField]
     private Player_Main playerMain;
     [SerializeField]
+    private UI_TeamSlot[] teamSlots;
+    [SerializeField]
     private UI_CharacterSlot_ComposingTeam[] characterSlots;
 
-    public void SelectSlot()
+    public void SelectCharacterSlot()
     {
+        for (int i = 0; i < characterSlots.Length; i++)
+        {
+            characterSlots[i].HighlightSlot(false);
+        }
+
+        for (int i = 0; i < teamSlots.Length; i++)
+        {
+            teamSlots[i].SetInteractable(true);
+        }
         //for (int i = 0; i < characterSlots.Length; i++)
         //{
         //    if (characterSlots[i].gameObject.activeSelf == false) continue;
@@ -32,6 +43,13 @@ public class UI_Window_ComposeTeam : UI_Window_Base
         for (int i = 0; i < slots.Length; i++)
         {
             characterSlots[i] = slots[i];
+        }
+
+        UI_TeamSlot[] slots2 = GetComponentsInChildren<UI_TeamSlot>(true);
+
+        for (int i = 0; i < slots2.Length; i++)
+        {
+            teamSlots[i] = slots2[i];
         }
     }
 
