@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 29339976}
   - component: {fileID: 29339975}
   - component: {fileID: 29339974}
+  - component: {fileID: 29339977}
   m_Layer: 5
   m_Name: ToDungeon
   m_TagString: Untagged
@@ -281,7 +282,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 29339975}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955680558}
+        m_MethodName: ToDungeon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 979735335}
+          m_ObjectArgumentAssemblyTypeName: UI_Window_ComposeTeam, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 29339977}
+        m_MethodName: SwitchScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &29339975
@@ -317,6 +340,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29339972}
+--- !u!114 &29339977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 29339972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d765d31a237554a9ccc1a2d7efd244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Scene_Dungeon
+  confirmedContents: 
+  confirmer: {fileID: 0}
 --- !u!1 &36363719
 GameObject:
   m_ObjectHideFlags: 0
@@ -6991,6 +7028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 11400000, guid: 71267b3c1879ad6468f0b840f25cd1d8, type: 2}
+  playerTeam: {fileID: 11400000, guid: 0a8581fb919847342bd43358e755e9eb, type: 2}
 --- !u!1 &958068976
 GameObject:
   m_ObjectHideFlags: 0
@@ -7410,6 +7448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 11400000, guid: 71267b3c1879ad6468f0b840f25cd1d8, type: 2}
+  characterStatus: {fileID: 1358551771}
   teamSlots:
   - {fileID: 1402090095}
   - {fileID: 1997057215}

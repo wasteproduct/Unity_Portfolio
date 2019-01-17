@@ -21,6 +21,8 @@ public class UI_TeamSlot : MonoBehaviour
 
     public void SelectSlot(UI_Window_ComposeTeam teamComposer)
     {
+        if (RegisteredCharacterSlot != null) RegisteredCharacterSlot.SetDrafted(null, false);
+
         RegisteredCharacterSlot = teamComposer.SelectedCharacterSlot;
 
         GetComponent<Image>().sprite = RegisteredCharacterSlot.SlotCharacter.Portrait;

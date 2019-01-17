@@ -23,8 +23,6 @@ public class Manager_Interactors : ScriptableObject
 
     public void SetInteractors(Map_Data mapData, bool editor)
     {
-        DestroyInteractors(editor);
-
         SetNPC(mapData);
         SetTreasureBoxes(mapData);
     }

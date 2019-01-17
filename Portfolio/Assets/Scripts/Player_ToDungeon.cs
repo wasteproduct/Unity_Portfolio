@@ -109,11 +109,11 @@ public class Player_ToDungeon : MonoBehaviour
 
     private void ClearPlayerTeam()
     {
-        playerMain.playerTeam.captain = null;
-        for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
-        {
-            playerMain.playerTeam.teamFellow[i] = null;
-        }
+        //playerMain.playerTeam.captain = null;
+        //for (int i = 0; i < playerMain.playerTeam.teamFellow.Length; i++)
+        //{
+        //    playerMain.playerTeam.teamFellow[i] = null;
+        //}
     }
 
     private void AddTeamFellow()

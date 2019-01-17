@@ -15,12 +15,12 @@ public class Manager_BaseCamp : MonoBehaviour
     {
         Player_ToDungeon toDungeon = this.GetComponent<Player_ToDungeon>();
 
-        playerTeam.captain = toDungeon.slotCaptain.GetComponent<Player_TeamSlot>().AddedTeamFellowSlot.CorrespondingCharacter;
+        //playerTeam.captain = toDungeon.slotCaptain.GetComponent<Player_TeamSlot>().AddedTeamFellowSlot.CorrespondingCharacter;
         for (int i = 0; i < toDungeon.slotFellow.Length; i++)
         {
             if (toDungeon.slotFellow[i].GetComponent<Player_TeamSlot>().AddedTeamFellowSlot == null) continue;
 
-            playerTeam.teamFellow[i] = toDungeon.slotFellow[i].GetComponent<Player_TeamSlot>().AddedTeamFellowSlot.CorrespondingCharacter;
+            //playerTeam.teamFellow[i] = toDungeon.slotFellow[i].GetComponent<Player_TeamSlot>().AddedTeamFellowSlot.CorrespondingCharacter;
         }
 
         SceneManager.LoadScene("Scene_Dungeon");

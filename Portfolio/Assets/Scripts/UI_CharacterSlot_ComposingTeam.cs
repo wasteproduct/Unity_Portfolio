@@ -15,15 +15,16 @@ public class UI_CharacterSlot_ComposingTeam : MonoBehaviour
     public Character_Base SlotCharacter { get; private set; }
     public bool Drafted { get; private set; }
 
-    public void Unregister()
-    {
-        RegisteredTeamSlot = null;
-    }
-
     public void SelectSlot()
     {
         if (Drafted == true) SetDrafted(null, false);
-        else HighlightSlot(true);
+        else
+        {
+            HighlightSlot(true);
+
+            if (SlotCharacter.InstantiatedModel == null) return;
+            SlotCharacter.InstantiatedModel.gameObject.SetActive(true);
+        }
     }
 
     public void HighlightSlot(bool flag) { highlightFrame.gameObject.SetActive(flag); }

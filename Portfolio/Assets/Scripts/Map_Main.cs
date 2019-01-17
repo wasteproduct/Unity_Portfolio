@@ -63,6 +63,8 @@ public class Map_Main : MonoBehaviour
 
     private void SetInteractors(bool editor)
     {
+        if (editor == true) return;
+
         managerInteractors.SetInteractors(MapData, editor);
     }
 

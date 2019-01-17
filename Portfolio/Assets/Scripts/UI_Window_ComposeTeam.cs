@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Character;
 using Player;
 
@@ -10,16 +8,17 @@ public class UI_Window_ComposeTeam : UI_Window_Base
     [SerializeField]
     private Player_Main playerMain;
     [SerializeField]
+    private UI_CharacterStatus characterStatus;
+    [SerializeField]
     private UI_TeamSlot[] teamSlots;
     [SerializeField]
     private UI_CharacterSlot_ComposingTeam[] characterSlots;
 
     public UI_CharacterSlot_ComposingTeam SelectedCharacterSlot { get; private set; }
+    public UI_TeamSlot[] TeamSlots { get { return teamSlots; } }
 
     public void SelectTeamSlot(UI_TeamSlot selectedSlot)
     {
-        //selectedSlot.
-
         SelectedCharacterSlot.SetDrafted(selectedSlot, true);
 
         for (int i = 0; i < teamSlots.Length; i++)
@@ -39,7 +38,12 @@ public class UI_Window_ComposeTeam : UI_Window_Base
 
         for (int i = 0; i < characterSlots.Length; i++)
         {
+            if (characterSlots[i].gameObject.activeSelf == false) continue;
+
             characterSlots[i].HighlightSlot(false);
+
+            if (characterSlots[i].SlotCharacter.InstantiatedModel == null) continue;
+            characterSlots[i].SlotCharacter.InstantiatedModel.gameObject.SetActive(false);
         }
 
         for (int i = 0; i < teamSlots.Length; i++)
@@ -48,6 +52,8 @@ public class UI_Window_ComposeTeam : UI_Window_Base
         }
 
         SelectedCharacterSlot = selectedSlot;
+
+        characterStatus.UpdateStatusValue(selectedSlot.SlotCharacter);
     }
 
     public void Editor_GetSlots()
@@ -73,6 +79,15 @@ public class UI_Window_ComposeTeam : UI_Window_Base
         {
             teamSlots[i].Unregister();
             teamSlots[i].SetInteractable(false);
+        }
+
+        characterStatus.ClearValues();
+
+        for (int i = 0; i < characterSlots.Length; i++)
+        {
+            if (characterSlots[i].gameObject.activeSelf == false) continue;
+
+            characterSlots[i].SlotCharacter.InstantiatedModel.gameObject.SetActive(false);
         }
     }
 

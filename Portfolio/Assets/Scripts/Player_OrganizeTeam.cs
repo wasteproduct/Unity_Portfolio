@@ -87,7 +87,7 @@ namespace Player
 
         public void AddTeamFellow(Character_Base selectedCharacter, int slotIndex)
         {
-            playerMain.playerTeam.teamFellow[slotIndex] = selectedCharacter;
+            //playerMain.playerTeam.teamFellow[slotIndex] = selectedCharacter;
             CancelSelection();
         }
 
@@ -109,7 +109,7 @@ namespace Player
 
         private void SetCaptain()
         {
-            playerMain.playerTeam.captain = playerMain.Characters[0];
+            //playerMain.playerTeam.captain = playerMain.Characters[0];
 
             //slotCaptain.GetComponent<Player_TeamSlot>().Initialize(playerMain.playerTeam.captain, AddTeamFellow);
         }
@@ -141,7 +141,7 @@ namespace Player
 
             if (IndexOutOfRange(selectedSlotIndex, 3) == true) return;
 
-            playerMain.playerTeam.teamFellow[selectedSlotIndex] = pickedCharacter;
+            //playerMain.playerTeam.teamFellow[selectedSlotIndex] = pickedCharacter;
 
             for (int i = 0; i < characterDatabase.Portraits.Count; i++)
             {

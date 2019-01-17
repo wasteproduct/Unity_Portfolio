@@ -8,6 +8,13 @@ public class Manager_BaseCamp2 : MonoBehaviour
 {
     [SerializeField]
     private Player_Main playerMain;
+    [SerializeField]
+    private Player_Team playerTeam;
+
+    public void ToDungeon(UI_Window_ComposeTeam teamComposer)
+    {
+        playerTeam.SetTeam(teamComposer.TeamSlots);
+    }
 
     // Use this for initialization
     void Start()

@@ -34,7 +34,7 @@ namespace Player
             GameObject captain = null;
             for (int i = 0; i < characterDatabase.Models.Count; i++)
             {
-                if (characterDatabase.Models[i].typeID == playerTeam.captain.TypeID)
+                if (characterDatabase.Models[i].typeID == playerTeam.Captain.TypeID)
                 {
                     captain = Instantiate(characterDatabase.Models[i].modelPrefab, new Vector3(currentTileX.value, 0.0f, currentTileZ.value), Quaternion.identity);
                     break;
@@ -54,13 +54,13 @@ namespace Player
             PlayerCharacters.Add(captain);
 
             int offset = -1;
-            for (int i = 0; i < playerTeam.teamFellow.Length; i++)
+            for (int i = 0; i < playerTeam.TeamFellows.Length; i++)
             {
-                if (playerTeam.teamFellow[i] == null) continue;
+                if (playerTeam.TeamFellows[i] == null) continue;
 
                 for (int j = 0; j < characterDatabase.Models.Count; j++)
                 {
-                    if (playerTeam.teamFellow[i].TypeID == characterDatabase.Models[j].typeID)
+                    if (playerTeam.TeamFellows[i].TypeID == characterDatabase.Models[j].typeID)
                     {
                         GameObject newFellow = Instantiate(characterDatabase.Models[j].modelPrefab, new Vector3(currentTileX.value, 0.0f, currentTileZ.value + offset), Quaternion.identity);
                         newFellow.GetComponent<Character_InDungeon>().Initialize(false, mapData, dungeonPlayManager.GetComponent<Manager_DungeonPlay>());

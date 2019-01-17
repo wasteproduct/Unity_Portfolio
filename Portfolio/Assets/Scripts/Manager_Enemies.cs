@@ -8,9 +8,9 @@ public class Manager_Enemies : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //CreateEnemyZones();
+        CreateEnemyZones();
 
-        Test_BossOnly();
+        //Test_BossOnly();
     }
 
     // Update is called once per frame
