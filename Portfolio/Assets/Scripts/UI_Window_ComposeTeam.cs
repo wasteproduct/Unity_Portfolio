@@ -14,8 +14,29 @@ public class UI_Window_ComposeTeam : UI_Window_Base
     [SerializeField]
     private UI_CharacterSlot_ComposingTeam[] characterSlots;
 
-    public void SelectCharacterSlot()
+    public UI_CharacterSlot_ComposingTeam SelectedCharacterSlot { get; private set; }
+
+    public void SelectTeamSlot(UI_TeamSlot selectedSlot)
     {
+        //selectedSlot.
+
+        SelectedCharacterSlot.SetDrafted(selectedSlot, true);
+
+        for (int i = 0; i < teamSlots.Length; i++)
+        {
+            teamSlots[i].SetInteractable(false);
+        }
+    }
+
+    public void SelectCharacterSlot(UI_CharacterSlot_ComposingTeam selectedSlot)
+    {
+        if (selectedSlot.Drafted == true)
+        {
+            selectedSlot.RegisteredTeamSlot.Unregister();
+
+            return;
+        }
+
         for (int i = 0; i < characterSlots.Length; i++)
         {
             characterSlots[i].HighlightSlot(false);
@@ -25,15 +46,8 @@ public class UI_Window_ComposeTeam : UI_Window_Base
         {
             teamSlots[i].SetInteractable(true);
         }
-        //for (int i = 0; i < characterSlots.Length; i++)
-        //{
-        //    if (characterSlots[i].gameObject.activeSelf == false) continue;
 
-        //    characterSlots[i].HighlightSlot(false);
-
-        //    if (characterSlots[i].SlotCharacter.InstantiatedModel == null) continue;
-        //    characterSlots[i].SlotCharacter.InstantiatedModel.gameObject.SetActive(false);
-        //}
+        SelectedCharacterSlot = selectedSlot;
     }
 
     public void Editor_GetSlots()
@@ -53,6 +67,15 @@ public class UI_Window_ComposeTeam : UI_Window_Base
         }
     }
 
+    private void OnDisable()
+    {
+        for (int i = 0; i < teamSlots.Length; i++)
+        {
+            teamSlots[i].Unregister();
+            teamSlots[i].SetInteractable(false);
+        }
+    }
+
     private void OnEnable()
     {
         List<Character_Base> playerCharacters = playerMain.Characters;
@@ -62,5 +85,7 @@ public class UI_Window_ComposeTeam : UI_Window_Base
             characterSlots[i].gameObject.SetActive(true);
             characterSlots[i].SetSlot(playerCharacters[i]);
         }
+
+        SelectedCharacterSlot = null;
     }
 }
