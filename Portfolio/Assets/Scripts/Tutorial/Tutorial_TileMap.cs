@@ -1,16 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Tutorial_TileMap : MonoBehaviour {
+namespace Tutorial
+{
+    public abstract class Tutorial_TileMap : MonoBehaviour
+    {
+        public class Tutorial_Tile
+        {
+            public enum TileType
+            {
+                None,
+                Floor
+            }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+            public Tutorial_Tile(int x, int z, TileType type = TileType.None)
+            {
+                X = x;
+                Z = z;
+                Type = type;
+            }
+
+            public int X { get; private set; }
+            public int Z { get; private set; }
+            public TileType Type { get; set; }
+        }
+
+        [SerializeField]
+        protected int row;
+        [SerializeField]
+        protected int column;
+        [SerializeField]
+        protected GameObject tilePrefab;
+    }
 }

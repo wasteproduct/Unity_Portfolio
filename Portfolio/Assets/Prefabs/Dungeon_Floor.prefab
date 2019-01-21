@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4969611833119518}
+  - component: {fileID: 114334010528041048}
   m_Layer: 0
   m_Name: Dungeon_Floor
   m_TagString: Untagged
@@ -112,3 +113,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779118844935974}
   m_Mesh: {fileID: 4300000, guid: 5ca67efe11d80b148b8a350656cb158d, type: 3}
+--- !u!114 &114334010528041048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303644814882566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae505e1f6f9fa34d8af72ebc56715ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
