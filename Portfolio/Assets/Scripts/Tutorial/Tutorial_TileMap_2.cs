@@ -9,13 +9,6 @@ namespace Tutorial
     [RequireComponent(typeof(MeshRenderer))]
     public class Tutorial_TileMap_2 : Tutorial_TileMap
     {
-        public void DiscardMap()
-        {
-            GetComponent<MeshCollider>().sharedMesh = null;
-            GetComponent<MeshRenderer>().materials = new Material[0];
-            GetComponent<MeshFilter>().mesh = null;
-        }
-
         public void GenerateMap()
         {
             SetTiles();
@@ -26,8 +19,6 @@ namespace Tutorial
 
             CombineFloors();
         }
-
-        public Tutorial_Tile[,] Tiles { get; private set; }
 
         private void CombineFloors()
         {
@@ -86,49 +77,6 @@ namespace Tutorial
 
                     Instantiate(tilePrefab, position, Quaternion.identity, transform);
                 }
-            }
-        }
-
-        private void SetFloors()
-        {
-            for (int z = 0; z < column; z++)
-            {
-                if (z % 2 == 1) continue;
-
-                for (int x = 0; x < row; x++)
-                {
-                    Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
-                }
-            }
-
-            const int left = 0;
-            const int right = 1;
-            int direction = right;
-
-            for (int z = 0; z < column; z++)
-            {
-                if (z % 2 == 0) continue;
-
-                int x;
-
-                switch (direction)
-                {
-                    case left:
-                        x = 0;
-                        break;
-                    case right:
-                        x = row - 1;
-                        break;
-                    default:
-                        print("ERROR");
-                        return;
-                }
-
-                Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
-
-                direction++;
-
-                if (direction > right) direction = left;
             }
         }
 

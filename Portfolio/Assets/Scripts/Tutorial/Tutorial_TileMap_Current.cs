@@ -9,5 +9,12 @@ namespace Tutorial
         public Tutorial_TileMap CurrentMap { get; private set; }
 
         public void SetCurrentMap(Tutorial_TileMap tileMap) { CurrentMap = tileMap; }
+
+        public void DiscardMap()
+        {
+            GetComponent<MeshCollider>().sharedMesh = null;
+            GetComponent<MeshRenderer>().materials = new Material[0];
+            GetComponent<MeshFilter>().mesh = null;
+        }
     }
 }

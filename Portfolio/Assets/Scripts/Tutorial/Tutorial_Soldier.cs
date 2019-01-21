@@ -6,7 +6,6 @@ namespace Tutorial
 {
     public class Tutorial_Soldier : MonoBehaviour
     {
-
         // Use this for initialization
         void Start()
         {

@@ -16,13 +16,5 @@ public class Inspector_Tutorial_TileMap2 : Editor
 
             EditorUtility.SetDirty(tileMap);
         }
-
-        if (GUILayout.Button("Discard Map"))
-        {
-            Tutorial_TileMap_2 tileMap = (Tutorial_TileMap_2)target;
-            tileMap.DiscardMap();
-
-            EditorUtility.SetDirty(tileMap);
-        }
     }
 }
