@@ -37,7 +37,7 @@ namespace Tutorial
             FinalTrack = new List<Node_AStar>();
         }
 
-        public bool FindPath(Tutorial_TileMap.Tutorial_Tile[,] tileData, Tutorial_TileMap.Tutorial_Tile startingTile, Tutorial_TileMap.Tutorial_Tile destinationTile, bool interactorTile = false)
+        public bool FindPath(Tutorial_TileMap.Tutorial_Tile[,] tileData, Tutorial_TileMap.Tutorial_Tile startingTile, Tutorial_TileMap.Tutorial_Tile destinationTile)
         {
             if (startingTile == destinationTile) return false;
 
@@ -48,8 +48,6 @@ namespace Tutorial
             closedList.Add(currentNode);
 
             int failureCount = row * column;
-
-            if (interactorTile == true) Node[destinationTile.X, destinationTile.Z].Passable = true;
 
             while (true)
             {
@@ -97,8 +95,6 @@ namespace Tutorial
                 if (currentNode == Node[destinationTile.X, destinationTile.Z])
                 {
                     int whileBreaker = 64 * 64;
-
-                    if (interactorTile == true) currentNode = currentNode.Parent;
 
                     while (true)
                     {
