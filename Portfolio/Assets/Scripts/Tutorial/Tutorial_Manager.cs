@@ -16,7 +16,9 @@ namespace Tutorial
         [SerializeField]
         private GameObject traceMark;
         [SerializeField]
-        private Tutorial_TileMap_Current tileMap;
+        private Tutorial_TileMap tileMap;
+        [SerializeField]
+        private int mapPatternNumber;
 
         private Tutorial_AStar aStar;
         private Tutorial_TileMap.Tutorial_Tile[,] tiles;
@@ -27,8 +29,26 @@ namespace Tutorial
             soldier.gameObject.transform.position += new Vector3(0, 0, 1);
         }
 
+        private void Start()
+        {
+            tileMap.GenerateMap(mapPatternNumber);
+            tiles = tileMap.Tiles;
+
+            trace = new List<GameObject>();
+
+            aStar = new Tutorial_AStar();
+            aStar.Initialize(tileMap);
+        }
+
         private void Update()
         {
+            MoveSoldier();
+        }
+
+        private void MoveSoldier()
+        {
+            if (soldier.Moving == true) return;
+
             if (Input.GetMouseButtonUp(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,13 +56,19 @@ namespace Tutorial
 
                 if (Physics.Raycast(ray, out hitInfo, 100.0f, layerTileMap))
                 {
-                    int x = (int)hitInfo.point.x;
-                    int z = (int)hitInfo.point.z;
+                    int x = (int)(hitInfo.point.x + .5f);
+                    int z = (int)(hitInfo.point.z + .5f);
 
                     int soldierX = (int)soldier.gameObject.transform.position.x;
                     int soldierZ = (int)soldier.gameObject.transform.position.z;
 
-                    aStar.FindPath(tiles, tiles[soldierX, soldierZ], tiles[x, z]);
+                    bool pathFound = aStar.FindPath(tiles, tiles[soldierX, soldierZ], tiles[x, z]);
+
+                    if (pathFound == false)
+                    {
+                        print("Failed to find path.");
+                        return;
+                    }
 
                     ClearTraceMark();
 
@@ -52,6 +78,8 @@ namespace Tutorial
                     {
                         trace.Add(Instantiate(traceMark, new Vector3(finalTrack[i].X, 0, finalTrack[i].Z), Quaternion.identity));
                     }
+
+                    StartCoroutine(soldier.Move(finalTrack));
                 }
             }
         }
@@ -63,18 +91,6 @@ namespace Tutorial
                 Destroy(trace[i]);
             }
             trace.Clear();
-        }
-
-        private void Start()
-        {
-            // this is null
-            print(tileMap.CurrentMap);
-            tiles = tileMap.CurrentMap.Tiles;
-
-            trace = new List<GameObject>();
-
-            aStar = new Tutorial_AStar();
-            aStar.Initialize(tileMap.CurrentMap);
         }
     }
 }

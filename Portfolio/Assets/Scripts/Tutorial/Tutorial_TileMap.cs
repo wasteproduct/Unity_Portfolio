@@ -36,15 +36,51 @@ namespace Tutorial
         public int Column { get { return column; } }
         public Tutorial_Tile[,] Tiles { get; private set; }
 
-        public void GenerateMap()
+        public void GenerateMap(int patternNumber)
         {
+            DiscardMap();
+
             SetTiles();
 
-            SetFloors();
+            switch (patternNumber)
+            {
+                case 1:
+                    SetFloors_Pattern1();
+                    break;
+                case 2:
+                    SetFloors_Pattern2();
+                    break;
+                case 3:
+                    SetFloors_Pattern3();
+                    break;
+                default:
+                    SetFloors_Pattern1();
+                    return;
+            }
 
             InstantiateTiles();
 
             CombineFloors();
+        }
+
+        public void DiscardMap()
+        {
+            GetComponent<MeshCollider>().sharedMesh = null;
+            GetComponent<MeshRenderer>().materials = new Material[0];
+            GetComponent<MeshFilter>().mesh = null;
+        }
+
+        private void SetTiles()
+        {
+            Tiles = new Tutorial_Tile[row, column];
+
+            for (int z = 0; z < column; z++)
+            {
+                for (int x = 0; x < row; x++)
+                {
+                    Tiles[x, z] = new Tutorial_Tile(x, z);
+                }
+            }
         }
 
         private void CombineFloors()
@@ -107,7 +143,50 @@ namespace Tutorial
             }
         }
 
-        private void SetFloors()
+        private void SetFloors_Pattern2()
+        {
+            for (int x = 0; x < row; x++)
+            {
+                if (x % 2 == 1) continue;
+
+                for (int z = 0; z < column; z++)
+                {
+                    Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+                }
+            }
+
+            const int top = 0;
+            const int bottom = 1;
+            int direction = top;
+
+            for (int x = 0; x < row; x++)
+            {
+                if (x % 2 == 0) continue;
+
+                int z;
+
+                switch (direction)
+                {
+                    case top:
+                        z = column - 1;
+                        break;
+                    case bottom:
+                        z = 0;
+                        break;
+                    default:
+                        print("ERROR");
+                        return;
+                }
+
+                Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+                direction++;
+
+                if (direction > bottom) direction = top;
+            }
+        }
+
+        private void SetFloors_Pattern3()
         {
             const int right = 0;
             const int up = 1;
@@ -164,11 +243,9 @@ namespace Tutorial
 
                 if ((rightX <= leftX) || (topZ <= bottomZ)) break;
             }
-
-            GetComponent<Tutorial_TileMap_Current>().SetCurrentMap(this);
         }
 
-        private void SetFloors()
+        private void SetFloors_Pattern1()
         {
             for (int z = 0; z < column; z++)
             {
@@ -208,21 +285,6 @@ namespace Tutorial
                 direction++;
 
                 if (direction > right) direction = left;
-            }
-
-            GetComponent<Tutorial_TileMap_Current>().SetCurrentMap(this);
-        }
-
-        private void SetTiles()
-        {
-            Tiles = new Tutorial_Tile[row, column];
-
-            for (int z = 0; z < column; z++)
-            {
-                for (int x = 0; x < row; x++)
-                {
-                    Tiles[x, z] = new Tutorial_Tile(x, z);
-                }
             }
         }
     }
