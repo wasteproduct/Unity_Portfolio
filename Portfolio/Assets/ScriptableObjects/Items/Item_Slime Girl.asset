@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b443c4dc4f4d54f817fed3111fd820, type: 3}
-  m_Name: Slime Girl
+  m_Name: Item_Slime Girl
   m_EditorClassIdentifier: 
   itemName: Slime Girl
   itemDescription: {fileID: 4900000, guid: b7dd8bc7b2968684e804b356bf87a98b, type: 3}
   itemImage: {fileID: 21300000, guid: 2ef2435766fce8b49bf39c246d565dbe, type: 3}
   iD: {fileID: 11400000, guid: 3d0cb068125668b48b87f87b4eba9f70, type: 2}
-  type: {fileID: 11400000, guid: 8a4822089fb5136408b50e13d7a11000, type: 2}
+  itemType: {fileID: 11400000, guid: 8a4822089fb5136408b50e13d7a11000, type: 2}
   inventory: {fileID: 11400000, guid: 82159d040a6ac0b4c90220eb6ae1abdd, type: 2}
   eventGetItem: {fileID: 11400000, guid: 6e1b31317f7836e468482373794a1385, type: 2}
   eventUseItem: {fileID: 11400000, guid: 8056b2d9258756647979c36aa91c59a8, type: 2}

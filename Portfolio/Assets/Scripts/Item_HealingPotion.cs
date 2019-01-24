@@ -17,6 +17,7 @@ public class Item_HealingPotion : Item_Base
         newPotion.itemDescription = itemDescription;
         newPotion.itemImage = itemImage;
         newPotion.iD = iD;
+        newPotion.itemType = itemType;
         newPotion.inventory = inventory;
         newPotion.eventGetItem = eventGetItem;
         newPotion.eventUseItem = eventUseItem;

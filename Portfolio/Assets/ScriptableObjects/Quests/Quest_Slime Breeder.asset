@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d93ab02a538dc4cab8819e2d08e694, type: 3}
-  m_Name: Quest_SlimeBreeder
+  m_Script: {fileID: 11500000, guid: 839dcd2f1b7cc3f4d87351f7cbf07db2, type: 3}
+  m_Name: Quest_Slime Breeder
   m_EditorClassIdentifier: 
   questText: {fileID: 4900000, guid: 3417c73804d28c54190bab6f2eb1656d, type: 3}
   objective: {fileID: 4900000, guid: ad68cd5d0a21e414f969f0471f571623, type: 3}
   toComplete: 3
+  slimeGirl: {fileID: 11400000, guid: 5df5df772b1e51042b87bd24aea30999, type: 2}

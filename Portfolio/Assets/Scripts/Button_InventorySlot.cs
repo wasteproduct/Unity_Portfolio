@@ -11,6 +11,8 @@ public class Button_InventorySlot : MonoBehaviour
     private Event_SelectItem eventSelectItem;
     [SerializeField]
     private Sprite slotImage;
+    [SerializeField]
+    private Item_Type typeExpendable;
 
     public Item_Base CorrespondingItem { get; private set; }
     public int SlotNumber { get; private set; }
@@ -31,6 +33,8 @@ public class Button_InventorySlot : MonoBehaviour
 
     public void SelectItem()
     {
+        if (CorrespondingItem.ItemType != typeExpendable) return;
+
         eventSelectItem.SelectedItem = CorrespondingItem;
         eventSelectItem.SelectedSlotNumber = SlotNumber;
         eventSelectItem.Run();

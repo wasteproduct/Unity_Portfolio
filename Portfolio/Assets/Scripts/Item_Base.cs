@@ -11,7 +11,7 @@ public abstract class Item_Base : ScriptableObject
     [SerializeField]
     protected Item_ID iD;
     [SerializeField]
-    protected Item_Type type;
+    protected Item_Type itemType;
     [SerializeField]
     protected Player.Player_Inventory inventory;
     [SerializeField]
@@ -24,6 +24,7 @@ public abstract class Item_Base : ScriptableObject
     public string ItemName { get { return itemName; } }
     public string ItemDescription { get { return itemDescription.text; } }
     public Sprite ItemImage { get { return itemImage; } }
+    public Item_Type ItemType { get { return itemType; } }
 
     public abstract void GetNewItem();
     public abstract void UseItem();

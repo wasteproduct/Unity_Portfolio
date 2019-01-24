@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d93ab02a538dc4cab8819e2d08e694, type: 3}
-  m_Name: Quest_StrawberryJuice
+  m_Script: {fileID: 11500000, guid: c9fefa4f3a779a348a8fbfd7aa3c16a4, type: 3}
+  m_Name: Quest_Strawberry Juice
   m_EditorClassIdentifier: 
   questText: {fileID: 4900000, guid: c77835f30a77d2e499e2dbc4902d57d8, type: 3}
   objective: {fileID: 4900000, guid: 09be52af54201374ab8035ad14194272, type: 3}
