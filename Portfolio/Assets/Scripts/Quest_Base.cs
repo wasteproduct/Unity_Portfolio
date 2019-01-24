@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "", menuName = "", order = 1)]
-public class Quest_Base : ScriptableObject
+public abstract class Quest_Base : ScriptableObject
 {
     [SerializeField]
-    private TextAsset questText;
+    protected TextAsset questText;
     [SerializeField]
-    private TextAsset objective;
+    protected TextAsset objective;
+    [SerializeField]
+    protected int toComplete;
 
     public string QuestText { get { return questText.text; } }
     public string Objective { get { return objective.text; } }
     public string QuestName { get { return questText.name; } }
     public bool QuestGiven { get; private set; }
+    public int Progress { get; private set; }
+    public bool ProgressionComplete { get { return Progress >= toComplete; } }
 
-    public void Given(bool flag) { QuestGiven = flag; }
+    public void UpdateProgression() { Progress++; }
+
+    public void Given(bool flag)
+    {
+        QuestGiven = flag;
+        Progress = 0;
+    }
 }

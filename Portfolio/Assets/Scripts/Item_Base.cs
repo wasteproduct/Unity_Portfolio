@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Item_Base : ScriptableObject
 {
     [SerializeField]
     protected string itemName;
     [SerializeField]
-    protected string itemDescription;
+    protected TextAsset itemDescription;
     [SerializeField]
     protected Sprite itemImage;
     [SerializeField]
     protected Item_ID iD;
+    [SerializeField]
+    protected Item_Type type;
     [SerializeField]
     protected Player.Player_Inventory inventory;
     [SerializeField]
@@ -22,7 +22,7 @@ public abstract class Item_Base : ScriptableObject
     protected Event_SelectItem eventSelectItem;
 
     public string ItemName { get { return itemName; } }
-    public string ItemDescription { get { return itemDescription; } }
+    public string ItemDescription { get { return itemDescription.text; } }
     public Sprite ItemImage { get { return itemImage; } }
 
     public abstract void GetNewItem();

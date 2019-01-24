@@ -72,6 +72,7 @@ public class Character_InBattle : MonoBehaviour
         {
             Dead = true;
             stateManager.SetState(dead);
+            GetComponent<Character_QuestHandler>().UpdateQuestProgression();
         }
         else stateManager.SetState(damaged);
 

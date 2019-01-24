@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "", menuName = "Item/Healing Potion", order = 1)]
 public class Item_HealingPotion : Item_Base
