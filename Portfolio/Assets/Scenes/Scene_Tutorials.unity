@@ -30262,6 +30262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677551627}
   - component: {fileID: 1677551626}
+  - component: {fileID: 1677551628}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -30280,6 +30281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c88074d1139f94b9957aea35b62350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabledScript: {fileID: 1677551628}
   soldier: {fileID: 898855667}
   layerTileMap:
     serializedVersion: 2
@@ -30300,6 +30302,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1677551628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677551625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f02db7492744a4e86bb3a035f47b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714133978
 GameObject:
   m_ObjectHideFlags: 0

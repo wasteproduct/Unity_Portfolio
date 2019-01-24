@@ -2035,7 +2035,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282840810}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -4017,6 +4017,7 @@ GameObject:
   - component: {fileID: 596837751}
   - component: {fileID: 596837752}
   - component: {fileID: 596837753}
+  - component: {fileID: 596837755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4251,6 +4252,23 @@ MonoBehaviour:
   currentTileX: {fileID: 11400000, guid: fd2272d4d73fdac40ad7d6591ce2fbdb, type: 2}
   currentTileZ: {fileID: 11400000, guid: cdf3ed22e699f0947887c9b2806fc5b8, type: 2}
   minimapIcon: {fileID: 1577069689}
+--- !u!114 &596837755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596837744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93eca22cbf70f5a4ebf2d02ae17e854a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registeredEvent: {fileID: 11400000, guid: 5b672c6319b9caf4e86869fe5276cbe1, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &617621919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10310,6 +10328,7 @@ GameObject:
   - component: {fileID: 1547688389}
   - component: {fileID: 1547688391}
   - component: {fileID: 1547688390}
+  - component: {fileID: 1547688392}
   m_Layer: 5
   m_Name: AcceptedQuest
   m_TagString: Untagged
@@ -10392,6 +10411,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &1547688392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547688387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93eca22cbf70f5a4ebf2d02ae17e854a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registeredEvent: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1553519080
 GameObject:
   m_ObjectHideFlags: 0

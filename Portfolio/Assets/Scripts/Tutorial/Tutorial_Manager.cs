@@ -10,6 +10,8 @@ namespace Tutorial
     public class Tutorial_Manager : MonoBehaviour
     {
         [SerializeField]
+        private Tutorial_DisabledScript disabledScript;
+        [SerializeField]
         private Tutorial_Soldier soldier;
         [SerializeField]
         private LayerMask layerTileMap;
@@ -42,7 +44,17 @@ namespace Tutorial
 
         private void Update()
         {
-            MoveSoldier();
+            //MoveSoldier();
+            Experiment();
+        }
+
+        private void Experiment()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                int value = disabledScript.Value;
+                print(value);
+            }
         }
 
         private void MoveSoldier()

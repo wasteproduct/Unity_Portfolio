@@ -70,17 +70,5 @@ namespace Player
                 PlayerCharacters.Add(newPortrait.GetComponent<Character_InDungeonPortrait>());
             }
         }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

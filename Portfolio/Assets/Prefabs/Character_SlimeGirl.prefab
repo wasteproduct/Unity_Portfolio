@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 114846766983848692}
   - component: {fileID: 114120981081549846}
   - component: {fileID: 136221815343652590}
+  - component: {fileID: 114758164438506162}
   m_Layer: 11
   m_Name: Character_SlimeGirl
   m_TagString: Untagged
@@ -2626,6 +2627,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114758164438506162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603032203583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225eabaed8e3a2a41a43b1fd02de36ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventKillSlimeGirl: {fileID: 11400000, guid: 5b672c6319b9caf4e86869fe5276cbe1, type: 2}
 --- !u!114 &114783822516641438
 MonoBehaviour:
   m_ObjectHideFlags: 1
