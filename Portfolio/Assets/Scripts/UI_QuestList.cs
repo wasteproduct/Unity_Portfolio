@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UI_QuestList : MonoBehaviour
 {
@@ -9,12 +7,12 @@ public class UI_QuestList : MonoBehaviour
 
     public void SetList(Interactor_NPC talkingNPC)
     {
-        Quest_Base[] unassignedQuests = talkingNPC.GetUnassignedQuests();
+        Quest_Base[] displayedQuests = talkingNPC.GetDisplayedQuests();
 
-        for (int i = 0; i < unassignedQuests.Length; i++)
+        for (int i = 0; i < displayedQuests.Length; i++)
         {
             questButton[i].gameObject.SetActive(true);
-            questButton[i].SetButton(unassignedQuests[i]);
+            questButton[i].SetButton(displayedQuests[i]);
         }
     }
 

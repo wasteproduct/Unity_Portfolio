@@ -11,6 +11,12 @@ public class UI_QuestButton : MonoBehaviour
     private Button_Close declineButton;
     [SerializeField]
     private Manager_Quest questManager;
+    [SerializeField]
+    private Image completeMark;
+    [SerializeField]
+    private Button_AcceptQuest buttonAcceptQuest;
+    [SerializeField]
+    private UI_Button_FinishQuest buttonFinishQuest;
 
     public Quest_Base Quest { get; private set; }
 
@@ -20,7 +26,7 @@ public class UI_QuestButton : MonoBehaviour
 
         if (interactingNPC == false) return;
 
-        ModifyDialogueBox();
+        UpdateDialogueBox();
     }
 
     public void SetButton(Quest_Base quest)
@@ -28,12 +34,23 @@ public class UI_QuestButton : MonoBehaviour
         Quest = quest;
 
         questName.text = Quest.QuestName;
+
+        completeMark.gameObject.SetActive(Quest.ProgressionComplete);
     }
 
-    private void ModifyDialogueBox()
+    private void UpdateDialogueBox()
     {
         dialogueBox.SetContents(Quest.QuestText);
-
-        declineButton.SetButtonText("Sorry");
+        
+        if (Quest.ProgressionComplete == false)
+        {
+            buttonAcceptQuest.gameObject.SetActive(true);
+            declineButton.SetButtonText("Sorry");
+        }
+        else
+        {
+            declineButton.gameObject.SetActive(false);
+            buttonFinishQuest.gameObject.SetActive(true);
+        }
     }
 }

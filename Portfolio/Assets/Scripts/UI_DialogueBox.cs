@@ -33,6 +33,7 @@ public class UI_DialogueBox : MonoBehaviour
 
         okayButton.gameObject.SetActive(false);
 
+        declineButton.gameObject.SetActive(true);
         declineButton.SetButtonText("Bye");
 
         questList.gameObject.SetActive(true);

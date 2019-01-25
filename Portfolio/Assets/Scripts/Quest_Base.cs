@@ -15,6 +15,7 @@ public abstract class Quest_Base : ScriptableObject
     public bool QuestGiven { get; protected set; }
     public int Progress { get; protected set; }
     public bool ProgressionComplete { get; protected set; }
+    public bool QuestComplete { get; protected set; }
 
     public void UpdateProgression()
     {
@@ -35,6 +36,8 @@ public abstract class Quest_Base : ScriptableObject
         Progress = 0;
 
         ProgressionComplete = false;
+
+        QuestComplete = false;
     }
 
     public abstract void ProgressionCompleted();

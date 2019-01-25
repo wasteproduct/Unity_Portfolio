@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 114580538354883644}
   - component: {fileID: 114336525524562120}
   - component: {fileID: 136404012882342370}
+  - component: {fileID: 114280037391907976}
   m_Layer: 11
   m_Name: Character_BigBully
   m_TagString: Untagged
@@ -2571,6 +2572,19 @@ MonoBehaviour:
   conditionPanel: {fileID: 1902439976159774}
   debuffPrefab: {fileID: 1308071259831590, guid: 73c08cd3c1da68349add3444f4f5df2d,
     type: 2}
+--- !u!114 &114280037391907976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495714188582056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d7ce32d94c78148b6270ef26b1b0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relevantQuests:
+  - {fileID: 11400000, guid: 7997f2bd0b57c2c49abfe9d74d428662, type: 2}
 --- !u!114 &114336525524562120
 MonoBehaviour:
   m_ObjectHideFlags: 1

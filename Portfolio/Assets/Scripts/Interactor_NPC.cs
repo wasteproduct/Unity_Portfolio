@@ -13,6 +13,26 @@ public class Interactor_NPC : Interactor_Base
     public string NPCName { get { return nPCName; } }
     public Quest_Base[] NPCQuest { get { return nPCQuest; } }
 
+    public Quest_Base[] GetDisplayedQuests()
+    {
+        List<Quest_Base> result = new List<Quest_Base>();
+
+        for (int i = 0; i < NPCQuest.Length; i++)
+        {
+            if (NPCQuest[i].QuestComplete == true) continue;
+
+            if (NPCQuest[i].QuestGiven == false) result.Add(NPCQuest[i]);
+            else
+            {
+                if (NPCQuest[i].ProgressionComplete == false) continue;
+
+                result.Add(NPCQuest[i]);
+            }
+        }
+
+        return result.ToArray();
+    }
+
     public Quest_Base[] GetUnassignedQuests()
     {
         List<Quest_Base> result = new List<Quest_Base>();
