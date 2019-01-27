@@ -24,7 +24,7 @@ public class Interactor_NPC : Interactor_Base
             if (NPCQuest[i].QuestGiven == false) result.Add(NPCQuest[i]);
             else
             {
-                if (NPCQuest[i].ProgressionComplete == false) continue;
+                if (NPCQuest[i].ProgressionComplete() == false) continue;
 
                 result.Add(NPCQuest[i]);
             }

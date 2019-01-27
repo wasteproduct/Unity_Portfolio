@@ -23,6 +23,11 @@ public class UI_DialogueBox : MonoBehaviour
 
     public void SetContents(string contents) { dialogueContents.text = contents; }
 
+    public void FinishQuest()
+    {
+        eventNPCTalking.TalkingNPC.CallReaction();
+    }
+
     public void DisplayDialogueBox()
     {
         Interactor_NPC talkingNPC = eventNPCTalking.TalkingNPC;

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
@@ -11,6 +10,23 @@ namespace Player
         private List<Item_Base> items = new List<Item_Base>();
 
         public List<Item_Base> Items { get { return items; } }
+
+        public void RemoveItem_ByID(Item_ID removedID, int removedNumber = 1)
+        {
+            int removedCount = 0;
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ItemID == removedID)
+                {
+                    items.Remove(items[i]);
+
+                    removedCount++;
+
+                    if (removedCount >= removedNumber) return;
+                }
+            }
+        }
 
         public void RemoveItem(Item_Base usedItem)
         {

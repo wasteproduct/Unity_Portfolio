@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questText: {fileID: 4900000, guid: 7342bedb62558804a8765bd8aa0e7ea1, type: 3}
   objective: {fileID: 4900000, guid: 5fdbb8f5f07055c4a82fc887b2a9740d, type: 3}
-  toComplete: 1
+  inventory: {fileID: 11400000, guid: 82159d040a6ac0b4c90220eb6ae1abdd, type: 2}
   iceCream: {fileID: 11400000, guid: dd6f77237605fef45a7860de20e39fc1, type: 2}

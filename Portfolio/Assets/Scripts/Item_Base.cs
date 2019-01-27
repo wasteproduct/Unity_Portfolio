@@ -25,6 +25,7 @@ public abstract class Item_Base : ScriptableObject
     public string ItemDescription { get { return itemDescription.text; } }
     public Sprite ItemImage { get { return itemImage; } }
     public Item_Type ItemType { get { return itemType; } }
+    public Item_ID ItemID { get { return iD; } }
 
     public abstract void GetNewItem();
     public abstract void UseItem();

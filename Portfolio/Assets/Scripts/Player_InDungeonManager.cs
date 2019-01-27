@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
@@ -18,6 +17,8 @@ namespace Player
         private Manager_Inventory inventory;
         [SerializeField]
         private Event_SelectItem eventSelectItem;
+        [SerializeField]
+        private Manager_Quest questManager;
 
         public List<Character_InDungeonPortrait> PlayerCharacters { get; private set; }
 
@@ -54,6 +55,8 @@ namespace Player
         {
             noticingWindow.gameObject.SetActive(true);
             noticingWindow.ShowNewItem();
+
+            questManager.CheckProgression();
         }
 
         public void Initialize()

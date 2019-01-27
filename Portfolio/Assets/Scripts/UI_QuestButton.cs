@@ -35,22 +35,29 @@ public class UI_QuestButton : MonoBehaviour
 
         questName.text = Quest.QuestName;
 
-        completeMark.gameObject.SetActive(Quest.ProgressionComplete);
+        completeMark.gameObject.SetActive(Quest.ProgressionComplete());
+
+        if (Quest.QuestGiven == false) completeMark.gameObject.SetActive(false);
     }
 
     private void UpdateDialogueBox()
     {
         dialogueBox.SetContents(Quest.QuestText);
-        
-        if (Quest.ProgressionComplete == false)
+
+        // 이미 받은, 완료한 퀘스트를 클릭
+        if (Quest.QuestGiven == true)
+        {
+            if (Quest.ProgressionComplete() == true)
+            {
+                declineButton.gameObject.SetActive(false);
+                buttonFinishQuest.gameObject.SetActive(true);
+            }
+        }
+        // 새로 받을 퀘스트를 클릭
+        else
         {
             buttonAcceptQuest.gameObject.SetActive(true);
             declineButton.SetButtonText("Sorry");
-        }
-        else
-        {
-            declineButton.gameObject.SetActive(false);
-            buttonFinishQuest.gameObject.SetActive(true);
         }
     }
 }

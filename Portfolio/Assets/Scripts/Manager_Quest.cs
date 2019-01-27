@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +15,34 @@ public class Manager_Quest : MonoBehaviour
 
     public UI_QuestButton SelectedQuestButton { get; set; }
     public List<Quest_Base> AcceptedQuest { get; private set; }
+
+    public void CheckProgression()
+    {
+        if (AcceptedQuest == null) return;
+
+        for (int i = 0; i < AcceptedQuest.Count; i++)
+        {
+            AcceptedQuest[i].CheckProgression();
+        }
+    }
+
+    public void FinishQuest()
+    {
+        for (int i = 0; i < AcceptedQuest.Count; i++)
+        {
+            Quest_Base completeQuest = AcceptedQuest[i];
+
+            if (completeQuest == SelectedQuestButton.Quest)
+            {
+                completeQuest.FinishQuest();
+                AcceptedQuest.Remove(completeQuest);
+                // reward
+                return;
+            }
+        }
+
+        print("ERROR");
+    }
 
     public void SelectQuest()
     {

@@ -28,7 +28,26 @@ namespace Tutorial
 
         public void Run()
         {
-            soldier.gameObject.transform.position += new Vector3(0, 0, 1);
+            List<int> runner = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                runner.Add(i);
+            }
+
+            print(runner.Count);
+
+            for (int i = 0; i < 2; i++)
+            {
+                runner.Remove(i);
+            }
+
+            print(runner.Count);
+
+            for (int i = 0; i < runner.Count; i++)
+            {
+                print(runner[i]);
+            }
         }
 
         private void Start()

@@ -7,27 +7,43 @@ public abstract class Quest_Base : ScriptableObject
     [SerializeField]
     protected TextAsset objective;
     [SerializeField]
-    protected int toComplete;
+    protected Player.Player_Inventory inventory;
 
     public string QuestText { get { return questText.text; } }
     public string Objective { get { return objective.text; } }
     public string QuestName { get { return questText.name; } }
     public bool QuestGiven { get; protected set; }
     public int Progress { get; protected set; }
-    public bool ProgressionComplete { get; protected set; }
     public bool QuestComplete { get; protected set; }
 
-    public void UpdateProgression()
+    public void CheckProgression()
     {
-        if (ProgressionComplete == true) return;
+        if (ProgressionComplete() == true) ProgressionCompleted();
+    }
+
+    public void FinishQuest()
+    {
+        QuestComplete = true;
+
+        FinishQuest_Abstract();
+    }
+
+    public void UpdateProgression(bool progressed = true)
+    {
+        if (progressed == false)
+        {
+            Progress--;
+
+            if (Progress < 0) Progress = 0;
+
+            return;
+        }
+
+        if (ProgressionComplete() == true) return;
 
         Progress++;
 
-        if (Progress >= toComplete)
-        {
-            ProgressionComplete = true;
-            ProgressionCompleted();
-        }
+        if (ProgressionComplete() == true) ProgressionCompleted();
     }
 
     public void Given(bool flag)
@@ -35,10 +51,11 @@ public abstract class Quest_Base : ScriptableObject
         QuestGiven = flag;
         Progress = 0;
 
-        ProgressionComplete = false;
-
         QuestComplete = false;
     }
 
-    public abstract void ProgressionCompleted();
+    public abstract bool ProgressionComplete();
+
+    protected abstract void ProgressionCompleted();
+    protected abstract void FinishQuest_Abstract();
 }
