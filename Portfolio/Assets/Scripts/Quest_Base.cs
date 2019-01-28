@@ -16,11 +16,6 @@ public abstract class Quest_Base : ScriptableObject
     public int Progress { get; protected set; }
     public bool QuestComplete { get; protected set; }
 
-    public void CheckProgression()
-    {
-        if (ProgressionComplete() == true) ProgressionCompleted();
-    }
-
     public void FinishQuest()
     {
         QuestComplete = true;

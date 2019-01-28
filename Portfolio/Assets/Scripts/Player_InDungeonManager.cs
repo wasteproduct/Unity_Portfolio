@@ -55,8 +55,6 @@ namespace Player
         {
             noticingWindow.gameObject.SetActive(true);
             noticingWindow.ShowNewItem();
-
-            questManager.CheckProgression();
         }
 
         public void Initialize()
