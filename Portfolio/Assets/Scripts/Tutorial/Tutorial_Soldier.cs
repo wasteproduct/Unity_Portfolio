@@ -11,9 +11,11 @@ namespace Tutorial
         [SerializeField]
         private float movingSpeed;
 
+        public delegate void Delegate_Void();
+
         public bool Moving { get { return animator.GetBool("Moving"); } }
 
-        public IEnumerator Move(List<Node_AStar> finalTrack)
+        public IEnumerator Move(List<Node_AStar> finalTrack, Delegate_Void ClearTraceMark)
         {
             animator.SetBool("Moving", true);
 
@@ -49,6 +51,8 @@ namespace Tutorial
             }
 
             animator.SetBool("Moving", false);
+
+            ClearTraceMark();
         }
 
         private float CalculateTargetRotation(Node_AStar startNode, Node_AStar endNode)

@@ -50,6 +50,13 @@ namespace Tutorial
             }
         }
 
+        public void ResetMapData()
+        {
+            tiles = tileMap.Tiles;
+
+            aStar.Initialize(tileMap);
+        }
+
         private void Start()
         {
             tileMap.GenerateMap(mapPatternNumber);
@@ -63,8 +70,8 @@ namespace Tutorial
 
         private void Update()
         {
-            //MoveSoldier();
-            Experiment();
+            MoveSoldier();
+            //Experiment();
         }
 
         private void Experiment()
@@ -114,7 +121,7 @@ namespace Tutorial
                         trace.Add(Instantiate(traceMark, new Vector3(finalTrack[i].X, 0, finalTrack[i].Z), Quaternion.identity));
                     }
 
-                    StartCoroutine(soldier.Move(finalTrack));
+                    StartCoroutine(soldier.Move(finalTrack, ClearTraceMark));
                 }
             }
         }

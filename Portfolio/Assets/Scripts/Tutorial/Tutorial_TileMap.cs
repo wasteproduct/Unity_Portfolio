@@ -36,6 +36,11 @@ namespace Tutorial
         public int Column { get { return column; } }
         public Tutorial_Tile[,] Tiles { get; private set; }
 
+        public void GenerateMap_Pattern1(bool editor) { GenerateMap(1); }
+        public void GenerateMap_Pattern2(bool editor) { GenerateMap(2); }
+        public void GenerateMap_Pattern3(bool editor) { GenerateMap(3); }
+        public void GenerateMap_Pattern4(bool editor) { GenerateMap(4); }
+
         public void GenerateMap(int patternNumber)
         {
             DiscardMap();
@@ -52,6 +57,9 @@ namespace Tutorial
                     break;
                 case 3:
                     SetFloors_Pattern3();
+                    break;
+                case 4:
+                    SetFloors_Pattern4();
                     break;
                 default:
                     SetFloors_Pattern1();
@@ -125,6 +133,8 @@ namespace Tutorial
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 DestroyImmediate(transform.GetChild(i).gameObject);
+                //if (editor == true) 
+                //else Destroy(transform.GetChild(i).gameObject);
             }
         }
 
@@ -143,50 +153,7 @@ namespace Tutorial
             }
         }
 
-        private void SetFloors_Pattern2()
-        {
-            for (int x = 0; x < row; x++)
-            {
-                if (x % 2 == 1) continue;
-
-                for (int z = 0; z < column; z++)
-                {
-                    Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
-                }
-            }
-
-            const int top = 0;
-            const int bottom = 1;
-            int direction = top;
-
-            for (int x = 0; x < row; x++)
-            {
-                if (x % 2 == 0) continue;
-
-                int z;
-
-                switch (direction)
-                {
-                    case top:
-                        z = column - 1;
-                        break;
-                    case bottom:
-                        z = 0;
-                        break;
-                    default:
-                        print("ERROR");
-                        return;
-                }
-
-                Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
-
-                direction++;
-
-                if (direction > bottom) direction = top;
-            }
-        }
-
-        private void SetFloors_Pattern3()
+        private void SetFloors_Pattern4()
         {
             const int right = 0;
             const int up = 1;
@@ -245,8 +212,249 @@ namespace Tutorial
             }
         }
 
+        private void SetFloors_3P(int x, int z)
+        {
+            if (z == column / 2 + 2) return;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Tiles[x + i, z].Type = Tutorial_Tile.TileType.Floor;
+            }
+        }
+
+        private void SetFloors_Pattern3()
+        {
+            SetFloors_Base(true);
+
+            const int right = 0;
+            const int up = 1;
+
+            int x = 0;
+            int z = 0;
+            int count = 0;
+            int direction = right;
+            Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+            while (true)
+            {
+                switch (direction)
+                {
+                    case right:
+                        x++;
+                        break;
+                    case up:
+                        z++;
+                        break;
+                }
+
+                if (x >= row || z >= column) break;
+
+                SetFloor_Pattern2(x, z);
+
+                count++;
+
+                if (count >= 3)
+                {
+                    direction++;
+
+                    if (direction > up) direction = right;
+
+                    count = 0;
+                }
+            }
+        }
+
+        private void SetFloors_Base(bool pattern3 = false)
+        {
+            if (pattern3 == true)
+            {
+                for (int z = 0; z < column; z++)
+                {
+                    Tiles[0, z].Type = Tutorial_Tile.TileType.Floor;
+                }
+
+                for (int x = 0; x < row; x++)
+                {
+                    Tiles[x, column - 1].Type = Tutorial_Tile.TileType.Floor;
+                }
+
+                int tileX = 0;
+
+                for (int z = column / 2; z < column - 1; z++)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        int x = tileX + i;
+
+                        if (x == row / 2) continue;
+
+                        Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+                    }
+
+                    tileX += 2;
+                }
+            }
+            else
+            {
+                for (int z = 0; z < column; z++)
+                {
+                    Tiles[0, z].Type = Tutorial_Tile.TileType.Floor;
+                }
+
+                for (int x = 0; x < row; x++)
+                {
+                    Tiles[x, column - 1].Type = Tutorial_Tile.TileType.Floor;
+                }
+
+                int tileX = 0;
+
+                for (int z = column / 2; z < column - 1; z++)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Tiles[tileX + i, z].Type = Tutorial_Tile.TileType.Floor;
+                    }
+
+                    tileX += 2;
+                }
+            }
+        }
+
         private void SetFloors_Pattern1()
         {
+            SetFloors_Base();
+
+            const int right = 0;
+            const int up = 1;
+
+            int x = 0;
+            int z = 0;
+            int count = 0;
+            int direction = right;
+            Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+            while (true)
+            {
+                switch (direction)
+                {
+                    case right:
+                        x++;
+                        break;
+                    case up:
+                        z++;
+                        break;
+                }
+
+                if (x >= row || z >= column) break;
+
+                Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+                count++;
+
+                if (count >= 3)
+                {
+                    direction++;
+
+                    if (direction > up) direction = right;
+
+                    count = 0;
+                }
+            }
+        }
+
+        private void SetFloors_Pattern2()
+        {
+            SetFloors_Base();
+
+            const int right = 0;
+            const int up = 1;
+
+            int x = 0;
+            int z = 0;
+            int count = 0;
+            int direction = right;
+            Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+            while (true)
+            {
+                switch (direction)
+                {
+                    case right:
+                        x++;
+                        break;
+                    case up:
+                        z++;
+                        break;
+                }
+
+                if (x >= row || z >= column) break;
+
+                SetFloor_Pattern2(x, z);
+
+                count++;
+
+                if (count >= 3)
+                {
+                    direction++;
+
+                    if (direction > up) direction = right;
+
+                    count = 0;
+                }
+            }
+        }
+
+        private void SetFloor_Pattern2(int x, int z)
+        {
+            if (z == column / 2) return;
+
+            Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+        }
+
+        private void ObsoleteMaps()
+        {
+            /*
+            for (int x = 0; x < row; x++)
+            {
+                if (x % 2 == 1) continue;
+
+                for (int z = 0; z < column; z++)
+                {
+                    Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+                }
+            }
+
+            const int top = 0;
+            const int bottom = 1;
+            int direction = top;
+
+            for (int x = 0; x < row; x++)
+            {
+                if (x % 2 == 0) continue;
+
+                int z;
+
+                switch (direction)
+                {
+                    case top:
+                        z = column - 1;
+                        break;
+                    case bottom:
+                        z = 0;
+                        break;
+                    default:
+                        print("ERROR");
+                        return;
+                }
+
+                Tiles[x, z].Type = Tutorial_Tile.TileType.Floor;
+
+                direction++;
+
+                if (direction > bottom) direction = top;
+            }*/
+
+            /*
             for (int z = 0; z < column; z++)
             {
                 if (z % 2 == 1) continue;
@@ -285,7 +493,7 @@ namespace Tutorial
                 direction++;
 
                 if (direction > right) direction = left;
-            }
+            }*/
         }
     }
 }

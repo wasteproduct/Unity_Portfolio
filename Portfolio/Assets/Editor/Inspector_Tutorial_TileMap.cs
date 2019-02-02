@@ -35,6 +35,14 @@ public class Inspector_Tutorial_TileMap : Editor
             EditorUtility.SetDirty(tileMap);
         }
 
+        if (GUILayout.Button("Generate Map Pattern 4"))
+        {
+            Tutorial_TileMap tileMap = (Tutorial_TileMap)target;
+            tileMap.GenerateMap(4);
+
+            EditorUtility.SetDirty(tileMap);
+        }
+
         if (GUILayout.Button("Discard Map"))
         {
             Tutorial_TileMap tileMap = (Tutorial_TileMap)target;
