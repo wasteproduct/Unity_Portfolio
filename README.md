@@ -5,3 +5,5 @@
 퀘스트, 상호작용(NPC, 상자), 인벤토리, 각종 스킬, 아이템(체력 포션), 일반 & 보스 전투,
 
 그 외 기타 알고리즘들이 구현되어 있습니다.
+
+영상 링크: https://www.youtube.com/playlist?list=PLlou-ZWlCeEei5bjFejkWna2xi4tA_1Vb
