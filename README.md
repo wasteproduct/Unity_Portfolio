@@ -7,3 +7,5 @@
 그 외 기타 알고리즘들이 구현되어 있습니다.
 
 영상 링크: https://www.youtube.com/playlist?list=PLlou-ZWlCeEei5bjFejkWna2xi4tA_1Vb
+
+기술서 링크: https://drive.google.com/drive/u/0/folders/1UtPNuQ-P_GqpvI5Qjyd_flb9-WZV1ieN
